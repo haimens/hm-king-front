@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import NavItem from "./nav.component/NavItem.item";
 import SubNavItem from "./nav.component/SubNavItem.item";
 import { ImageButton } from "../shared";
-/*eslint-disable */
-class Sidebar extends Component {
+
+export default class Sidebar extends Component {
   handleClick = new_path => {
     const { history } = this.props.parentProps;
     history.push(new_path);
@@ -15,7 +15,7 @@ class Sidebar extends Component {
   };
   handleClose = type => {
     if (type === "sidebar") {
-      this.props.onClick();
+      this.props.parentProps.toggleSideBar();
     }
   };
 
@@ -24,14 +24,11 @@ class Sidebar extends Component {
     const parsedLocation = pathname.split("/");
 
     return (
-      <main className="mr-bg-darkblue" style={styles.container}>
+      <main className="mr-bg-darkblue" style={styles.container} id="navbarSupportedContent">
         {/* LOGO Section */}
         <section className="mb-5 p-4 d-flex flex-row justify-content-between">
           <a href="#" onClick={e => this.handleClickLogo(e)}>
-            <img
-              src={`${process.env.PUBLIC_URL}/img/logo_white.svg`}
-              alt="logo"
-            />
+            <img src={`${process.env.PUBLIC_URL}/img/op_logo.svg`} alt="logo" width={"100px"} />
           </a>
           {/* Handle Close */}
           {/* Handle Close */}
@@ -39,14 +36,12 @@ class Sidebar extends Component {
             icon={<i className="fas fa-times text-white" />}
             type="submit"
             size={24}
-            outerClassName={
-              "d-flex-block d-sm-flex-block d-md-flex-block d-lg-none d-flex align-items-center"
-            }
+            outerClassName={"d-flex-block d-sm-flex-block d-md-flex-block d-lg-none d-flex align-items-center"}
             onClick={() => this.handleClose("sidebar")}
           />
         </section>
         {/* NAV ITEMS */}
-        <section>
+        <section className="accordion">
           <NavItem
             onToggle={() => this.props.parentProps.history.push("/dashboard")}
             image={`${process.env.PUBLIC_URL}/img/navicon_home.svg`}
@@ -55,154 +50,70 @@ class Sidebar extends Component {
             history={this.props.parentProps.history}
             showArrow={false}
           />
-
+        </section>
+        <section className="accordion">
           <NavItem
-            onToggle={() =>
-              this.props.parentProps.history.push("/payments/accounts")
-            }
-            image={`${process.env.PUBLIC_URL}/img/navicon_zhifu.svg`}
-            name="支付账户"
-            path="payments"
+            onToggle={() => this.props.parentProps.history.push("/devices")}
+            image={`${process.env.PUBLIC_URL}/img/navicon_phone.svg`}
+            name="设备管理"
+            path="devices"
             history={this.props.parentProps.history}
-          >
-            <SubNavItem
-              onClick={() => this.handleClick("/payments/accounts")}
-              name="支付账户列表"
-              is_target={parsedLocation[2] === "accounts"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/payments/prices")}
-              name="价格列表"
-              is_target={parsedLocation[2] === "prices"}
-            />
-          </NavItem>
-
+            showArrow={false}
+          />
+        </section>
+        <section className="accordion">
           <NavItem
-            onToggle={() =>
-              this.props.parentProps.history.push("/caskets/accounts")
-            }
-            image={`${process.env.PUBLIC_URL}/img/navicon_zizhi.svg`}
-            name="资质账户"
-            path="caskets"
-            history={this.props.parentProps.history}
-          >
-            <SubNavItem
-              onClick={() => this.handleClick("/caskets/accounts")}
-              name="资质账户列表"
-              is_target={parsedLocation[2] === "accounts"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/caskets/create")}
-              name="创建资质账户"
-              is_target={parsedLocation[2] === "create"}
-            />
-          </NavItem>
-
-          <NavItem
-            onToggle={() =>
-              this.props.parentProps.history.push("/fees/accounts")
-            }
-            image={`${process.env.PUBLIC_URL}/img/navicon_shouxu.svg`}
-            name="手续费账户"
-            path="fees"
-            history={this.props.parentProps.history}
-          >
-            <SubNavItem
-              onClick={() => this.handleClick("/fees/accounts")}
-              name="手续费账户列表"
-              is_target={parsedLocation[2] === "accounts"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/fees/create")}
-              name="创建手续费账户"
-              is_target={parsedLocation[2] === "create"}
-            />
-          </NavItem>
-
-          <NavItem
-            onToggle={() =>
-              this.props.parentProps.history.push("/captains/accounts")
-            }
+            onToggle={() => this.props.parentProps.history.push("/cities")}
             image={`${process.env.PUBLIC_URL}/img/navicon_pankou.svg`}
             name="盘口管理"
-            path="captains"
+            path="cities"
             history={this.props.parentProps.history}
-          >
-            <SubNavItem
-              onClick={() => this.handleClick("/captains/accounts")}
-              name="盘口列表"
-              is_target={parsedLocation[2] === "accounts"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/captains/create")}
-              name="创建盘口"
-              is_target={parsedLocation[2] === "create"}
-            />
-          </NavItem>
-
+            showArrow={false}
+          />
+        </section>
+        <section className="accordion">
           <NavItem
-            onToggle={() =>
-              this.props.parentProps.history.push("/dispatches/managers")
-            }
-            image={`${process.env.PUBLIC_URL}/img/navicon_xiafa.svg`}
-            name="下发管理"
-            path="dispatches"
+            onToggle={() => this.props.parentProps.history.push("/invoice")}
+            image={`${process.env.PUBLIC_URL}/img/navicon_invoice.svg`}
+            name="手续费管理"
+            path="invoice"
             history={this.props.parentProps.history}
-          >
-            {/* <SubNavItem
-              onClick={() => this.handleClick('/dispatches/mails')}
-              name="下发列表" is_target={parsedLocation[2] === 'mails'} /> */}
-            <SubNavItem
-              onClick={() => this.handleClick("/dispatches/managers")}
-              name="下发管理员"
-              is_target={parsedLocation[2] === "managers"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/dispatches/tears/2")}
-              name="客户下发请求"
-              is_target={parsedLocation[2] === "tears"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/dispatches/fees/2")}
-              name="手续费下发请求"
-              is_target={parsedLocation[2] === "fees"}
-            />
-          </NavItem>
-
+            showArrow={false}
+          />
+        </section>
+        <section className="accordion">
           <NavItem
-            onToggle={() =>
-              this.props.parentProps.history.push("/reports/deposits")
-            }
-            image={`${process.env.PUBLIC_URL}/img/navicon_jiaoyi.svg`}
+            onToggle={() => this.props.parentProps.history.push("/report")}
+            image={`${process.env.PUBLIC_URL}/img/navicon_report.svg`}
             name="交易报表"
-            path="reports"
+            path="report"
             history={this.props.parentProps.history}
-          >
-            <SubNavItem
-              onClick={() => this.handleClick("/reports/deposits")}
-              name="存款记录"
-              is_target={parsedLocation[2] === "deposits"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/reports/withdraws")}
-              name="下发记录"
-              is_target={parsedLocation[2] === "withdraws"}
-            />
-          </NavItem>
-
+            showArrow={false}
+          />
+        </section>
+        <section className="accordion">
           <NavItem
-            onToggle={() =>
-              this.props.parentProps.history.push("/setting/rates")
-            }
-            image={`${process.env.PUBLIC_URL}/img/navicon_user.svg`}
+            onToggle={() => this.props.parentProps.history.push("/setting/rates")}
+            image={`${process.env.PUBLIC_URL}/img/navicon_setting.svg`}
             name="设置"
             path="setting"
             history={this.props.parentProps.history}
+            showArrow={false}
           >
             <SubNavItem
               onClick={() => this.handleClick("/setting/rates")}
-              name="费率"
+              name="费率设置"
               is_target={parsedLocation[2] === "rates"}
+            />
+            <SubNavItem
+              onClick={() => this.handleClick("/setting/prices")}
+              name="价格设置"
+              is_target={parsedLocation[2] === "prices"}
+            />
+            <SubNavItem
+              onClick={() => this.handleClick("/setting/general")}
+              name="通用设置"
+              is_target={parsedLocation[2] === "prices"}
             />
           </NavItem>
         </section>
@@ -210,8 +121,6 @@ class Sidebar extends Component {
     );
   }
 }
-
-export default Sidebar;
 
 const styles = {
   container: {
