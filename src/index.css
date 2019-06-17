@@ -12,6 +12,10 @@ body {
   background: #f0f0f0 !important;
 }
 
+h1,h2,h3,h4,h5,h6,h7 {
+  margin-bottom:0 !important;
+}
+
 .hm-text-green {
   color:#0CC1A8 !important;
 }
