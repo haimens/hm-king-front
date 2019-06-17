@@ -7,6 +7,7 @@ import { LoaderAlt } from "./components/shared";
 
 import Home from "./containers/home/Home.container";
 import Company from "./containers/company/Company.container";
+import CompanyDetail from "./containers/company/CompanyDetail.container";
 const Login = React.lazy(() => import("./containers/login/Login.container"));
 const ResetPassword = React.lazy(() => import("./containers/resetPassword/ResetPassword.container"));
 
@@ -36,6 +37,7 @@ class App extends Component {
           <Main>
             <Route exact path="/home" component={Home} />
             <Route exact path="/company" component={Company} />
+            <Route exact path="/company/detail/:company_token" component={CompanyDetail} />
           </Main>
           <Route exact path="/reset" component={ResetPassword} />
           <Route exact path="/nomatch" component={Page404} />
