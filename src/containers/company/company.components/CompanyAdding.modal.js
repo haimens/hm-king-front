@@ -1,99 +1,151 @@
 import React, { Component } from "react";
-import { Modal, ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
+import { Modal } from "../../../components/shared";
+import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
 
-import alertify from "alertifyjs";
-
-export default class PriceModifyModal extends React.Component {
+import CompanyImage from "./CompanyImage.component";
+export default class PriceModifyModal extends Component {
   state = {
-    pay_url: "",
+    img_url: "",
     showImage: false,
-    showPreview: false
+    showPreview: false,
+    company_name: "",
+    company_address: "",
+    company_title: "",
+    fee_rate: ""
   };
 
-  handleClose = e => {
-    if (e) e.preventDefault();
-    if (this.props.onClose) this.props.onClose();
+  handleInputChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    alertify
-      .confirm(
-        "确定信息",
-        `确认上传二维码?`,
-        async () => {
-          await this.props.parentProps.registerHandPriceInHand(this.props.parentProps.match.params.city_token, {
-            price_token: this.props.parentProps.price_token,
-            hand_token: this.props.parentProps.handResourceDetail.hand_token,
-            payment_method: this.props.parentProps.handResourceDetail.payment_method,
-            pay_url: this.state.pay_url
-          });
-          this.handleClose();
-        },
-        () => {
-          alertify.error("取消");
-        }
-      )
-      .set("labels", { ok: "确定", cancel: "取消" });
+  handleShowImage = () => {
+    this.setState(states => ({ showImage: !states.showImage }));
   };
 
-  handleModal = e => {
-    if (e) e.preventDefault();
-    this.setState({ showImage: !this.state.showImage });
+  handleClose = () => {
+    this.props.onClose();
   };
-
   handleImageUpload = img_path => {
-    this.setState({ pay_url: img_path });
+    this.setState({ img_url: img_path });
   };
-
   componentDidMount() {}
 
   render() {
+    const { img_url, showImage, showPreview, company_name, company_address, company_title, fee_rate } = this.state;
     return (
-      <main>
-        {this.state.showImage && (
+      <form>
+        {showImage && (
           <ImageLoaderModal
             onClose={() => this.setState({ showImage: false })}
             onImageUpload={this.handleImageUpload}
-            title="修改二维码"
+            title="上传照片"
           />
         )}
-        {this.state.showPreview && (
-          <PreviewImageModal image={this.state.pay_url} onClose={() => this.setState({ showPreview: false })} />
-        )}
-        <Modal title="修改定额二维码" zIndex="1080" position={"center"} getWidth={"480px"} onClose={this.handleClose}>
-          <form className="bg-white p-4" onSubmit={this.handleSubmit}>
-            <div className="font-weight-bold st-text-ellipsis mb-2">上传二维码</div>
-            <div className="d-flex justify-content-between py-4">
-              <span className="st-text-ellipsis d-block mb-2">
-                {this.state.pay_url ? (
-                  <img
-                    className="st-pointer-cursor"
-                    onClick={() => this.setState({ showPreview: true })}
-                    src={this.state.pay_url}
-                    alt="二维码"
-                    width={"20px"}
-                    height={"20px"}
-                  />
-                ) : (
-                  <div>没有截图</div>
-                )}
-              </span>
-              <span>
-                <ImageButton icon={<i className="fas fa-upload fa-lg" />} onClick={e => this.handleModal(e)} />
-              </span>
+        {showPreview && <PreviewImageModal image={img_url} onClose={() => this.setState({ showPreview: false })} />}
+        <Modal
+          title="创建盘口"
+          onClose={this.handleClose}
+          position="center"
+          getWidth={"580px"}
+          getHeight={"576px"}
+          zIndex="1080"
+        >
+          <form className="p-3" onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="company_name">Company Name</label>
+              <input
+                className="form-control"
+                name="company_name"
+                id="company_name"
+                value={company_name}
+                onChange={this.handleInputChange}
+              />
             </div>
+
+            <div className="form-group">
+              <label htmlFor="company_address">Company Address</label>
+              <input
+                type="email"
+                className="form-control"
+                name="company_address"
+                id="company_address"
+                value={company_address}
+                onChange={this.handleInputChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="company_title">Company Title</label>
+              <input
+                type="cell"
+                className="form-control"
+                name="company_title"
+                id="company_title"
+                value={company_title}
+                onChange={this.handleInputChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="fee_rate">Fee Rates</label>
+              <input
+                type="cell"
+                className="form-control"
+                name="fee_rate"
+                id="fee_rate"
+                value={fee_rate}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <CompanyImage
+              parentProps={{ img_url, showPreview }}
+              title={"Logo"}
+              handleShowImage={this.handleShowImage}
+            />
+            <CompanyImage
+              parentProps={{ img_url, showPreview }}
+              title={"Favicon"}
+              handleShowImage={this.handleShowImage}
+            />
             <div className="row">
-              <div className="col-12 text-right py-4">
-                <button className="btn st-bg-green px-4 mr-3 text-white btn-sm">确认</button>
-                <button onClick={this.handleClose} className="btn btn-outline-secondary px-4 btn-sm">
-                  取消
-                </button>
+              <div className="col-2">Status:</div>
+              <div className="col-9">
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineRadio1">
+                    Active
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio2"
+                    value="option2"
+                  />
+                  <label class="form-check-label" for="inlineRadio2">
+                    Inactive
+                  </label>
+                </div>
               </div>
+            </div>
+            <div className="form-group text-center mt-2">
+              <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Add</button>
+              <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
+                Cancel
+              </button>
             </div>
           </form>
         </Modal>
-      </main>
+      </form>
     );
   }
 }

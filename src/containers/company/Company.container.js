@@ -13,7 +13,7 @@ class Company extends Component {
   render() {
     return (
       <main>
-        {this.state.showAddCompanyModal && <CompanyAddingModal onClose={this.handleCommendModal} />}
+        {this.state.showAddCompanyModal && <CompanyAddingModal onClose={this.handleAddCompanyModal} />}
         <section>
           <div className="mb-3 d-flex justify-content-between">
             <h4>Company List</h4>
