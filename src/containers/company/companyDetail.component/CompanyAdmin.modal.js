@@ -3,7 +3,7 @@ import { Modal } from "../../../components/shared";
 import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
 
 import CompanyImage from "./CompanyImage.component";
-export default class PriceModifyModal extends Component {
+export default class CompanyAdmin extends Component {
   state = {
     img_url: "",
     showImage: false,
@@ -48,13 +48,13 @@ export default class PriceModifyModal extends Component {
           onClose={this.handleClose}
           position="center"
           getWidth={"580px"}
-          getHeight={"576px"}
+          getHeight={"550px"}
           zIndex="1080"
         >
           <div className="container">
             <form className="p-3" onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label htmlFor="company_name">Company Name</label>
+                <label htmlFor="company_name">Name</label>
                 <input
                   className="form-control"
                   name="company_name"
@@ -65,7 +65,7 @@ export default class PriceModifyModal extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="company_address">Company Address</label>
+                <label htmlFor="company_address">Cell</label>
                 <input
                   type="email"
                   className="form-control"
@@ -77,7 +77,7 @@ export default class PriceModifyModal extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="company_title">Company Title</label>
+                <label htmlFor="company_title">Email</label>
                 <input
                   type="cell"
                   className="form-control"
@@ -89,7 +89,7 @@ export default class PriceModifyModal extends Component {
               </div>
 
               <div className="form-group">
-                <label htmlFor="fee_rate">Fee Rates</label>
+                <label htmlFor="fee_rate">Username</label>
                 <input
                   type="cell"
                   className="form-control"
@@ -101,12 +101,7 @@ export default class PriceModifyModal extends Component {
               </div>
               <CompanyImage
                 parentProps={{ img_url, showPreview }}
-                title={"Logo"}
-                handleShowImage={this.handleShowImage}
-              />
-              <CompanyImage
-                parentProps={{ img_url, showPreview }}
-                title={"Favicon"}
+                title={"Profile"}
                 handleShowImage={this.handleShowImage}
               />
               <div className="row">
@@ -138,7 +133,7 @@ export default class PriceModifyModal extends Component {
                   </div>
                 </div>
               </div>
-              <div className="form-group text-center mt-2">
+              <div className="form-group text-center mt-3">
                 <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Add</button>
                 <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
                   Cancel

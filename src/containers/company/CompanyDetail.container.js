@@ -4,23 +4,37 @@ import ListView from "../../components/shared/ListView";
 import IconButton from "../../components/shared/IconButton";
 import CompanyDetailInfo from "./companyDetail.component/CompanyDetailInfo.component";
 import CompanyCard from "./companyDetail.component/CompanyCard.component";
+import CompanyAdminModal from "./companyDetail.component/CompanyAdmin.modal";
+import CompanyInvoiceModal from "./companyDetail.component/CompanyInvoice.modal";
 class CompanyDetail extends Component {
-  handleAddCompanyModal = () => {
-    this.setState(states => ({ showAddCompanyModal: !states.showAddCompanyModal }));
+  state = {
+    showCompanyAdminModal: false,
+    showInvoiceModal: false
+  };
+  handleAddCompanyAdminModal = () => {
+    this.setState(states => ({ showCompanyAdminModal: !states.showCompanyAdminModal }));
+  };
+  handleAddInvoiceModal = () => {
+    this.setState(states => ({ showInvoiceModal: !states.showInvoiceModal }));
   };
   render() {
+    const { showCompanyAdminModal, showInvoiceModal } = this.state;
     return (
       <main>
+        {showCompanyAdminModal && <CompanyAdminModal />}
+        {showInvoiceModal && <CompanyInvoiceModal />}
         <CompanyDetailInfo />
-
         <section>
-          <div className="my-3 d-flex justify-content-between">
+          <div className="my-3 d-flex ">
             <h4>Company Admin List</h4>
+            <button className="ml-3" onClick={this.handleAddCompanyAdminModal}>
+              Hi
+            </button>
           </div>
           <ListView
             totalCount={30}
             title="收款记录列表"
-            fieldNames={["Created On", "Last Updated", "Company ID", "Company Name", "Status", "Detail"]}
+            fieldNames={["Created On", "Admin Name", "Call", "Email", "Username", "Profile", "Status"]}
             hideHeader={true}
             onPageChange={this.handlePageChange}
           >
@@ -31,13 +45,16 @@ class CompanyDetail extends Component {
         </section>
 
         <section>
-          <div className="my-3 d-flex justify-content-between">
+          <div className="my-3 d-flex ">
             <h4>Invoice List</h4>
+            <button className="ml-3" onClick={this.handleAddInvoiceModal}>
+              Hi
+            </button>
           </div>
           <ListView
             totalCount={30}
             title="收款记录列表"
-            fieldNames={["Created On", "Last Updated", "Company ID", "Company Name", "Status", "Detail"]}
+            fieldNames={["Created On", "Last Updated", "Invoice Token", "Company Name", "Amount", "Receipt", "Status"]}
             hideHeader={true}
             onPageChange={this.handlePageChange}
           >
