@@ -57,7 +57,7 @@ class ListView extends Component {
      */
     const renderFieldNames = (names = []) => {
       return names.map((name, key) => (
-        <th scope="col" key={key} className="text-dark text-left">
+        <th scope="col" key={key} className="text-dark text-left custom-text">
           {name}
         </th>
       ));
@@ -70,9 +70,7 @@ class ListView extends Component {
             className="d-flex justify-content-between 
         p-3 border-bottom shadow-sm"
           >
-            <h6 className="d-block d-flex align-items-center">
-              {this.props.title}
-            </h6>
+            <h6 className="d-block d-flex align-items-center">{this.props.title}</h6>
             {this.props.onSearch && (
               <div>
                 <SearchBar
@@ -89,29 +87,17 @@ class ListView extends Component {
           <thead>
             <tr>{renderFieldNames(this.props.fieldNames)}</tr>
           </thead>
-          <tbody className="mr-break-word">
-            {this.renderList(this.props.children)}
-          </tbody>
+          <tbody className="mr-break-word">{this.renderList(this.props.children)}</tbody>
         </table>
         <div className="d-flex flex-column shadow-sm border p-2">
           {this.state.isLess && this.props.totalCount > 5 && (
             <ImageButton
               outerClassName={"w-100 p-2"}
-              icon={
-                <i
-                  className="fas fa-angle-down fa-2x text-secondary"
-                  style={{ opacity: 0.8 }}
-                />
-              }
+              icon={<i className="fas fa-angle-down fa-2x text-secondary" style={{ opacity: 0.8 }} />}
               onClick={() => this.showMore()}
             />
           )}
-          {!this.state.isLess && (
-            <Pagination
-              onPageChange={this.handlePageChange}
-              count={this.props.totalCount}
-            />
-          )}
+          {!this.state.isLess && <Pagination onPageChange={this.handlePageChange} count={this.props.totalCount} />}
         </div>
       </div>
     );

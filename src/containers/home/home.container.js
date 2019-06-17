@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import DisplayCard from "./home.components/Display.card";
+import DisplayCard from "./home.component/Display.card";
 
 class Home extends Component {
   constructor(props) {

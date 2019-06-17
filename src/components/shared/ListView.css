@@ -162,3 +162,7 @@ table th {
       overflow: scroll;
   }
 }
+
+.custom-text{
+  text-transform: none !important;
+}
