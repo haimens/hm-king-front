@@ -39,7 +39,7 @@ export default class CompanyImage extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="mt-3">
         <form className="bg-white" onSubmit={this.handleSubmit}>
           <div className="d-flex align-items-center row">
             <div className="mb-2 mr-4 col-2">
