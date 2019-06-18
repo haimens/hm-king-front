@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Modal } from "../../../components/shared";
-import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
 
-import CompanyImage from "./CompanyImage.component";
-export default class CompanyInvoice extends Component {
+class CompanyInvoice extends Component {
   state = {
     img_url: "",
     showImage: false,
@@ -78,3 +76,5 @@ export default class CompanyInvoice extends Component {
     );
   }
 }
+
+export default CompanyInvoice;
