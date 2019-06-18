@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import ListView from "../../components/shared/ListView";
+import InvoiceListItem from "./Invoice.component/InvoiceList.item";
 class Invoice extends Component {
+  handlePageChange = page => {
+    console.log(page);
+  };
   render() {
     return (
       <main>
@@ -11,12 +15,12 @@ class Invoice extends Component {
           <ListView
             totalCount={30}
             title="收款记录列表"
-            fieldNames={["Created On", "Last Updated", "Company ID", "Company Name", "Status", "Detail"]}
+            fieldNames={["Created On", "Last Updated", "Invoice Token", "Company Name", "Amount", "Receipt", "Status"]}
             hideHeader={true}
             onPageChange={this.handlePageChange}
           >
             {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <CompanyListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
+              <InvoiceListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
             ))} */}
           </ListView>
         </section>

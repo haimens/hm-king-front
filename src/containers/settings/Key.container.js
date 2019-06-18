@@ -8,6 +8,9 @@ class Key extends Component {
   handleAddKeyValue = () => {
     this.setState(states => ({ showKeyValue: !states.showKeyValue }));
   };
+  handlePageChange = page => {
+    console.log(page);
+  };
   render() {
     const { showKeyValue } = this.state;
     return (
