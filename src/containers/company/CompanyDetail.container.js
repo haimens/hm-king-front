@@ -9,6 +9,7 @@ import CompanyInvoiceModal from "./companyDetail.component/CompanyInvoice.modal"
 
 import CompanyAdminList from "./companyDetail.component/CompanyAdminList.item";
 import CompanyInvoiceListItem from "./companyDetail.component/CompanyInvoiceList.item";
+
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
