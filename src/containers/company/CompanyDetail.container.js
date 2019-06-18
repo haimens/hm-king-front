@@ -6,6 +6,9 @@ import CompanyDetailInfo from "./companyDetail.component/CompanyDetailInfo.compo
 import CompanyCard from "./companyDetail.component/CompanyCard.component";
 import CompanyAdminModal from "./companyDetail.component/CompanyAdmin.modal";
 import CompanyInvoiceModal from "./companyDetail.component/CompanyInvoice.modal";
+
+import CompanyAdminList from "./companyDetail.component/CompanyAdminList.item";
+import CompanyInvoiceListItem from "./companyDetail.component/CompanyInvoiceList.item";
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
@@ -39,7 +42,7 @@ class CompanyDetail extends Component {
             onPageChange={this.handlePageChange}
           >
             {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <CompanyListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
+              <CompanyAdminListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
             ))} */}
           </ListView>
         </section>
@@ -59,7 +62,7 @@ class CompanyDetail extends Component {
             onPageChange={this.handlePageChange}
           >
             {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <CompanyListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
+              <CompanyInvoiceListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
             ))} */}
           </ListView>
         </section>

@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 
 export default class CompanyCard extends Component {
+  state = {
+    input_first: "",
+    input_second: "",
+    input_third: ""
+  };
+  handleInputChange = e => {
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
+  };
   render() {
     const { title, sub_title, sub_title_2, sub_title_3 } = this.props.parentProps;
+    const { input_first, input_second, input_third } = this.state;
     return (
       <section className="my-3">
         <h4>{title}</h4>
@@ -10,25 +20,25 @@ export default class CompanyCard extends Component {
           <div className="row rounded bg-white p-3">
             <div className="col-6 bg-white ">
               <div className="form-group">
-                <label htmlFor="company_name">{sub_title}</label>
+                <label htmlFor="input_first">{sub_title}</label>
                 <input
                   className="form-control"
-                  name="company_name"
-                  id="company_name"
-                  value={123}
+                  name="input_first"
+                  id="input_first"
+                  value={input_first}
                   onChange={this.handleInputChange}
                 />
               </div>
             </div>
             <div className="col-6 bg-white ">
               <div className="form-group">
-                <label htmlFor="company_title">{sub_title_2}</label>
+                <label htmlFor="input_second">{sub_title_2}</label>
                 <input
                   type="cell"
                   className="form-control"
-                  name="company_title"
-                  id="company_title"
-                  value={321}
+                  name="input_second"
+                  id="input_second"
+                  value={input_second}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -37,13 +47,13 @@ export default class CompanyCard extends Component {
             {sub_title_3 && (
               <div className="col-6 bg-white ">
                 <div className="form-group">
-                  <label htmlFor="company_title">{sub_title_3}</label>
+                  <label htmlFor="input_third">{sub_title_3}</label>
                   <input
                     type="cell"
                     className="form-control"
-                    name="company_title"
-                    id="company_title"
-                    value={321}
+                    name="input_third"
+                    id="input_third"
+                    value={input_third}
                     onChange={this.handleInputChange}
                   />
                 </div>
