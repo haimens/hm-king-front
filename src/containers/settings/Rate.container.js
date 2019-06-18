@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import { IconButton, ListView } from "../../components/shared";
-
+import RateModal from "./Rate.component/Rate.modal";
 class Rate extends Component {
+  state = {
+    showRateValue: ""
+  };
+  handleAddRateValue = () => {
+    this.setState(states => ({ showRateValue: !states.showRateValue }));
+  };
   render() {
+    const { showRateValue } = this.state;
     return (
       <main>
+        {showRateValue && <RateModal />}
         <section>
           <div className="mb-3 d-flex justify-content-between">
             <h4>Fee Rate Settings</h4>
@@ -12,7 +20,7 @@ class Rate extends Component {
               icon={`${process.env.PUBLIC_URL}/img/home.svg`}
               title="申请归集"
               className="hm-bg-green text-white"
-              onClick={this.handleAddCompanyModal}
+              onClick={this.handleAddRateValue}
             />
           </div>
           <ListView

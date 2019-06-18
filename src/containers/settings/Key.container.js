@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import { IconButton, ListView } from "../../components/shared";
+import KeyModal from "./Key.component/Key.modal";
 class Key extends Component {
+  state = {
+    showKeyValue: ""
+  };
+  handleAddKeyValue = () => {
+    this.setState(states => ({ showKeyValue: !states.showKeyValue }));
+  };
   render() {
+    const { showKeyValue } = this.state;
     return (
       <main>
+        {showKeyValue && <KeyModal />}
         <section>
           <div className="mb-3 d-flex justify-content-between">
             <h4>Key Value Settings</h4>
@@ -11,7 +20,7 @@ class Key extends Component {
               icon={`${process.env.PUBLIC_URL}/img/home.svg`}
               title="申请归集"
               className="hm-bg-green text-white"
-              onClick={this.handleAddCompanyModal}
+              onClick={this.handleAddKeyValue}
             />
           </div>
           <ListView

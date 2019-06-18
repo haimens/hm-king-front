@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Modal } from "../../../components/shared";
-import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
 
-import CompanyImage from "./CompanyImage.component";
-export default class CompanyInvoice extends Component {
+export default class RateModal extends Component {
   state = {
     img_url: "",
     showImage: false,
@@ -39,21 +37,11 @@ export default class CompanyInvoice extends Component {
         onClose={this.handleClose}
         position="center"
         getWidth={"580px"}
-        getHeight={"384px"}
+        getHeight={"214px"}
         zIndex="1080"
       >
         <div className="container">
           <form className="p-3" onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="company_name">Name</label>
-              <div>{300}</div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="company_address">Cell</label>
-              <div>{300}</div>
-            </div>
-
             <div className="form-group">
               <label htmlFor="company_title">Email</label>
               <input
