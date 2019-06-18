@@ -6,6 +6,7 @@ export default class CompanyDetailInfo extends Component {
   state = {
     showAddCompanyModal: false,
     company_name: "",
+    realm_token: "",
     company_address: "",
     company_title: "",
     fee_rate: "",
@@ -18,8 +19,18 @@ export default class CompanyDetailInfo extends Component {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
+
   render() {
-    const { company_name, company_address, company_title, fee_rate, showImage, showPreview, img_url } = this.state;
+    const {
+      company_name,
+      realm_token,
+      company_address,
+      company_title,
+      fee_rate,
+      showImage,
+      showPreview,
+      img_url
+    } = this.state;
 
     return (
       <section>
@@ -59,13 +70,13 @@ export default class CompanyDetailInfo extends Component {
               <div className="col-12">
                 <div className="row">
                   <div className="form-group col-6">
-                    <label htmlFor="company_title">Realm Token</label>
+                    <label htmlFor="realm_token">Realm Token</label>
                     <input
                       type="cell"
                       className="form-control"
-                      name="company_title"
-                      id="company_title"
-                      value={company_title}
+                      name="realm_token"
+                      id="realm_token"
+                      value={realm_token}
                       onChange={this.handleInputChange}
                     />
                   </div>
