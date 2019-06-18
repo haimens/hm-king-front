@@ -15,8 +15,8 @@ export default class CompanyInvoice extends Component {
   };
 
   handleInputChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
   };
 
   handleShowImage = () => {

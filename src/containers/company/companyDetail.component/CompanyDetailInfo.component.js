@@ -8,6 +8,11 @@ export default class CompanyDetailInfo extends Component {
     company_title: "",
     fee_rate: ""
   };
+
+  handleInputChange = e => {
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
+  };
   render() {
     const { company_name, company_address, company_title, fee_rate } = this.state;
 
