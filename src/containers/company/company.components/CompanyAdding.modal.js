@@ -109,7 +109,7 @@ export default class PriceModifyModal extends Component {
                 title={"Favicon"}
                 handleShowImage={this.handleShowImage}
               />
-              <div className="row mt-3">
+              <div className="row my-4">
                 <div className="col-2">Status:</div>
                 <div className="col-9">
                   <div class="form-check form-check-inline">
@@ -138,9 +138,9 @@ export default class PriceModifyModal extends Component {
                   </div>
                 </div>
               </div>
-              <div className="form-group text-center mt-4">
+              <div className="form-group text-center p-3">
                 <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Add</button>
-                <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
+                <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
                   Cancel
                 </button>
               </div>
