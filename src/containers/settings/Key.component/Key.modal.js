@@ -3,37 +3,23 @@ import { Modal } from "../../../components/shared";
 
 export default class KeyModal extends Component {
   state = {
-    img_url: "",
-    showImage: false,
-    showPreview: false,
-    company_name: "",
-    company_address: "",
-    company_title: "",
-    fee_rate: ""
+    key: "",
+    value: ""
   };
 
   handleInputChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-
-  handleShowImage = () => {
-    this.setState(states => ({ showImage: !states.showImage }));
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
   };
 
   handleClose = () => {
     this.props.onClose();
   };
-  handleImageUpload = img_path => {
-    this.setState({ img_url: img_path });
-  };
-  componentDidMount() {}
-
   render() {
-    const { img_url, showImage, showPreview, company_name, company_address, company_title, fee_rate } = this.state;
+    const { key, value } = this.state;
     return (
       <Modal
-        title="创建盘口"
+        title="Add Key Value"
         onClose={this.handleClose}
         position="center"
         getWidth={"580px"}
@@ -43,30 +29,30 @@ export default class KeyModal extends Component {
         <div className="container">
           <form className="p-3" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="company_title">Email</label>
+              <label htmlFor="key">Key</label>
               <input
-                type="cell"
+                type="text"
                 className="form-control"
-                name="company_title"
-                id="company_title"
-                value={company_title}
+                name="key"
+                id="key"
+                value={key}
                 onChange={this.handleInputChange}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="company_title">Email</label>
+              <label htmlFor="value">Value</label>
               <input
-                type="cell"
+                type="text"
                 className="form-control"
-                name="company_title"
-                id="company_title"
-                value={company_title}
+                name="value"
+                id="value"
+                value={value}
                 onChange={this.handleInputChange}
               />
             </div>
             <div className="form-group text-center p-3">
               <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Add</button>
-              <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
+              <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
                 Cancel
               </button>
             </div>

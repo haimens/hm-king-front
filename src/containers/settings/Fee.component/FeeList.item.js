@@ -5,7 +5,7 @@ import { convertUTCtoLocal } from "../../../actions/utilities.action";
  * @onClick
  * @onCorrect
  */
-export default function RateItem(props) {
+export default function FeeListItem(props) {
   const { cdate, udate, order_num } = props.parentProps;
 
   return (

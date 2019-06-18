@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Modal } from "../../../components/shared";
 
-export default class RateModal extends Component {
+export default class FeeModal extends Component {
   state = {
     fee_rate: ""
   };
@@ -16,7 +16,7 @@ export default class RateModal extends Component {
     this.setState(states => ({ showImage: !states.showImage }));
   };
 
-  handleClose = () => {
+  handleClose = e => {
     this.props.onClose();
   };
   handleImageUpload = img_path => {
@@ -32,7 +32,7 @@ export default class RateModal extends Component {
         onClose={this.handleClose}
         position="center"
         getWidth={"580px"}
-        getHeight={"214px"}
+        getHeight={"220px"}
         zIndex="1080"
       >
         <div className="container">
@@ -50,9 +50,9 @@ export default class RateModal extends Component {
                 <span className="input-group-text bg-white border-left-0">%</span>
               </div>
             </div>
-            <div className="form-group text-center">
+            <div className="form-group text-center p-3">
               <button className="hm-bg-green btn px-4 text-white mr-3">Add</button>
-              <button onClick={this.handleCancel} className="btn btn-outline-secondary px-4">
+              <button onClick={this.handleClose} className="btn btn-outline-secondary px-4">
                 Cancel
               </button>
             </div>
