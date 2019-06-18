@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import ListView from "../../components/shared/ListView";
+import { IconButton, ListView } from "../../components/shared";
+
 class Rate extends Component {
   render() {
     return (
@@ -7,6 +8,12 @@ class Rate extends Component {
         <section>
           <div className="mb-3 d-flex justify-content-between">
             <h4>Fee Rate Settings</h4>
+            <IconButton
+              icon={`${process.env.PUBLIC_URL}/img/home.svg`}
+              title="申请归集"
+              className="hm-bg-green text-white"
+              onClick={this.handleAddCompanyModal}
+            />
           </div>
           <ListView
             totalCount={30}
