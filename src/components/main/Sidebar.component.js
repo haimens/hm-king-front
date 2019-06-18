@@ -43,30 +43,20 @@ export default class Sidebar extends Component {
         {/* NAV ITEMS */}
         <section className="accordion">
           <NavItem
-            onToggle={() => this.props.parentProps.history.push("/dashboard")}
-            image={`${process.env.PUBLIC_URL}/img/navicon_home.svg`}
-            name="账户首页"
-            path="dashboard"
+            onToggle={() => this.props.parentProps.history.push("/home")}
+            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            name="Home"
+            path="home"
             history={this.props.parentProps.history}
             showArrow={false}
           />
         </section>
         <section className="accordion">
           <NavItem
-            onToggle={() => this.props.parentProps.history.push("/devices")}
-            image={`${process.env.PUBLIC_URL}/img/navicon_phone.svg`}
-            name="设备管理"
-            path="devices"
-            history={this.props.parentProps.history}
-            showArrow={false}
-          />
-        </section>
-        <section className="accordion">
-          <NavItem
-            onToggle={() => this.props.parentProps.history.push("/cities")}
-            image={`${process.env.PUBLIC_URL}/img/navicon_pankou.svg`}
-            name="盘口管理"
-            path="cities"
+            onToggle={() => this.props.parentProps.history.push("/company")}
+            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            name="Company"
+            path="company"
             history={this.props.parentProps.history}
             showArrow={false}
           />
@@ -74,46 +64,32 @@ export default class Sidebar extends Component {
         <section className="accordion">
           <NavItem
             onToggle={() => this.props.parentProps.history.push("/invoice")}
-            image={`${process.env.PUBLIC_URL}/img/navicon_invoice.svg`}
-            name="手续费管理"
+            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            name="Invoice"
             path="invoice"
             history={this.props.parentProps.history}
             showArrow={false}
           />
         </section>
+
         <section className="accordion">
           <NavItem
-            onToggle={() => this.props.parentProps.history.push("/report")}
-            image={`${process.env.PUBLIC_URL}/img/navicon_report.svg`}
-            name="交易报表"
-            path="report"
-            history={this.props.parentProps.history}
-            showArrow={false}
-          />
-        </section>
-        <section className="accordion">
-          <NavItem
-            onToggle={() => this.props.parentProps.history.push("/setting/rates")}
-            image={`${process.env.PUBLIC_URL}/img/navicon_setting.svg`}
-            name="设置"
-            path="setting"
+            onToggle={() => this.props.parentProps.history.push("/settings/rates")}
+            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            name="Settings"
+            path="settings"
             history={this.props.parentProps.history}
             showArrow={false}
           >
             <SubNavItem
-              onClick={() => this.handleClick("/setting/rates")}
-              name="费率设置"
+              onClick={() => this.handleClick("/settings/rates")}
+              name="Fee Rate"
               is_target={parsedLocation[2] === "rates"}
             />
             <SubNavItem
-              onClick={() => this.handleClick("/setting/prices")}
-              name="价格设置"
-              is_target={parsedLocation[2] === "prices"}
-            />
-            <SubNavItem
-              onClick={() => this.handleClick("/setting/general")}
-              name="通用设置"
-              is_target={parsedLocation[2] === "prices"}
+              onClick={() => this.handleClick("/settings/key")}
+              name="Key Value"
+              is_target={parsedLocation[2] === "key"}
             />
           </NavItem>
         </section>

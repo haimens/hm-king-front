@@ -1,49 +1,48 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { toggleSideBar } from "../../actions/nav.action";
-import "./Main.component.css";
-import { resetPassword } from "../../actions/auth.action";
-import SideBar from "./Sidebar.component";
-import Nav from "./Nav.component";
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
+import { toggleSideBar } from '../../actions/nav.action'
+import Nav from './Nav.component'
+import Sidebar from './Sidebar.component'
+import windowSize from 'react-window-size';
+import './Main.component.css'
+
+import {
+  resetPassword
+} from '../../actions/auth.action';
+
 export class Main extends Component {
-  state = {
-    opened: false
-  };
-  handleSideBarBeenOpened = boolean => {
-    this.setState({ opened: boolean });
-  };
   render() {
     const parentProps = {
       toggleSideBar: this.props.toggleSideBar,
       history: this.props.history,
       resetPassword: this.props.resetPassword,
-      location: this.props.location
-    };
-    const hasPaddingLeft = this.state.opened ? "main-container-open" : "main-container-close";
+    }
+
+    const hasPaddingLeft = (this.props.is_open || this.props.windowWidth > 992)
+      ? 'main-container-open'
+      : 'main-container-close'
     return (
       <main>
-        <section>
+        <section className="sticky-top">
           <Nav parentProps={parentProps} />
         </section>
-        <section style={{ zIndex: 9 }}>
-          <SideBar handleSideBarBeenOpened={this.handleSideBarBeenOpened} parentProps={parentProps} />
+        <section>
+          {(this.props.is_open || this.props.windowWidth > 992) && <Sidebar parentProps={parentProps} />}
         </section>
-        <div className={`container-fluid py-5 ${hasPaddingLeft} `}>{this.props.children}</div>
-
         {/* Render children */}
+        <section className={`container-fluid py-5 ${hasPaddingLeft}`}>
+          {this.props.children}
+        </section>
       </main>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
     is_open: state.navReducer.is_open
-  };
-};
+  }
+}
 
-export default connect(
-  mapStateToProps,
-  { toggleSideBar, resetPassword }
-)(withRouter(Main));
+export default connect(mapStateToProps, { toggleSideBar, resetPassword })(windowSize(withRouter(Main)))
