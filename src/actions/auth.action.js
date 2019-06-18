@@ -1,8 +1,4 @@
-import {
-  saveUserInfo,
-  clearUserInfo,
-  loadUserInfo
-} from "./localStorage.action";
+import { saveUserInfo, clearUserInfo, loadUserInfo } from "./localStorage.action";
 import { callApi } from "./utilities.action";
 import constant from "../constants/constant";
 import alertify from "alertifyjs";
@@ -58,7 +54,7 @@ export const processLogin = (user_login_nfo, history) => async dispatch => {
     saveUserInfo({ ...payload });
     await dispatch(loginSuccess());
     await stopLoader(dispatch);
-    history.push("/dashboard");
+    history.push("/home");
   } catch (err) {
     console.log(err);
     await stopLoader(dispatch);

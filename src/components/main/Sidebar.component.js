@@ -11,7 +11,7 @@ export default class Sidebar extends Component {
   handleClickLogo = e => {
     e.preventDefault();
     const { history } = this.props.parentProps;
-    history.push("/dashboard");
+    history.push("/home");
   };
   handleClose = type => {
     if (type === "sidebar") {
@@ -27,10 +27,9 @@ export default class Sidebar extends Component {
       <main className="hm-bg-darkblue" style={styles.container} id="navbarSupportedContent">
         {/* LOGO Section */}
         <section className="mb-5 p-4 d-flex flex-row justify-content-between">
-          <a href="#" onClick={e => this.handleClickLogo(e)}>
+          <a href="/home" onClick={e => this.handleClickLogo(e)}>
             <img src={`${process.env.PUBLIC_URL}/img/op_logo.svg`} alt="logo" width={"100px"} />
           </a>
-          {/* Handle Close */}
           {/* Handle Close */}
           <ImageButton
             icon={<i className="fas fa-times text-white" />}
