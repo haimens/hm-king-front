@@ -7,8 +7,9 @@ export default class RateModal extends Component {
   };
 
   handleInputChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const { id, value } = e.target;
+    console.log(e.target);
+    this.setState({ [id]: value });
   };
 
   handleShowImage = () => {
@@ -27,7 +28,7 @@ export default class RateModal extends Component {
     const { fee_rate } = this.state;
     return (
       <Modal
-        title="创建盘口"
+        title="Add Fee Rate"
         onClose={this.handleClose}
         position="center"
         getWidth={"580px"}
@@ -36,14 +37,20 @@ export default class RateModal extends Component {
       >
         <div className="container">
           <form className="p-3" onSubmit={this.handleSubmit}>
-            <label for="basic-url">Your vanity URL</label>
+            <label>Fee Rate</label>
             <div className="input-group mb-3">
-              <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" />
-              <div className="input-group-append">
-                <span className="input-group-text">%</span>
+              <input
+                type="number"
+                className="form-control border-right-0"
+                id="fee_rate"
+                value={fee_rate}
+                onChange={this.handleInputChange}
+              />
+              <div className="input-group-append ">
+                <span className="input-group-text bg-white border-left-0">%</span>
               </div>
             </div>
-            <div className="form-group text-center p-3">
+            <div className="form-group text-center">
               <button className="hm-bg-green btn px-4 text-white mr-3">Add</button>
               <button onClick={this.handleCancel} className="btn btn-outline-secondary px-4">
                 Cancel
