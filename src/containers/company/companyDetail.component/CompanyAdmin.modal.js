@@ -44,11 +44,11 @@ export default class CompanyAdmin extends Component {
         )}
         {showPreview && <PreviewImageModal image={img_url} onClose={() => this.setState({ showPreview: false })} />}
         <Modal
-          title="创建盘口"
+          title="Add Company Admin"
           onClose={this.handleClose}
           position="center"
           getWidth={"580px"}
-          getHeight={"550px"}
+          getHeight={"535px"}
           zIndex="1080"
         >
           <div className="container">
@@ -104,7 +104,7 @@ export default class CompanyAdmin extends Component {
                 title={"Profile"}
                 handleShowImage={this.handleShowImage}
               />
-              <div className="row">
+              <div className="row mb-3">
                 <div className="col-2">Status:</div>
                 <div className="col-9">
                   <div class="form-check form-check-inline">
@@ -135,7 +135,7 @@ export default class CompanyAdmin extends Component {
               </div>
               <div className="form-group text-center p-3">
                 <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Add</button>
-                <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
+                <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
                   Cancel
                 </button>
               </div>

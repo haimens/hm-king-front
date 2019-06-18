@@ -21,8 +21,8 @@ class CompanyDetail extends Component {
     const { showCompanyAdminModal, showInvoiceModal } = this.state;
     return (
       <main>
-        {showCompanyAdminModal && <CompanyAdminModal />}
-        {showInvoiceModal && <CompanyInvoiceModal />}
+        {showCompanyAdminModal && <CompanyAdminModal onClose={this.handleAddCompanyAdminModal} />}
+        {showInvoiceModal && <CompanyInvoiceModal onClose={this.handleAddInvoiceModal} />}
         <CompanyDetailInfo />
         <section>
           <div className="my-3 d-flex ">

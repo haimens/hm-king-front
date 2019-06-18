@@ -35,7 +35,7 @@ export default class CompanyInvoice extends Component {
     const { img_url, showImage, showPreview, company_name, company_address, company_title, fee_rate } = this.state;
     return (
       <Modal
-        title="创建盘口"
+        title="Add Invoice"
         onClose={this.handleClose}
         position="center"
         getWidth={"580px"}
@@ -54,7 +54,7 @@ export default class CompanyInvoice extends Component {
               <div>{300}</div>
             </div>
 
-            <div className="form-group">
+            <div className="form-group mb-3">
               <label htmlFor="company_title">Email</label>
               <input
                 type="cell"
@@ -68,7 +68,7 @@ export default class CompanyInvoice extends Component {
 
             <div className="form-group text-center p-3">
               <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Add</button>
-              <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
+              <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
                 Cancel
               </button>
             </div>
