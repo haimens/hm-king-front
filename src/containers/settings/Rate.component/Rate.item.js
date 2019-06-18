@@ -1,17 +1,11 @@
 import React from "react";
-import { convertUTCtoLocal, parseAmount } from "../../../actions/utilities.action";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import alertify from "alertifyjs";
+import { convertUTCtoLocal } from "../../../actions/utilities.action";
 
 /**
  * @onClick
  * @onCorrect
  */
 export default function RateItem(props) {
-  const handleDetailLink = trans_token => {
-    if (props.onClick) props.onClick(trans_token);
-  };
-
   const { cdate, udate, order_num } = props.parentProps;
 
   return (
