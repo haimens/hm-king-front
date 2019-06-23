@@ -1,7 +1,21 @@
 .login-container {
   width:100%;
   height:100%;
+  position: relative
 }
+
+.login-content {
+  min-width: 320px;
+  max-width: 440px;
+  height: 300px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .login-image{
   position:fixed;
   top:0;
@@ -16,12 +30,12 @@
 
 }
 .login-image-init{
-  background-image:url('/img/puri_login_bg-min.jpg');
-  filter:blur(5px);
+  background-image:url('/img/genos_bg.jpg');
+  /* filter:blur(5px); */
 }
 
 .login-image-loaded{
-  background-image:url('/img/hd.png');
+  background-image:url('/img/genos_bg.jpg');
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 2s; /* Firefox < 16 */
    -ms-animation: fadein 2s; /* Internet Explorer */

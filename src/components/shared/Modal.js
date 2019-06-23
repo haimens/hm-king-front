@@ -53,29 +53,15 @@ class Modal extends Component {
     };
 
     return (
-      <main
-        className="modal-over-lay"
-        onClick={this.handleExit}
-        style={{ zIndex: `${this.props.zIndex || 9}` }}
-      >
-        <section
-          className={`${curr} ${this.props.className} rounded`}
-          id="onlyScroll"
-          style={widthHeight}
-        >
+      <main className="modal-over-lay" onClick={this.handleExit} style={{ zIndex: `${this.props.zIndex || 9}` }}>
+        <section className={`${curr} ${this.props.className} rounded`} id="onlyScroll" style={widthHeight}>
           <div
-            className={`sticky-top w-100 md-2 p-3 border-bottom shadow-sm ${
-              this.props.headerContainerClassName
-                ? this.props.headerContainerClassName
-                : "bg-white"
+            className={`sticky-top w-100 md-2 p-2 border-bottom shadow-sm ${
+              this.props.headerContainerClassName ? this.props.headerContainerClassName : "bg-white"
             }`}
           >
-            <header
-              className={`d-flex justify-content-between align-items-center`}
-            >
-              <h5 className={this.props.headerTitleClassName}>
-                {this.props.title}
-              </h5>
+            <header className={`d-flex justify-content-between align-items-center`}>
+              <h5 className={this.props.headerTitleClassName}>{this.props.title}</h5>
               <ImageButton
                 // image={`${process.env.PUBLIC_URL}/img/forget-password@2x.png`}
                 icon={<i className="fas fa-times" />}
@@ -85,11 +71,7 @@ class Modal extends Component {
             </header>
             {this.props.showSearchBar && (
               <section className="mt-2 border">
-                <SearchButton
-                  onSubmit={this.handleSearch}
-                  name="search"
-                  placeholder="search for ..."
-                />
+                <SearchButton onSubmit={this.handleSearch} name="search" placeholder="search for ..." />
               </section>
             )}
           </div>

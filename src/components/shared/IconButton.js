@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 /**
  * IconButton
@@ -8,17 +8,18 @@ import React, { Component } from 'react'
  */
 export default class IconButton extends Component {
   handleClick = () => {
-    if (this.props.onClick) this.props.onClick()
-  }
+    if (this.props.onClick) this.props.onClick();
+  };
   render() {
-    const { icon, title, className } = this.props
+    const { icon, title, className } = this.props;
     return (
       <button
         onClick={() => this.handleClick()}
-        className={`btn btn-sm d-flex justify-content-between align-items-center px-3 ${className}`}>
+        className={`btn btn-sm d-flex justify-content-between align-items-center px-2 py-0 ${className}`}
+      >
         <img src={icon} alt={icon} className="mr-2" width="20px" height="20px" />
-        <span>{title || 'Submit'}</span>
+        <small>{title || "Submit"}</small>
       </button>
-    )
+    );
   }
 }
