@@ -67,7 +67,7 @@ class Nav extends Component {
           </div>
 
           <ImageButton
-            image={`${process.env.PUBLIC_URL}/img/navicon_logout.svg`}
+            image={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
             type="submit"
             size={24}
             onClick={() => {
