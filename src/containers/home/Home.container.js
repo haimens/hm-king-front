@@ -13,6 +13,9 @@ class Home extends Component {
     return (
       <main>
         <section className="mb-4">
+          <div className="mb-3 d-flex justify-content-between">
+            <h4>Home</h4>
+          </div>
           <div className="row">
             <div className="col-12 col-md-6 mb-4 h-100">
               <DisplayCard
