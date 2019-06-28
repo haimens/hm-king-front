@@ -43,7 +43,7 @@ export default class Sidebar extends Component {
         <section className="accordion">
           <NavItem
             onToggle={() => this.props.parentProps.history.push("/home")}
-            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            image={`${process.env.PUBLIC_URL}/img/tabicon_home.svg`}
             name="Home"
             path="home"
             history={this.props.parentProps.history}
@@ -53,7 +53,7 @@ export default class Sidebar extends Component {
         <section className="accordion">
           <NavItem
             onToggle={() => this.props.parentProps.history.push("/company")}
-            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            image={`${process.env.PUBLIC_URL}/img/tabicon_company.svg`}
             name="Company"
             path="company"
             history={this.props.parentProps.history}
@@ -63,7 +63,7 @@ export default class Sidebar extends Component {
         <section className="accordion">
           <NavItem
             onToggle={() => this.props.parentProps.history.push("/invoice")}
-            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            image={`${process.env.PUBLIC_URL}/img/tabicon_invoice.svg`}
             name="Invoice"
             path="invoice"
             history={this.props.parentProps.history}
@@ -74,7 +74,7 @@ export default class Sidebar extends Component {
         <section className="accordion">
           <NavItem
             onToggle={() => this.props.parentProps.history.push("/settings/fee")}
-            image={`${process.env.PUBLIC_URL}/img/home.svg`}
+            image={`${process.env.PUBLIC_URL}/img/tabicon_settings.svg`}
             name="Settings"
             path="settings"
             history={this.props.parentProps.history}

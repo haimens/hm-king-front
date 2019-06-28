@@ -18,8 +18,8 @@ class Home extends Component {
               <DisplayCard
                 data={{
                   amount: 20,
-                  title: "历史总收款",
-                  icon: `${process.env.PUBLIC_URL}/img/invoice_color.svg`
+                  title: "Total Company",
+                  icon: `${process.env.PUBLIC_URL}/img/icon_company.svg`
                 }}
               />
             </div>
@@ -27,8 +27,8 @@ class Home extends Component {
               <DisplayCard
                 data={{
                   amount: 20,
-                  title: "24小时收款",
-                  icon: `${process.env.PUBLIC_URL}/img/24hr.svg`
+                  title: "Total Invoice",
+                  icon: `${process.env.PUBLIC_URL}/img/icon_invoice.svg`
                 }}
               />
             </div>
