@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import { toggleSideBar } from "../../actions/nav.action";
 import Nav from "./Nav.component";
 import Sidebar from "./Sidebar.component";
-import windowSize from "react-window-size";
 import "./Main.component.css";
 
 import { resetPassword } from "../../actions/auth.action";
