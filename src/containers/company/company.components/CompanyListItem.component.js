@@ -11,37 +11,37 @@ export default function PunchItem(props) {
   const handleDetailLink = trans_token => {
     if (props.onClick) props.onClick(trans_token);
   };
-
+  const { cdate, udate, company_name, tribute_rate_token, status_str } = props.parentProps;
   return (
     <tr>
       <td data-label="Created On" className="hm-text-ellipsis">
         <section className="text-position align-middle text-muted text-sm">
-          <small>{21}</small>
+          <small>{convertUTCtoLocal(cdate)}</small>
         </section>
       </td>
       <td data-label="Last Updated" className="hm-text-ellipsis">
         <section className="text-position align-middle text-muted text-sm">
-          <small>{13}</small>
+          <small>{convertUTCtoLocal(udate)}</small>
         </section>
       </td>
       <td data-label="Company ID" className="hm-text-ellipsis">
         <section className="text-position align-middle text-muted text-sm">
-          <small>{"N/A"}</small>
+          <small>{tribute_rate_token}</small>
         </section>
       </td>
       <td data-label="Company Name" className="hm-text-ellipsis text-position">
         <section className="text-position align-middle text-muted text-sm">
-          <small>{"N/A"}</small>
+          <small>{company_name}</small>
         </section>
       </td>
       <td data-label="Status" className="hm-text-ellipsis">
         <section className="text-position align-middle text-muted text-sm">
-          <small>{"N/A"}</small>
+          <small>{status_str === "ACTIVE" ? "Active" : "InActive"}</small>
         </section>
       </td>
       <td data-label="Detail" className="hm-text-ellipsis text-position">
         <section className="text-position align-middle text-muted text-sm">
-          <small>{"N/A"}</small>
+          <button className="btn btn-sm text-primary">View</button>
         </section>
       </td>
     </tr>

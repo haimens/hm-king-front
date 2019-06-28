@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { findCompanyList } from "../../actions/company.action";
 import CompanyListItem from "./company.components/CompanyListItem.component";
 import ListView from "../../components/shared/ListView";
 import IconButton from "../../components/shared/IconButton";
@@ -10,7 +13,12 @@ class Company extends Component {
   handleAddCompanyModal = () => {
     this.setState(states => ({ showAddCompanyModal: !states.showAddCompanyModal }));
   };
+  componentDidMount() {
+    this.props.findCompanyList();
+  }
   render() {
+    const { company_list } = this.props;
+
     return (
       <main>
         {this.state.showAddCompanyModal && <CompanyAddingModal onClose={this.handleAddCompanyModal} />}
@@ -31,13 +39,23 @@ class Company extends Component {
             hideHeader={true}
             onPageChange={this.handlePageChange}
           >
-            {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <CompanyListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
-            ))} */}
+            {company_list.record_list.map((company, index) => (
+              <CompanyListItem parentProps={company} key={index} onClick={this.handlePunchItemClick} />
+            ))}
           </ListView>
         </section>
       </main>
     );
   }
 }
-export default Company;
+
+const mapStateToProps = state => {
+  return {
+    company_list: state.companyReducer.company_list
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { findCompanyList }
+)(withRouter(Company));
