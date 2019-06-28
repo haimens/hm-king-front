@@ -42,10 +42,10 @@ export default class CompanyImage extends Component {
       <div>
         <form className="bg-white" onSubmit={this.handleSubmit}>
           <div className="d-flex align-items-center row">
-            <div className="mb-2 mr-4 col-2">
+            <div className="mb-2 hm-4 col-2">
               {this.props.parentProps.img_url ? (
                 <img
-                  className="st-pointer-cursor"
+                  className="hm-pointer-cursor"
                   onClick={() => this.setState({ showPreview: true })}
                   src={this.props.parentProps.img_url}
                   alt="二维码"

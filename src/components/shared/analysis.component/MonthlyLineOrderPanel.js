@@ -67,7 +67,7 @@ export default class MonthlyLineOrderPanel extends Component {
           <section className="row p-3 border-bottom">
             <div className="d-flex col-12  flex-sm-row flex-column mb-sm-0 justify-content-sm-between  mb-5 ">
               <div className="d-flex flex-row m-0 col-12 p-0 col-sm-9" >
-                <div className="mr-3">{this.state.activeOrderTab === 0 ? '本月总订单 : ' : '前30天订单 : '}<span>{this.props.monthly_order_data.total_count}</span> {applyCurrencySign('笔')}</div>
+                <div className="hm-3">{this.state.activeOrderTab === 0 ? '本月总订单 : ' : '前30天订单 : '}<span>{this.props.monthly_order_data.total_count}</span> {applyCurrencySign('笔')}</div>
                 {this.state.activeOrderTab === 0 && <div className="ml-3">与上月相比 : {this.readCompare(this.props.monthly_order_data.total_count, this.props.past_data.monthly_total_count)}</div>}
               </div>
               <div className="d-flex input-group col-sm-3 col-12 p-0 ">
@@ -90,14 +90,14 @@ export default class MonthlyLineOrderPanel extends Component {
 
             <div className="col-md-12 col-sm-12 d-flex flex-column flex-sm-row justify-content-between  ">
               <div>
-                <Button label="全部" className={this.state.activeOrderTab === 0 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(0)} />
-                <Button label="微信支付" className={this.state.activeOrderTab === 1 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(1)} />
-                <Button label="支付宝" className={this.state.activeOrderTab === 2 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(2)} />
-                <Button label="QQ钱包" className={this.state.activeOrderTab === 3 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(3)} />
+                <Button label="全部" className={this.state.activeOrderTab === 0 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(0)} />
+                <Button label="微信支付" className={this.state.activeOrderTab === 1 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(1)} />
+                <Button label="支付宝" className={this.state.activeOrderTab === 2 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(2)} />
+                <Button label="QQ钱包" className={this.state.activeOrderTab === 3 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(3)} />
               </div>
               <div>
-                <Button label="当月" className={this.state.activeOptionTab === 0 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.monthSwitch(0)} />
-                <Button label="前30天" className={this.state.activeOptionTab === 1 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.monthSwitch(1)} />
+                <Button label="当月" className={this.state.activeOptionTab === 0 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.monthSwitch(0)} />
+                <Button label="前30天" className={this.state.activeOptionTab === 1 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.monthSwitch(1)} />
               </div>
             </div>
           </section>

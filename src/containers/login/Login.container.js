@@ -80,7 +80,7 @@ export class Login extends React.Component {
             </div>
 
             <div className="text-center">
-              <button type="submit" className="btn st-bg-green text-white  pl-4 pr-4">
+              <button type="submit" className="btn hm-bg-green text-white  pl-4 pr-4">
                 登录
               </button>
             </div>

@@ -51,7 +51,7 @@ export default class DailyLineAmountPanel extends Component {
           <section className="row p-3 border-bottom ">
             <div className="d-flex col-12  flex-sm-row flex-column mb-sm-0 justify-content-sm-between  mb-5 ">
               <div className="d-flex flex-row m-0 col-12 p-0 col-sm-9" >
-                <div className="mr-3">本日总存款 : {applyCurrencySign()} <span>{this.props.daily_data.total}</span></div>
+                <div className="hm-3">本日总存款 : {applyCurrencySign()} <span>{this.props.daily_data.total}</span></div>
                 <div className="ml-3">与昨日相比 : {this.readCompare(this.props.daily_data.total, this.props.past_data.daily_total)}</div>
               </div>
               <div className="d-flex input-group col-sm-3 col-12 p-0 ">
@@ -60,10 +60,10 @@ export default class DailyLineAmountPanel extends Component {
             </div>
             <div className="col-md-12 col-sm-12 d-flex justify-content-between ">
               <div>
-                <Button label="全部" className={this.state.activeOrderTab === 0 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(0)} />
-                <Button label="微信支付" className={this.state.activeOrderTab === 1 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(1)} />
-                <Button label="支付宝" className={this.state.activeOrderTab === 2 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(2)} />
-                <Button label="QQ钱包" className={this.state.activeOrderTab === 3 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.optionSwitch(3)} />
+                <Button label="全部" className={this.state.activeOrderTab === 0 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(0)} />
+                <Button label="微信支付" className={this.state.activeOrderTab === 1 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(1)} />
+                <Button label="支付宝" className={this.state.activeOrderTab === 2 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(2)} />
+                <Button label="QQ钱包" className={this.state.activeOrderTab === 3 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.optionSwitch(3)} />
               </div>
             </div>
           </section>

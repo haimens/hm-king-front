@@ -87,7 +87,7 @@ class ListView extends Component {
           <thead>
             <tr>{renderFieldNames(this.props.fieldNames)}</tr>
           </thead>
-          <tbody className="mr-break-word">{this.renderList(this.props.children)}</tbody>
+          <tbody className="hm-break-word">{this.renderList(this.props.children)}</tbody>
         </table>
         <div className="d-flex flex-column shadow-sm border p-2">
           {this.state.isLess && this.props.totalCount > 5 && (

@@ -53,7 +53,7 @@ export default class DailyLineOrderPanel extends Component {
           <section className="row p-3 border-bottom">
             <div className="d-flex col-12  flex-sm-row flex-column mb-sm-0 justify-content-sm-between  mb-5 ">
               <div className="d-flex flex-row m-0 col-12 p-0 col-sm-9" >
-                <div className="mr-3">本日总订单 : <span>{this.props.daily_order_data.total_count}</span> {applyCurrencySign(' 笔')}</div>
+                <div className="hm-3">本日总订单 : <span>{this.props.daily_order_data.total_count}</span> {applyCurrencySign(' 笔')}</div>
                 <div className="ml-3">与昨日相比 : {this.readCompare(this.props.daily_order_data.total_count, this.props.past_data.daily_total_count)}</div>
               </div>
               <div className="d-flex input-group col-sm-3 col-12 p-0 ">
@@ -63,10 +63,10 @@ export default class DailyLineOrderPanel extends Component {
 
             <div className="col-md-12 col-sm-12 d-flex justify-content-between ">
               <div>
-                <Button label="全部" className={this.state.activeTab === 0 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.daySwitch(0)} />
-                <Button label="微信支付" className={this.state.activeTab === 1 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.daySwitch(1)} />
-                <Button label="支付宝" className={this.state.activeTab === 2 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.daySwitch(2)} />
-                <Button label="QQ钱包" className={this.state.activeTab === 3 ? 'mr-bg-green text-white' : 'mr-button-purple mr-purple-text'} onClick={() => this.daySwitch(3)} />
+                <Button label="全部" className={this.state.activeTab === 0 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.daySwitch(0)} />
+                <Button label="微信支付" className={this.state.activeTab === 1 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.daySwitch(1)} />
+                <Button label="支付宝" className={this.state.activeTab === 2 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.daySwitch(2)} />
+                <Button label="QQ钱包" className={this.state.activeTab === 3 ? 'hm-bg-green text-white' : 'hm-button-purple hm-purple-text'} onClick={() => this.daySwitch(3)} />
               </div>
             </div>
           </section>

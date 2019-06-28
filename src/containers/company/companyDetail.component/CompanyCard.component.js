@@ -61,7 +61,7 @@ export default class CompanyCard extends Component {
             )}
             <div className="col-12 bg-white ">
               <div className="form-group text-right bg-white">
-                <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Save</button>
+                <button className="hm-bg-green btn btn-sm px-4 text-white hm-3">Save</button>
                 <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
                   Cancel
                 </button>

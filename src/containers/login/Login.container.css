@@ -30,12 +30,12 @@
 
 }
 .login-image-init{
-  background-image:url('/img/genos_bg.jpg');
+  background-image:url('/img/king_bg.jpg');
   /* filter:blur(5px); */
 }
 
 .login-image-loaded{
-  background-image:url('/img/genos_bg.jpg');
+  background-image:url('/img/king_bg.jpg');
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 2s; /* Firefox < 16 */
    -ms-animation: fadein 2s; /* Internet Explorer */

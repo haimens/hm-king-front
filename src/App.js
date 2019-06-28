@@ -2,18 +2,17 @@ import React, { Component, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Main from "./components/main/Main.component";
 import alertify from "alertifyjs";
-//import ProtectedRoute from "./components/shared/ProtectedRouter";
+import ProtectedRoute from "./components/shared/ProtectedRouter";
 import { LoaderAlt } from "./components/shared";
 
-import Home from "./containers/home/Home.container";
-import Company from "./containers/company/Company.container";
-import Invoice from "./containers/invoice/Invoice.container";
-import Fee from "./containers/settings/Fee.container";
-import Key from "./containers/settings/Key.container";
-import CompanyDetail from "./containers/company/CompanyDetail.container";
 const Login = React.lazy(() => import("./containers/login/Login.container"));
 const ResetPassword = React.lazy(() => import("./containers/resetPassword/ResetPassword.container"));
-
+const Home = React.lazy(() => import("./containers/home/Home.container"));
+const Company = React.lazy(() => import("./containers/company/Company.container"));
+const Invoice = React.lazy(() => import("./containers/invoice/Invoice.container"));
+const Fee = React.lazy(() => import("./containers/settings/Fee.container"));
+const Key = React.lazy(() => import("./containers/settings/Key.container"));
+const CompanyDetail = React.lazy(() => import("./containers/settings/Key.container"));
 class App extends Component {
   componentDidMount() {
     Promise.all([
@@ -29,7 +28,7 @@ class App extends Component {
 
   render() {
     alertify.defaults.transition = "zoom";
-    alertify.defaults.theme.ok = "btn mr-bg-green text-white";
+    alertify.defaults.theme.ok = "btn hm-bg-green text-white";
     alertify.defaults.theme.cancel = "btn btn-danger";
     alertify.defaults.theme.input = "form-control";
     const NoMatch = () => <Redirect to="/nomatch" />;
@@ -37,16 +36,21 @@ class App extends Component {
       <Suspense fallback={<LoaderAlt />}>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Main>
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/company" component={Company} />
-            <Route exact path="/company/detail/:company_token" component={CompanyDetail} />
-            <Route exact path="/invoice" component={Invoice} />
-            <Route exact path="/settings/fee" component={Fee} />
-            <Route exact path="/settings/key" component={Key} />
-          </Main>
           <Route exact path="/reset" component={ResetPassword} />
           <Route exact path="/nomatch" component={Page404} />
+          <Main>
+            <Switch>
+              <ProtectedRoute exact path="/home" component={Home} />
+              <ProtectedRoute exact path="/company" component={Company} />
+              <ProtectedRoute exact path="/company/detail/:company_token" component={CompanyDetail} />
+              <ProtectedRoute exact path="/invoice" component={Invoice} />
+              <ProtectedRoute exact path="/settings/fee" component={Fee} />
+              <ProtectedRoute exact path="/settings/key" component={Key} />
+              {/* Start Of 404 Info */}
+              <Route component={NoMatch} />
+              {/* End Of 404 Info */}
+            </Switch>
+          </Main>
         </Switch>
       </Suspense>
     );
@@ -68,7 +72,7 @@ function Page404(props) {
         alt="error404"
         className="mt-4"
       />
-      <a className="btn mr-bg-darkblue text-white mt-4" href="/dashboard">
+      <a className="btn hm-bg-darkblue text-white mt-4" href="/home">
         返回
       </a>
     </main>

@@ -72,7 +72,7 @@ export default class NavItem extends Component {
         >
           <div className="d-flex align-items-center">
             <img
-              className="avatar-icon-xs mr-2"
+              className="avatar-icon-xs hm-2"
               src={this.props.image || `${process.env.PUBLIC_URL}/img/icon_xiafa.svg`}
               alt={"xiafa"}
             />

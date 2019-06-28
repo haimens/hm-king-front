@@ -28,7 +28,7 @@ class Nav extends Component {
       >
         <button
           onClick={() => this.handleClick("sidebar")}
-          className="navbar-toggler mr-2"
+          className="navbar-toggler hm-2"
           type="button"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
@@ -38,7 +38,7 @@ class Nav extends Component {
         </button>
 
         <div className="d-flex flex-row align-items-center">
-          <div className="btn-group mr-2">
+          <div className="btn-group hm-2">
             <button
               type="button"
               className="btn  dropdown-toggle"
@@ -58,7 +58,7 @@ class Nav extends Component {
                   }}
                 >
                   <small>
-                    <i className="fas fa-key font-size-10 mr-3" />
+                    <i className="fas fa-key font-size-10 hm-3" />
                   </small>
                   修改密码
                 </button>

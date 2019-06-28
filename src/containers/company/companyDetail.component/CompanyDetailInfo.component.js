@@ -190,7 +190,7 @@ export default class CompanyDetailInfo extends Component {
               </div>
               <div className="col-12  p-2 pr-4 ">
                 <div className="form-group text-right ">
-                  <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">Add</button>
+                  <button className="hm-bg-green btn btn-sm px-4 text-white hm-3">Add</button>
                   <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
                     Cancel
                   </button>
