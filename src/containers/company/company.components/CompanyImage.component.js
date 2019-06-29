@@ -34,29 +34,26 @@ export default class CompanyImage extends Component {
     this.props.handleShowImage();
   };
 
-  handleImageUpload = img_path => {
-    this.setState({ img_url: img_path });
-  };
   render() {
+    console.log(this.props);
     return (
-      <div className="mt-3">
+      <div className="container">
         <form className="bg-white" onSubmit={this.handleSubmit}>
-          <div className="d-flex align-items-center row">
-            <div className="mb-2 hm-4 col-2">
-              {this.props.parentProps.img_url ? (
+          <div className="d-flex align-items-center justify-content-between row">
+            <label htmlFor="logo">{this.props.title}</label>
+            <div className="ml-4 col-2 mt-2 ">
+              {this.props.parentProps.img_url && (
                 <img
                   className="hm-pointer-cursor"
-                  onClick={() => this.setState({ showPreview: true })}
+                  onClick={() => this.props.parentProps.handleShowPreview()}
                   src={this.props.parentProps.img_url}
-                  alt="二维码"
+                  alt="icon"
                   width={"20px"}
                   height={"20px"}
                 />
-              ) : (
-                <div>{`${this.props.title}:`}</div>
               )}
             </div>
-            <div className="col-9">
+            <div className="mb-1">
               <ImageButton icon={<i className="fas fa-upload fa-lg" />} onClick={e => this.handleModal(e)} />
             </div>
           </div>

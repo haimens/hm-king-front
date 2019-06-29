@@ -23,14 +23,14 @@ class Company extends Component {
       <main>
         {this.state.showAddCompanyModal && <CompanyAddingModal onClose={this.handleAddCompanyModal} />}
         <section>
-          <div className="mb-3 d-flex justify-content-between">
-            <h4>Company List</h4>
-            <IconButton
-              icon={`${process.env.PUBLIC_URL}/img/home.svg`}
-              title="申请归集"
-              className="hm-bg-green text-white"
-              onClick={this.handleAddCompanyModal}
-            />
+          <div className="mb-4 d-flex justify-content-between">
+            <h3 className="font-weight-bold">Company List</h3>
+            <button className="btn btn-sm hm-bg-green text-white" onClick={this.handleAddCompanyModal}>
+              <span>
+                <i className="fas fa-plus mr-2" />
+              </span>
+              Add Company
+            </button>
           </div>
           <ListView
             totalCount={30}

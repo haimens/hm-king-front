@@ -5,13 +5,16 @@ import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../compo
 import CompanyImage from "./CompanyImage.component";
 export default class PriceModifyModal extends Component {
   state = {
-    img_url: "",
     showImage: false,
+    showFavicon: false,
     showPreview: false,
+    showPreviewFavicon: false,
     company_name: "",
     company_address: "",
     company_title: "",
-    fee_rate: ""
+    fee_rate: "",
+    logo_url: "",
+    favicon_url: ""
   };
 
   handleInputChange = e => {
@@ -22,17 +25,39 @@ export default class PriceModifyModal extends Component {
   handleShowImage = () => {
     this.setState(states => ({ showImage: !states.showImage }));
   };
-
+  handleShowFavicon = () => {
+    this.setState(states => ({ showFavicon: !states.showFavicon }));
+  };
+  handleShowPreview = () => {
+    this.setState(states => ({ showPreview: !states.showPreview }));
+  };
+  handleShowPreviewFavicon = () => {
+    this.setState(states => ({ showPreviewFavicon: !states.showPreviewFavicon }));
+  };
   handleClose = () => {
     this.props.onClose();
   };
   handleImageUpload = img_path => {
-    this.setState({ img_url: img_path });
+    this.setState({ logo_url: img_path });
+  };
+  handleFaviconUpload = img_path => {
+    this.setState({ favicon_url: img_path });
   };
   componentDidMount() {}
 
   render() {
-    const { img_url, showImage, showPreview, company_name, company_address, company_title, fee_rate } = this.state;
+    const {
+      logo_url,
+      favicon_url,
+      showImage,
+      showFavicon,
+      showPreview,
+      showPreviewFavicon,
+      company_name,
+      company_address,
+      company_title,
+      fee_rate
+    } = this.state;
     return (
       <Modal
         title="创建盘口"
@@ -49,7 +74,18 @@ export default class PriceModifyModal extends Component {
             title="上传照片"
           />
         )}
-        {showPreview && <PreviewImageModal image={img_url} onClose={() => this.setState({ showPreview: false })} />}
+        {showFavicon && (
+          <ImageLoaderModal
+            onClose={() => this.setState({ showFavicon: false })}
+            onImageUpload={this.handleFaviconUpload}
+            title="上传照片"
+          />
+        )}
+        {showPreview && <PreviewImageModal image={logo_url} onClose={() => this.setState({ showPreview: false })} />}
+        {showPreviewFavicon && (
+          <PreviewImageModal image={favicon_url} onClose={() => this.setState({ showPreviewFavicon: false })} />
+        )}
+
         <div className="container">
           <form className="p-3" onSubmit={this.handleSubmit}>
             <div className="form-group">
@@ -98,40 +134,43 @@ export default class PriceModifyModal extends Component {
                 onChange={this.handleInputChange}
               />
             </div>
+
             <CompanyImage
-              parentProps={{ img_url, showPreview }}
               title={"Logo"}
+              parentProps={{ img_url: logo_url, handleShowPreview: this.handleShowPreview }}
               handleShowImage={this.handleShowImage}
             />
+
             <CompanyImage
-              parentProps={{ img_url, showPreview }}
               title={"Favicon"}
-              handleShowImage={this.handleShowImage}
+              parentProps={{ img_url: favicon_url, handleShowPreview: this.handleShowPreviewFavicon }}
+              handleShowImage={this.handleShowFavicon}
             />
+
             <div className="row my-4">
               <div className="col-2">Status:</div>
               <div className="col-9">
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="inlineRadioOptions"
                     id="inlineRadio1"
                     value="option1"
                   />
-                  <label class="form-check-label" for="inlineRadio1">
+                  <label className="form-check-label" htmlFor="inlineRadio1">
                     Active
                   </label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="inlineRadioOptions"
                     id="inlineRadio2"
                     value="option2"
                   />
-                  <label class="form-check-label" for="inlineRadio2">
+                  <label className="form-check-label" htmlFor="inlineRadio2">
                     Inactive
                   </label>
                 </div>

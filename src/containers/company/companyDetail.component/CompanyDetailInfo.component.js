@@ -161,27 +161,27 @@ export default class CompanyDetailInfo extends Component {
                 <div className="row">
                   <div className="form-group col-6 d-flex">
                     <div>Status:</div>
-                    <div class="form-check form-check-inline ml-3">
+                    <div className="form-check form-check-inline ml-3">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="inlineRadioOptions"
                         id="inlineRadio1"
                         value="option1"
                       />
-                      <label class="form-check-label" for="inlineRadio1">
+                      <label className="form-check-label" htmlFor="inlineRadio1">
                         Active
                       </label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div className="form-check form-check-inline">
                       <input
-                        class="form-check-input"
+                        className="form-check-input"
                         type="radio"
                         name="inlineRadioOptions"
                         id="inlineRadio2"
                         value="option2"
                       />
-                      <label class="form-check-label" for="inlineRadio2">
+                      <label className="form-check-label" htmlFor="inlineRadio2">
                         Inactive
                       </label>
                     </div>

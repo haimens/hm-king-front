@@ -107,27 +107,27 @@ export default class CompanyAdmin extends Component {
               <div className="row mb-3">
                 <div className="col-2">Status:</div>
                 <div className="col-9">
-                  <div class="form-check form-check-inline">
+                  <div className="form-check form-check-inline">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="inlineRadioOptions"
                       id="inlineRadio1"
                       value="option1"
                     />
-                    <label class="form-check-label" for="inlineRadio1">
+                    <label className="form-check-label" htmlFor="inlineRadio1">
                       Active
                     </label>
                   </div>
-                  <div class="form-check form-check-inline">
+                  <div className="form-check form-check-inline">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="inlineRadioOptions"
                       id="inlineRadio2"
                       value="option2"
                     />
-                    <label class="form-check-label" for="inlineRadio2">
+                    <label className="form-check-label" htmlFor="inlineRadio2">
                       Inactive
                     </label>
                   </div>
