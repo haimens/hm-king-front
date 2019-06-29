@@ -43,7 +43,7 @@ export default class PriceModifyModal extends Component {
   handleFaviconUpload = img_path => {
     this.setState({ favicon_url: img_path });
   };
-  componentDidMount() {}
+  handleSubmit = () => {};
 
   render() {
     const {

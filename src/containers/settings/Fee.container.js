@@ -1,31 +1,42 @@
 import React, { Component } from "react";
 import { IconButton, ListView } from "../../components/shared";
 import FeeModal from "./Fee.component/Fee.modal";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { findFeeList, createFeeRate } from "../../actions/fee.action";
 import FeeListItem from "./Fee.component/FeeList.item";
 class Fee extends Component {
   state = {
     showFeeValue: ""
   };
-  handleAddFeeValue = () => {
+  handleAddFeeValueModal = () => {
     this.setState(states => ({ showFeeValue: !states.showFeeValue }));
   };
   handlePageChange = page => {
     console.log(page);
   };
+  handleCreatingFee = rate => {
+    this.props.createFeeRate(rate);
+    this.handleAddFeeValueModal();
+  };
+  componentDidMount() {
+    this.props.findFeeList();
+  }
   render() {
     const { showFeeValue } = this.state;
+    const { fee_list } = this.props;
     return (
       <main>
-        {showFeeValue && <FeeModal onClose={this.handleAddFeeValue} />}
+        {showFeeValue && <FeeModal handleCreatingFee={this.handleCreatingFee} onClose={this.handleAddFeeValueModal} />}
         <section>
           <div className="mb-3 d-flex justify-content-between">
             <h4>Fee Rate Settings</h4>
-            <IconButton
-              icon={`${process.env.PUBLIC_URL}/img/home.svg`}
-              title="Add Fee Rate"
-              className="hm-bg-green text-white"
-              onClick={this.handleAddFeeValue}
-            />
+            <button className="btn btn-sm hm-bg-green text-white" onClick={this.handleAddFeeValueModal}>
+              <span>
+                <i className="fas fa-plus mr-2" />
+              </span>
+              Add Company
+            </button>
           </div>
           <ListView
             totalCount={30}
@@ -34,13 +45,23 @@ class Fee extends Component {
             hideHeader={true}
             onPageChange={this.handlePageChange}
           >
-            {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <FeeListItem  />
-            ))} */}
+            {fee_list.record_list.map((fee, index) => (
+              <FeeListItem parentProps={fee} key={index} />
+            ))}
           </ListView>
         </section>
       </main>
     );
   }
 }
-export default Fee;
+
+const mapStateToProps = state => {
+  return {
+    fee_list: state.feeReducer.fee_list
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { findFeeList, createFeeRate }
+)(withRouter(Fee));

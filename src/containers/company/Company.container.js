@@ -6,6 +6,7 @@ import CompanyListItem from "./company.components/CompanyListItem.component";
 import ListView from "../../components/shared/ListView";
 import IconButton from "../../components/shared/IconButton";
 import CompanyAddingModal from "./company.components/CompanyAdding.modal";
+
 class Company extends Component {
   state = {
     showAddCompanyModal: false
