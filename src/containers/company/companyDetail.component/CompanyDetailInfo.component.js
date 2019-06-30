@@ -45,6 +45,7 @@ class CompanyDetailInfo extends Component {
       company_address,
       company_title,
       fee_rate,
+      status,
       showImage,
       showPreview,
       img_url
@@ -176,26 +177,14 @@ class CompanyDetailInfo extends Component {
                   <div className="form-group col-6 d-flex">
                     <div>Status:</div>
                     <div className="form-check form-check-inline ml-3">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio1"
-                        value="option1"
-                      />
-                      <label className="form-check-label" htmlFor="inlineRadio1">
+                      <input className="form-check-input" type="radio" id="status" value="2" checked={status == "2"} onChange={this.handleInputChange} />
+                      <label className="form-check-label" htmlFor="status">
                         Active
                       </label>
                     </div>
                     <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="inlineRadioOptions"
-                        id="inlineRadio2"
-                        value="option2"
-                      />
-                      <label className="form-check-label" htmlFor="inlineRadio2">
+                      <input className="form-check-input" type="radio" id="status" value="1" checked={status == "1"} onChange={this.handleInputChange}/>
+                      <label className="form-check-label" htmlFor="status">
                         Inactive
                       </label>
                     </div>
