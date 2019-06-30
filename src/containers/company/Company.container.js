@@ -18,6 +18,10 @@ class Company extends Component {
   componentDidMount() {
     this.props.findCompanyList();
   }
+
+  handlePageChange = start => {
+    this.props.findCompanyList(start);
+  };
   render() {
     const { company_list, fee_list, findFeeList, createACompany } = this.props;
 

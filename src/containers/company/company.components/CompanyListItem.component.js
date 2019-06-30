@@ -35,9 +35,15 @@ export default function PunchItem(props) {
         </section>
       </td>
       <td data-label="Status" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{status_str === "ACTIVE" ? "Active" : "InActive"}</small>
-        </section>
+        {status_str === "ACTIVE" ? (
+          <section className="text-position align-middle text-muted text-sm">
+            <small className="hm-text-green">Active</small>
+          </section>
+        ) : (
+          <section className="text-position align-middle text-muted text-sm">
+            <small className="text-danger">InActive</small>
+          </section>
+        )}
       </td>
       <td data-label="Detail" className="hm-text-ellipsis text-position">
         <section className="text-position align-middle text-muted text-sm">
