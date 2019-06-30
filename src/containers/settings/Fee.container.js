@@ -12,8 +12,8 @@ class Fee extends Component {
   handleAddFeeValueModal = () => {
     this.setState(states => ({ showFeeValue: !states.showFeeValue }));
   };
-  handlePageChange = page => {
-    console.log(page);
+  handlePageChange = start => {
+    this.props.findFeeList({ start });
   };
   handleCreatingFee = rate => {
     this.props.createFeeRate(rate);

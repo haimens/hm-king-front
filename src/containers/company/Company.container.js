@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { findCompanyList } from "../../actions/company.action";
+import { findCompanyList, createACompany } from "../../actions/company.action";
 import CompanyListItem from "./company.components/CompanyListItem.component";
+import { findFeeList } from "../../actions/fee.action";
 import ListView from "../../components/shared/ListView";
 import IconButton from "../../components/shared/IconButton";
 import CompanyAddingModal from "./company.components/CompanyAdding.modal";
@@ -18,11 +19,16 @@ class Company extends Component {
     this.props.findCompanyList();
   }
   render() {
-    const { company_list } = this.props;
+    const { company_list, fee_list, findFeeList, createACompany } = this.props;
 
     return (
       <main>
-        {this.state.showAddCompanyModal && <CompanyAddingModal onClose={this.handleAddCompanyModal} />}
+        {this.state.showAddCompanyModal && (
+          <CompanyAddingModal
+            parentProps={{ fee_list, findFeeList, createACompany }}
+            onClose={this.handleAddCompanyModal}
+          />
+        )}
         <section>
           <div className="mb-4 d-flex justify-content-between">
             <h3 className="font-weight-bold">Company List</h3>
@@ -52,11 +58,12 @@ class Company extends Component {
 
 const mapStateToProps = state => {
   return {
-    company_list: state.companyReducer.company_list
+    company_list: state.companyReducer.company_list,
+    fee_list: state.feeReducer.fee_list
   };
 };
 
 export default connect(
   mapStateToProps,
-  { findCompanyList }
+  { findCompanyList, findFeeList, createACompany }
 )(withRouter(Company));

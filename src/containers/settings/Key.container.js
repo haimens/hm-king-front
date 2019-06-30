@@ -18,13 +18,13 @@ class Key extends Component {
         {showKeyValue && <KeyModal onClose={this.handleAddKeyValue} />}
         <section>
           <div className="mb-3 d-flex justify-content-between">
-            <h4>Key Value Settings</h4>
-            <IconButton
-              icon={`${process.env.PUBLIC_URL}/img/home.svg`}
-              title="Add Key Value"
-              className="hm-bg-green text-white"
-              onClick={this.handleAddKeyValue}
-            />
+            <h4>Fee Rate Settings</h4>
+            <button className="btn btn-sm hm-bg-green text-white" onClick={this.handleAddKeyValue}>
+              <span>
+                <i className="fas fa-plus mr-2" />
+              </span>
+              Add Key Value
+            </button>
           </div>
           <ListView
             totalCount={30}

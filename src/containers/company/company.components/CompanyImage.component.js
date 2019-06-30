@@ -35,13 +35,14 @@ export default class CompanyImage extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
-      <div className="container">
+      <div className="mb-3">
         <form className="bg-white" onSubmit={this.handleSubmit}>
-          <div className="d-flex align-items-center justify-content-between row">
-            <label htmlFor="logo">{this.props.title}</label>
-            <div className="ml-4 col-2 mt-2 ">
+          <div className="row">
+            <div className="col-2">
+              <label htmlFor="logo">{this.props.title}</label>
+            </div>
+            <div className="col-8">
               {this.props.parentProps.img_url && (
                 <img
                   className="hm-pointer-cursor"
@@ -53,8 +54,12 @@ export default class CompanyImage extends Component {
                 />
               )}
             </div>
-            <div className="mb-1">
-              <ImageButton icon={<i className="fas fa-upload fa-lg" />} onClick={e => this.handleModal(e)} />
+            <div className="col-2">
+              <ImageButton
+                outerClassName={"ml-auto"}
+                icon={<i className="fas fa-upload fa-lg" />}
+                onClick={e => this.handleModal(e)}
+              />
             </div>
           </div>
         </form>

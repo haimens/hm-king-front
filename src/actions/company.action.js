@@ -20,3 +20,16 @@ export const findCompanyList = (query = {}) => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const createACompany = (body = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`realm/detail`, "POST", { ...body });
+    await launchSuccess(dispatch);
+    await dispatch(findCompanyList());
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
