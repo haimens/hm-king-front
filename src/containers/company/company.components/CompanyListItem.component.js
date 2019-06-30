@@ -47,7 +47,9 @@ export default function PunchItem(props) {
       </td>
       <td data-label="Detail" className="hm-text-ellipsis text-position">
         <section className="text-position align-middle text-muted text-sm">
-          <button className="btn btn-sm text-primary">View</button>
+          <button className="btn btn-sm text-primary" onClick={this.handleCompanyBeenClicked}>
+            View
+          </button>
         </section>
       </td>
     </tr>
