@@ -42,7 +42,7 @@ export default function CompanyAdminList(props) {
       </td>
       <td data-label="Profile" className="hm-text-ellipsis text-position">
         <section className="text-position align-middle text-muted text-sm">
-          <small>{"N/A"}</small>
+          <small>{company_name}</small>
         </section>
       </td>
       <td data-label="Status" className="hm-text-ellipsis text-position">
