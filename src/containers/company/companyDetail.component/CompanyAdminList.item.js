@@ -1,17 +1,12 @@
 import React from "react";
 import { convertUTCtoLocal } from "../../../actions/utilities.action";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import alertify from "alertifyjs";
 
 /**
  * @onClick
  * @onCorrect
  */
 export default function CompanyAdminList(props) {
-  const handleDetailLink = trans_token => {
-    if (props.onClick) props.onClick(trans_token);
-  };
-  const { cell, company_name, email, name, status_str, username } = props.parentProps;
+  const { cell, email, name, username } = props.parentProps;
   return (
     <tr>
       <td data-label="Created On" className="hm-text-ellipsis">
