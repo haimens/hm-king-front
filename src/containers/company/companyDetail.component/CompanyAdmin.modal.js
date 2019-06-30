@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import { Modal } from "../../../components/shared";
 import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
-
+import alertify from "alertifyjs";
 import CompanyImage from "./CompanyImage.component";
 export default class CompanyAdmin extends Component {
   state = {
     img_url: "",
     showImage: false,
     showPreview: false,
-    company_name: "",
-    company_address: "",
-    company_title: "",
-    fee_rate: ""
+    username: "",
+    name: "",
+    cell: "",
+    email: ""
   };
 
   handleInputChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const { id, value } = e.target;
+    this.setState({ [id]: value });
   };
 
   handleShowImage = () => {
@@ -29,120 +29,99 @@ export default class CompanyAdmin extends Component {
   handleImageUpload = img_path => {
     this.setState({ img_url: img_path });
   };
-  componentDidMount() {}
+  handleAddingCompanyAdmin = () => {
+    const { username, name, cell, email } = this.state;
+    if ((username !== "", name !== "", cell !== "", email !== "")) {
+      this.props.createALord(this.props.realm_token, {
+        username,
+        name,
+        cell,
+        email
+      });
+      this.handleClose();
+    } else {
+      alertify.alert("Error!", "Please Finished The Form!");
+    }
+  };
 
   render() {
-    const { img_url, showImage, showPreview, company_name, company_address, company_title, fee_rate } = this.state;
+    const { username, name, cell, email } = this.state;
     return (
-      <form>
-        {showImage && (
+      <div>
+        {/* {showImage && (
           <ImageLoaderModal
             onClose={() => this.setState({ showImage: false })}
             onImageUpload={this.handleImageUpload}
-            title="上传照片"
+            title="Image Upload"
           />
         )}
-        {showPreview && <PreviewImageModal image={img_url} onClose={() => this.setState({ showPreview: false })} />}
+        {showPreview && <PreviewImageModal image={img_url} onClose={() => this.setState({ showPreview: false })} />} */}
         <Modal
           title="Add Company Admin"
           onClose={this.handleClose}
           position="center"
           getWidth={"580px"}
-          getHeight={"535px"}
+          getHeight={"450px"}
           zIndex="1080"
         >
           <div className="container">
-            <form className="p-3" onSubmit={this.handleSubmit}>
+            <div className="p-3">
               <div className="form-group">
-                <label htmlFor="company_name">Name</label>
+                <label htmlFor="name">Name</label>
                 <input
+                  type="text"
                   className="form-control"
-                  name="company_name"
-                  id="company_name"
-                  value={company_name}
+                  name="name"
+                  id="name"
+                  value={name}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="company_address">Cell</label>
+                <label htmlFor="cell">Cell</label>
+                <input type="text" className="form-control" id="cell" value={cell} onChange={this.handleInputChange} />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   className="form-control"
-                  name="company_address"
-                  id="company_address"
-                  value={company_address}
+                  id="email"
+                  value={email}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="company_title">Email</label>
+                <label htmlFor="username">Username</label>
                 <input
-                  type="cell"
+                  type="text"
                   className="form-control"
-                  name="company_title"
-                  id="company_title"
-                  value={company_title}
+                  id="username"
+                  value={username}
                   onChange={this.handleInputChange}
                 />
               </div>
-
-              <div className="form-group">
-                <label htmlFor="fee_rate">Username</label>
-                <input
-                  type="cell"
-                  className="form-control"
-                  name="fee_rate"
-                  id="fee_rate"
-                  value={fee_rate}
-                  onChange={this.handleInputChange}
-                />
-              </div>
-              <CompanyImage
+              {/* <CompanyImage
                 parentProps={{ img_url, showPreview }}
                 title={"Profile"}
                 handleShowImage={this.handleShowImage}
-              />
-              <div className="row mb-3">
-                <div className="col-2">Status:</div>
-                <div className="col-9">
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="inlineRadio1"
-                      value="option1"
-                    />
-                    <label className="form-check-label" htmlFor="inlineRadio1">
-                      Active
-                    </label>
-                  </div>
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="inlineRadioOptions"
-                      id="inlineRadio2"
-                      value="option2"
-                    />
-                    <label className="form-check-label" htmlFor="inlineRadio2">
-                      Inactive
-                    </label>
-                  </div>
-                </div>
-              </div>
+              /> */}
+
               <div className="form-group text-center p-3">
-                <button className="hm-bg-green btn btn-sm px-4 text-white hm-3">Add</button>
+                <button className="hm-bg-green btn btn-sm px-4 text-white mr-3" onClick={this.handleAddingCompanyAdmin}>
+                  Add
+                </button>
                 <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
                   Cancel
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </Modal>
-      </form>
+      </div>
     );
   }
 }

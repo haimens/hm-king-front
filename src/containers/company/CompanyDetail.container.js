@@ -13,7 +13,7 @@ import CompanyAdminListItem from "./companyDetail.component/CompanyAdminList.ite
 import CompanyInvoiceListItem from "./companyDetail.component/CompanyInvoiceList.item";
 
 import { findCompanyDetail } from "../../actions/company.action";
-import { findLordList } from "../../actions/lord.action";
+import { findLordList, createALord } from "../../actions/lord.action";
 import { findFeeList } from "../../actions/fee.action";
 
 class CompanyDetail extends Component {
@@ -32,12 +32,23 @@ class CompanyDetail extends Component {
     const { realm_token } = match.params;
     Promise.all([findCompanyDetail(realm_token), findLordList(realm_token), findFeeList()]);
   }
+  handlePageChange = start => {
+    this.props.findLordList(start);
+  };
   render() {
-    const { fee_list, company_detail, lord_list } = this.props;
+    const { fee_list, company_detail, lord_list, createALord, match } = this.props;
+    const { realm_token } = match.params;
+
     const { showCompanyAdminModal, showInvoiceModal } = this.state;
     return (
       <main>
-        {showCompanyAdminModal && <CompanyAdminModal onClose={this.handleAddCompanyAdminModal} />}
+        {showCompanyAdminModal && (
+          <CompanyAdminModal
+            createALord={createALord}
+            realm_token={realm_token}
+            onClose={this.handleAddCompanyAdminModal}
+          />
+        )}
         {showInvoiceModal && <CompanyInvoiceModal onClose={this.handleAddInvoiceModal} />}
         <CompanyDetailInfo parentProps={{ company_detail, fee_list }} />
         <section>
@@ -53,7 +64,7 @@ class CompanyDetail extends Component {
           <ListView
             totalCount={lord_list.count}
             title="Company Admin List"
-            fieldNames={["Created On", "Admin Name", "Call", "Email", "Username", "Profile", "Status"]}
+            fieldNames={["Created On", "Admin Name", "Call", "Email", "Username"]}
             hideHeader={true}
             onPageChange={this.handlePageChange}
           >
@@ -120,7 +131,7 @@ const mapStateToProps = state => {
     lord_list: state.lordReducer.lord_list
   };
 };
-const mapDispatchToProps = { findCompanyDetail, findLordList, findFeeList };
+const mapDispatchToProps = { findCompanyDetail, findLordList, findFeeList, createALord };
 
 export default connect(
   mapStateToProps,

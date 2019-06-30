@@ -19,3 +19,16 @@ export const findLordList = (realm_token, query = {}) => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const createALord = (realm_token, body = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`lord/detail/${realm_token}`, "POST", { ...body });
+    await dispatch(findLordList(realm_token));
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
