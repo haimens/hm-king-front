@@ -7,10 +7,10 @@ import alertify from "alertifyjs";
  * @onCorrect
  */
 export default function PunchItem(props) {
-  const handleCompanyBeenClicked = () => {
-    this.props.parentProps.history.push("/company/detail/");
+  const handleCompanyBeenClicked = realm_token => {
+    props.onClick(realm_token);
   };
-  const { cdate, udate, company_name, tribute_rate_token, status_str } = props.parentProps;
+  const { cdate, udate, company_name, tribute_rate_token, status_str, realm_token } = props.parentProps;
   return (
     <tr>
       <td data-label="Created On" className="hm-text-ellipsis">
@@ -48,7 +48,7 @@ export default function PunchItem(props) {
       </td>
       <td data-label="Detail" className="hm-text-ellipsis text-position">
         <section className="text-position align-middle text-muted text-sm">
-          <button className="btn btn-sm text-primary" onClick={handleCompanyBeenClicked}>
+          <button className="btn btn-sm text-primary" onClick={() => handleCompanyBeenClicked(realm_token)}>
             View
           </button>
         </section>

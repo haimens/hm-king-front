@@ -18,6 +18,10 @@ class Company extends Component {
     this.props.findCompanyList();
   }
 
+  handleCompanyItemClick = realm_token => {
+    this.props.history.push(`/company/detail/${realm_token}`);
+  };
+
   handlePageChange = start => {
     this.props.findCompanyList(start);
   };
@@ -50,7 +54,7 @@ class Company extends Component {
             onPageChange={this.handlePageChange}
           >
             {company_list.record_list.map((company, index) => (
-              <CompanyListItem parentProps={company} key={index} onClick={this.handlePunchItemClick} />
+              <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
             ))}
           </ListView>
         </section>

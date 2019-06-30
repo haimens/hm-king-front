@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
+import { parseRate, convertUTCtoLocal } from "../../../actions/utilities.action";
 import CompanyImage from "./CompanyImage.component";
 
-export default class CompanyDetailInfo extends Component {
+class CompanyDetailInfo extends Component {
   state = {
     showAddCompanyModal: false,
     company_name: "",
@@ -10,6 +11,7 @@ export default class CompanyDetailInfo extends Component {
     company_address: "",
     company_title: "",
     fee_rate: "",
+    status: "",
     showImage: "",
     showPreview: "",
     img_url: ""
@@ -19,6 +21,22 @@ export default class CompanyDetailInfo extends Component {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.parentProps.company_detail.basic_info.company_name !== prevState.company_name) {
+      return {
+        company_name: nextProps.parentProps.company_detail.basic_info.company_name,
+        company_address: nextProps.parentProps.company_detail.address_info.addr_str,
+        company_title: nextProps.parentProps.company_detail.basic_info.company_title,
+        fee_rate: nextProps.parentProps.company_detail.tribute_rate_info.rate,
+        realm_token: nextProps.parentProps.company_detail.basic_info.realm_token,
+        status: nextProps.parentProps.company_detail.basic_info.status,
+        showImage: "",
+        showPreview: "",
+        img_url: ""
+      };
+    } else return null;
+  }
 
   render() {
     const {
@@ -31,14 +49,15 @@ export default class CompanyDetailInfo extends Component {
       showPreview,
       img_url
     } = this.state;
-
+    const { fee_list, company_detail } = this.props.parentProps;
+    const { cdate, udate } = company_detail;
     return (
       <section>
         {showImage && (
           <ImageLoaderModal
             onClose={() => this.setState({ showImage: false })}
             onImageUpload={this.handleImageUpload}
-            title="上传照片"
+            title="Upload Image"
           />
         )}
         {showPreview && <PreviewImageModal image={img_url} onClose={() => this.setState({ showPreview: false })} />}
@@ -61,7 +80,7 @@ export default class CompanyDetailInfo extends Component {
                   <div className="col-6 ">
                     <div className="form-group">
                       <label htmlFor="udate">Last Updated On</label>
-                      <div>{"2018-12-17 15:58"}</div>
+                      <div>{convertUTCtoLocal(udate)}</div>
                     </div>
                   </div>
                 </div>
@@ -82,8 +101,8 @@ export default class CompanyDetailInfo extends Component {
                   </div>
                   <div className="col-6  ">
                     <div className="form-group">
-                      <label htmlFor="udate">Last Updated On</label>
-                      <div>{"2018-12-17 15:58"}</div>
+                      <label htmlFor="udate">Created On</label>
+                      <div>{convertUTCtoLocal(cdate)}</div>
                     </div>
                   </div>
                 </div>
@@ -92,7 +111,7 @@ export default class CompanyDetailInfo extends Component {
               <div className="col-12">
                 <div className="row">
                   <div className="form-group col-6">
-                    <label htmlFor="company_address">Company Address</label>
+                    <label htmlFor="company_address">Available Balance</label>
                     <input
                       type="email"
                       className="form-control"
@@ -133,30 +152,25 @@ export default class CompanyDetailInfo extends Component {
                   </div>
                 </div>
               </div>
-
-              <div className="col-12">
-                <div className="row">
-                  <div className="form-group col-6">
-                    <label htmlFor="fee_rate">Fee Rates</label>
-                    <input
-                      type="cell"
-                      className="form-control"
-                      name="fee_rate"
-                      id="fee_rate"
-                      value={fee_rate}
-                      onChange={this.handleInputChange}
-                    />
-                  </div>
-                  <div className="col-6  ">
-                    <CompanyImage
-                      parentProps={{ img_url, showPreview }}
-                      title={"Favicon"}
-                      handleShowImage={this.handleShowImage}
-                    />
-                  </div>
+              <div className="col-6">
+                <div className="form-group ">
+                  <label htmlFor="fee_rate">Fee Rate</label>
+                  <select
+                    className="custom-select form-control"
+                    id="fee_rate"
+                    value={fee_rate}
+                    onChange={this.handleInputChange}
+                  >
+                    {fee_list.record_list.map((fee, index) => {
+                      return (
+                        <option key={index} value={fee.tribute_rate_token} defaultValue={fee_rate === fee.rate}>
+                          {parseRate(fee.rate)}
+                        </option>
+                      );
+                    })}
+                  </select>
                 </div>
               </div>
-
               <div className="col-12 ">
                 <div className="row">
                   <div className="form-group col-6 d-flex">
@@ -188,11 +202,12 @@ export default class CompanyDetailInfo extends Component {
                   </div>
                 </div>
               </div>
+
               <div className="col-12  p-2 pr-4 ">
                 <div className="form-group text-right ">
-                  <button className="hm-bg-green btn btn-sm px-4 text-white hm-3">Add</button>
+                  <button className="hm-bg-green btn btn-sm px-4 text-white mr-3">SAVE</button>
                   <button onClick={this.handleCancel} className="btn btn-sm btn-outline-secondary px-4">
-                    Cancel
+                    BACK
                   </button>
                 </div>
               </div>
@@ -203,3 +218,5 @@ export default class CompanyDetailInfo extends Component {
     );
   }
 }
+
+export default CompanyDetailInfo;

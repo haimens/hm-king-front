@@ -11,7 +11,7 @@ export const findCompanyList = (query = {}) => async dispatch => {
       ...query
     });
     await dispatch({
-      type: constant.FIND_COMPANY_LIST,
+      type: constant.COMPANY_LIST,
       payload
     });
     await stopLoader(dispatch);
@@ -27,6 +27,21 @@ export const createACompany = (body = {}) => async dispatch => {
     const { payload } = await callApi(`realm/detail`, "POST", { ...body });
     await launchSuccess(dispatch);
     await dispatch(findCompanyList());
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const findCompanyDetail = realm_token => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`realm/detail/${realm_token}`, "GET");
+    await dispatch({
+      type: constant.COMPANY_DETAIL,
+      payload
+    });
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);

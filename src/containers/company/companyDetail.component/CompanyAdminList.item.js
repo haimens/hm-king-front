@@ -11,7 +11,6 @@ export default function CompanyAdminList(props) {
   const handleDetailLink = trans_token => {
     if (props.onClick) props.onClick(trans_token);
   };
-  console.log(props);
   const { cell, company_name, email, name, status_str, username } = props.parentProps;
   return (
     <tr>

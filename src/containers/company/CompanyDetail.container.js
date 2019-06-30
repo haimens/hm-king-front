@@ -12,7 +12,9 @@ import CompanyInvoiceModal from "./companyDetail.component/CompanyInvoice.modal"
 import CompanyAdminListItem from "./companyDetail.component/CompanyAdminList.item";
 import CompanyInvoiceListItem from "./companyDetail.component/CompanyInvoiceList.item";
 
+import { findCompanyDetail } from "../../actions/company.action";
 import { findLordList } from "../../actions/lord.action";
+import { findFeeList } from "../../actions/fee.action";
 
 class CompanyDetail extends Component {
   state = {
@@ -25,18 +27,19 @@ class CompanyDetail extends Component {
   handleAddInvoiceModal = () => {
     this.setState(states => ({ showInvoiceModal: !states.showInvoiceModal }));
   };
-  componentDidMount() {
-    console.log("here");
-    this.props.findLordList();
+  async componentDidMount() {
+    const { findCompanyDetail, findLordList, findFeeList, match } = this.props;
+    const { realm_token } = match.params;
+    Promise.all([findCompanyDetail(realm_token), findLordList(realm_token), findFeeList()]);
   }
   render() {
-    const { lord_list } = this.props;
+    const { fee_list, company_detail, lord_list } = this.props;
     const { showCompanyAdminModal, showInvoiceModal } = this.state;
     return (
       <main>
         {showCompanyAdminModal && <CompanyAdminModal onClose={this.handleAddCompanyAdminModal} />}
         {showInvoiceModal && <CompanyInvoiceModal onClose={this.handleAddInvoiceModal} />}
-        <CompanyDetailInfo />
+        <CompanyDetailInfo parentProps={{ company_detail, fee_list }} />
         <section>
           <div className="my-3 d-flex ">
             <h4>Company Admin List</h4>
@@ -48,7 +51,7 @@ class CompanyDetail extends Component {
             </button>
           </div>
           <ListView
-            totalCount={30}
+            totalCount={lord_list.count}
             title="Company Admin List"
             fieldNames={["Created On", "Admin Name", "Call", "Email", "Username", "Profile", "Status"]}
             hideHeader={true}
@@ -112,10 +115,12 @@ class CompanyDetail extends Component {
 
 const mapStateToProps = state => {
   return {
+    company_detail: state.companyReducer.company_detail,
+    fee_list: state.feeReducer.fee_list,
     lord_list: state.lordReducer.lord_list
   };
 };
-const mapDispatchToProps = { findLordList };
+const mapDispatchToProps = { findCompanyDetail, findLordList, findFeeList };
 
 export default connect(
   mapStateToProps,

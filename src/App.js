@@ -42,7 +42,7 @@ class App extends Component {
             <Switch>
               <ProtectedRoute exact path="/home" component={Home} />
               <ProtectedRoute exact path="/company" component={Company} />
-              <ProtectedRoute exact path="/company/detail/:company_token" component={CompanyDetail} />
+              <ProtectedRoute exact path="/company/detail/:realm_token" component={CompanyDetail} />
               <ProtectedRoute exact path="/invoice" component={Invoice} />
               <ProtectedRoute exact path="/settings/fee" component={Fee} />
               <ProtectedRoute exact path="/settings/key" component={Key} />
