@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { findCompanyList, createACompany } from "../../actions/company.action";
-import CompanyListItem from "./company.components/CompanyListItem.component";
-import { findFeeList } from "../../actions/fee.action";
-import ListView from "../../components/shared/ListView";
-import IconButton from "../../components/shared/IconButton";
 import CompanyAddingModal from "./company.components/CompanyAdding.modal";
+import CompanyListItem from "./company.components/CompanyListItem.component";
+import { ListView } from "../../components/shared";
+import { findCompanyList, createACompany } from "../../actions/company.action";
+import { findFeeList } from "../../actions/fee.action";
 
 class Company extends Component {
   state = {
@@ -45,7 +44,7 @@ class Company extends Component {
           </div>
           <ListView
             totalCount={30}
-            title="收款记录列表"
+            title="Company List"
             fieldNames={["Created On", "Last Updated", "Company ID", "Company Name", "Status", "Detail"]}
             hideHeader={true}
             onPageChange={this.handlePageChange}
