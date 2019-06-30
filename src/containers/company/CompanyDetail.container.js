@@ -40,8 +40,11 @@ class CompanyDetail extends Component {
         <section>
           <div className="my-3 d-flex ">
             <h4>Company Admin List</h4>
-            <button className="ml-3" onClick={this.handleAddCompanyAdminModal}>
-              Hi
+            <button
+              className="ml-3 hm-bg-green text-white rounded-circle border-0"
+              onClick={this.handleAddCompanyAdminModal}
+            >
+              <i className="fas fa-plus " />
             </button>
           </div>
           <ListView
