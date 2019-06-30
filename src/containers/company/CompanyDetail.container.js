@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import CompanyListItem from "./company.components/CompanyListItem.component";
 import ListView from "../../components/shared/ListView";
 import IconButton from "../../components/shared/IconButton";
@@ -7,8 +9,10 @@ import CompanyCard from "./companyDetail.component/CompanyCard.component";
 import CompanyAdminModal from "./companyDetail.component/CompanyAdmin.modal";
 import CompanyInvoiceModal from "./companyDetail.component/CompanyInvoice.modal";
 
-import CompanyAdminList from "./companyDetail.component/CompanyAdminList.item";
+import CompanyAdminListItem from "./companyDetail.component/CompanyAdminList.item";
 import CompanyInvoiceListItem from "./companyDetail.component/CompanyInvoiceList.item";
+
+import { findLordList } from "../../actions/lord.action";
 
 class CompanyDetail extends Component {
   state = {
@@ -21,7 +25,12 @@ class CompanyDetail extends Component {
   handleAddInvoiceModal = () => {
     this.setState(states => ({ showInvoiceModal: !states.showInvoiceModal }));
   };
+  componentDidMount() {
+    console.log("here");
+    this.props.findLordList();
+  }
   render() {
+    const { lord_list } = this.props;
     const { showCompanyAdminModal, showInvoiceModal } = this.state;
     return (
       <main>
@@ -37,14 +46,14 @@ class CompanyDetail extends Component {
           </div>
           <ListView
             totalCount={30}
-            title="收款记录列表"
+            title="Company Admin List"
             fieldNames={["Created On", "Admin Name", "Call", "Email", "Username", "Profile", "Status"]}
             hideHeader={true}
             onPageChange={this.handlePageChange}
           >
-            {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <CompanyAdminListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
-            ))} */}
+            {lord_list.record_list.map((lord, index) => (
+              <CompanyAdminListItem parentProps={lord} key={index} />
+            ))}
           </ListView>
         </section>
 
@@ -57,7 +66,7 @@ class CompanyDetail extends Component {
           </div>
           <ListView
             totalCount={30}
-            title="收款记录列表"
+            title="Invoice List"
             fieldNames={["Created On", "Last Updated", "Invoice Token", "Company Name", "Amount", "Receipt", "Status"]}
             hideHeader={true}
             onPageChange={this.handlePageChange}
@@ -97,4 +106,15 @@ class CompanyDetail extends Component {
     );
   }
 }
-export default CompanyDetail;
+
+const mapStateToProps = state => {
+  return {
+    lord_list: state.lordReducer.lord_list
+  };
+};
+const mapDispatchToProps = { findLordList };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(CompanyDetail));

@@ -8,8 +8,8 @@ import alertify from "alertifyjs";
  * @onCorrect
  */
 export default function PunchItem(props) {
-  const handleDetailLink = trans_token => {
-    if (props.onClick) props.onClick(trans_token);
+  const handleCompanyBeenClicked = () => {
+    this.props.parentProps.history.push("/company/detail/");
   };
   const { cdate, udate, company_name, tribute_rate_token, status_str } = props.parentProps;
   return (
@@ -47,7 +47,7 @@ export default function PunchItem(props) {
       </td>
       <td data-label="Detail" className="hm-text-ellipsis text-position">
         <section className="text-position align-middle text-muted text-sm">
-          <button className="btn btn-sm text-primary" onClick={this.handleCompanyBeenClicked}>
+          <button className="btn btn-sm text-primary" onClick={handleCompanyBeenClicked}>
             View
           </button>
         </section>

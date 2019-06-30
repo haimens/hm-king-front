@@ -66,7 +66,9 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = { findCompanyList, findFeeList, createACompany };
+
 export default connect(
   mapStateToProps,
-  { findCompanyList, findFeeList, createACompany }
+  mapDispatchToProps
 )(withRouter(Company));

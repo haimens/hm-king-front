@@ -12,7 +12,7 @@ const Company = React.lazy(() => import("./containers/company/Company.container"
 const Invoice = React.lazy(() => import("./containers/invoice/Invoice.container"));
 const Fee = React.lazy(() => import("./containers/settings/Fee.container"));
 const Key = React.lazy(() => import("./containers/settings/Key.container"));
-const CompanyDetail = React.lazy(() => import("./containers/settings/Key.container"));
+const CompanyDetail = React.lazy(() => import("./containers/company/CompanyDetail.container"));
 class App extends Component {
   componentDidMount() {
     Promise.all([

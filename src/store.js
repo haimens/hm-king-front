@@ -6,8 +6,10 @@ import loadReducer from "./reducers/load.reducer";
 import navReducer from "./reducers/nav.reducer";
 import companyReducer from "./reducers/company.reducer";
 import feeReducer from "./reducers/fee.reducer";
+import lordReducer from "./reducers/lord.reducer";
+
 const store = createStore(
-  combineReducers({ authReducer, loadReducer, navReducer, companyReducer, feeReducer }),
+  combineReducers({ authReducer, loadReducer, navReducer, companyReducer, feeReducer, lordReducer }),
   composeWithDevTools(applyMiddleware(thunk))
 );
 export default store;
