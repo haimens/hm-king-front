@@ -36,26 +36,28 @@ export default class FeeModal extends Component {
         zIndex="1080"
       >
         <div className="container">
-          <label>Fee Rate</label>
-          <div className="input-group mb-3">
-            <input
-              type="number"
-              className="form-control border-right-0"
-              id="fee_rate"
-              value={fee_rate}
-              onChange={this.handleInputChange}
-            />
-            <div className="input-group-append ">
-              <span className="input-group-text bg-white border-left-0">%</span>
+          <div className="p-3">
+            <label>Fee Rate</label>
+            <div className="input-group mb-3">
+              <input
+                type="number"
+                className="form-control border-right-0"
+                id="fee_rate"
+                value={fee_rate}
+                onChange={this.handleInputChange}
+              />
+              <div className="input-group-append ">
+                <span className="input-group-text bg-white border-left-0">%</span>
+              </div>
             </div>
-          </div>
-          <div className="form-group text-center p-3">
-            <button className="hm-bg-green btn px-4 text-white mr-3" onClick={this.handleCreatingFee}>
-              Add
-            </button>
-            <button onClick={this.handleClose} className="btn btn-outline-secondary px-4">
-              Cancel
-            </button>
+            <div className="form-group text-center p-3">
+              <button className="hm-bg-green btn px-4 text-white mr-3" onClick={this.handleCreatingFee}>
+                Add
+              </button>
+              <button onClick={this.handleClose} className="btn btn-outline-secondary px-4">
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </Modal>

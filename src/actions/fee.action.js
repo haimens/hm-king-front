@@ -27,6 +27,8 @@ export const createFeeRate = rate => async dispatch => {
     const { payload } = await callApi(`tribute/rate`, "POST", {
       rate
     });
+    await dispatch(findFeeList());
+    await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
