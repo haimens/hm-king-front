@@ -49,13 +49,14 @@ class Dashboard extends Component {
           </div>
         </section>
         <section>
-          <div className="container-fluid">
-            <div className="bg-white p-3">
+          <div className="container-fluid ">
+            <div className="bg-white shadow-sm rounded p-3">
               <div className="mb-4">
-                <div>PERFORMANCE</div>
-                <div>Total orders</div>
+                <div className="text-secondary-color font-weight-bold mb-1">PERFORMANCE</div>
+                <div className="hm-title-sub-size text-main-color font-weight-bold">Total orders</div>
               </div>
-              <div className="chart">
+              <hr />
+              <div className="mt-4">
                 <Bar data={chartExample2.data} options={chartExample2.options} />
               </div>
             </div>
