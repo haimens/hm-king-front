@@ -38,10 +38,11 @@ export class Main extends Component {
           isOpen={this.state.opened}
           onStateChange={this.isMenuOpen}
           customBurgerIcon={false}
+          customCrossIcon={false}
         >
           <Sidebar parentProps={parentProps} handleSideBarBeenOpened={this.handleSideBarBeenOpened} />
         </Menu>
-        <section id="page-wrap">
+        <section className={this.state.opened && `fixing-leftMargin-whenOpened`} id="page-wrap">
           <div>
             <Nav handleSideBarBeenOpened={this.handleSideBarBeenOpened} parentProps={parentProps} />
           </div>

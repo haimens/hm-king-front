@@ -61,3 +61,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-overlay {
   background: rgba(0, 0, 0, 0) !important;
 }
+.fixing-leftMargin-whenOpened{
+  width: calc(100% - 300px) !important;
+  margin-left: 0px !important;
+  transition: 0.5s ease !important;
+}
