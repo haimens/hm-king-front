@@ -26,6 +26,7 @@ class Dashboard extends Component {
                     title: "Total Company",
                     icon: `${process.env.PUBLIC_URL}/img/icon_company.svg`
                   }}
+                  red={true}
                 />
               </div>
               <div className="col-12 col-md-6 h-100">

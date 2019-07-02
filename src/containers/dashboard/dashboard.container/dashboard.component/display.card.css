@@ -19,11 +19,19 @@
   }
   
 }
-.card-icon-background{
+
+.card-icon-background-red{
   width: 48px;
   height: 48px;
   background: linear-gradient(to right, #f5385a, #f55d38);
 }
+
+.card-icon-background-green{
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(to right, #2dcf8c, #2ecec9);;
+}
+
 .card-img{
   width: 18px; 
   height: 17px;   

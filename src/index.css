@@ -120,7 +120,7 @@ h1,h2,h3,h4,h5,h6,h7 {
 }
 
 .success-text-color{
-  color: #37b300;
+  color: #2dce89;
 }
 
 .hm-pointer-cursor{
@@ -148,6 +148,12 @@ h1,h2,h3,h4,h5,h6,h7 {
 .hm-header-size{
   font-size: 15px;
 }
-.text-secondDary-text-color{
+.hm-title-sub-size{
+  font-size: 20px;
+}
+.text-main-color{
+  color: #32325d !important;
+}
+.text-secondary-color{
   color: #8898aa !important;
 }
