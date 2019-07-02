@@ -27,7 +27,5 @@
 .card-img{
   width: 18px; 
   height: 17px;   
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center; 
+
 }
