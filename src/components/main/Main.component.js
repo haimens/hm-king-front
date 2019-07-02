@@ -4,30 +4,51 @@ import { withRouter } from "react-router-dom";
 import { toggleSideBar } from "../../actions/nav.action";
 import Nav from "./Nav.component";
 import Sidebar from "./Sidebar.component";
+import { push as Menu } from "react-burger-menu";
+
 import "./Main.component.css";
 
 import { resetPassword } from "../../actions/auth.action";
 
 export class Main extends Component {
+  state = {
+    opened: false
+  };
+  handleSideBarBeenOpened = async () => {
+    await this.setState(states => ({ opened: !states.opened }));
+  };
+  isMenuOpen = state => {
+    if (this.state.opened !== state.isOpen) {
+      this.setState({ opened: state.isOpen });
+    }
+    return;
+  };
+
   render() {
     const parentProps = {
       toggleSideBar: this.props.toggleSideBar,
       history: this.props.history,
-      resetPassword: this.props.resetPassword
+      resetPassword: this.props.resetPassword,
+      location: this.props.location
     };
-
-    const hasPaddingLeft =
-      this.props.is_open || this.props.windowWidth > 992 ? "main-container-open" : "main-container-close";
     return (
       <main>
-        <section className="sticky-top">
-          <Nav parentProps={parentProps} />
+        <Menu
+          pageWrapId={"page-wrap"}
+          isOpen={this.state.opened}
+          onStateChange={this.isMenuOpen}
+          customBurgerIcon={false}
+        >
+          <Sidebar parentProps={parentProps} handleSideBarBeenOpened={this.handleSideBarBeenOpened} />
+        </Menu>
+        <section id="page-wrap">
+          <div>
+            <Nav handleSideBarBeenOpened={this.handleSideBarBeenOpened} parentProps={parentProps} />
+          </div>
+          <div>
+            <div className={`container-fluid py-4 `}>{this.props.children}</div>
+          </div>
         </section>
-        <section>
-          {(this.props.is_open || this.props.windowWidth > 992) && <Sidebar parentProps={parentProps} />}
-        </section>
-        {/* Render children */}
-        <section className={`container-fluid py-5 ${hasPaddingLeft}`}>{this.props.children}</section>
       </main>
     );
   }

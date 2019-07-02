@@ -6,6 +6,7 @@ import { ImageButton } from "../shared";
 export default class Sidebar extends Component {
   handleClick = new_path => {
     const { history } = this.props.parentProps;
+    this.props.handleSideBarBeenOpened();
     history.push(new_path);
   };
   handleClickLogo = e => {
@@ -42,7 +43,7 @@ export default class Sidebar extends Component {
         {/* NAV ITEMS */}
         <section className="accordion">
           <NavItem
-            onToggle={() => this.props.parentProps.history.push("/home")}
+            onToggle={() => this.handleClick("/home")}
             image={`${process.env.PUBLIC_URL}/img/tabicon_home.svg`}
             name="Home"
             path="home"
@@ -52,7 +53,7 @@ export default class Sidebar extends Component {
         </section>
         <section className="accordion">
           <NavItem
-            onToggle={() => this.props.parentProps.history.push("/company")}
+            onToggle={() => this.handleClick("/company")}
             image={`${process.env.PUBLIC_URL}/img/tabicon_company.svg`}
             name="Company"
             path="company"
@@ -62,7 +63,7 @@ export default class Sidebar extends Component {
         </section>
         <section className="accordion">
           <NavItem
-            onToggle={() => this.props.parentProps.history.push("/invoice")}
+            onToggle={() => this.handleClick("/invoice")}
             image={`${process.env.PUBLIC_URL}/img/tabicon_invoice.svg`}
             name="Invoice"
             path="invoice"
@@ -73,7 +74,7 @@ export default class Sidebar extends Component {
 
         <section className="accordion">
           <NavItem
-            onToggle={() => this.props.parentProps.history.push("/settings/fee")}
+            onToggle={() => this.handleClick("/settings/fee")}
             image={`${process.env.PUBLIC_URL}/img/tabicon_settings.svg`}
             name="Settings"
             path="settings"

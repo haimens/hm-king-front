@@ -19,26 +19,26 @@ class Nav extends Component {
     alertify.notify("已发送修改密码连接至Email", "已发送修改密码连接至Email", 5);
   };
 
+  handleSideBarBeenOpened = () => {
+    this.props.handleSideBarBeenOpened();
+  };
+
   render() {
     return (
       <nav
         className="navbar navbar-expand-lg navbar-light bg-white d-flex 
-      justify-content-lg-end justify-content-between shadow-sm sticky-top align-items-center"
+    justify-content-between shadow-sm  align-items-center"
         style={{ height: "50px" }}
       >
-        <button
-          onClick={() => this.handleClick("sidebar")}
-          className="navbar-toggler hm-2"
-          type="button"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-
+        <div>
+          <i
+            className="fas fa-bars p-3 hm-pointer-cursor"
+            style={{ fontSize: "18px" }}
+            onClick={this.handleSideBarBeenOpened}
+          />
+        </div>
         <div className="d-flex flex-row align-items-center">
-          <div className="btn-group hm-2">
+          <div className="btn-group mr-2">
             <button
               type="button"
               className="btn  dropdown-toggle"
@@ -58,7 +58,7 @@ class Nav extends Component {
                   }}
                 >
                   <small>
-                    <i className="fas fa-key font-size-10 hm-3" />
+                    <i className="fas fa-key font-size-10 mr-3" />
                   </small>
                   修改密码
                 </button>

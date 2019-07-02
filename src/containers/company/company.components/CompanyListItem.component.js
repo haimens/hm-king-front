@@ -1,6 +1,7 @@
 import React from "react";
 import { convertUTCtoLocal } from "../../../actions/utilities.action";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import ReactToolTip from "react-tooltip";
 import alertify from "alertifyjs";
 /**
  * @onClick
@@ -25,9 +26,12 @@ export default function PunchItem(props) {
       </td>
       <td data-label="Company ID" className="hm-text-ellipsis">
         <section className="text-position align-middle text-muted text-sm hm-pointer-cursor">
-          <CopyToClipboard text={tribute_rate_token} onCopy={() => alertify.success("Copy Success")}>
-            <small>{tribute_rate_token}</small>
-          </CopyToClipboard>
+          <div className="mr-1" data-for={tribute_rate_token} data-tip={tribute_rate_token}>
+            <CopyToClipboard text={tribute_rate_token} onCopy={() => alertify.success("Copy Success")}>
+              <small>{tribute_rate_token}</small>
+            </CopyToClipboard>
+            <ReactToolTip id={tribute_rate_token} />
+          </div>
         </section>
       </td>
       <td data-label="Company Name" className="hm-text-ellipsis text-position">
