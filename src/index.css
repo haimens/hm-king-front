@@ -145,6 +145,9 @@ h1,h2,h3,h4,h5,h6,h7 {
   height:40.5px;
 }
 
-.font-size-10{
-  font-size: 10px;
+.hm-header-size{
+  font-size: 15px;
+}
+.text-secondDary-text-color{
+  color: #8898aa !important;
 }

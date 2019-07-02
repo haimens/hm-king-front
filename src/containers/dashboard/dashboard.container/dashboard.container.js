@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import DisplayCard from "./home.component/Display.card";
+import DisplayCard from "./dashboard.component/display.card";
 
-class Home extends Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,11 +13,12 @@ class Home extends Component {
     return (
       <main>
         <section className="mb-4">
-          <div className="mb-3 d-flex justify-content-between">
-            <h4>Home</h4>
+          <div className="d-flex align-items-center mb-4  text-white">
+            <i className="fas fa-desktop hm-header-size mr-3" />
+            <h4 className="hm-header-size">Dashboard</h4>
           </div>
           <div className="row">
-            <div className="col-12 col-md-6 mb-4 h-100">
+            <div className="col-12 col-md-6 h-100">
               <DisplayCard
                 data={{
                   amount: 20,
@@ -26,7 +27,7 @@ class Home extends Component {
                 }}
               />
             </div>
-            <div className="col-12 col-md-6 mb-4 h-100">
+            <div className="col-12 col-md-6 h-100">
               <DisplayCard
                 data={{
                   amount: 20,
@@ -49,4 +50,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(withRouter(Home));
+)(withRouter(Dashboard));

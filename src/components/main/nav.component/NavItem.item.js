@@ -14,7 +14,7 @@ export default class NavItem extends Component {
     this.state = {
       collapse: false,
       collapeClassName: "collapse",
-      arrowClassName: "d-block fas fa-angle-down text-white"
+      arrowClassName: "d-block fas fa-angle-down"
     };
   }
 
@@ -24,12 +24,12 @@ export default class NavItem extends Component {
     if (parsedLocation[1] === path) {
       this.setState({
         collapse: true,
-        arrowClassName: "d-block fas fa-angle-up text-white"
+        arrowClassName: "d-block fas fa-angle-up"
       });
     } else {
       this.setState({
         collapse: false,
-        arrowClassName: "d-block fas fa-angle-down text-white"
+        arrowClassName: "d-block fas fa-angle-down"
       });
     }
   }
@@ -40,12 +40,12 @@ export default class NavItem extends Component {
     if (parsedLocation[1] === path) {
       this.setState({
         collapse: true,
-        arrowClassName: "d-block fas fa-angle-up text-white"
+        arrowClassName: "d-block fas fa-angle-up"
       });
     } else {
       this.setState({
         collapse: false,
-        arrowClassName: "d-block fas fa-angle-down text-white"
+        arrowClassName: "d-block fas fa-angle-down"
       });
     }
   }
@@ -76,7 +76,7 @@ export default class NavItem extends Component {
               src={this.props.image || `${process.env.PUBLIC_URL}/img/icon_xiafa.svg`}
               alt={"xiafa"}
             />
-            <span className="d-block text-white">{name}</span>
+            <span className="d-block">{name}</span>
           </div>
           {showArrow && <i className={this.state.arrowClassName} />}
         </button>

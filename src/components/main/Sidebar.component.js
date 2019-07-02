@@ -25,7 +25,7 @@ export default class Sidebar extends Component {
     const parsedLocation = pathname.split("/");
 
     return (
-      <main className="hm-bg-darkblue" style={styles.container} id="navbarSupportedContent">
+      <main className="bg-white" style={styles.container} id="navbarSupportedContent">
         {/* LOGO Section */}
         <section className="mb-5 p-4 d-flex flex-row justify-content-between">
           <a href="/home" onClick={e => this.handleClickLogo(e)}>
@@ -43,10 +43,10 @@ export default class Sidebar extends Component {
         {/* NAV ITEMS */}
         <section className="accordion">
           <NavItem
-            onToggle={() => this.handleClick("/home")}
+            onToggle={() => this.handleClick("/dashboard")}
             image={`${process.env.PUBLIC_URL}/img/tabicon_home.svg`}
-            name="Home"
-            path="home"
+            name="Dashboard"
+            path="dashboard"
             history={this.props.parentProps.history}
             showArrow={false}
           />
@@ -100,11 +100,8 @@ export default class Sidebar extends Component {
 
 const styles = {
   container: {
-    position: "fixed",
-    top: 0,
-    left: 0,
     height: "100%",
-    width: "230px",
+    width: "100%",
     zIndex: "1031"
   }
 };

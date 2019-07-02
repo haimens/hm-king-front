@@ -39,15 +39,16 @@ export class Main extends Component {
           onStateChange={this.isMenuOpen}
           customBurgerIcon={false}
           customCrossIcon={false}
+          noOverlay
         >
           <Sidebar parentProps={parentProps} handleSideBarBeenOpened={this.handleSideBarBeenOpened} />
         </Menu>
-        <section className={this.state.opened && `fixing-leftMargin-whenOpened`} id="page-wrap">
-          <div>
+        <section className={this.state.opened && `fixing-leftMargin-whenOpened `} id="page-wrap">
+          <div className=" background-linear" style={{ height: "230px" }}>
             <Nav handleSideBarBeenOpened={this.handleSideBarBeenOpened} parentProps={parentProps} />
           </div>
-          <div>
-            <div className={`container-fluid py-4 `}>{this.props.children}</div>
+          <div style={{ marginTop: "-145px" }}>
+            <div className={`container-fluid py-4`}>{this.props.children}</div>
           </div>
         </section>
       </main>

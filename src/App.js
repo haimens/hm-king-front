@@ -7,7 +7,7 @@ import { LoaderAlt } from "./components/shared";
 
 const Login = React.lazy(() => import("./containers/login/Login.container"));
 const ResetPassword = React.lazy(() => import("./containers/resetPassword/ResetPassword.container"));
-const Home = React.lazy(() => import("./containers/home/Home.container"));
+const Dashboard = React.lazy(() => import("./containers/dashboard/dashboard.container/dashboard.container"));
 const Company = React.lazy(() => import("./containers/company/Company.container"));
 const Invoice = React.lazy(() => import("./containers/invoice/Invoice.container"));
 const Fee = React.lazy(() => import("./containers/settings/Fee.container"));
@@ -40,7 +40,7 @@ class App extends Component {
           <Route exact path="/nomatch" component={Page404} />
           <Main>
             <Switch>
-              <ProtectedRoute exact path="/home" component={Home} />
+              <ProtectedRoute exact path="/dashboard" component={Dashboard} />
               <ProtectedRoute exact path="/company" component={Company} />
               <ProtectedRoute exact path="/company/detail/:realm_token" component={CompanyDetail} />
               <ProtectedRoute exact path="/invoice" component={Invoice} />

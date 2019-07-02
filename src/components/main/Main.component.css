@@ -37,7 +37,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background-color:#2d3e4e !important;
   font-size: 1.15em;
 }
 
@@ -48,8 +47,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
+  color: black;
 }
 
 /* Individual item */
@@ -65,4 +63,27 @@ Note: Beware of modifying this element as it can break the animations - you shou
   width: calc(100% - 300px) !important;
   margin-left: 0px !important;
   transition: 0.5s ease !important;
+}
+
+.background-linear{
+  background: linear-gradient(87deg,#11cdef,#1171ef) !important;
+}
+
+.dropdown-toggle::after {
+  display:none !important;
+}
+.dropdown-menu{
+  margin-left: -100px !important;
+}
+.dropdown-menu:after {
+  content: '';
+  position: absolute;
+  left:130px;
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #fff;
+  clear: both;
 }
