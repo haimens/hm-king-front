@@ -11,7 +11,21 @@ const initialState = {
       company_name: ""
     }
   },
-  payment_list: {}
+  payment_list: {
+    record_list: [],
+    count: 0,
+    end: 0
+  },
+  email_list: {
+    record_list: [],
+    count: 0,
+    end: 0
+  },
+  message_list: {
+    record_list: [],
+    count: 0,
+    end: 0
+  }
 };
 
 export default (state = initialState, action) => {

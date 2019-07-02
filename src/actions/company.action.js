@@ -83,7 +83,7 @@ export const createAPaymentMethod = (realm_token, body) => async dispatch => {
     await startLoader(dispatch);
     const { payload } = await callApi(`realm/email/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
-    await dispatch(findCompanyList());
+    await dispatch(findAllPaymentMethodList());
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -113,6 +113,8 @@ export const updateAPaymentMethod = (realm_token, payment_resource_token, body) 
     const { payload } = await callApi(`realm/all/payment/${realm_token}/${payment_resource_token}`, "PATCH", {
       ...body
     });
+    await launchSuccess(dispatch);
+    await dispatch(findAllPaymentMethodList());
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -126,7 +128,7 @@ export const createAMessageMethod = (realm_token, body) => async dispatch => {
     await startLoader(dispatch);
     const { payload } = await callApi(`realm/message/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
-    await dispatch(findCompanyList());
+    await dispatch(findAllMessageMethodList());
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -156,6 +158,8 @@ export const updateAMessageMethod = (realm_token, message_resource_token, body) 
     const { payload } = await callApi(`realm/all/payment/${realm_token}/${message_resource_token}`, "PATCH", {
       ...body
     });
+    await launchSuccess(dispatch);
+    await dispatch(findAllMessageMethodList());
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -169,7 +173,7 @@ export const createAEmailMethod = (realm_token, body) => async dispatch => {
     await startLoader(dispatch);
     const { payload } = await callApi(`realm/email/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
-    await dispatch(findCompanyList());
+    await dispatch(findAllEmailMethodList());
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -199,6 +203,8 @@ export const updateAEmailMethod = (realm_token, email_resource_token, body) => a
     const { payload } = await callApi(`realm/all/payment/${realm_token}/${email_resource_token}`, "PATCH", {
       ...body
     });
+    await dispatch(findAllEmailMethodList());
+    await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
