@@ -9,14 +9,14 @@ import "./display.card.css";
 export function DisplayCardItem(props) {
   const { amount, title, icon } = props.data;
   return (
-    <main className="align-items-center bg-white rounded border shadow-sm display-card-container p-3">
-      <section className="container">
+    <main className="bg-white rounded border shadow-sm display-card-container p-3">
+      <section className="container ">
         <div className="row">
           <div className="col">
             <div className="text-secondDary-text-color font-weight-bold">TOTAL COMPANY</div>
           </div>
-          <div className="col-auto col">
-            <div className="card-icon-background d-flex align-items-center rounded-circle shadow text-center">
+          <div className="col-auto col ">
+            <div className="card-icon-background  d-flex justify-content-center  align-items-center rounded-circle shadow">
               <img
                 src={icon || `${process.env.PUBLIC_URL}/img/icon_24hr.svg`}
                 alt={icon || `${process.env.PUBLIC_URL}/img/available.svg`}
