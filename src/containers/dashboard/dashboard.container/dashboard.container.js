@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import DisplayCard from "./dashboard.component/display.card";
-
+import Chart from "chart.js";
+import { Bar } from "react-chartjs-2";
+import { chartOptions, parseOptions, chartExample2 } from "./dashboard.component/chart";
+import "./dashboard.container.css";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
-
+  componentWillMount() {
+    if (window.Chart) {
+      parseOptions(Chart, chartOptions());
+    }
+  }
   render() {
     return (
       <main>
@@ -37,6 +44,19 @@ class Dashboard extends Component {
                     icon: `${process.env.PUBLIC_URL}/img/icon_invoice.svg`
                   }}
                 />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div className="container-fluid">
+            <div className="bg-white p-3">
+              <div className="mb-4">
+                <div>PERFORMANCE</div>
+                <div>Total orders</div>
+              </div>
+              <div className="chart">
+                <Bar data={chartExample2.data} options={chartExample2.options} />
               </div>
             </div>
           </div>
