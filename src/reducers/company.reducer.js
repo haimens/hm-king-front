@@ -10,7 +10,8 @@ const initialState = {
     basic_info: {
       company_name: ""
     }
-  }
+  },
+  payment_list: {}
 };
 
 export default (state = initialState, action) => {
@@ -19,6 +20,12 @@ export default (state = initialState, action) => {
       return { ...state, company_list: action.payload };
     case constant.COMPANY_DETAIL:
       return { ...state, company_detail: action.payload };
+    case constant.PAYMENT_LIST:
+      return { ...state, payment_list: action.payload };
+    case constant.EMAIL_LIST:
+      return { ...state, email_list: action.payload };
+    case constant.MESSAGE_LIST:
+      return { ...state, message_list: action.payload };
     default:
       return state;
   }
