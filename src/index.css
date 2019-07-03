@@ -157,14 +157,8 @@ h1,h2,h3,h4,h5,h6,h7 {
   font-size: 20px;
 }
 .text-main-color{
-  color: #32325d !important;
+  color: #525f7f !important;
 }
 .text-secondary-color{
   color: #8898aa !important;
-}
-.text-grey{
-  color: #979797;
-}
-.text-black{
-  color: #000
 }

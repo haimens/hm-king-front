@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./NavItem.item.css";
 /**
  * NavItem
  * @name required
@@ -57,28 +57,19 @@ export default class NavItem extends Component {
   render() {
     const { name, path, history, showArrow = true } = this.props;
     const parsedLocation = history.location.pathname.split("/");
-
     return (
       <main>
         <button
           onClick={() => this.handleToggle()}
-          disabled={parsedLocation[1] === path}
-          className="btn btn-block d-flex align-items-center justify-content-between px-4 py-3"
+          className={`btn d-flex align-items-center justify-content-between px-4 py-3 ${parsedLocation[1] === path &&
+            "nav-selected"}`}
           type="button"
-          data-toggle="collapse"
-          data-target={`#${path}`}
-          aria-expanded="false"
-          aria-controls={`${path}`}
         >
           <div className="d-flex align-items-center">
-            <img
-              className=" ml-3 mr-4"
-              src={this.props.image || `${process.env.PUBLIC_URL}/img/icon_xiafa.svg`}
-              alt={"xiafa"}
-            />
-            <span className={`d-block hm-text-14 ${parsedLocation[1] === path ? "text-black" : "text-grey"}`}>
+            <img className="ml-3 mr-4" src={this.props.image} alt={"icon"} />
+            <div className={`d-block hm-text-14 ${parsedLocation[1] === path ? "text-black" : "text-grey"}`}>
               {name}
-            </span>
+            </div>
           </div>
           {showArrow && <i className={this.state.arrowClassName} />}
         </button>

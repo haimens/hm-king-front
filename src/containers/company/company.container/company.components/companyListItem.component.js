@@ -13,36 +13,40 @@ export default function PunchItem(props) {
   };
   const { cdate, logo_path, company_name, tribute_rate_token, status_str, realm_token } = props.parentProps;
   return (
-    <tr>
+    <tr className="border-bottom">
       <td data-label="Last Updated" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center align-middle text-muted text-sm">
+        <section className="text-center text-main-color hm-text-14">
           <img src={logo_path} alt="Company Logo" className="rounded-circle" height={"30px"} width={"30px"} />
         </section>
       </td>
       <td data-label="Created On" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center align-middle text-muted text-sm">
-          <small>{convertUTCtoLocal(cdate)}</small>
+        <section className="text-center  text-main-color hm-text-14">
+          {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
       <td data-label="Company Name" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center align-middle text-muted text-sm">
-          <small>{company_name}</small>
-        </section>
+        <section className="text-center text-main-color font-weight-bold hm-text-14">{company_name}</section>
       </td>
       <td data-label="Status" style={{ height: "80px" }} className="align-middle">
         {status_str === "ACTIVE" ? (
-          <section className="text-center align-middle text-muted text-sm">
-            <small className="hm-text-green">Active</small>
+          <section className="text-main-color hm-text-14">
+            <div className=" d-flex align-items-center ">
+              <i className="fas fa-circle success-text-color col-6 text-right" style={{ fontSize: "6px" }} />
+              <div>Active</div>
+            </div>
           </section>
         ) : (
-          <section className="text-center align-middle text-muted text-sm">
-            <small className="text-danger">InActive</small>
+          <section className="text-center text-main-color hm-text-14">
+            <div className=" d-flex align-items-center ">
+              <i className="fas fa-circle text-danger col-6 text-right" style={{ fontSize: "6px" }} />
+              <div>Inactive</div>
+            </div>
           </section>
         )}
       </td>
       <td data-label="Detail" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center align-middle text-muted text-sm">
-          <button className="btn btn-sm text-primary" onClick={() => handleCompanyBeenClicked(realm_token)}>
+        <section className="text-center  text-main-color hm-text-14">
+          <button className="btn btn-md text-primary" onClick={() => handleCompanyBeenClicked(realm_token)}>
             View
           </button>
         </section>

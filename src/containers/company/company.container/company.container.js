@@ -36,29 +36,32 @@ class Company extends Component {
             onClose={this.handleAddCompanyModal}
           />
         )}
-        <section className="mb-4">
-          <div className="d-flex  align-items-center mb-4 px-2  text-white">
-            <img
-              src={`${process.env.PUBLIC_URL}/img/icon_company.svg`}
-              height={18}
-              width={17}
-              alt="company"
-              className="hm-header-size mr-3"
-            />
-            <h4 className="hm-header-size">Company</h4>
-          </div>
-        </section>
-        <ListView
-          totalCount={30}
-          title="Company List"
-          fieldNames={["Company Logo", "Created On", "Company Name", "Status", "Detail"]}
-          hideHeader={false}
-          onPageChange={this.handlePageChange}
-        >
-          {company_list.record_list.map((company, index) => (
-            <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
-          ))}
-        </ListView>
+
+        <div className="container-fluid">
+          <section className="mb-4">
+            <div className="d-flex align-items-center mb-4 text-white">
+              <img
+                src={`${process.env.PUBLIC_URL}/img/icon_company.svg`}
+                height={18}
+                width={17}
+                alt="company"
+                className="hm-header-size mr-3"
+              />
+              <h4 className="hm-header-size">Company</h4>
+            </div>
+          </section>
+          <ListView
+            totalCount={30}
+            title="Company List"
+            fieldNames={["Company Logo", "Created On", "Company Name", "Status", "Detail"]}
+            hideHeader={false}
+            onPageChange={this.handlePageChange}
+          >
+            {company_list.record_list.map((company, index) => (
+              <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
+            ))}
+          </ListView>
+        </div>
       </main>
     );
   }
