@@ -9,7 +9,7 @@ class Invoice extends Component {
   render() {
     return (
       <main>
-        <div className="container-fluid">
+        <section className="container-fluid">
           <Header title="Invoice" />
           <ListHeader
             parentProps={{ title: "Invoice List", clickFunction: this.handleAddCompanyModal, clickTitle: "Invoice" }}
@@ -25,7 +25,7 @@ class Invoice extends Component {
             <InvoiceListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
           ))} */}
           </ListView>
-        </div>
+        </section>
       </main>
     );
   }

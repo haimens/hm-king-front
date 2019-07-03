@@ -11,7 +11,13 @@ export default function Header(props) {
           alt="company"
           className="hm-header-size mr-3"
         />
-        <h4 className="hm-header-size">{props.title}</h4>
+        <h4 className="hm-header-size mr-3">{props.title}</h4>
+        {props.subTitle && (
+          <div className=" d-flex align-items-center ">
+            <i className="fas fa-circle text-light-grey text-right mr-3" style={{ fontSize: "6px" }} />
+            <h4 className="hm-header-size text-light-grey ">{props.subTitle}</h4>
+          </div>
+        )}
       </div>
     </section>
   );

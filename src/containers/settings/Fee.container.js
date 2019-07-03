@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IconButton, ListView } from "../../components/shared";
+import { ListView, Header, ListHeader } from "../../components/shared";
 import FeeModal from "./fee.component/fee.modal";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -33,44 +33,10 @@ class Fee extends Component {
       <main>
         {showFeeValue && <FeeModal handleCreatingFee={this.handleCreatingFee} onClose={this.handleAddFeeValueModal} />}
         <section className="container-fluid">
-          <div className="mb-4">
-            <div className="d-flex align-items-center mb-4 text-white">
-              <img
-                src={`${process.env.PUBLIC_URL}/img/icon_company.svg`}
-                height={18}
-                width={17}
-                alt="company"
-                className="hm-header-size mr-3"
-              />
-              <h4 className="hm-header-size mr-3">Settings</h4>
-              <div className=" d-flex align-items-center ">
-                <i className="fas fa-circle text-light-grey text-right mr-3" style={{ fontSize: "6px" }} />
-                <h4 className="hm-header-size text-light-grey ">Fee Rate</h4>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-top shadow-sm bg-white">
-            <div className="d-flex justify-content-between p-3 shadow-sm" style={{ height: "65px" }}>
-              <h6 className="d-block d-flex align-items-center hm-title-sub-size text-main-color font-weight-bold ml-3">
-                Fee Rate
-              </h6>
-              <button
-                className="text-white button-main-background btn shadow p-0 hm-text-12 mr-3"
-                onClick={this.handleAddFeeValueModal}
-                style={{
-                  height: "28px",
-                  width: "98px"
-                }}
-              >
-                <div className="d-flex align-items-center justify-content-center">
-                  <i className="fas fa-plus mr-2" />
-                  <div>Fee Rate</div>
-                </div>
-              </button>
-            </div>
-          </div>
-
+          <Header title={"Settings"} subTitle="Fee Rate" />
+          <ListHeader
+            parentProps={{ title: "Fee Rate", clickFunction: this.handleAddFeeValueModal, clickTitle: "Fee Rate" }}
+          />
           <ListView
             totalCount={30}
             title="Fee Rate"
