@@ -36,28 +36,29 @@ class Company extends Component {
             onClose={this.handleAddCompanyModal}
           />
         )}
-        <section>
-          <div className="mb-4 d-flex justify-content-between">
-            <h3 className="font-weight-bold">Company List</h3>
-            <button className="btn btn-sm hm-bg-green text-white" onClick={this.handleAddCompanyModal}>
-              <span>
-                <i className="fas fa-plus mr-2" />
-              </span>
-              Add Company
-            </button>
+        <section className="mb-4">
+          <div className="d-flex  align-items-center mb-4 px-2  text-white">
+            <img
+              src={`${process.env.PUBLIC_URL}/img/icon_company.svg`}
+              height={18}
+              width={17}
+              alt="company"
+              className="hm-header-size mr-3"
+            />
+            <h4 className="hm-header-size">Company</h4>
           </div>
-          <ListView
-            totalCount={30}
-            title="Company List"
-            fieldNames={["Created On", "Last Updated", "Company ID", "Company Name", "Status", "Detail"]}
-            hideHeader={true}
-            onPageChange={this.handlePageChange}
-          >
-            {company_list.record_list.map((company, index) => (
-              <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
-            ))}
-          </ListView>
         </section>
+        <ListView
+          totalCount={30}
+          title="Company List"
+          fieldNames={["Created On", "Last Updated", "Company ID", "Company Name", "Status", "Detail"]}
+          hideHeader={false}
+          onPageChange={this.handlePageChange}
+        >
+          {company_list.record_list.map((company, index) => (
+            <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
+          ))}
+        </ListView>
       </main>
     );
   }
@@ -76,3 +77,12 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(Company));
+
+{
+  /* <button className="btn btn-sm hm-bg-green text-white" onClick={this.handleAddCompanyModal}>
+<span>
+  <i className="fas fa-plus mr-2" />
+</span>
+Add Company
+</button> */
+}
