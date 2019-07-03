@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import CompanyAddingModal from "./company.components/companyAdding.modal";
 import CompanyListItem from "./company.components/companyListItem.component";
-import { ListView } from "../../../components/shared";
+import { ListView, Header } from "../../../components/shared";
 import { findCompanyList, createACompany } from "../../../actions/company.action";
 import { findFeeList } from "../../../actions/fee.action";
+import ListHeader from "../../../components/shared/ListHeader";
 
 class Company extends Component {
   state = {
@@ -36,41 +37,11 @@ class Company extends Component {
             onClose={this.handleAddCompanyModal}
           />
         )}
-
-        <div className="container-fluid">
-          <section className="mb-4">
-            <div className="d-flex align-items-center mb-4 text-white">
-              <img
-                src={`${process.env.PUBLIC_URL}/img/icon_company.svg`}
-                height={18}
-                width={17}
-                alt="company"
-                className="hm-header-size mr-3"
-              />
-              <h4 className="hm-header-size">Company</h4>
-            </div>
-          </section>
-
-          <div className="rounded-top shadow-sm bg-white">
-            <section className="d-flex justify-content-between  p-3 shadow-sm" style={{ height: "65px" }}>
-              <h6 className="d-block d-flex align-items-center hm-title-sub-size text-main-color font-weight-bold ml-3">
-                Company List
-              </h6>
-              <button
-                className="text-white button-main-background btn shadow p-0 hm-text-12"
-                onClick={this.handleAddCompanyModal}
-                style={{
-                  height: "28px",
-                  width: "98px"
-                }}
-              >
-                <div className="d-flex align-items-center justify-content-center">
-                  <i className="fas fa-plus mr-2" />
-                  <div>Company</div>
-                </div>
-              </button>
-            </section>
-          </div>
+        <section className="container-fluid">
+          <Header title="Company" />
+          <ListHeader
+            parentProps={{ title: "Company List", clickFunction: this.handleAddCompanyModal, clickTitle: "Company" }}
+          />
           <ListView
             totalCount={company_list.count}
             title="Company List"
@@ -82,7 +53,7 @@ class Company extends Component {
               <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
             ))}
           </ListView>
-        </div>
+        </section>
       </main>
     );
   }
