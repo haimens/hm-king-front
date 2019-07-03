@@ -182,7 +182,7 @@ class CompanyDetailInfo extends Component {
                         type="radio"
                         id="status"
                         value="2"
-                        checked={status == "2"}
+                        checked={status === "2"}
                         onChange={this.handleInputChange}
                       />
                       <label className="form-check-label" htmlFor="status">
@@ -195,7 +195,7 @@ class CompanyDetailInfo extends Component {
                         type="radio"
                         id="status"
                         value="1"
-                        checked={status == "1"}
+                        checked={status === "1"}
                         onChange={this.handleInputChange}
                       />
                       <label className="form-check-label" htmlFor="status">
