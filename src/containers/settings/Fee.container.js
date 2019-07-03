@@ -19,6 +19,9 @@ class Fee extends Component {
     this.props.createFeeRate(rate);
     this.handleAddFeeValueModal();
   };
+  handleDeleteFee = tribute_rate_token => {
+    console.log(tribute_rate_token);
+  };
   componentDidMount() {
     this.props.findFeeList();
   }
@@ -28,8 +31,8 @@ class Fee extends Component {
     return (
       <main>
         {showFeeValue && <FeeModal handleCreatingFee={this.handleCreatingFee} onClose={this.handleAddFeeValueModal} />}
-        <div className="container-fluid">
-          <section className="mb-4">
+        <section className="container-fluid">
+          <div className="mb-4">
             <div className="d-flex align-items-center mb-4 text-white">
               <img
                 src={`${process.env.PUBLIC_URL}/img/icon_company.svg`}
@@ -38,17 +41,21 @@ class Fee extends Component {
                 alt="company"
                 className="hm-header-size mr-3"
               />
-              <h4 className="hm-header-size">Fee Rate</h4>
+              <h4 className="hm-header-size mr-3">Settings</h4>
+              <div className=" d-flex align-items-center ">
+                <i className="fas fa-circle text-light-grey text-right mr-3" style={{ fontSize: "6px" }} />
+                <h4 className="hm-header-size text-light-grey ">Fee Rate</h4>
+              </div>
             </div>
-          </section>
+          </div>
 
           <div className="rounded-top shadow-sm bg-white">
-            <section className="d-flex justify-content-between  p-3 shadow-sm" style={{ height: "65px" }}>
+            <div className="d-flex justify-content-between p-3 shadow-sm" style={{ height: "65px" }}>
               <h6 className="d-block d-flex align-items-center hm-title-sub-size text-main-color font-weight-bold ml-3">
                 Fee Rate
               </h6>
               <button
-                className="text-white button-main-background btn shadow p-0 hm-text-12"
+                className="text-white button-main-background btn shadow p-0 hm-text-12 mr-3"
                 onClick={this.handleAddFeeValueModal}
                 style={{
                   height: "28px",
@@ -60,7 +67,7 @@ class Fee extends Component {
                   <div>Fee Rate</div>
                 </div>
               </button>
-            </section>
+            </div>
           </div>
 
           <ListView
@@ -71,10 +78,10 @@ class Fee extends Component {
             onPageChange={this.handlePageChange}
           >
             {fee_list.record_list.map((fee, index) => (
-              <FeeListItem parentProps={fee} key={index} />
+              <FeeListItem parentProps={fee} key={index} handleDeleteAFee={this.handleDeleteFee} />
             ))}
           </ListView>
-        </div>
+        </section>
       </main>
     );
   }
