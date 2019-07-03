@@ -54,7 +54,7 @@ class ListView extends Component {
      */
     const renderFieldNames = (names = []) => {
       return names.map((name, key) => (
-        <th scope="col" key={key} className="text-secondary-color text-left custom-text">
+        <th scope="col" key={key} className="text-secondary-color text-center custom-text">
           {name}
         </th>
       ));

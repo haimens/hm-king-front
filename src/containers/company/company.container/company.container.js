@@ -51,7 +51,7 @@ class Company extends Component {
         <ListView
           totalCount={30}
           title="Company List"
-          fieldNames={["Created On", "Last Updated", "Company ID", "Company Name", "Status", "Detail"]}
+          fieldNames={["Company Logo", "Created On", "Company Name", "Status", "Detail"]}
           hideHeader={false}
           onPageChange={this.handlePageChange}
         >
