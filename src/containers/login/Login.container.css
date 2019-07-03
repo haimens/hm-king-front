@@ -4,6 +4,18 @@
   position: relative
 }
 
+.login-logo{
+  height: 38px;
+  width: 142px;
+  margin-left: 38px;
+  margin-top: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .login-content {
   min-width: 330px;
   max-width: 440px;

@@ -50,6 +50,12 @@ export class Login extends React.Component {
     return (
       <main className="login-container">
         <section className="login-image login-image-bg login-image-init" id="login-image" style={{ zIndex: "1" }} />
+        <img
+          src={`${process.env.PUBLIC_URL}/img/logo-white.svg`}
+          alt="Logo"
+          className="login-logo"
+          style={{ zIndex: "2" }}
+        />
         <section className="rounded p-3 login-content text-center" style={{ zIndex: "2" }}>
           <div className="hm-text-12 text-secondary-color mt-4 mb-5">Sign in with credentials</div>
           <form onSubmit={this.handleSubmit} className="container-fluid">
