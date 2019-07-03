@@ -74,10 +74,16 @@ class Nav extends Component {
                     this.handleLogOut();
                   }}
                 >
-                  <small>
-                    <i className="fas fa-running mr-3" />
-                  </small>
-                  Log Out
+                  <div className="d-flex align-items-center">
+                    <small>
+                      <img
+                        src={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
+                        alt={`${process.env.PUBLIC_URL}/img/icon_logout.svg`}
+                        className="mr-3"
+                      />
+                    </small>
+                    Log Out
+                  </div>
                 </button>
               </div>
             </div>
