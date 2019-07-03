@@ -13,11 +13,7 @@ export default class SubNavItem extends Component {
     const { name, path, history } = this.props;
     const parsedLocation = history.location.pathname.split("/");
     return (
-      <button
-        onClick={() => this.handleClick()}
-        className={`btn d-flex align-items-center w-100 ${parsedLocation[2] === path && "nav-selected"}`}
-        type="button"
-      >
+      <button onClick={() => this.handleClick()} className={`btn d-flex align-items-center w-100 }`} type="button">
         <div className="d-flex">
           <div
             className={`d-block hm-text-14 ${parsedLocation[2] === path ? "text-black" : "text-grey"}`}
