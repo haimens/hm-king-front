@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { ImageButton } from "../shared";
 import alertify from "alertifyjs";
-
+import "./Nav.component.css";
 class Nav extends Component {
   handleClick = type => {
     if (type === "notification") alertify.alert("Bell", "click");
