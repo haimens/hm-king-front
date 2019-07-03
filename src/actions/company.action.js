@@ -22,6 +22,7 @@ export const findCompanyList = (query = {}) => async dispatch => {
 };
 
 export const createACompany = (body = {}) => async dispatch => {
+  console.log(body);
   try {
     await startLoader(dispatch);
     await callApi(`realm/detail`, "POST", { ...body });
