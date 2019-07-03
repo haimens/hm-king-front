@@ -100,6 +100,7 @@ export default class Sidebar extends Component {
               name="Key"
               path="key"
               is_target={parsedLocation[3] === "key"}
+              className="mt-2"
             />
           </NavItem>
         </section>
