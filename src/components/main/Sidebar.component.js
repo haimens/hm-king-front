@@ -27,18 +27,22 @@ export default class Sidebar extends Component {
     return (
       <main className="bg-white" style={styles.container} id="navbarSupportedContent">
         {/* LOGO Section */}
-        <section className="mb-5 p-4 d-flex flex-row justify-content-between">
-          <a href="/home" onClick={e => this.handleClickLogo(e)}>
-            <img src={`${process.env.PUBLIC_URL}/img/op_logo.svg`} alt="logo" width={"100px"} />
+        <section className="d-flex flex-row justify-content-center">
+          <a
+            href="/dashboard"
+            style={{ marginTop: "21px", marginBottom: "61px" }}
+            onClick={e => this.handleClickLogo(e)}
+          >
+            <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="logo" width={"142px"} height={"40px"} />
           </a>
           {/* Handle Close */}
-          <ImageButton
+          {/* <ImageButton
             icon={<i className="fas fa-times text-white" />}
             type="submit"
             size={24}
             outerClassName={"d-flex-block d-sm-flex-block d-md-flex-block d-lg-none d-flex align-items-center"}
             onClick={() => this.handleClose("sidebar")}
-          />
+          /> */}
         </section>
         {/* NAV ITEMS */}
         <section className="accordion">
