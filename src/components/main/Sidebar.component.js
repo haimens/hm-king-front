@@ -83,17 +83,23 @@ export default class Sidebar extends Component {
             name="Settings"
             path="settings"
             history={this.props.parentProps.history}
-            showArrow={false}
+            showArrow={true}
           >
             <SubNavItem
               onClick={() => this.handleClick("/settings/fee")}
               name="Fee Rate"
-              is_target={parsedLocation[2] === "fee"}
+              history={this.props.parentProps.history}
+              name="Fee"
+              path="fee"
+              is_target={parsedLocation[3] === "fee"}
             />
             <SubNavItem
               onClick={() => this.handleClick("/settings/key")}
               name="Key Value"
-              is_target={parsedLocation[2] === "key"}
+              history={this.props.parentProps.history}
+              name="Key"
+              path="key"
+              is_target={parsedLocation[3] === "key"}
             />
           </NavItem>
         </section>

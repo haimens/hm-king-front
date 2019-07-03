@@ -24,12 +24,12 @@ export default class NavItem extends Component {
     if (parsedLocation[1] === path) {
       this.setState({
         collapse: true,
-        arrowClassName: "d-block fas fa-angle-up"
+        arrowClassName: "d-block fas fa-angle-down hm-text-14 text-black"
       });
     } else {
       this.setState({
         collapse: false,
-        arrowClassName: "d-block fas fa-angle-down"
+        arrowClassName: "d-block fas fa-angle-right hm-text-14 text-grey"
       });
     }
   }
@@ -40,12 +40,12 @@ export default class NavItem extends Component {
     if (parsedLocation[1] === path) {
       this.setState({
         collapse: true,
-        arrowClassName: "d-block fas fa-angle-up"
+        arrowClassName: "d-block fas fa-angle-down hm-text-14 text-black"
       });
     } else {
       this.setState({
         collapse: false,
-        arrowClassName: "d-block fas fa-angle-down"
+        arrowClassName: "d-block fas fa-angle-right hm-text-14 text-grey"
       });
     }
   }
@@ -61,17 +61,17 @@ export default class NavItem extends Component {
       <main>
         <button
           onClick={() => this.handleToggle()}
-          className={`btn d-flex align-items-center justify-content-between px-4 py-3 ${parsedLocation[1] === path &&
-            "nav-selected"}`}
+          className={`btn d-flex align-items-center justify-content-between px-4 py-3 w-100 ${parsedLocation[1] ===
+            path && "nav-selected"}`}
           type="button"
         >
-          <div className="d-flex align-items-center">
+          <div className="d-flex">
             <img className="ml-3 mr-4" src={this.props.image} alt={"icon"} />
             <div className={`d-block hm-text-14 ${parsedLocation[1] === path ? "text-black" : "text-grey"}`}>
               {name}
             </div>
           </div>
-          {showArrow && <i className={this.state.arrowClassName} />}
+          <div>{showArrow && <i className={this.state.arrowClassName} />} </div>
         </button>
         <div>{this.state.collapse && this.props.children}</div>
       </main>

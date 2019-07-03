@@ -11,7 +11,7 @@ const Dashboard = React.lazy(() => import("./containers/dashboard/dashboard.cont
 const Company = React.lazy(() => import("./containers/company/company.container/company.container"));
 const CompanyDetail = React.lazy(() => import("./containers/company/companyDetail.container/companyDetail.container"));
 
-const Invoice = React.lazy(() => import("./containers/invoice/Invoice.container"));
+const Invoice = React.lazy(() => import("./containers/invoice/invoice.container/invoice.container"));
 const Fee = React.lazy(() => import("./containers/settings/Fee.container"));
 const Key = React.lazy(() => import("./containers/settings/Key.container"));
 class App extends Component {

@@ -9,25 +9,23 @@ export default function FeeListItem(props) {
   const { cdate, udate, rate } = props.parentProps;
 
   return (
-    <tr>
-      <td data-label="Created On" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{convertUTCtoLocal(cdate)}</small>
+    <tr className="border-bottom">
+      <td data-label="Created On" style={{ height: "80px" }} className="align-middle">
+        <section className="text-center  text-main-color hm-text-14">
+          {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
-      <td data-label="Last Updated" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{convertUTCtoLocal(udate)}</small>
-        </section>
+      <td data-label="Fee Rate" style={{ height: "80px" }} className="align-middle">
+        <section className="text-center  text-main-color hm-text-14">{parseRate(rate)}</section>
       </td>
-      <td data-label="Fee Rate" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{parseRate(rate)}</small>
-        </section>
-      </td>
-      <td data-label="Delete" className="hm-text-ellipsis text-position">
-        <section className="text-position align-middle text-muted text-sm">
-          <i className="fas fa-trash-alt text-danger" />
+      <td data-label="Delete" style={{ height: "80px" }} className="align-middle">
+        <section className="d-flex justify-content-center text-main-color hm-text-14">
+          <div
+            className="d-flex justify-content-center align-items-center card-icon-background-red rounded-circle  hm-pointer-cursor shadow-sm border-white"
+            style={{ height: "36px", width: "36px" }}
+          >
+            <i className="fas fa-trash-alt text-white" />
+          </div>
         </section>
       </td>
     </tr>

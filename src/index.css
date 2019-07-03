@@ -193,3 +193,19 @@ h1,h2,h3,h4,h5,h6,h7 {
 .hm-input-height::-ms-input-placeholder { /* Microsoft Edge */
   color: #aeb5bd !important;
 }
+.card-icon-background-red{
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(to right, #f5385a, #f55d38);
+}
+
+.card-icon-background-green{
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(to right, #2dcf8c, #2ecec9);;
+}
+
+.card-img{
+  width: 18px; 
+  height: 17px;   
+}
