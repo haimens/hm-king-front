@@ -15,6 +15,7 @@ import LoaderAltNoModal from "./LoaderAltNoModal";
 import ImageLoaderModal from "./ImageLoader.modal";
 import PreviewImageModal from "./ImagePreview.modal";
 import Header from "./Header";
+import ListHeader from "./ListHeader";
 export {
   ImageLoaderModal,
   LoaderAltNoModal,
@@ -32,5 +33,6 @@ export {
   SearchBar,
   SuccessModal,
   PreviewImageModal,
-  Header
+  Header,
+  ListHeader
 };

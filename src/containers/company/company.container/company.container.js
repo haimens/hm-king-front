@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import CompanyAddingModal from "./company.components/companyAdding.modal";
 import CompanyListItem from "./company.components/companyListItem.component";
-import { ListView, Header } from "../../../components/shared";
+import { ListView, Header, ListHeader } from "../../../components/shared";
 import { findCompanyList, createACompany } from "../../../actions/company.action";
 import { findFeeList } from "../../../actions/fee.action";
-import ListHeader from "../../../components/shared/ListHeader";
 
 class Company extends Component {
   state = {
