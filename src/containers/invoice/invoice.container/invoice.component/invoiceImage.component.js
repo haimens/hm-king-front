@@ -44,7 +44,7 @@ export default class CompanyImage extends Component {
           <div className="col-2">
             <button
               type="button"
-              class="btn btn-sm btn-outline-secondary"
+              className="btn btn-sm btn-outline-secondary"
               onClick={e => this.handleModal(e)}
               style={{ borderRadius: "20px" }}
             >

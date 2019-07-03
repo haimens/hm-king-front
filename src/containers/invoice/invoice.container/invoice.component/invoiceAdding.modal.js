@@ -133,7 +133,7 @@ export default class PriceModifyModal extends Component {
                   className="form-control hm-input-height mt-3"
                   name="company_name"
                   id="company_name"
-                  placeHolder={"Company Name"}
+                  placeholder={"Company Name"}
                   value={company_name}
                   onChange={this.handleInputChange}
                 />
@@ -149,7 +149,7 @@ export default class PriceModifyModal extends Component {
                   className="form-control hm-input-height "
                   name="company_title"
                   id="company_title"
-                  placeHolder={"Company Title"}
+                  placeholder={"Company Title"}
                   value={company_title}
                   onChange={this.handleInputChange}
                 />
