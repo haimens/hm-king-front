@@ -20,11 +20,11 @@ class Dashboard extends Component {
     return (
       <main>
         <section className="mb-4">
-          <div className="d-flex align-items-center mb-4 px-2  text-white">
-            <i className="fas fa-desktop hm-header-size mr-3" />
-            <h4 className="hm-header-size">Dashboard</h4>
-          </div>
           <div className="container-fluid">
+            <div className="d-flex align-items-center mb-4 text-white">
+              <i className="fas fa-desktop hm-header-size mr-3" />
+              <h4 className="hm-header-size">Dashboard</h4>
+            </div>
             <div className="row">
               <div className="col-12 col-md-6 h-100 mb-4">
                 <DisplayCard

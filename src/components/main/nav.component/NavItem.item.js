@@ -72,11 +72,13 @@ export default class NavItem extends Component {
         >
           <div className="d-flex align-items-center">
             <img
-              className="avatar-icon-xs ml-3 mr-4"
+              className=" ml-3 mr-4"
               src={this.props.image || `${process.env.PUBLIC_URL}/img/icon_xiafa.svg`}
               alt={"xiafa"}
             />
-            <span className="d-block">{name}</span>
+            <span className={`d-block hm-text-14 ${parsedLocation[1] === path ? "text-black" : "text-grey"}`}>
+              {name}
+            </span>
           </div>
           {showArrow && <i className={this.state.arrowClassName} />}
         </button>
