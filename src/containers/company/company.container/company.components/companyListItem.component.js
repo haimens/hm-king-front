@@ -14,17 +14,17 @@ export default function PunchItem(props) {
   const { cdate, udate, company_name, tribute_rate_token, status_str, realm_token } = props.parentProps;
   return (
     <tr>
-      <td data-label="Created On" className="hm-text-ellipsis">
+      <td data-label="Created On" style={{ height: "80px" }} className="align-middle">
         <section className="text-position align-middle text-muted text-sm">
           <small>{convertUTCtoLocal(cdate)}</small>
         </section>
       </td>
-      <td data-label="Last Updated" className="hm-text-ellipsis">
+      <td data-label="Last Updated" style={{ height: "80px" }} className="align-middle">
         <section className="text-position align-middle text-muted text-sm">
           <small>{convertUTCtoLocal(udate)}</small>
         </section>
       </td>
-      <td data-label="Company ID" className="hm-text-ellipsis">
+      <td data-label="Company ID" style={{ height: "80px" }} className="align-middle">
         <section className="text-position align-middle text-muted text-sm hm-pointer-cursor">
           <div className="mr-1" data-for={tribute_rate_token} data-tip={tribute_rate_token}>
             <CopyToClipboard text={tribute_rate_token} onCopy={() => alertify.success("Copy Success")}>
@@ -34,12 +34,12 @@ export default function PunchItem(props) {
           </div>
         </section>
       </td>
-      <td data-label="Company Name" className="hm-text-ellipsis text-position">
+      <td data-label="Company Name" style={{ height: "80px" }} className="align-middle">
         <section className="text-position align-middle text-muted text-sm">
           <small>{company_name}</small>
         </section>
       </td>
-      <td data-label="Status" className="hm-text-ellipsis">
+      <td data-label="Status" style={{ height: "80px" }} className="align-middle">
         {status_str === "ACTIVE" ? (
           <section className="text-position align-middle text-muted text-sm">
             <small className="hm-text-green">Active</small>
@@ -50,7 +50,7 @@ export default function PunchItem(props) {
           </section>
         )}
       </td>
-      <td data-label="Detail" className="hm-text-ellipsis text-position">
+      <td data-label="Detail" style={{ height: "80px" }} className="align-middle">
         <section className="text-position align-middle text-muted text-sm">
           <button className="btn btn-sm text-primary" onClick={() => handleCompanyBeenClicked(realm_token)}>
             View

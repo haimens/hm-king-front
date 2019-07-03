@@ -41,9 +41,6 @@ class ListView extends Component {
       const cols = this.props.fieldNames.length;
       return <NoRecord howManyCol={cols} />;
     }
-    if (this.state.isLess) {
-      return list.slice(0, 5).map(item => item);
-    }
     return list.map(item => item);
   };
 
@@ -86,21 +83,14 @@ class ListView extends Component {
             )}
           </section>
         )}
-        <table className="table table-striped mb-0">
+        <table className="table mb-0">
           <thead>
             <tr style={{ backgroundColor: "#f7f9fc" }}>{renderFieldNames(this.props.fieldNames)}</tr>
           </thead>
           <tbody className="hm-break-word">{this.renderList(this.props.children)}</tbody>
         </table>
         <div className="d-flex flex-column shadow-sm border p-2">
-          {this.state.isLess && this.props.totalCount > 5 && (
-            <ImageButton
-              outerClassName={"w-100 p-2"}
-              icon={<i className="fas fa-angle-down fa-2x text-secondary" style={{ opacity: 0.8 }} />}
-              onClick={() => this.showMore()}
-            />
-          )}
-          {!this.state.isLess && <Pagination onPageChange={this.handlePageChange} count={this.props.totalCount} />}
+          {<Pagination onPageChange={this.handlePageChange} count={this.props.totalCount} />}
         </div>
       </div>
     );
