@@ -16,7 +16,7 @@ export default function PunchItem(props) {
     <tr className="border-bottom">
       <td data-label="Last Updated" style={{ height: "80px" }} className="align-middle">
         <section className="text-center text-main-color hm-text-14">
-          <img src={logo_path} alt="Company Logo" className="rounded-circle" height={"30px"} width={"30px"} />
+          <img src={logo_path} alt="Company Logo" className="rounded-circle" height={"32px"} width={"32px"} />
         </section>
       </td>
       <td data-label="Created On" style={{ height: "80px" }} className="align-middle">
@@ -37,7 +37,7 @@ export default function PunchItem(props) {
           </section>
         ) : (
           <section className="text-center text-main-color hm-text-14">
-              <div className=" d-flex align-items-center ">
+            <div className=" d-flex align-items-center ">
               <i className="fas fa-circle text-danger col-6 text-right" style={{ fontSize: "6px" }} />
               <div>Inactive</div>
             </div>

@@ -159,6 +159,9 @@ h1,h2,h3,h4,h5,h6,h7 {
 .text-main-color{
   color: #525f7f !important;
 }
+.button-main-background{
+  background-color: #5e72e4 !important;
+}
 .text-secondary-color{
   color: #8898aa !important;
 }

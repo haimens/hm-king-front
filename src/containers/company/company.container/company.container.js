@@ -51,11 +51,22 @@ class Company extends Component {
             </div>
           </section>
 
-          <div className="table-responsive rounded-top shadow-sm bg-white">
+          <div className="rounded-top shadow-sm bg-white">
             <section className="d-flex justify-content-between  p-3 shadow-sm" style={{ height: "65px" }}>
               <h6 className="d-block d-flex align-items-center hm-title-sub-size text-main-color font-weight-bold ml-3">
                 Company List
               </h6>
+              <button
+                className="text-white p-0 button-main-background btn shadow hm-text-12 d-flex align-items-center justify-content-center "
+                onClick={this.handleAddCompanyModal}
+                style={{
+                  height: "28px",
+                  width: "98px"
+                }}
+              >
+                <i className="fas fa-plus mr-2" />
+                <div>Company</div>
+              </button>
             </section>
           </div>
           <ListView
