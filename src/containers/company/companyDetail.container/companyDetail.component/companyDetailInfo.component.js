@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
-import { parseRate, convertUTCtoLocal } from "../../../actions/utilities.action";
-import CompanyImage from "./CompanyImage.component";
+import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../../components/shared";
+import { parseRate, convertUTCtoLocal } from "../../../../actions/utilities.action";
+import CompanyImage from "./companyImage.component";
 
 class CompanyDetailInfo extends Component {
   state = {
@@ -177,13 +177,27 @@ class CompanyDetailInfo extends Component {
                   <div className="form-group col-6 d-flex">
                     <div>Status:</div>
                     <div className="form-check form-check-inline ml-3">
-                      <input className="form-check-input" type="radio" id="status" value="2" checked={status == "2"} onChange={this.handleInputChange} />
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="status"
+                        value="2"
+                        checked={status == "2"}
+                        onChange={this.handleInputChange}
+                      />
                       <label className="form-check-label" htmlFor="status">
                         Active
                       </label>
                     </div>
                     <div className="form-check form-check-inline">
-                      <input className="form-check-input" type="radio" id="status" value="1" checked={status == "1"} onChange={this.handleInputChange}/>
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="status"
+                        value="1"
+                        checked={status == "1"}
+                        onChange={this.handleInputChange}
+                      />
                       <label className="form-check-label" htmlFor="status">
                         Inactive
                       </label>

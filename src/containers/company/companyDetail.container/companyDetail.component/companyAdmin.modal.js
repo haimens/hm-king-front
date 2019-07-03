@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Modal } from "../../../components/shared";
-import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
+import { Modal } from "../../../../components/shared";
+import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../../components/shared";
 import alertify from "alertifyjs";
-import CompanyImage from "./CompanyImage.component";
+import CompanyImage from "./companyImage.component";
 export default class CompanyAdmin extends Component {
   state = {
     img_url: "",

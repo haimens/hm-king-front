@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Modal, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
-import { parseRate } from "../../../actions/utilities.action";
-import CompanyImage from "./CompanyImage.component";
+import { Modal, ImageLoaderModal, PreviewImageModal } from "../../../../components/shared";
+import { parseRate } from "../../../../actions/utilities.action";
+import CompanyImage from "./companyImage.component";
 import alertify from "alertifyjs";
-import GAutoComplete from "../../../components/shared/GAutoComplete";
+import GAutoComplete from "../../../../components/shared/GAutoComplete";
 
 export default class PriceModifyModal extends Component {
   state = {

@@ -8,11 +8,12 @@ import { LoaderAlt } from "./components/shared";
 const Login = React.lazy(() => import("./containers/login/Login.container"));
 const ResetPassword = React.lazy(() => import("./containers/resetPassword/ResetPassword.container"));
 const Dashboard = React.lazy(() => import("./containers/dashboard/dashboard.container/dashboard.container"));
-const Company = React.lazy(() => import("./containers/company/Company.container"));
+const Company = React.lazy(() => import("./containers/company/company.container/company.container"));
+const CompanyDetail = React.lazy(() => import("./containers/company/companyDetail.container/companyDetail.container"));
+
 const Invoice = React.lazy(() => import("./containers/invoice/Invoice.container"));
 const Fee = React.lazy(() => import("./containers/settings/Fee.container"));
 const Key = React.lazy(() => import("./containers/settings/Key.container"));
-const CompanyDetail = React.lazy(() => import("./containers/company/CompanyDetail.container"));
 class App extends Component {
   componentDidMount() {
     Promise.all([

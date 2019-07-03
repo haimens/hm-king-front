@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyAddingModal from "./company.components/CompanyAdding.modal";
-import CompanyListItem from "./company.components/CompanyListItem.component";
-import { ListView } from "../../components/shared";
-import { findCompanyList, createACompany } from "../../actions/company.action";
-import { findFeeList } from "../../actions/fee.action";
+import CompanyAddingModal from "./company.components/companyAdding.modal";
+import CompanyListItem from "./company.components/companyListItem.component";
+import { ListView } from "../../../components/shared";
+import { findCompanyList, createACompany } from "../../../actions/company.action";
+import { findFeeList } from "../../../actions/fee.action";
 
 class Company extends Component {
   state = {

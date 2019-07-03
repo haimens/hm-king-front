@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyListItem from "./company.components/CompanyListItem.component";
-import ListView from "../../components/shared/ListView";
-import IconButton from "../../components/shared/IconButton";
-import CompanyDetailInfo from "./companyDetail.component/CompanyDetailInfo.component";
-import CompanyCard from "./companyDetail.component/CompanyCard.component";
-import CompanyAdminModal from "./companyDetail.component/CompanyAdmin.modal";
-import CompanyInvoiceModal from "./companyDetail.component/CompanyInvoice.modal";
+import CompanyListItem from "../company.container/company.components/companyListItem.component";
+import ListView from "../../../components/shared/ListView";
+import IconButton from "../../../components/shared/IconButton";
+import CompanyDetailInfo from "./companyDetail.component/companyDetailInfo.component";
+import CompanyCard from "./companyDetail.component/companyCard.component";
+import CompanyAdminModal from "./companyDetail.component/companyAdmin.modal";
+import CompanyInvoiceModal from "./companyDetail.component/companyInvoice.modal";
 
-import CompanyAdminListItem from "./companyDetail.component/CompanyAdminList.item";
-import CompanyInvoiceListItem from "./companyDetail.component/CompanyInvoiceList.item";
+import CompanyAdminListItem from "./companyDetail.component/companyAdminList.item";
+import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList.item";
 
-import { findCompanyDetail } from "../../actions/company.action";
-import { findLordList, createALord } from "../../actions/lord.action";
-import { findFeeList } from "../../actions/fee.action";
+import { findCompanyDetail } from "../../../actions/company.action";
+import { findLordList, createALord } from "../../../actions/lord.action";
+import { findFeeList } from "../../../actions/fee.action";
 
 class CompanyDetail extends Component {
   state = {

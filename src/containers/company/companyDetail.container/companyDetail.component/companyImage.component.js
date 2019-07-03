@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../components/shared";
+import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../../components/shared";
 import alertify from "alertifyjs";
 export default class CompanyImage extends Component {
   handleClose = e => {
