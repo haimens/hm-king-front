@@ -49,48 +49,68 @@ export class Login extends React.Component {
   render() {
     return (
       <main className="login-container">
-        <section className="login-image login-image-init" id="login-image" />
-        <section className="rounded bg-white p-5 login-content">
-          <form onSubmit={this.handleSubmit}>
-            <div className="mb-3">
-              <label className="d-block">登录用户名</label>
+        <section className="login-image login-image-bg login-image-init" id="login-image" style={{ zIndex: "1" }} />
+        <section className="rounded p-3 login-content text-center" style={{ zIndex: "2" }}>
+          <div className="hm-text-12 text-secondary-color mt-4 mb-5">Sign in with credentials</div>
+          <form onSubmit={this.handleSubmit} className="container-fluid">
+            <div className="input-group shadow-sm mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text border-0 bg-white text-secondary-color" id="basic-addon1">
+                  <i className="fas fa-envelope text-secondary-color" />
+                </span>
+              </div>
               <input
                 required
                 type="text"
-                className="bg-light border-0 rounded p-2 w-100"
-                placeholder="输入用户名"
-                name="login"
+                className="form-control hm-input-height hm-input-login border-0 p-2"
+                placeholder="Username"
+                aria-label="Username"
                 id="username"
+                aria-describedby="basic-addon1"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
             </div>
-            <div className="mb-3">
-              <label className="d-block ">登录密码</label>
+
+            <div className="input-group shadow-sm mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
+                  <i className="fas fa-unlock-alt text-secondary-color" />
+                </span>
+              </div>
               <input
                 required
                 type="password"
-                className="bg-light border-0 rounded p-2 w-100"
-                placeholder="输入密码"
-                name="login"
+                className="form-control hm-input-height hm-input-login border-0 p-2"
+                placeholder="Username"
+                aria-label="Username"
                 id="passcode"
+                aria-describedby="basic-addon2"
                 value={this.state.passcode}
                 onChange={this.handleChange}
               />
             </div>
 
-            <div className="text-center">
-              <button type="submit" className="btn hm-bg-green text-white  pl-4 pr-4">
-                登录
+            <div className="text-center" style={{ marginTop: "55px" }}>
+              <button type="submit" className="btn button-main-background button-main-size text-white ">
+                Sign in
               </button>
             </div>
-            <div>
+            {/* <div>
               <button onClick={this.handleForgetPass} className="btn btn-link p-0 btn-sm text-green ">
                 忘记密码?
               </button>
-            </div>
+            </div> */}
           </form>
+          <p
+            className="text-left hm-pointer-cursor"
+            style={{ marginTop: "60px", color: "#ced4da" }}
+            onClick={this.handleForgetPass}
+          >
+            Forgot Password?
+          </p>
         </section>
+        <section className="login-image login-image-bg-2" />
       </main>
     );
   }

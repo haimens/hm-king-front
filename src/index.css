@@ -17,11 +17,6 @@ body {
   box-sizing:border-box;
 }
 
-@media screen and (max-width: 1000px) {
-  *{
-    font-size:12px;
-  }
-}
 
 html{
   width:100%;
@@ -94,13 +89,6 @@ h1,h2,h3,h4,h5,h6,h7 {
 
 .text-position{
   text-align: left;
-}
-
-/* This is for table item align and vertical */
-@media screen and (max-width: 1000px) {
-  .text-position{
-    text-align: right;
-  }
 }
 
 .hm-button-purple{
@@ -183,6 +171,11 @@ h1,h2,h3,h4,h5,h6,h7 {
 
 .hm-input-height::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #aeb5bd !important;
+  opacity: 1; /* Firefox */
+}
+
+.hm-input-login::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #8898aa !important;
   opacity: 1; /* Firefox */
 }
 
