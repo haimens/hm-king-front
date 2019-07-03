@@ -37,7 +37,7 @@ export default function PunchItem(props) {
           </section>
         ) : (
           <section className="text-center text-main-color hm-text-14">
-            <div className=" d-flex align-items-center ">
+              <div className=" d-flex align-items-center ">
               <i className="fas fa-circle text-danger col-6 text-right" style={{ fontSize: "6px" }} />
               <div>Inactive</div>
             </div>
