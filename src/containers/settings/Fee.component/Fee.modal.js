@@ -32,7 +32,7 @@ export default class FeeModal extends Component {
         onClose={this.handleClose}
         position="center"
         getWidth={"467px"}
-        getHeight={"270px"}
+        getHeight={"280px"}
         zIndex="1080"
       >
         <div className="container">

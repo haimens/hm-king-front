@@ -8,7 +8,7 @@ import { convertUTCtoLocal, parseRate } from "../../../actions/utilities.action"
 export default function FeeListItem(props) {
   const { cdate, tribute_rate_token, rate } = props.parentProps;
   const handleDeleteFee = tribute_rate_token => {
-    props.handleDeleteAFee(tribute_rate_token);
+    props.handleDeleteAFee(tribute_rate_token, parseRate(rate));
   };
   return (
     <tr className="border-bottom">

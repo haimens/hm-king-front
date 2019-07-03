@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { ListView, Header, ListHeader } from "../../components/shared";
-import FeeModal from "./fee.component/fee.modal";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { findFeeList, createAFeeRate, deleteAFeeRate } from "../../actions/fee.action";
+import alertify from "alertifyjs";
+import FeeModal from "./fee.component/fee.modal";
 import FeeListItem from "./fee.component/feeList.item";
+import { ListView, Header, ListHeader } from "../../components/shared";
+import { findFeeList, createAFeeRate, deleteAFeeRate } from "../../actions/fee.action";
 
 class Fee extends Component {
   state = {
@@ -20,8 +21,17 @@ class Fee extends Component {
     this.props.createAFeeRate(rate);
     this.handleAddFeeValueModal();
   };
-  handleDeleteFee = tribute_rate_token => {
-    this.props.deleteAFeeRate(tribute_rate_token);
+  handleDeleteFee = (tribute_rate_token, rate) => {
+    alertify.confirm(
+      "Warning",
+      `Are you sure you want to delete this ${rate} rate?`,
+      () => {
+        this.props.deleteAFeeRate(tribute_rate_token);
+      },
+      function() {
+        alertify.error("Cancel");
+      }
+    );
   };
   componentDidMount() {
     this.props.findFeeList();
