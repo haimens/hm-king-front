@@ -3,7 +3,7 @@ import { ListView, Header, ListHeader } from "../../components/shared";
 import FeeModal from "./fee.component/fee.modal";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { findFeeList, createFeeRate } from "../../actions/fee.action";
+import { findFeeList, createAFeeRate, deleteAFeeRate } from "../../actions/fee.action";
 import FeeListItem from "./fee.component/feeList.item";
 
 class Fee extends Component {
@@ -17,11 +17,11 @@ class Fee extends Component {
     this.props.findFeeList({ start });
   };
   handleCreatingFee = rate => {
-    this.props.createFeeRate(rate);
+    this.props.createAFeeRate(rate);
     this.handleAddFeeValueModal();
   };
   handleDeleteFee = tribute_rate_token => {
-    console.log(tribute_rate_token);
+    this.props.deleteAFeeRate(tribute_rate_token);
   };
   componentDidMount() {
     this.props.findFeeList();
@@ -62,5 +62,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { findFeeList, createFeeRate }
+  { findFeeList, createAFeeRate, deleteAFeeRate }
 )(withRouter(Fee));

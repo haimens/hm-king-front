@@ -21,11 +21,27 @@ export const findFeeList = (query = {}) => async dispatch => {
   }
 };
 
-export const createFeeRate = rate => async dispatch => {
+export const createAFeeRate = rate => async dispatch => {
   try {
     await startLoader(dispatch);
     await callApi(`tribute/rate`, "POST", {
       rate
+    });
+    await dispatch(findFeeList());
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const deleteAFeeRate = tribute_rate_token => async dispatch => {
+  console.log(tribute_rate_token);
+  try {
+    await startLoader(dispatch);
+    await callApi(`tribute/rate/${tribute_rate_token}`, "PATCH", {
+      status: 0
     });
     await dispatch(findFeeList());
     await launchSuccess(dispatch);
