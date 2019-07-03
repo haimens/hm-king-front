@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../../components/shared";
 import alertify from "alertifyjs";
 export default class CompanyImage extends Component {
   handleClose = e => {
@@ -36,13 +35,13 @@ export default class CompanyImage extends Component {
 
   render() {
     return (
-      <div className="d-flex bg-white align-items-center mt-3" style={{ height: "48px" }}>
+      <div className="bg-white align-items-center mt-3" style={{ height: "48px" }}>
         <div className="row">
           <div className="col-2">
             <label htmlFor="logo">{this.props.title}</label>
           </div>
 
-          <div className="col-2  ml-5">
+          <div className="col-2">
             <button
               type="button"
               class="btn btn-sm btn-outline-secondary"
@@ -52,7 +51,7 @@ export default class CompanyImage extends Component {
               Upload
             </button>
           </div>
-          <div className="col-8">
+          <div className="col-8 d-flex justify-content-end">
             {this.props.parentProps.img_url && (
               <img
                 className="hm-pointer-cursor"

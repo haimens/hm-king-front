@@ -3,7 +3,6 @@ import "cropperjs/dist/cropper.css";
 import { Modal } from "../../shared";
 import Cropper from "react-cropper";
 import request from "./request";
-
 /**
  * ImageLoaderModal
  * @title
@@ -110,8 +109,8 @@ export default class ImageUploader extends Component {
         zIndex={1100}
         title={this.props.title}
         position="center"
-        getWidth={"50vw"}
-        getHeight={"30vw"}
+        getWidth={"600px"}
+        getHeight={"600px"}
         headerContainerClassName={""}
         headerTitleClassName={"text-dark"}
       >
@@ -121,19 +120,21 @@ export default class ImageUploader extends Component {
             上传
           </button>
         </section>
-        {this.state.image_url && (
-          <Cropper
-            autoCropArea={1}
-            ref="cropper"
-            src={this.state.image_url}
-            style={{ width: "100%", height: "300px" }}
-            // aspectRatio={this.props.aspectRatio}
-            guides={true}
-            viewMode={1}
-            crop={this.handleCrop}
-            zoomable={false}
-          />
-        )}
+        <section className="d-flex justify-content-center p-4">
+          {this.state.image_url && (
+            <Cropper
+              autoCropArea={1}
+              ref="cropper"
+              src={this.state.image_url}
+              style={{ width: "100%", height: "400px" }}
+              // aspectRatio={this.props.aspectRatio}
+              guides={true}
+              viewMode={1}
+              crop={this.handleCrop}
+              zoomable={false}
+            />
+          )}
+        </section>
       </Modal>
     );
   }
