@@ -1,5 +1,4 @@
 import React from "react";
-import { parseAmount } from "../../../../actions/utilities.action";
 import "./display.card.css";
 
 /**

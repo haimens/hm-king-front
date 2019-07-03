@@ -24,7 +24,7 @@ export const findCompanyList = (query = {}) => async dispatch => {
 export const createACompany = (body = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/detail`, "POST", { ...body });
+    await callApi(`realm/detail`, "POST", { ...body });
     await launchSuccess(dispatch);
     await dispatch(findCompanyList());
     await stopLoader(dispatch);
@@ -38,7 +38,7 @@ export const createACompany = (body = {}) => async dispatch => {
 export const updateACompanyInfo = (realm_token, body = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/detail/${realm_token}`, "POST", { ...body });
+    await callApi(`realm/detail/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
     await dispatch(findCompanyList());
     await stopLoader(dispatch);
@@ -52,7 +52,7 @@ export const updateACompanyInfo = (realm_token, body = {}) => async dispatch => 
 export const updateACompanyPrimaryResource = (realm_token, body = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/detail/${realm_token}`, "POST", { ...body });
+    await callApi(`realm/detail/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
     await dispatch(findCompanyList());
     await stopLoader(dispatch);
@@ -81,7 +81,7 @@ export const findCompanyDetail = realm_token => async dispatch => {
 export const createAPaymentMethod = (realm_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/email/${realm_token}`, "POST", { ...body });
+    await callApi(`realm/email/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
     await dispatch(findAllPaymentMethodList());
     await stopLoader(dispatch);
@@ -110,7 +110,7 @@ export const findAllPaymentMethodList = realm_token => async dispatch => {
 export const updateAPaymentMethod = (realm_token, payment_resource_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/all/payment/${realm_token}/${payment_resource_token}`, "PATCH", {
+    await callApi(`realm/all/payment/${realm_token}/${payment_resource_token}`, "PATCH", {
       ...body
     });
     await launchSuccess(dispatch);
@@ -126,7 +126,7 @@ export const updateAPaymentMethod = (realm_token, payment_resource_token, body) 
 export const createAMessageMethod = (realm_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/message/${realm_token}`, "POST", { ...body });
+    await callApi(`realm/message/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
     await dispatch(findAllMessageMethodList());
     await stopLoader(dispatch);
@@ -155,7 +155,7 @@ export const findAllMessageMethodList = realm_token => async dispatch => {
 export const updateAMessageMethod = (realm_token, message_resource_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/all/payment/${realm_token}/${message_resource_token}`, "PATCH", {
+    await callApi(`realm/all/payment/${realm_token}/${message_resource_token}`, "PATCH", {
       ...body
     });
     await launchSuccess(dispatch);
@@ -171,7 +171,7 @@ export const updateAMessageMethod = (realm_token, message_resource_token, body) 
 export const createAEmailMethod = (realm_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/email/${realm_token}`, "POST", { ...body });
+    await callApi(`realm/email/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
     await dispatch(findAllEmailMethodList());
     await stopLoader(dispatch);
@@ -200,7 +200,7 @@ export const findAllEmailMethodList = realm_token => async dispatch => {
 export const updateAEmailMethod = (realm_token, email_resource_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`realm/all/payment/${realm_token}/${email_resource_token}`, "PATCH", {
+    await callApi(`realm/all/payment/${realm_token}/${email_resource_token}`, "PATCH", {
       ...body
     });
     await dispatch(findAllEmailMethodList());

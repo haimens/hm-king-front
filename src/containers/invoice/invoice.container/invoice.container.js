@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import InvoiceAddingModal from "./invoice.component/invoiceAdding.modal";
 import { ListView, Header, ListHeader } from "../../../components/shared";
 
 class Invoice extends Component {

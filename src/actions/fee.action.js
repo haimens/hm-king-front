@@ -24,7 +24,7 @@ export const findFeeList = (query = {}) => async dispatch => {
 export const createFeeRate = rate => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`tribute/rate`, "POST", {
+    await callApi(`tribute/rate`, "POST", {
       rate
     });
     await dispatch(findFeeList());
