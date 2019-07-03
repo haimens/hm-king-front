@@ -123,7 +123,7 @@ export const updateAPaymentMethod = (realm_token, payment_resource_token, body) 
   }
 };
 
-//message_resource_token, message_resource_id
+//twilio_account_id, twilio_auth_token, twilio_from_num
 export const createAMessageMethod = (realm_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
@@ -168,7 +168,7 @@ export const updateAMessageMethod = (realm_token, message_resource_token, body) 
   }
 };
 
-//email_resource_token, email_resource_id
+//sendgrid_api_key, sendgrid_from_email
 export const createAEmailMethod = (realm_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
