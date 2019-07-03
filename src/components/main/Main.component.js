@@ -34,17 +34,10 @@ export class Main extends Component {
     const { opened } = this.state;
     return (
       <main>
-        <Menu
-          pageWrapId={opened ? "page-wrap" : "page-wrap-none"}
-          isOpen={opened}
-          onStateChange={this.isMenuOpen}
-          customBurgerIcon={false}
-          customCrossIcon={false}
-          noOverlay
-        >
+        <Menu isOpen={opened} onStateChange={this.isMenuOpen} customBurgerIcon={false} customCrossIcon={false}>
           <Sidebar parentProps={parentProps} handleSideBarBeenOpened={this.handleSideBarBeenOpened} />
         </Menu>
-        <section className={opened && `fixing-leftMargin-whenOpened `} id={opened ? "page-wrap" : "page-wrap-none"}>
+        <section>
           <div className=" background-linear" style={{ height: "230px" }}>
             <Nav handleSideBarBeenOpened={this.handleSideBarBeenOpened} parentProps={parentProps} />
           </div>
