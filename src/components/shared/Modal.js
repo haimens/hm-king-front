@@ -53,14 +53,14 @@ class Modal extends Component {
     };
 
     return (
-      <main className="modal-over-lay" onClick={this.handleExit} style={{ zIndex: `${this.props.zIndex || 9}` }}>
+      <main className="modal-over-lay" style={{ zIndex: `${this.props.zIndex || 9}` }}>
         <section className={`${curr} ${this.props.className} rounded`} id="onlyScroll" style={widthHeight}>
           <div
-            className={`sticky-top w-100 md-2 p-2 border-bottom shadow-sm ${
+            className={`sticky-top w-100 md-2 p-2 border-bottom ${
               this.props.headerContainerClassName ? this.props.headerContainerClassName : "bg-white"
             }`}
           >
-            <header className={`d-flex justify-content-between align-items-center`}>
+            <header className={`d-flex justify-content-between  align-items-center px-4 `} style={{ height: "74px" }}>
               <h5 className={this.props.headerTitleClassName}>{this.props.title}</h5>
               <ImageButton
                 // image={`${process.env.PUBLIC_URL}/img/forget-password@2x.png`}

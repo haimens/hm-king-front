@@ -56,8 +56,12 @@ const PlacesWithStandaloneSearchBox = compose(
   <>
     {props.places[0] && props._getAddress(props.places)}
     <StandaloneSearchBox ref={props.onSearchBoxMounted} bounds={props.bounds} onPlacesChanged={props.onPlacesChanged}>
-      <div className="input-group mb-3 ">
-        <input className={`form-control  ${props.inputClass}`} type="text" placeholder={""} />
+      <div className="input-group ">
+        <input
+          className={`form-control  ${props.inputClass} hm-input-height my-3`}
+          type="text"
+          placeholder={"Company Address"}
+        />
       </div>
     </StandaloneSearchBox>
   </>

@@ -162,6 +162,34 @@ h1,h2,h3,h4,h5,h6,h7 {
 .button-main-background{
   background-color: #5e72e4 !important;
 }
+.button-main-size{
+  width: 90px;
+  height: 39px;
+}
+
 .text-secondary-color{
   color: #8898aa !important;
+}
+
+.text-modal-color{
+  color: #32325d;
+}
+.text-modal-title{
+  font-size: 17px
+}
+.hm-input-height{
+  height: 46px !important;
+}
+
+.hm-input-height::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #aeb5bd !important;
+  opacity: 1; /* Firefox */
+}
+
+.hm-input-height:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #aeb5bd !important;
+}
+
+.hm-input-height::-ms-input-placeholder { /* Microsoft Edge */
+  color: #aeb5bd !important;
 }

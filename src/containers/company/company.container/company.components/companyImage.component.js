@@ -36,33 +36,35 @@ export default class CompanyImage extends Component {
 
   render() {
     return (
-      <div className="mb-3">
-        <form className="bg-white" onSubmit={this.handleSubmit}>
-          <div className="row">
-            <div className="col-2">
-              <label htmlFor="logo">{this.props.title}</label>
-            </div>
-            <div className="col-8">
-              {this.props.parentProps.img_url && (
-                <img
-                  className="hm-pointer-cursor"
-                  onClick={() => this.props.parentProps.handleShowPreview()}
-                  src={this.props.parentProps.img_url}
-                  alt="icon"
-                  width={"20px"}
-                  height={"20px"}
-                />
-              )}
-            </div>
-            <div className="col-2">
-              <ImageButton
-                outerClassName={"ml-auto"}
-                icon={<i className="fas fa-upload fa-lg" />}
-                onClick={e => this.handleModal(e)}
-              />
-            </div>
+      <div className="d-flex bg-white align-items-center mt-3" style={{ height: "48px" }}>
+        <div className="row">
+          <div className="col-2">
+            <label htmlFor="logo">{this.props.title}</label>
           </div>
-        </form>
+
+          <div className="col-2  ml-5">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary"
+              onClick={e => this.handleModal(e)}
+              style={{ borderRadius: "20px" }}
+            >
+              Upload
+            </button>
+          </div>
+          <div className="col-8">
+            {this.props.parentProps.img_url && (
+              <img
+                className="hm-pointer-cursor"
+                onClick={() => this.props.parentProps.handleShowPreview()}
+                src={this.props.parentProps.img_url}
+                alt="icon"
+                width={"20px"}
+                height={"20px"}
+              />
+            )}
+          </div>
+        </div>
       </div>
     );
   }

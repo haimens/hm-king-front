@@ -110,7 +110,8 @@ export default class ImageUploader extends Component {
         zIndex={1100}
         title={this.props.title}
         position="center"
-        getWidth={"90vw"}
+        getWidth={"50vw"}
+        getHeight={"30vw"}
         headerContainerClassName={""}
         headerTitleClassName={"text-dark"}
       >
@@ -125,7 +126,7 @@ export default class ImageUploader extends Component {
             autoCropArea={1}
             ref="cropper"
             src={this.state.image_url}
-            style={{ width: "100%", height: "400px" }}
+            style={{ width: "100%", height: "300px" }}
             // aspectRatio={this.props.aspectRatio}
             guides={true}
             viewMode={1}

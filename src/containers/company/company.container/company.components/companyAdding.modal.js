@@ -118,46 +118,45 @@ export default class PriceModifyModal extends Component {
           <PreviewImageModal image={icon_path} onClose={() => this.setState({ showPreviewFavicon: false })} />
         )}
         <Modal
-          title="Add Company"
+          title="Company"
           onClose={this.handleClose}
+          headerTitleClassName={"text-modal-color text-modal-title"}
           position="center"
-          getWidth={"580px"}
-          getHeight={"550px"}
+          getWidth={"467px"}
+          getHeight={"604px"}
           zIndex="1080"
         >
           <div className="container">
             <div className="p-3">
               <div className="form-group">
-                <label htmlFor="company_name">Company Name</label>
                 <input
-                  className="form-control"
+                  className="form-control hm-input-height mt-3"
                   name="company_name"
                   id="company_name"
+                  placeHolder={"Company Name"}
                   value={company_name}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="company_name">Company Address</label>
                 <GAutoComplete getGoogleAddress={this.saveToAddress} />
               </div>
 
               <div className="form-group">
-                <label htmlFor="company_title">Company Title</label>
                 <input
                   type="cell"
-                  className="form-control"
+                  className="form-control hm-input-height "
                   name="company_title"
                   id="company_title"
+                  placeHolder={"Company Title"}
                   value={company_title}
                   onChange={this.handleInputChange}
                 />
               </div>
               <div className="form-group ">
-                <label htmlFor="fee_rate">Fee Rate</label>
                 <select
-                  className="custom-select form-control"
+                  className="custom-select form-control hm-input-height  mt-3"
                   id="fee_rate"
                   value={fee_rate}
                   onChange={this.handleInputChange}
@@ -173,22 +172,25 @@ export default class PriceModifyModal extends Component {
               </div>
 
               <CompanyImage
-                title={"Logo"}
+                title={"Logo:"}
                 parentProps={{ img_url: logo_path, handleShowPreview: this.handleShowPreview }}
                 handleShowImage={this.handleShowImage}
               />
 
               <CompanyImage
-                title={"Favi"}
+                title={"Favicon:"}
                 parentProps={{ img_url: icon_path, handleShowPreview: this.handleShowPreviewFavicon }}
                 handleShowImage={this.handleShowFavicon}
               />
 
-              <div className="form-group text-center p-3">
-                <button className="hm-bg-green btn btn-sm px-4 text-white mr-3" onClick={this.handleCreatingCompany}>
+              <div className="form-group text-right p-3">
+                <button
+                  className="button-main-background btn button-main-size px-4 text-white mr-3"
+                  onClick={this.handleCreatingCompany}
+                >
                   Add
                 </button>
-                <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
+                <button onClick={this.handleClose} className="btn button-main-size btn-outline-secondary px-4">
                   Cancel
                 </button>
               </div>

@@ -57,15 +57,17 @@ class Company extends Component {
                 Company List
               </h6>
               <button
-                className="text-white p-0 button-main-background btn shadow hm-text-12 d-flex align-items-center justify-content-center "
+                className="text-white button-main-background btn shadow p-0 hm-text-12"
                 onClick={this.handleAddCompanyModal}
                 style={{
                   height: "28px",
                   width: "98px"
                 }}
               >
-                <i className="fas fa-plus mr-2" />
-                <div>Company</div>
+                <div className="d-flex align-items-center justify-content-center">
+                  <i className="fas fa-plus mr-2" />
+                  <div>Company</div>
+                </div>
               </button>
             </section>
           </div>
