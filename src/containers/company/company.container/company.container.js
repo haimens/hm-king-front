@@ -50,11 +50,19 @@ class Company extends Component {
               <h4 className="hm-header-size">Company</h4>
             </div>
           </section>
+
+          <div className="table-responsive rounded-top shadow-sm bg-white">
+            <section className="d-flex justify-content-between  p-3 shadow-sm" style={{ height: "65px" }}>
+              <h6 className="d-block d-flex align-items-center hm-title-sub-size text-main-color font-weight-bold ml-3">
+                Company List
+              </h6>
+            </section>
+          </div>
           <ListView
-            totalCount={30}
+            totalCount={company_list.count}
             title="Company List"
             fieldNames={["Company Logo", "Created On", "Company Name", "Status", "Detail"]}
-            hideHeader={false}
+            hideHeader={true}
             onPageChange={this.handlePageChange}
           >
             {company_list.record_list.map((company, index) => (

@@ -61,7 +61,7 @@ class ListView extends Component {
     };
 
     return (
-      <div className="table-responsive rounded shadow-sm bg-white">
+      <div className="table-responsive rounded-bottom shadow-sm bg-white">
         {!this.props.hideHeader && (
           <section
             className="d-flex justify-content-between 
