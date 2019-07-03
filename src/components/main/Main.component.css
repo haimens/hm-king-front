@@ -33,6 +33,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   position: fixed;
   top: 0;
   height: 100%;
+  width: 250px !important;
 }
 
 /* General sidebar styles */
@@ -60,7 +61,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: rgba(0, 0, 0, 0) !important;
 }
 .fixing-leftMargin-whenOpened{
-  width: calc(100% - 300px) !important;
+  width: calc(100% - 250px) !important;
   margin-left: 0px !important;
   transition: 0.5s ease !important;
 }
@@ -86,4 +87,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-right: 12px solid transparent;
   border-bottom: 12px solid #fff;
   clear: both;
+}
+
+
+#page-wrap{
+  transform: translate3d(250px, 0px, 0px) !important;
+}
+
+#page-wrap-none{
+  transform: translate3d(0px, 0px, 0px) !important;
 }

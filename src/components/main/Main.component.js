@@ -31,11 +31,12 @@ export class Main extends Component {
       resetPassword: this.props.resetPassword,
       location: this.props.location
     };
+    const { opened } = this.state;
     return (
       <main>
         <Menu
-          pageWrapId={"page-wrap"}
-          isOpen={this.state.opened}
+          pageWrapId={opened ? "page-wrap" : "page-wrap-none"}
+          isOpen={opened}
           onStateChange={this.isMenuOpen}
           customBurgerIcon={false}
           customCrossIcon={false}
@@ -43,7 +44,7 @@ export class Main extends Component {
         >
           <Sidebar parentProps={parentProps} handleSideBarBeenOpened={this.handleSideBarBeenOpened} />
         </Menu>
-        <section className={this.state.opened && `fixing-leftMargin-whenOpened `} id="page-wrap">
+        <section className={opened && `fixing-leftMargin-whenOpened `} id={opened ? "page-wrap" : "page-wrap-none"}>
           <div className=" background-linear" style={{ height: "230px" }}>
             <Nav handleSideBarBeenOpened={this.handleSideBarBeenOpened} parentProps={parentProps} />
           </div>
