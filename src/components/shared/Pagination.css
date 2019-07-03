@@ -20,7 +20,8 @@
   display: inline-flex;
 }
 .pagination a{
-  color: grey
+  color: grey;
+  padding:10px;
 }
 
 .pagination-active{
