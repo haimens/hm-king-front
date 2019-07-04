@@ -12,7 +12,7 @@ export default class CompanyImage extends Component {
 
   render() {
     return (
-      <div className="bg-white align-items-center mt-3" style={{ height: "48px" }}>
+      <div className="bg-white align-items-center pt-3" style={{ height: "48px" }}>
         <div className="row">
           <div className="col-2">
             <label htmlFor="logo">{this.props.title}</label>

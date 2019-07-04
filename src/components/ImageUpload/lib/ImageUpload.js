@@ -119,13 +119,7 @@ export default class ImageUploader extends Component {
           headerTitleClassName={"text-dark"}
         >
           <section className="d-flex justify-content-between p-4">
-            <input
-              type="file"
-              className="custom-file-input"
-              id="inputGroupFile01"
-              onChange={this.handleImageUpload}
-              accept="image/png, image/jpeg"
-            />
+            <input type="file" onChange={this.handleImageUpload} accept="image/png, image/jpeg" />
             <button
               onClick={this.handleImageSubmit}
               disabled={!this.state.cropped_image}
