@@ -38,7 +38,7 @@ export class Main extends Component {
           <Sidebar parentProps={parentProps} handleSideBarBeenOpened={this.handleSideBarBeenOpened} />
         </Menu>
         <section>
-          <div className=" background-linear" style={{ height: "230px" }}>
+          <div className="background-linear" style={{ height: "230px" }}>
             <Nav handleSideBarBeenOpened={this.handleSideBarBeenOpened} parentProps={parentProps} />
           </div>
           <div style={{ marginTop: "-145px" }}>

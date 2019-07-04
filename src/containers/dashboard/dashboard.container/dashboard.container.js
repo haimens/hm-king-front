@@ -6,6 +6,7 @@ import Chart from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { chartOptions, parseOptions, chartExample2 } from "./dashboard.component/chart";
 import "./dashboard.container.css";
+import Header from "../../../components/shared/Header";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -21,10 +22,7 @@ class Dashboard extends Component {
       <main>
         <section className="mb-4">
           <div className="container-fluid">
-            <div className="d-flex align-items-center mb-4 text-white">
-              <i className="fas fa-desktop hm-header-size mr-3" />
-              <h4 className="hm-header-size">Dashboard</h4>
-            </div>
+            <Header title="Dashboard" icon="desktop" />
             <div className="row">
               <div className="col-12 col-md-6 h-100 mb-4">
                 <DisplayCard
@@ -50,7 +48,7 @@ class Dashboard extends Component {
         </section>
         <section>
           <div className="container-fluid ">
-            <div className="bg-white shadow-sm rounded p-3">
+            <div className="bg-white shadow-sm rounded-custom border p-3">
               <div className="mb-4">
                 <div className="text-secondary-color font-weight-bold mb-1">PERFORMANCE</div>
                 <div className="hm-title-sub-size text-main-color font-weight-bold">Total orders</div>

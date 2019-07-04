@@ -205,3 +205,16 @@ h1,h2,h3,h4,h5,h6,h7 {
 .text-light-grey {
   color: #dddddc
 }
+.rounded-custom-top{
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.rounded-custom-bottom{
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.rounded-custom{
+border-radius: 6px;
+}

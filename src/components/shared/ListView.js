@@ -61,7 +61,7 @@ class ListView extends Component {
     };
 
     return (
-      <div className="table-responsive rounded-bottom shadow-sm bg-white">
+      <div className="table-responsive shadow-sm rounded-custom-bottom bg-white">
         {!this.props.hideHeader && (
           <section
             className="d-flex justify-content-between 
@@ -89,7 +89,7 @@ class ListView extends Component {
           </thead>
           <tbody className="hm-break-word">{this.renderList(this.props.children)}</tbody>
         </table>
-        <div className="d-flex flex-column shadow-sm border p-2">
+        <div className="d-flex flex-column shadow-sm border border-top-0 p-2 rounded-custom-bottom">
           {<Pagination onPageChange={this.handlePageChange} count={this.props.totalCount} />}
         </div>
       </div>
