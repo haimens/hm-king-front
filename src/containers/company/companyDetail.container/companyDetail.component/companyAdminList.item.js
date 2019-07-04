@@ -8,31 +8,18 @@ import { convertUTCtoLocal } from "../../../../actions/utilities.action";
 export default function CompanyAdminList(props) {
   const { cell, email, name, username } = props.parentProps;
   return (
-    <tr>
-      <td data-label="Created On" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{convertUTCtoLocal()}</small>
-        </section>
+    <tr className="border-bottom">
+      <td className="items-height align-middle" data-label="Admin Name">
+        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{name}</section>
       </td>
-      <td data-label="Admin Name" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{name}</small>
-        </section>
+      <td className="items-height align-middle" data-label="Cell">
+        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{cell}</section>
       </td>
-      <td data-label="Cell" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{cell}</small>
-        </section>
+      <td className="items-height align-middle" data-label="Email">
+        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{email}</section>
       </td>
-      <td data-label="Email" className="hm-text-ellipsis text-position">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{email}</small>
-        </section>
-      </td>
-      <td data-label="Username" className="hm-text-ellipsis">
-        <section className="text-position align-middle text-muted text-sm">
-          <small>{username}</small>
-        </section>
+      <td className="items-height align-middle" data-label="Username">
+        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{username}</section>
       </td>
     </tr>
   );

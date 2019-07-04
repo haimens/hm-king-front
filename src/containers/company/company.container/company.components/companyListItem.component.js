@@ -14,20 +14,20 @@ export default function PunchItem(props) {
   const { cdate, logo_path, company_name, tribute_rate_token, status_str, realm_token } = props.parentProps;
   return (
     <tr className="border-bottom">
-      <td data-label="Last Updated" style={{ height: "80px" }} className="align-middle">
+      <td data-label="Last Updated" className="align-middle items-height">
         <section className="text-center text-main-color hm-text-14">
           <img src={logo_path} alt="Company Logo" className="rounded-circle" height={"32px"} width={"32px"} />
         </section>
       </td>
-      <td data-label="Created On" style={{ height: "80px" }} className="align-middle">
+      <td data-label="Created On" className="align-middle items-height">
         <section className="text-center  text-main-color hm-text-14">
           {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
-      <td data-label="Company Name" style={{ height: "80px" }} className="align-middle">
+      <td data-label="Company Name" className="align-middle items-height">
         <section className="text-center text-main-color font-weight-bold hm-text-14">{company_name}</section>
       </td>
-      <td data-label="Status" style={{ height: "80px" }} className="align-middle">
+      <td data-label="Status" className="align-middle items-height">
         {status_str === "ACTIVE" ? (
           <section className="text-main-color hm-text-14">
             <div className=" d-flex align-items-center ">
@@ -44,7 +44,7 @@ export default function PunchItem(props) {
           </section>
         )}
       </td>
-      <td data-label="Detail" style={{ height: "80px" }} className="align-middle">
+      <td data-label="Detail" className="align-middle items-height">
         <section className="text-center  text-main-color hm-text-14">
           <button className="btn btn-md text-primary" onClick={() => handleCompanyBeenClicked(realm_token)}>
             View

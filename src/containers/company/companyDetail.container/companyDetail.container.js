@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import CompanyListItem from "../company.container/company.components/companyListItem.component";
-import ListView from "../../../components/shared/ListView";
-import IconButton from "../../../components/shared/IconButton";
 import CompanyDetailInfo from "./companyDetail.component/companyDetailInfo.component";
 import CompanyCard from "./companyDetail.component/companyCard.component";
 import CompanyAdminModal from "./companyDetail.component/companyAdmin.modal";
@@ -15,7 +13,7 @@ import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList
 import { findCompanyDetail } from "../../../actions/company.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
-import { Header } from "../../../components/shared";
+import { Header, ListView, IconButton, ListHeader } from "../../../components/shared";
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
@@ -42,23 +40,40 @@ class CompanyDetail extends Component {
     const { showCompanyAdminModal, showInvoiceModal } = this.state;
     return (
       <main>
+        {showCompanyAdminModal && (
+          <CompanyAdminModal
+            realm_token={realm_token}
+            createALord={createALord}
+            onClose={this.handleAddCompanyAdminModal}
+          />
+        )}
         <section className="container-fluid">
-          <Header title="Company" subTitle={"Company Detail"} />
+          <section>
+            <Header title="Company" subTitle={"Company Detail"} />
+          </section>
           <section>
             <CompanyDetailInfo company_detail={company_detail} />
           </section>
-          <ListView
-            totalCount={lord_list.count}
-            title="Company Admin List"
-            fieldNames={["Created On", "Admin Name", "Call", "Email", "Username"]}
-            hideHeader={true}
-            onPageChange={this.handlePageChange}
-          >
-            {lord_list.record_list.map((lord, index) => (
-              <CompanyAdminListItem parentProps={lord} key={index} />
-            ))}
-          </ListView>
-
+          <section>
+            <ListHeader
+              parentProps={{
+                title: "Company Admin List",
+                clickFunction: this.handleAddCompanyAdminModal,
+                clickTitle: "Company Admin"
+              }}
+            />
+            <ListView
+              totalCount={lord_list.count}
+              title="Company Admin List"
+              fieldNames={["Admin Name", "Call", "Email", "Username"]}
+              hideHeader={true}
+              onPageChange={this.handlePageChange}
+            >
+              {lord_list.record_list.map((lord, index) => (
+                <CompanyAdminListItem parentProps={lord} key={index} />
+              ))}
+            </ListView>
+          </section>
           <section>
             <div className="my-3 d-flex ">
               <h4>Invoice List</h4>

@@ -182,7 +182,7 @@ export default class PriceModifyModal extends Component {
                 handleShowImage={this.handleShowFavicon}
               />
 
-              <div className="form-group text-right px-3 pt-3">
+              <div className="form-group text-right pt-3">
                 <button
                   className="button-main-background btn button-main-size px-4 text-white mr-3"
                   onClick={this.handleCreatingCompany}

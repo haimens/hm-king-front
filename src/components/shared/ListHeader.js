@@ -8,17 +8,15 @@ export default function ListHeader(props) {
           {props.parentProps.title}
         </h6>
         <button
-          className="text-white button-main-background btn shadow p-0 hm-text-12 mr-3"
+          className="text-white button-main-background border-0 rounded shadow px-1 hm-text-12 mr-3 d-flex align-items-center justify-content-center"
           onClick={props.parentProps.clickFunction}
           style={{
             height: "28px",
-            width: "98px"
+            minWidth: "98px"
           }}
         >
-          <div className="d-flex align-items-center justify-content-center">
-            <i className="fas fa-plus mr-2" />
-            <div> {props.parentProps.clickTitle}</div>
-          </div>
+          <i className="fas fa-plus mr-2" />
+          <div> {props.parentProps.clickTitle}</div>
         </button>
       </section>
     </div>

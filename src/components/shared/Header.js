@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Header(props) {
   return (
-    <section className="mb-4">
+    <div className="mb-4">
       <div className="d-flex align-items-center mb-4 text-white">
         {props.icon ? (
           <i className={`fas fa-${props.icon} hm-header-size mr-3`} />
@@ -23,6 +23,6 @@ export default function Header(props) {
           </div>
         )}
       </div>
-    </section>
+    </div>
   );
 }

@@ -21,6 +21,9 @@ export const findLordList = (realm_token, query = {}) => async dispatch => {
 };
 
 export const createALord = (realm_token, body = {}) => async dispatch => {
+  console.log(realm_token);
+  console.log(body);
+
   try {
     await startLoader(dispatch);
     await callApi(`lord/detail/${realm_token}`, "POST", { ...body });

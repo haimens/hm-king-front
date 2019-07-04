@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
-import { ImageButton, ImageLoaderModal, PreviewImageModal } from "../../../../components/shared";
 import alertify from "alertifyjs";
-import CompanyImage from "./companyImage.component";
 export default class CompanyAdmin extends Component {
   state = {
     img_url: "",
@@ -11,7 +9,8 @@ export default class CompanyAdmin extends Component {
     username: "",
     name: "",
     cell: "",
-    email: ""
+    email: "",
+    area: ""
   };
 
   handleInputChange = e => {
@@ -30,12 +29,13 @@ export default class CompanyAdmin extends Component {
     this.setState({ img_url: img_path });
   };
   handleAddingCompanyAdmin = () => {
-    const { username, name, cell, email } = this.state;
-    if ((username !== "", name !== "", cell !== "", email !== "")) {
-      this.props.createALord(this.props.realm_token, {
+    const { username, name, cell, email, area } = this.state;
+    const { realm_token, createALord } = this.props;
+    if (username !== "" && name !== "" && cell !== "" && email !== "" && area !== "") {
+      createALord(realm_token, {
         username,
         name,
-        cell,
+        cell: `${area} ${cell}`,
         email
       });
       this.handleClose();
@@ -45,76 +45,80 @@ export default class CompanyAdmin extends Component {
   };
 
   render() {
-    const { username, name, cell, email } = this.state;
+    const { username, name, cell, email, area } = this.state;
     return (
       <div>
-        {/* {showImage && (
-          <ImageLoaderModal
-            onClose={() => this.setState({ showImage: false })}
-            onImageUpload={this.handleImageUpload}
-            title="Image Upload"
-          />
-        )}
-        {showPreview && <PreviewImageModal image={img_url} onClose={() => this.setState({ showPreview: false })} />} */}
         <Modal
           title="Add Company Admin"
           onClose={this.handleClose}
           position="center"
-          getWidth={"580px"}
-          getHeight={"450px"}
-          zIndex="1080"
+          getWidth={"467px"}
+          getHeight={"500px"}
+          zIndex="3"
         >
           <div className="container">
             <div className="p-3">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
+              <div className="form-group pt-3">
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control hm-input-height"
                   name="name"
+                  placeholder="Name"
                   id="name"
                   value={name}
                   onChange={this.handleInputChange}
                 />
               </div>
 
-              <div className="form-group">
-                <label htmlFor="cell">Cell</label>
-                <input type="text" className="form-control" id="cell" value={cell} onChange={this.handleInputChange} />
+              <div className="form-group input-group pt-3 d-flex">
+                <input
+                  type="text"
+                  className="form-control hm-input-height col-2"
+                  id="area"
+                  placeholder="Area"
+                  value={area}
+                  onChange={this.handleInputChange}
+                />
+
+                <input
+                  type="text"
+                  className="form-control hm-input-height "
+                  id="cell"
+                  placeholder="Cell"
+                  value={cell}
+                  onChange={this.handleInputChange}
+                />
               </div>
 
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
+              <div className="form-group pt-3">
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control hm-input-height"
                   id="email"
+                  placeholder="Email"
                   value={email}
                   onChange={this.handleInputChange}
                 />
               </div>
 
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
+              <div className="form-group pt-3">
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control hm-input-height"
                   id="username"
+                  placeholder="Username"
                   value={username}
                   onChange={this.handleInputChange}
                 />
               </div>
-              {/* <CompanyImage
-                parentProps={{ img_url, showPreview }}
-                title={"Profile"}
-                handleShowImage={this.handleShowImage}
-              /> */}
-
-              <div className="form-group text-center p-3">
-                <button className="hm-bg-green btn btn-sm px-4 text-white mr-3" onClick={this.handleAddingCompanyAdmin}>
+              <div className="form-group text-right pt-3">
+                <button
+                  className="button-main-background btn button-main-size px-4 text-white mr-3"
+                  onClick={this.handleAddingCompanyAdmin}
+                >
                   Add
                 </button>
-                <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
+                <button onClick={this.handleClose} className="btn button-main-size btn-outline-secondary px-4">
                   Cancel
                 </button>
               </div>
