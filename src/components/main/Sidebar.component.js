@@ -12,7 +12,8 @@ export default class Sidebar extends Component {
   handleClickLogo = e => {
     e.preventDefault();
     const { history } = this.props.parentProps;
-    history.push("/home");
+    this.props.handleSideBarBeenOpened();
+    history.push("/dashboard");
   };
   handleClose = type => {
     if (type === "sidebar") {

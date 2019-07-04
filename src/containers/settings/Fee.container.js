@@ -27,9 +27,10 @@ class Fee extends Component {
       `Are you sure you want to delete this ${rate} rate?`,
       () => {
         this.props.deleteAFeeRate(tribute_rate_token);
+        alertify.success("Delete Success");
       },
       function() {
-        alertify.error("Cancel");
+        alertify.error("Delete Stop");
       }
     );
   };
