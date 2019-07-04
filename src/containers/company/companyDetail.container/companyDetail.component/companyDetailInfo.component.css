@@ -1,0 +1,15 @@
+.company-intro-border{
+  border-top: 1px solid  #32325d;
+}
+
+.company-detail-button{
+   border:1px solid #fb6240; 
+   height:25px;
+  width: 25px
+}
+
+.company-detail-button-sub{
+  border:1px solid #5e72e4; 
+  height:25px;
+ width: 25px
+}
