@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyPaymentDetail from "./companyPayment.component/companyPaymentDetail.component";
+import CompanyPaymentDetail from "./companyPayment.component/companyPayment.component";
 import CompanyPaymentDetailListItem from "./companyPayment.component/companyPaymentList.item";
 import CompanyPaymentModal from "./companyPayment.component/companyPayment.modal";
 import CompanyPaymentUpdateModal from "./companyPayment.component/companyPaymentUpdate.modal";

@@ -66,7 +66,13 @@ const initialState = {
     end: 0
   },
   message_list: {
-    record_list: [],
+    record_list: [
+      {
+        twilio_account_id: "",
+        twilio_auth_token: "",
+        twilio_from_num: ""
+      }
+    ],
     count: 0,
     end: 0
   }

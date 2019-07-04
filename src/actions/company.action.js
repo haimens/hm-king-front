@@ -129,7 +129,7 @@ export const createAMessageMethod = (realm_token, body) => async dispatch => {
     await startLoader(dispatch);
     await callApi(`realm/message/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
-    await dispatch(findAllMessageMethodList());
+    await dispatch(findAllMessageResourceList(realm_token));
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -137,7 +137,7 @@ export const createAMessageMethod = (realm_token, body) => async dispatch => {
   }
 };
 
-export const findAllMessageMethodList = realm_token => async dispatch => {
+export const findAllMessageResourceList = realm_token => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`realm/all/message/${realm_token}`, "GET");
@@ -156,11 +156,11 @@ export const findAllMessageMethodList = realm_token => async dispatch => {
 export const updateAMessageMethod = (realm_token, message_resource_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    await callApi(`realm/all/payment/${realm_token}/${message_resource_token}`, "PATCH", {
+    await callApi(`realm/message/${realm_token}/${message_resource_token}`, "PATCH", {
       ...body
     });
     await launchSuccess(dispatch);
-    await dispatch(findAllMessageMethodList());
+    await dispatch(findAllMessageResourceList(realm_token));
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);

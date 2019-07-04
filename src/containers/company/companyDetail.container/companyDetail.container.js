@@ -13,7 +13,7 @@ import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList
 import { findCompanyDetail } from "../../../actions/company.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
-import { Header, ListView, IconButton, ListHeader } from "../../../components/shared";
+import { Header, ListView, ListHeader } from "../../../components/shared";
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
@@ -30,6 +30,9 @@ class CompanyDetail extends Component {
     const { realm_token } = match.params;
     if (type === "payment") {
       history.push(`/company/detail/payment/${realm_token}`);
+    }
+    if (type === "message") {
+      history.push(`/company/detail/message/${realm_token}`);
     }
   };
   async componentDidMount() {

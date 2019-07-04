@@ -3,7 +3,6 @@ import { parseRate } from "../../../../actions/utilities.action";
 import "./companyDetailInfo.component.css";
 class CompanyDetailInfo extends Component {
   handleDetailButtonClicked = type => {
-    console.log(type);
     this.props.handleDetailButtonClicked(type);
   };
   render() {
@@ -32,7 +31,10 @@ class CompanyDetailInfo extends Component {
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Basic Information</div>
-                    <button className="rounded-circle bg-white company-detail-button d-flex justify-content-center align-items-center">
+                    <button
+                      className="rounded-circle bg-white company-detail-button d-flex justify-content-center align-items-center"
+                      onClick={() => this.handleDetailButtonClicked("detail")}
+                    >
                       <i className="fas fa-pencil-alt" style={{ color: "#fb6240" }} />
                     </button>
                   </div>
@@ -104,7 +106,10 @@ class CompanyDetailInfo extends Component {
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Primary Message Information</div>
-                    <button className="rounded-circle bg-white company-detail-button-sub d-flex justify-content-center align-items-center">
+                    <button
+                      className="rounded-circle bg-white company-detail-button-sub d-flex justify-content-center align-items-center"
+                      onClick={() => this.handleDetailButtonClicked("message")}
+                    >
                       <i className="fas fa-ellipsis-h" style={{ color: "#5e72e4" }} />
                     </button>
                   </div>
@@ -126,7 +131,10 @@ class CompanyDetailInfo extends Component {
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Primary Email Information</div>
-                    <button className="rounded-circle bg-white company-detail-button-sub d-flex justify-content-center align-items-center">
+                    <button
+                      className="rounded-circle bg-white company-detail-button-sub d-flex justify-content-center align-items-center"
+                      onClick={() => this.handleDetailButtonClicked("email")}
+                    >
                       <i className="fas fa-ellipsis-h" style={{ color: "#5e72e4" }} />
                     </button>
                   </div>

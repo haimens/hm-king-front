@@ -13,6 +13,9 @@ const CompanyDetail = React.lazy(() => import("./containers/company/companyDetai
 const CompanyPaymentDetail = React.lazy(() =>
   import("./containers/company/companySource.container/companyPayment.container/companyPayment.container")
 );
+const CompanyMessageDetail = React.lazy(() =>
+  import("./containers/company/companySource.container/companyMessage.container/companyMessage.container")
+);
 const Invoice = React.lazy(() => import("./containers/invoice/invoice.container/invoice.container"));
 const Fee = React.lazy(() => import("./containers/settings/fee.container/fee.container"));
 const General = React.lazy(() => import("./containers/settings/general.container/general.container"));
@@ -47,6 +50,7 @@ class App extends Component {
               <ProtectedRoute exact path="/company" component={Company} />
               <ProtectedRoute exact path="/company/detail/:realm_token" component={CompanyDetail} />
               <ProtectedRoute exact path="/company/detail/payment/:realm_token" component={CompanyPaymentDetail} />
+              <ProtectedRoute exact path="/company/detail/message/:realm_token" component={CompanyMessageDetail} />
               <ProtectedRoute exact path="/invoice" component={Invoice} />
               <ProtectedRoute exact path="/settings/fee" component={Fee} />
               <ProtectedRoute exact path="/settings/general" component={General} />
