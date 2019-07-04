@@ -150,6 +150,9 @@ h1,h2,h3,h4,h5,h6,h7 {
 .button-main-background{
   background-color: #5e72e4 !important;
 }
+.text-purple{
+  color: #5e72e4 !important;
+}
 .button-main-size{
   width: 90px;
   height: 39px;

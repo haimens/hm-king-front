@@ -24,7 +24,7 @@ export default class NavItem extends Component {
     if (parsedLocation[1] === path) {
       this.setState({
         collapse: true,
-        arrowClassName: "d-block fas fa-angle-down hm-text-14 text-black"
+        arrowClassName: "d-block fas fa-angle-down hm-text-14 text-purple"
       });
     } else {
       this.setState({
@@ -40,7 +40,7 @@ export default class NavItem extends Component {
     if (parsedLocation[1] === path) {
       this.setState({
         collapse: true,
-        arrowClassName: "d-block fas fa-angle-down hm-text-14 text-black"
+        arrowClassName: "d-block fas fa-angle-down hm-text-14 text-purple"
       });
     } else {
       this.setState({
