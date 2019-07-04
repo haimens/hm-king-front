@@ -17,25 +17,29 @@ class Key extends Component {
       <main>
         {showKeyValue && <GeneralModal onClose={this.handleAddKeyValue} />}
         <section className="container-fluid">
-          <Header title={"Settings"} subTitle="General Setting" />
-          <ListHeader
-            parentProps={{
-              title: "General Setting",
-              clickFunction: this.handleAddFeeValueModal,
-              clickTitle: "Key Value"
-            }}
-          />
+          <div className="mb-4">
+            <Header title={"Settings"} subTitle="General Setting" />
+          </div>
+          <div className="mb-4">
+            <ListHeader
+              parentProps={{
+                title: "General Setting",
+                clickFunction: this.handleAddFeeValueModal,
+                clickTitle: "Key Value"
+              }}
+            />
 
-          <ListView
-            totalCount={30}
-            fieldNames={["Created On", "Last Updated", "ID Token", "Key", "Value", "Delete"]}
-            hideHeader={true}
-            onPageChange={this.handlePageChange}
-          >
-            {/* {punch_list_in_puri.record_list.map((punch, index) => (
+            <ListView
+              totalCount={30}
+              fieldNames={["Created On", "Last Updated", "ID Token", "Key", "Value", "Delete"]}
+              hideHeader={true}
+              onPageChange={this.handlePageChange}
+            >
+              {/* {punch_list_in_puri.record_list.map((punch, index) => (
               <KeyListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
             ))} */}
-          </ListView>
+            </ListView>
+          </div>
         </section>
       </main>
     );

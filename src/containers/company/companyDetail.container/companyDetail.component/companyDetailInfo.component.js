@@ -12,7 +12,7 @@ class CompanyDetailInfo extends Component {
       payment_resource_info
     } = this.props.company_detail;
     return (
-      <div className="bg-white rounded-custom mb-4 shadow-sm border">
+      <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
           <div className="col-1 d-flex justify-content-center">
             <img

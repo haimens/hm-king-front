@@ -37,21 +37,25 @@ class Company extends Component {
           />
         )}
         <section className="container-fluid">
-          <Header title="Company" />
-          <ListHeader
-            parentProps={{ title: "Company List", clickFunction: this.handleAddCompanyModal, clickTitle: "Company" }}
-          />
-          <ListView
-            totalCount={company_list.count}
-            title="Company List"
-            fieldNames={["Company Logo", "Created On", "Company Name", "Status", "Detail"]}
-            hideHeader={true}
-            onPageChange={this.handlePageChange}
-          >
-            {company_list.record_list.map((company, index) => (
-              <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
-            ))}
-          </ListView>
+          <div className="mb-4">
+            <Header title="Company" />
+          </div>
+          <div className="mb-4">
+            <ListHeader
+              parentProps={{ title: "Company List", clickFunction: this.handleAddCompanyModal, clickTitle: "Company" }}
+            />
+            <ListView
+              totalCount={company_list.count}
+              title="Company List"
+              fieldNames={["Company Logo", "Created On", "Company Name", "Status", "Detail"]}
+              hideHeader={true}
+              onPageChange={this.handlePageChange}
+            >
+              {company_list.record_list.map((company, index) => (
+                <CompanyListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
+              ))}
+            </ListView>
+          </div>
         </section>
       </main>
     );

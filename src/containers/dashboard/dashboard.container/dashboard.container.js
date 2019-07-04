@@ -22,7 +22,9 @@ class Dashboard extends Component {
       <main>
         <section className="mb-4">
           <div className="container-fluid">
-            <Header title="Dashboard" icon="desktop" />
+            <div className="mb-4">
+              <Header title="Dashboard" icon="desktop" />
+            </div>
             <div className="row">
               <div className="col-12 col-md-6 h-100 mb-4">
                 <DisplayCard

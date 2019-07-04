@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Header(props) {
   return (
-    <div className="mb-4">
+    <div>
       <div className="d-flex align-items-center mb-4 text-white">
         {props.icon ? (
           <i className={`fas fa-${props.icon} hm-header-size mr-3`} />

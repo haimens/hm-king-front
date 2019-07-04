@@ -31,7 +31,7 @@ class CompanyDetail extends Component {
     Promise.all([findCompanyDetail(realm_token), findLordList(realm_token), findFeeList()]);
   }
   handlePageChange = start => {
-    this.props.findLordList(start);
+    this.props.findLordList({ start });
   };
   render() {
     const { fee_list, company_detail, lord_list, createALord, match } = this.props;
@@ -48,13 +48,13 @@ class CompanyDetail extends Component {
           />
         )}
         <section className="container-fluid">
-          <section>
+          <div className="mb-4">
             <Header title="Company" subTitle={"Company Detail"} />
-          </section>
-          <section>
+          </div>
+          <div className="mb-4 ">
             <CompanyDetailInfo company_detail={company_detail} />
-          </section>
-          <section>
+          </div>
+          <div className="mb-4">
             <ListHeader
               parentProps={{
                 title: "Company Admin List",
@@ -73,14 +73,15 @@ class CompanyDetail extends Component {
                 <CompanyAdminListItem parentProps={lord} key={index} />
               ))}
             </ListView>
-          </section>
-          <section>
-            <div className="my-3 d-flex ">
-              <h4>Invoice List</h4>
-              <button className="ml-3" onClick={this.handleAddInvoiceModal}>
-                Hi
-              </button>
-            </div>
+          </div>
+          <div className="mb-4">
+            <ListHeader
+              parentProps={{
+                title: "Invoice List",
+                clickFunction: this.handleAddInvoiceModal,
+                clickTitle: "Invoice"
+              }}
+            />
             <ListView
               totalCount={30}
               title="Invoice List"
@@ -100,33 +101,7 @@ class CompanyDetail extends Component {
               <CompanyInvoiceListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
             ))} */}
             </ListView>
-          </section>
-
-          <CompanyCard
-            parentProps={{
-              title: "Payment Resource",
-              sub_title: "Application Id:",
-              sub_title_2: "Access Token",
-              sub_title_3: "Location Id"
-            }}
-          />
-
-          <CompanyCard
-            parentProps={{
-              title: "Message Resource",
-              sub_title: "Account Id:",
-              sub_title_2: "From Number",
-              sub_title_3: "Auth Token"
-            }}
-          />
-
-          <CompanyCard
-            parentProps={{
-              title: "Payment Resource",
-              sub_title: "API Key:",
-              sub_title_2: "From Email"
-            }}
-          />
+          </div>
         </section>
       </main>
     );

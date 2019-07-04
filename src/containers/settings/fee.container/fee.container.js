@@ -47,21 +47,25 @@ class Fee extends Component {
       <main>
         {showFeeValue && <FeeModal handleCreatingFee={this.handleCreatingFee} onClose={this.handleAddFeeValueModal} />}
         <section className="container-fluid">
-          <Header title={"Settings"} subTitle="Fee Rate" />
-          <ListHeader
-            parentProps={{ title: "Fee Rate", clickFunction: this.handleAddFeeValueModal, clickTitle: "Fee Rate" }}
-          />
-          <ListView
-            totalCount={30}
-            title="Fee Rate"
-            fieldNames={["Created On", "Fee Rate", "Delete"]}
-            hideHeader={true}
-            onPageChange={this.handlePageChange}
-          >
-            {fee_list.record_list.map((fee, index) => (
-              <FeeListItem parentProps={fee} key={index} handleDeleteAFee={this.handleDeleteFee} />
-            ))}
-          </ListView>
+          <div className="mb-4">
+            <Header title={"Settings"} subTitle="Fee Rate" />
+          </div>
+          <div className="mb-4">
+            <ListHeader
+              parentProps={{ title: "Fee Rate", clickFunction: this.handleAddFeeValueModal, clickTitle: "Fee Rate" }}
+            />
+            <ListView
+              totalCount={30}
+              title="Fee Rate"
+              fieldNames={["Created On", "Fee Rate", "Delete"]}
+              hideHeader={true}
+              onPageChange={this.handlePageChange}
+            >
+              {fee_list.record_list.map((fee, index) => (
+                <FeeListItem parentProps={fee} key={index} handleDeleteAFee={this.handleDeleteFee} />
+              ))}
+            </ListView>
+          </div>
         </section>
       </main>
     );

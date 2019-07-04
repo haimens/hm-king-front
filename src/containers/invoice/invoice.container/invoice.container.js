@@ -9,21 +9,25 @@ class Invoice extends Component {
     return (
       <main>
         <section className="container-fluid">
-          <Header title="Invoice" />
-          <ListHeader
-            parentProps={{ title: "Invoice List", clickFunction: this.handleAddCompanyModal, clickTitle: "Invoice" }}
-          />
-          <ListView
-            totalCount={30}
-            title="Invoice List"
-            fieldNames={["Created On", "Company Name", "Invoice Number", "Amount", "Status"]}
-            hideHeader={true}
-            onPageChange={this.handlePageChange}
-          >
-            {/* {company_list.record_list.map((company, index) => (
+          <div className="mb-4">
+            <Header title="Invoice" />
+          </div>
+          <div className="mb-4">
+            <ListHeader
+              parentProps={{ title: "Invoice List", clickFunction: this.handleAddCompanyModal, clickTitle: "Invoice" }}
+            />
+            <ListView
+              totalCount={30}
+              title="Invoice List"
+              fieldNames={["Created On", "Company Name", "Invoice Number", "Amount", "Status"]}
+              hideHeader={true}
+              onPageChange={this.handlePageChange}
+            >
+              {/* {company_list.record_list.map((company, index) => (
             <InvoiceListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
           ))} */}
-          </ListView>
+            </ListView>
+          </div>
         </section>
       </main>
     );
