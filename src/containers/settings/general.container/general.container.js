@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Header, ListHeader, ListView } from "../../../components/shared";
-import KeyModal from "./general.component/general.modal";
+import GeneralModal from "./general.component/general.modal";
 class Key extends Component {
   state = {
     showKeyValue: ""
@@ -15,7 +15,7 @@ class Key extends Component {
     const { showKeyValue } = this.state;
     return (
       <main>
-        {showKeyValue && <KeyModal onClose={this.handleAddKeyValue} />}
+        {showKeyValue && <GeneralModal onClose={this.handleAddKeyValue} />}
         <section className="container-fluid">
           <Header title={"Settings"} subTitle="General Setting" />
           <ListHeader
