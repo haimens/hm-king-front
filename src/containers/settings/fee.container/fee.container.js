@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 import alertify from "alertifyjs";
 import FeeModal from "./fee.component/fee.modal";
 import FeeListItem from "./fee.component/feeList.item";
-import { ListView, Header, ListHeader } from "../../components/shared";
-import { findFeeList, createAFeeRate, deleteAFeeRate } from "../../actions/fee.action";
+import { ListView, Header, ListHeader } from "../../../components/shared";
+import { findFeeList, createAFeeRate, deleteAFeeRate } from "../../../actions/fee.action";
 
 class Fee extends Component {
   state = {

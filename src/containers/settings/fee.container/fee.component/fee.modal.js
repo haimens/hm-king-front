@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal } from "../../../components/shared";
+import { Modal } from "../../../../components/shared";
 import alertify from "alertifyjs";
 export default class FeeModal extends Component {
   state = {
