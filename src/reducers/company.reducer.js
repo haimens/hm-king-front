@@ -8,7 +8,37 @@ const initialState = {
   },
   company_detail: {
     basic_info: {
-      company_name: ""
+      vn_realm_id: "",
+      cdate: "",
+      udate: "",
+      company_name: "",
+      company_title: "",
+      realm_token: "",
+      status: 2
+    },
+    message_resource_info: {
+      twilio_account_id: "",
+      twilio_auth_token: "",
+      twilio_from_num: ""
+    },
+    address_info: {
+      address_token: "",
+      cdate: "",
+      udate: "",
+      addr_str: "",
+      lat: "",
+      lng: "",
+      street_line_1: "",
+      street_line_2: "",
+      city: "",
+      state: "",
+      zip: ""
+    },
+    tribute_rate_info: {
+      tribute_rate_token: "",
+      cdate: "",
+      udate: "",
+      rate: ""
     }
   },
   payment_list: {

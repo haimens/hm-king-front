@@ -44,7 +44,9 @@ class CompanyDetail extends Component {
       <main>
         <section className="container-fluid">
           <Header title="Company" subTitle={"Company Detail"} />
-          <CompanyDetailInfo parentProps={{ company_detail, fee_list }} />
+          <section>
+            <CompanyDetailInfo company_detail={company_detail} />
+          </section>
           <ListView
             totalCount={lord_list.count}
             title="Company Admin List"
