@@ -78,13 +78,13 @@ export const findCompanyDetail = realm_token => async dispatch => {
   }
 };
 
-//email_resource_token, email_resource_id
+//square_application_id, square_location_id, square_access_token
 export const createAPaymentMethod = (realm_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    await callApi(`realm/email/${realm_token}`, "POST", { ...body });
+    await callApi(`realm/payment/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
-    await dispatch(findAllPaymentMethodList());
+    await dispatch(findAllPaymentResourceList(realm_token));
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -92,7 +92,7 @@ export const createAPaymentMethod = (realm_token, body) => async dispatch => {
   }
 };
 
-export const findAllPaymentMethodList = realm_token => async dispatch => {
+export const findAllPaymentResourceList = realm_token => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`realm/all/payment/${realm_token}`, "GET");
@@ -111,11 +111,11 @@ export const findAllPaymentMethodList = realm_token => async dispatch => {
 export const updateAPaymentMethod = (realm_token, payment_resource_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    await callApi(`realm/all/payment/${realm_token}/${payment_resource_token}`, "PATCH", {
+    await callApi(`realm/payment/${realm_token}/${payment_resource_token}`, "PATCH", {
       ...body
     });
     await launchSuccess(dispatch);
-    await dispatch(findAllPaymentMethodList());
+    await dispatch(findAllPaymentResourceList(realm_token));
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);

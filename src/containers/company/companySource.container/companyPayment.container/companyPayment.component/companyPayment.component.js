@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { parseRate } from "../../../../../actions/utilities.action";
 class CompanyPaymentDetail extends Component {
   render() {
-    const { basic_info } = this.props.company_detail;
+    const { square_application_id, square_location_id, square_access_token } = this.props.payment_list.record_list[0];
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
@@ -22,15 +22,15 @@ class CompanyPaymentDetail extends Component {
                 </div>
                 <div className="mb-4">
                   <div className="text-secondary-color hm-text-14">Square Application Id</div>
-                  <div className="hm-text-14 font-weight-bold">{1}</div>
+                  <div className="hm-text-14 font-weight-bold">{square_application_id}</div>
                 </div>
                 <div className="mb-4">
                   <div className="text-secondary-color hm-text-14">Square Location Id</div>
-                  <div className="hm-text-14 font-weight-bold">{2}</div>
+                  <div className="hm-text-14 font-weight-bold">{square_location_id}</div>
                 </div>
                 <div className="mb-4">
                   <div className="text-secondary-color hm-text-14">Square Access Token</div>
-                  <div className="hm-text-14 font-weight-bold">{3}</div>
+                  <div className="hm-text-14 font-weight-bold">{square_access_token}</div>
                 </div>
               </div>
             </div>

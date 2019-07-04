@@ -1,5 +1,4 @@
 import React from "react";
-import { convertUTCtoLocal } from "../../../../actions/utilities.action";
 
 /**
  * @onClick

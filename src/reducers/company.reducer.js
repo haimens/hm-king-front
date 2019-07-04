@@ -42,12 +42,26 @@ const initialState = {
     }
   },
   payment_list: {
-    record_list: [],
+    record_list: [
+      {
+        square_application_id: "",
+        square_location_id: "",
+        square_access_token: "",
+        payment_resource_token: ""
+      }
+    ],
     count: 0,
     end: 0
   },
   email_list: {
-    record_list: [],
+    record_list: [
+      {
+        square_application_id: "",
+        square_location_id: "",
+        square_access_token: "",
+        payment_resource_token: ""
+      }
+    ],
     count: 0,
     end: 0
   },
