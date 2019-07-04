@@ -3,7 +3,7 @@ import React from "react";
 export default function ListHeader(props) {
   return (
     <div className="rounded-custom-top shadow-sm border border-bottom-0 bg-white">
-      <section className="d-flex justify-content-between p-3 shadow-sm" style={{ height: "65px" }}>
+      <section className="d-flex justify-content-between align-items-center p-3 shadow-sm" style={{ height: "65px" }}>
         <h6 className="d-block d-flex align-items-center hm-title-sub-size text-main-color font-weight-bold ml-3">
           {props.parentProps.title}
         </h6>

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { parseRate } from "../../../../actions/utilities.action";
 import "./companyDetailInfo.component.css";
 class CompanyDetailInfo extends Component {
+  handleDetailButtonClicked = type => {
+    console.log(type);
+    this.props.handleDetailButtonClicked(type);
+  };
   render() {
     const {
       basic_info,
@@ -75,7 +79,10 @@ class CompanyDetailInfo extends Component {
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Primary Payment Information</div>
-                    <button className="rounded-circle bg-white company-detail-button-sub d-flex justify-content-center align-items-center">
+                    <button
+                      className="rounded-circle bg-white company-detail-button-sub d-flex justify-content-center align-items-center"
+                      onClick={() => this.handleDetailButtonClicked("payment")}
+                    >
                       <i className="fas fa-ellipsis-h" style={{ color: "#5e72e4" }} />
                     </button>
                   </div>

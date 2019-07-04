@@ -25,6 +25,13 @@ class CompanyDetail extends Component {
   handleAddInvoiceModal = () => {
     this.setState(states => ({ showInvoiceModal: !states.showInvoiceModal }));
   };
+  handleDetailButtonClicked = type => {
+    const { history, match } = this.props;
+    const { realm_token } = match.params;
+    if (type === "payment") {
+      history.push(`/company/detail/payment/${realm_token}`);
+    }
+  };
   async componentDidMount() {
     const { findCompanyDetail, findLordList, findFeeList, match } = this.props;
     const { realm_token } = match.params;
@@ -52,7 +59,10 @@ class CompanyDetail extends Component {
             <Header title="Company" subTitle={"Company Detail"} />
           </div>
           <div className="mb-4 ">
-            <CompanyDetailInfo company_detail={company_detail} />
+            <CompanyDetailInfo
+              handleDetailButtonClicked={this.handleDetailButtonClicked}
+              company_detail={company_detail}
+            />
           </div>
           <div className="mb-4">
             <ListHeader

@@ -10,7 +10,9 @@ const ResetPassword = React.lazy(() => import("./containers/resetPassword/ResetP
 const Dashboard = React.lazy(() => import("./containers/dashboard/dashboard.container/dashboard.container"));
 const Company = React.lazy(() => import("./containers/company/company.container/company.container"));
 const CompanyDetail = React.lazy(() => import("./containers/company/companyDetail.container/companyDetail.container"));
-
+const CompanyPaymentDetail = React.lazy(() =>
+  import("./containers/company/companySource.container/companyPayment.container/companyPayment.container")
+);
 const Invoice = React.lazy(() => import("./containers/invoice/invoice.container/invoice.container"));
 const Fee = React.lazy(() => import("./containers/settings/fee.container/fee.container"));
 const General = React.lazy(() => import("./containers/settings/general.container/general.container"));
@@ -44,6 +46,7 @@ class App extends Component {
               <ProtectedRoute exact path="/dashboard" component={Dashboard} />
               <ProtectedRoute exact path="/company" component={Company} />
               <ProtectedRoute exact path="/company/detail/:realm_token" component={CompanyDetail} />
+              <ProtectedRoute exact path="/company/detail/payment/:realm_token" component={CompanyPaymentDetail} />
               <ProtectedRoute exact path="/invoice" component={Invoice} />
               <ProtectedRoute exact path="/settings/fee" component={Fee} />
               <ProtectedRoute exact path="/settings/general" component={General} />
