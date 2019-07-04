@@ -124,7 +124,6 @@ export default class PriceModifyModal extends Component {
           position="center"
           getWidth={"467px"}
           getHeight={"604px"}
-          zIndex="1080"
         >
           <div className="container">
             <div className="p-3">

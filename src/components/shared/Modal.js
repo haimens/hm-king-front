@@ -49,11 +49,17 @@ class Modal extends Component {
       maxWidth: this.props.getWidth,
       maxHeight: this.props.getHeight,
       minWidth: "320px",
-      minHeight: this.props.getHeight
+      minHeight: this.props.getHeight,
+      zIndex: this.props.zIndex + 1 || 2
     };
 
     return (
-      <main className="modal-over-lay" style={{ zIndex: `${this.props.zIndex || 9}` }}>
+      <main>
+        <section
+          className="modal-over-lay"
+          style={{ zIndex: `${this.props.zIndex || 1}` }}
+          onClick={this.handleClose}
+        />
         <section className={`${curr} ${this.props.className} rounded`} id="onlyScroll" style={widthHeight}>
           <div
             className={`sticky-top w-100 md-2 p-2 border-bottom ${

@@ -71,12 +71,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(Company));
-
-{
-  /* <button className="btn btn-sm hm-bg-green text-white" onClick={this.handleAddCompanyModal}>
-<span>
-  <i className="fas fa-plus mr-2" />
-</span>
-Add Company
-</button> */
-}
