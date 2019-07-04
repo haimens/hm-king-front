@@ -84,7 +84,7 @@ class ListView extends Component {
           </section>
         )}
         <table className="table table-borderless border-top-0 mb-0">
-          <thead className="border-left border-right">
+          <thead className="border-left  border-right">
             <tr style={{ backgroundColor: "#f7f9fc" }}>{renderFieldNames(this.props.fieldNames)}</tr>
           </thead>
           <tbody className="hm-break-word">{this.renderList(this.props.children)}</tbody>
