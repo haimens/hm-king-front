@@ -22,18 +22,21 @@ class Fee extends Component {
     this.handleAddFeeValueModal();
   };
   handleDeleteFee = (tribute_rate_token, rate) => {
-    alertify.confirm(
-      "Warning",
-      `Are you sure you want to delete this ${rate} rate?`,
-      () => {
-        this.props.deleteAFeeRate(tribute_rate_token);
-        alertify.success("Delete Success");
-      },
-      function() {
-        alertify.error("Delete Stop");
-      }
-    );
+    alertify
+      .confirm(
+        "Are you sure to delete this fee rate",
+        `Fee Rate: ${rate}`,
+        () => {
+          this.props.deleteAFeeRate(tribute_rate_token);
+          alertify.success("Cancel");
+        },
+        function() {
+          alertify.error("Deleted");
+        }
+      )
+      .set({ labels: { ok: "Delete", cancel: "Cancel" } });
   };
+
   componentDidMount() {
     this.props.findFeeList();
   }

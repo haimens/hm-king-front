@@ -29,8 +29,8 @@ class App extends Component {
 
   render() {
     alertify.defaults.transition = "zoom";
-    alertify.defaults.theme.ok = "btn transition-button-color text-white";
-    alertify.defaults.theme.cancel = "btn btn-danger";
+    alertify.defaults.theme.ok = "btn btn-danger";
+    alertify.defaults.theme.cancel = "btn btn-outline-secondary";
     alertify.defaults.theme.input = "form-control";
     const NoMatch = () => <Redirect to="/nomatch" />;
     return (
