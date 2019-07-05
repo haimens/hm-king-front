@@ -174,7 +174,7 @@ export const createAEmailMethod = (realm_token, body) => async dispatch => {
     await startLoader(dispatch);
     await callApi(`realm/email/${realm_token}`, "POST", { ...body });
     await launchSuccess(dispatch);
-    await dispatch(findAllEmailMethodList());
+    await dispatch(findAllEmailResourceList(realm_token));
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);
@@ -182,10 +182,11 @@ export const createAEmailMethod = (realm_token, body) => async dispatch => {
   }
 };
 
-export const findAllEmailMethodList = realm_token => async dispatch => {
+export const findAllEmailResourceList = realm_token => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`realm/all/email/${realm_token}`, "GET");
+    console.log(payload);
     await dispatch({
       type: constant.EMAIL_LIST,
       payload
@@ -197,14 +198,14 @@ export const findAllEmailMethodList = realm_token => async dispatch => {
   }
 };
 
-//''sendgrid_api_key', 'sendgrid_from_email', 'status'
+//'sendgrid_api_key', 'sendgrid_from_email', 'status'
 export const updateAEmailMethod = (realm_token, email_resource_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
-    await callApi(`realm/all/payment/${realm_token}/${email_resource_token}`, "PATCH", {
+    await callApi(`realm/email/${realm_token}/${email_resource_token}`, "PATCH", {
       ...body
     });
-    await dispatch(findAllEmailMethodList());
+    await dispatch(findAllEmailResourceList(realm_token));
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {

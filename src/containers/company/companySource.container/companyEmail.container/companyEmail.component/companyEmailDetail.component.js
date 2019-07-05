@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import { parseRate } from "../../../../../actions/utilities.action";
-class CompanyPaymentDetail extends Component {
+class CompanyEmailDetail extends Component {
   render() {
-    const { square_application_id, square_location_id, square_access_token } = this.props.payment_list.record_list[0];
+    const { record_list } = this.props.email_list;
+    if (record_list > 0) {
+      const { sendgrid_api_key, sendgrid_from_email } = this.props.email_list.record_list[0];
+    }
+    const sendgrid_api_key = "";
+    const sendgrid_from_email = "";
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
@@ -18,19 +23,15 @@ class CompanyPaymentDetail extends Component {
             <div className="row text-modal-color">
               <div className="col-6">
                 <div className="d-flex justify-content-between align-items-center mb-4 ">
-                  <div className="hm-text-16 font-weight-bold">Primary Payment Information</div>
+                  <div className="hm-text-16 font-weight-bold">Primary Email Information</div>
                 </div>
                 <div className="mb-4">
-                  <div className="text-secondary-color hm-text-14">Square Application Id</div>
-                  <div className="hm-text-14 font-weight-bold">{square_application_id}</div>
+                  <div className="text-secondary-color hm-text-14">SendGrid API Key</div>
+                  <div className="hm-text-14 font-weight-bold">{sendgrid_api_key || "N/A"}</div>
                 </div>
                 <div className="mb-4">
-                  <div className="text-secondary-color hm-text-14">Square Location Id</div>
-                  <div className="hm-text-14 font-weight-bold">{square_location_id}</div>
-                </div>
-                <div className="mb-4">
-                  <div className="text-secondary-color hm-text-14">Square Access Token</div>
-                  <div className="hm-text-14 font-weight-bold">{square_access_token}</div>
+                  <div className="text-secondary-color hm-text-14">SendGrid From Email</div>
+                  <div className="hm-text-14 font-weight-bold">{sendgrid_from_email || "N/A"}</div>
                 </div>
               </div>
             </div>
@@ -41,4 +42,4 @@ class CompanyPaymentDetail extends Component {
   }
 }
 
-export default CompanyPaymentDetail;
+export default CompanyEmailDetail;

@@ -56,10 +56,10 @@ const initialState = {
   email_list: {
     record_list: [
       {
-        square_application_id: "",
-        square_location_id: "",
-        square_access_token: "",
-        payment_resource_token: ""
+        sendgrid_api_key: "",
+        sendgrid_from_email: "",
+        status: "",
+        email_resource_token: ""
       }
     ],
     count: 0,
@@ -70,7 +70,8 @@ const initialState = {
       {
         twilio_account_id: "",
         twilio_auth_token: "",
-        twilio_from_num: ""
+        twilio_from_num: "",
+        message_resource_token: ""
       }
     ],
     count: 0,

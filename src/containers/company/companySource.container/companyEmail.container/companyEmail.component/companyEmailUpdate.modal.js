@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../../components/shared";
 import alertify from "alertifyjs";
-export default class CompanyAdmin extends Component {
+export default class CompanyEmailUpdate extends Component {
   state = {
-    square_application_id: "",
-    square_location_id: "",
-    square_access_token: ""
+    sendgrid_api_key: "",
+    sendgrid_from_email: ""
   };
 
   handleInputChange = e => {
@@ -23,31 +22,38 @@ export default class CompanyAdmin extends Component {
   handleImageUpload = img_path => {
     this.setState({ img_url: img_path });
   };
-  handleCreatePaymentResource = () => {
-    const { square_application_id, square_location_id, square_access_token } = this.state;
-    const { realm_token, createAPaymentMethod } = this.props;
-    if (square_application_id !== "" && square_location_id !== "" && square_access_token !== "") {
-      createAPaymentMethod(realm_token, {
-        square_application_id,
-        square_location_id,
-        square_access_token
+  handleUpdateEmailResource = () => {
+    const { sendgrid_api_key, sendgrid_from_email } = this.state;
+    const {
+      realm_token,
+      updateAEmailMethod,
+      currEmailResource: { email_resource_token }
+    } = this.props;
+    if (sendgrid_api_key !== "" && sendgrid_from_email !== "") {
+      updateAEmailMethod(realm_token, email_resource_token, {
+        sendgrid_api_key,
+        sendgrid_from_email
       });
       this.handleClose();
     } else {
       alertify.alert("Error!", "Please Finished The Form!");
     }
   };
-
+  async componentDidMount() {
+    console.log(this.props);
+    const { sendgrid_api_key, sendgrid_from_email } = this.props.currEmailResource.currEmail;
+    await this.setState({ sendgrid_api_key, sendgrid_from_email });
+  }
   render() {
-    const { square_application_id, square_location_id, square_access_token } = this.state;
+    const { sendgrid_api_key, sendgrid_from_email } = this.state;
     return (
       <div>
         <Modal
-          title="Add Payment Information"
+          title="Add Email Information"
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
-          getHeight={"430px"}
+          getHeight={"350px"}
           zIndex="3"
         >
           <div className="container">
@@ -56,9 +62,9 @@ export default class CompanyAdmin extends Component {
                 <input
                   type="text"
                   className="form-control hm-input-height"
-                  placeholder="Square Application Id"
-                  id="square_application_id"
-                  value={square_application_id}
+                  placeholder="SendGrid Api Key"
+                  id="sendgrid_api_key"
+                  value={sendgrid_api_key}
                   onChange={this.handleInputChange}
                 />
               </div>
@@ -67,29 +73,19 @@ export default class CompanyAdmin extends Component {
                 <input
                   type="email"
                   className="form-control hm-input-height"
-                  id="square_location_id"
-                  placeholder="Square Location Id"
-                  value={square_location_id}
+                  id="sendgrid_from_email"
+                  placeholder="SendGrid From Email"
+                  value={sendgrid_from_email}
                   onChange={this.handleInputChange}
                 />
               </div>
 
-              <div className="form-group pt-3">
-                <input
-                  type="text"
-                  className="form-control hm-input-height"
-                  id="square_access_token"
-                  placeholder="Square Access Token"
-                  value={square_access_token}
-                  onChange={this.handleInputChange}
-                />
-              </div>
               <div className="form-group text-right pt-3">
                 <button
                   className="button-main-background btn button-main-size px-4 text-white mr-3"
-                  onClick={this.handleCreatePaymentResource}
+                  onClick={this.handleUpdateEmailResource}
                 >
-                  Add
+                  Update
                 </button>
                 <button onClick={this.handleClose} className="btn button-main-size btn-outline-secondary px-4">
                   Cancel

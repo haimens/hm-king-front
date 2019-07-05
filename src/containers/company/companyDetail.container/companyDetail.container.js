@@ -34,6 +34,9 @@ class CompanyDetail extends Component {
     if (type === "message") {
       history.push(`/company/detail/message/${realm_token}`);
     }
+    if (type === "email") {
+      history.push(`/company/detail/email/${realm_token}`);
+    }
   };
   async componentDidMount() {
     const { findCompanyDetail, findLordList, findFeeList, match } = this.props;
