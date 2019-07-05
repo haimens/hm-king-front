@@ -65,6 +65,7 @@ const PlacesWithStandaloneSearchBox = compose(
         <input
           className={`form-control  ${props.inputClass} hm-input-height my-3`}
           type="text"
+          placeholder={"Company Address"}
           defaultValue={props.defaultValue}
         />
       </div>

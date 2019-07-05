@@ -45,7 +45,9 @@ h1,h2,h3,h4,h5,h6,h7 {
 .hm-bg-green{
   background-color:#0CC1A8 !important;
 }
-
+.hm-bg-green-border{
+  border:1px solid #0CC1A8 !important;
+}
 .hm-bg-dark {
   background-color: #001C36 !important;
 }

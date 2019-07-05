@@ -50,7 +50,7 @@ class CompanyDetail extends Component {
     this.props.findLordList({ start });
   };
   render() {
-    const { company_detail, lord_list, createALord, match, updateABasicInfo } = this.props;
+    const { company_detail, lord_list, createALord, match, updateABasicInfo, fee_list } = this.props;
     const { realm_token } = match.params;
 
     const { showCompanyAdminModal, showBasicInfoModal } = this.state;
@@ -68,6 +68,7 @@ class CompanyDetail extends Component {
             company_detail={company_detail}
             realm_token={realm_token}
             updateABasicInfo={updateABasicInfo}
+            fee_list={fee_list}
             onClose={this.handleShowBasicInfo}
           />
         )}

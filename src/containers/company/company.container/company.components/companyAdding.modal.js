@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Modal, ImageLoaderModal, PreviewImageModal } from "../../../../components/shared";
+import { Modal, ImageLoaderModal, PreviewImageModal, CompanyImage } from "../../../../components/shared";
 import { parseRate } from "../../../../actions/utilities.action";
-import CompanyImage from "./companyImage.component";
 import alertify from "alertifyjs";
 import GAutoComplete from "../../../../components/shared/GAutoComplete";
 
