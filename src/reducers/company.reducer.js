@@ -39,6 +39,15 @@ const initialState = {
       cdate: "",
       udate: "",
       rate: ""
+    },
+    email_resource_info: {
+      sendgrid_api_key: "",
+      sendgrid_from_email: ""
+    },
+    payment_resource_info: {
+      square_application_id: "",
+      square_location_id: "",
+      square_access_token: ""
     }
   },
   payment_list: {

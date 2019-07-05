@@ -91,15 +91,15 @@ class CompanyDetailInfo extends Component {
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Square Application Id</div>
-                  <div className="hm-text-14 font-weight-bold">{1}</div>
+                  <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_application_id}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Square Location Id</div>
-                  <div className="hm-text-14 font-weight-bold">{2}</div>
+                  <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_location_id}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Square Access Token</div>
-                  <div className="hm-text-14 font-weight-bold">{3}</div>
+                  <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_access_token}</div>
                 </div>
               </div>
               <div className="col-6">
@@ -141,11 +141,11 @@ class CompanyDetailInfo extends Component {
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Sendgrid Api Key</div>
-                  <div className="hm-text-14 font-weight-bold">{1}</div>
+                  <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_api_key}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Sendgrid From Email</div>
-                  <div className="hm-text-14 font-weight-bold">{1}</div>
+                  <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_from_email}</div>
                 </div>
               </div>
             </div>
