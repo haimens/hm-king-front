@@ -198,7 +198,6 @@ export const findAllEmailResourceList = realm_token => async dispatch => {
   }
 };
 
-//'sendgrid_api_key', 'sendgrid_from_email', 'status'
 export const updateAEmailMethod = (realm_token, email_resource_token, body) => async dispatch => {
   try {
     await startLoader(dispatch);
