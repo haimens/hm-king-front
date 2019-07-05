@@ -214,3 +214,18 @@ export const updateAEmailMethod = (realm_token, email_resource_token, body) => a
     dispatch(processLogout(err));
   }
 };
+
+export const setPrimaryForResources = (realm_token, body) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    await callApi(`realm/resource/${realm_token}`, "PATCH", {
+      ...body
+    });
+    await dispatch(findCompanyDetail(realm_token));
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

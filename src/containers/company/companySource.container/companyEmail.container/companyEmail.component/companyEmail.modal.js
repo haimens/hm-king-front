@@ -41,7 +41,7 @@ export default class CompanyAdmin extends Component {
     return (
       <div>
         <Modal
-          title="Add Email Information"
+          title="Add Email Resource"
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}

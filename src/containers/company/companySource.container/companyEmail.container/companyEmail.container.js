@@ -9,7 +9,8 @@ import {
   findCompanyDetail,
   findAllEmailResourceList,
   createAEmailMethod,
-  updateAEmailMethod
+  updateAEmailMethod,
+  setPrimaryForResources
 } from "../../../../actions/company.action";
 import { Header, ListView, ListHeader } from "../../../../components/shared";
 
@@ -42,7 +43,14 @@ class CompanyEmail extends Component {
     this.props.findAllEmailResourceList({ start });
   };
   render() {
-    const { company_detail, email_list, match, createAEmailMethod, updateAEmailMethod } = this.props;
+    const {
+      company_detail,
+      email_list,
+      match,
+      createAEmailMethod,
+      updateAEmailMethod,
+      setPrimaryForResources
+    } = this.props;
     const { realm_token } = match.params;
     const { showCreateEmailResource, showEditEmailResource, currEmailResource } = this.state;
     return (
@@ -88,6 +96,9 @@ class CompanyEmail extends Component {
                 <CompanyEmailDetailListItem
                   parentProps={email}
                   handleUpdateEmailResource={this.handleUpdateEmailResource}
+                  setPrimaryForResources={setPrimaryForResources}
+                  realm_token={realm_token}
+                  isPrimary={company_detail.email_resource_info.email_resource_token === email.email_resource_token}
                   key={index}
                 />
               ))}
@@ -109,7 +120,8 @@ const mapDispatchToProps = {
   findCompanyDetail,
   findAllEmailResourceList,
   createAEmailMethod,
-  updateAEmailMethod
+  updateAEmailMethod,
+  setPrimaryForResources
 };
 
 export default connect(

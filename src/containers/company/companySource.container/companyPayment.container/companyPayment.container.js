@@ -9,7 +9,8 @@ import {
   findCompanyDetail,
   findAllPaymentResourceList,
   createAPaymentMethod,
-  updateAPaymentMethod
+  updateAPaymentMethod,
+  setPrimaryForResources
 } from "../../../../actions/company.action";
 import { Header, ListView, ListHeader } from "../../../../components/shared";
 
@@ -42,7 +43,14 @@ class CompanyPayment extends Component {
     this.props.findAllPaymentResourceList({ start });
   };
   render() {
-    const { company_detail, payment_list, match, createAPaymentMethod, updateAPaymentMethod } = this.props;
+    const {
+      company_detail,
+      payment_list,
+      match,
+      createAPaymentMethod,
+      updateAPaymentMethod,
+      setPrimaryForResources
+    } = this.props;
     const { realm_token } = match.params;
     const { showCreatePaymentResource, showEditPaymentResource, currPaymentResource } = this.state;
     return (
@@ -88,6 +96,11 @@ class CompanyPayment extends Component {
                 <CompanyPaymentDetailListItem
                   parentProps={payment}
                   handleUpdatePaymentResource={this.handleUpdatePaymentResource}
+                  setPrimaryForResources={setPrimaryForResources}
+                  realm_token={realm_token}
+                  isPrimary={
+                    company_detail.payment_resource_info.payment_resource_token === payment.payment_resource_token
+                  }
                   key={index}
                 />
               ))}
@@ -109,7 +122,8 @@ const mapDispatchToProps = {
   findCompanyDetail,
   findAllPaymentResourceList,
   createAPaymentMethod,
-  updateAPaymentMethod
+  updateAPaymentMethod,
+  setPrimaryForResources
 };
 
 export default connect(

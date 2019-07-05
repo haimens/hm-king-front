@@ -43,7 +43,7 @@ export default class CompanyMessageModal extends Component {
     return (
       <div>
         <Modal
-          title="Add Message Information"
+          title="Add Message Resource"
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}

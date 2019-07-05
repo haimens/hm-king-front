@@ -43,7 +43,7 @@ export default class CompanyAdmin extends Component {
     return (
       <div>
         <Modal
-          title="Add Payment Information"
+          title="Add Payment Resource"
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}

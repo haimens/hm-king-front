@@ -8,7 +8,11 @@ export default function CompanyAdminList(props) {
   const handleEditPaymentResource = payment_resource_token => {
     props.handleUpdatePaymentResource(payment_resource_token, props.parentProps);
   };
-  const { square_application_id, square_location_id, square_access_token, payment_resource_token } = props.parentProps;
+  const handleSetPaymentPrimary = (realm_token, payment_resource_token) => {
+    props.setPrimaryForResources(realm_token, { payment_resource_token });
+  };
+  const { isPrimary, realm_token, parentProps } = props;
+  const { square_application_id, square_location_id, square_access_token, payment_resource_token } = parentProps;
   return (
     <tr className="border-bottom">
       <td className="items-height align-middle" data-label="Square Application Id">
@@ -27,9 +31,20 @@ export default function CompanyAdminList(props) {
         </section>
       </td>
       <td className="items-height align-middle" data-label="Square Access Token">
-        <section className="text-center align-middle hm-text-14 font-weight-bold" style={{ color: "#5e72e4" }}>
-          Primary
-        </section>
+        {isPrimary ? (
+          <section className="text-center align-middle hm-text-14 font-weight-bold" style={{ color: "#5e72e4" }}>
+            Primary
+          </section>
+        ) : (
+          <section className="text-center align-middle hm-text-14 font-weight-bold" style={{ color: "#5e72e4" }}>
+            <button
+              className="primary-set-button"
+              onClick={() => handleSetPaymentPrimary(realm_token, payment_resource_token)}
+            >
+              Set Primary
+            </button>
+          </section>
+        )}
       </td>
       <td className="items-height align-items-center text-center d-flex justify-content-center" data-label="Edit">
         <button

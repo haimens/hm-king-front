@@ -250,3 +250,15 @@ border-radius: 6px;
  height:25px;
 width: 25px
 }
+.primary-set-button{
+    border:1px solid #5e72e4; 
+    height:28px;
+   width: 100px;
+   color:#5e72e4; 
+   border-radius: 5px;
+}
+.primary-set-button:hover{
+ background-color:#5e72e4; 
+ color: white;
+ transition: 0.3s ease;
+}

@@ -9,7 +9,8 @@ import {
   findCompanyDetail,
   findAllMessageResourceList,
   createAMessageMethod,
-  updateAMessageMethod
+  updateAMessageMethod,
+  setPrimaryForResources
 } from "../../../../actions/company.action";
 import { Header, ListView, ListHeader } from "../../../../components/shared";
 
@@ -42,7 +43,14 @@ class CompanyMessage extends Component {
     this.props.findAllMessageResourceList({ start });
   };
   render() {
-    const { company_detail, message_list, match, createAMessageMethod, updateAMessageMethod } = this.props;
+    const {
+      company_detail,
+      message_list,
+      match,
+      createAMessageMethod,
+      updateAMessageMethod,
+      setPrimaryForResources
+    } = this.props;
     const { realm_token } = match.params;
     const { showCreateMessageResource, showEditMessageResource, currMessageResource } = this.state;
     return (
@@ -84,10 +92,15 @@ class CompanyMessage extends Component {
               hideHeader={true}
               onPageChange={this.handlePageChange}
             >
-              {message_list.record_list.map((Message, index) => (
+              {message_list.record_list.map((message, index) => (
                 <CompanyMessageDetailListItem
-                  parentProps={Message}
+                  parentProps={message}
                   handleUpdateMessageResource={this.handleUpdateMessageResource}
+                  setPrimaryForResources={setPrimaryForResources}
+                  realm_token={realm_token}
+                  isPrimary={
+                    company_detail.message_resource_info.message_resource_token === message.message_resource_token
+                  }
                   key={index}
                 />
               ))}
@@ -109,7 +122,8 @@ const mapDispatchToProps = {
   findCompanyDetail,
   findAllMessageResourceList,
   createAMessageMethod,
-  updateAMessageMethod
+  updateAMessageMethod,
+  setPrimaryForResources
 };
 
 export default connect(
