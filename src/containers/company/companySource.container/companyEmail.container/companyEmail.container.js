@@ -67,7 +67,7 @@ class CompanyEmail extends Component {
             <Header title="Company" subTitle={"Company Detail"} />
           </div>
           <div className="mb-4 ">
-            <CompanyEmailDetail email_list={email_list} />
+            <CompanyEmailDetail company_detail={company_detail} />
           </div>
           <div className="mb-4">
             <ListHeader

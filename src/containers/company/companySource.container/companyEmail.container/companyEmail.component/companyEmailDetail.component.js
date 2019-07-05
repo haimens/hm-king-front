@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import { parseRate } from "../../../../../actions/utilities.action";
 class CompanyEmailDetail extends Component {
   render() {
-    const { record_list } = this.props.email_list;
-    if (record_list > 0) {
-      const { sendgrid_api_key, sendgrid_from_email } = this.props.email_list.record_list[0];
-    }
-    const sendgrid_api_key = "";
-    const sendgrid_from_email = "";
+    const { basic_info, email_resource_info } = this.props.company_detail;
+    const { sendgrid_api_key, sendgrid_from_email } = email_resource_info;
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
@@ -15,7 +11,7 @@ class CompanyEmailDetail extends Component {
             <img
               className="rounded-circle"
               style={{ height: "90px", width: "90px" }}
-              src={`${process.env.PUBLIC_URL}/img/king_bg.jpg`}
+              src={basic_info.logo_path}
               alt="avatar"
             />
           </div>

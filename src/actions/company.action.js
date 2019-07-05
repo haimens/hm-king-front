@@ -95,6 +95,7 @@ export const createAPaymentMethod = (realm_token, body) => async dispatch => {
 export const findAllPaymentResourceList = realm_token => async dispatch => {
   try {
     await startLoader(dispatch);
+    await dispatch(findCompanyDetail(realm_token));
     const { payload } = await callApi(`realm/all/payment/${realm_token}`, "GET");
     await dispatch({
       type: constant.PAYMENT_LIST,
@@ -140,6 +141,7 @@ export const createAMessageMethod = (realm_token, body) => async dispatch => {
 export const findAllMessageResourceList = realm_token => async dispatch => {
   try {
     await startLoader(dispatch);
+    await dispatch(findCompanyDetail(realm_token));
     const { payload } = await callApi(`realm/all/message/${realm_token}`, "GET");
     await dispatch({
       type: constant.MESSAGE_LIST,
@@ -185,8 +187,8 @@ export const createAEmailMethod = (realm_token, body) => async dispatch => {
 export const findAllEmailResourceList = realm_token => async dispatch => {
   try {
     await startLoader(dispatch);
+    await dispatch(findCompanyDetail(realm_token));
     const { payload } = await callApi(`realm/all/email/${realm_token}`, "GET");
-    console.log(payload);
     await dispatch({
       type: constant.EMAIL_LIST,
       payload

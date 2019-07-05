@@ -21,7 +21,7 @@ class CompanyDetailInfo extends Component {
             <img
               className="rounded-circle"
               style={{ height: "90px", width: "90px" }}
-              src={`${process.env.PUBLIC_URL}/img/king_bg.jpg`}
+              src={basic_info.logo_path}
               alt="avatar"
             />
           </div>

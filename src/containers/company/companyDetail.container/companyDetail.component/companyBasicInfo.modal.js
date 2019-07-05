@@ -59,7 +59,7 @@ export default class CompanyAdmin extends Component {
     return (
       <div>
         <Modal
-          title="Add Company Admin"
+          title="Update Basic Information"
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
