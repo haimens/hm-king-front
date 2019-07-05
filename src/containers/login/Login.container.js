@@ -60,8 +60,8 @@ export class Login extends React.Component {
           <div className="hm-text-12 text-secondary-color mt-4 mb-5">Sign in with credentials</div>
           <form onSubmit={this.handleSubmit} className="container-fluid">
             <div className="input-group shadow-sm mb-4">
-              <div class="input-group-prepend">
-                <span class="input-group-text border-0 bg-white text-secondary-color" id="basic-addon1">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon1">
                   <i className="fas fa-envelope text-secondary-color" />
                 </span>
               </div>
@@ -79,8 +79,8 @@ export class Login extends React.Component {
             </div>
 
             <div className="input-group shadow-sm mb-4">
-              <div class="input-group-prepend">
-                <span class="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
+              <div className="input-group-prepend">
+                <span className="input-group-text border-0 bg-white text-secondary-color" id="basic-addon2">
                   <i className="fas fa-unlock-alt text-secondary-color" />
                 </span>
               </div>
@@ -88,8 +88,8 @@ export class Login extends React.Component {
                 required
                 type="password"
                 className="form-control hm-input-height hm-input-login border-0 p-2"
-                placeholder="Username"
-                aria-label="Username"
+                placeholder="Password"
+                aria-label="Password"
                 id="passcode"
                 aria-describedby="basic-addon2"
                 value={this.state.passcode}
