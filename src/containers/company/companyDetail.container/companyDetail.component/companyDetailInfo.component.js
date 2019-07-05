@@ -91,15 +91,19 @@ class CompanyDetailInfo extends Component {
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Square Application Id</div>
-                  <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_application_id}</div>
+                  <div className="hm-text-14 font-weight-bold">
+                    {payment_resource_info.square_application_id || "N/A"}
+                  </div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Square Location Id</div>
-                  <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_location_id}</div>
+                  <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_location_id || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Square Access Token</div>
-                  <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_access_token}</div>
+                  <div className="hm-text-14 font-weight-bold">
+                    {payment_resource_info.square_access_token || "N/A"}
+                  </div>
                 </div>
               </div>
               <div className="col-6">
@@ -116,15 +120,15 @@ class CompanyDetailInfo extends Component {
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Twilio Account Id</div>
-                  <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_account_id}</div>
+                  <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_account_id || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Twilio Auth Token</div>
-                  <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_auth_token}</div>
+                  <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_auth_token || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Twilio From Num</div>
-                  <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_from_num}</div>
+                  <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_from_num || "N/A"}</div>
                 </div>
               </div>
               <div className="col-6">
@@ -141,11 +145,11 @@ class CompanyDetailInfo extends Component {
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Sendgrid Api Key</div>
-                  <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_api_key}</div>
+                  <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_api_key || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color hm-text-14">Sendgrid From Email</div>
-                  <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_from_email}</div>
+                  <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_from_email || "N/A"}</div>
                 </div>
               </div>
             </div>

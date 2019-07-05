@@ -67,7 +67,7 @@ class CompanyMessage extends Component {
             <Header title="Company" subTitle={"Message Detail"} />
           </div>
           <div className="mb-4 ">
-            <CompanyMessageDetail message_list={message_list} />
+            <CompanyMessageDetail message_resource_info={company_detail.message_resource_info} />
           </div>
           <div className="mb-4">
             <ListHeader

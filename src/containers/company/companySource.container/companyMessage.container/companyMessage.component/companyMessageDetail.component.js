@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { parseRate } from "../../../../../actions/utilities.action";
 class CompanyMessageDetail extends Component {
   render() {
-    const { twilio_account_id, twilio_auth_token, twilio_from_num } = this.props.message_list.record_list[0];
+    const { twilio_account_id, twilio_auth_token, twilio_from_num } = this.props.message_resource_info;
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
@@ -22,15 +22,15 @@ class CompanyMessageDetail extends Component {
                 </div>
                 <div className="mb-4">
                   <div className="text-secondary-color hm-text-14">Twilio Account Id</div>
-                  <div className="hm-text-14 font-weight-bold">{twilio_account_id}</div>
+                  <div className="hm-text-14 font-weight-bold">{twilio_account_id || "N/A"}</div>
                 </div>
                 <div className="mb-4">
                   <div className="text-secondary-color hm-text-14">Twilio Auth Id</div>
-                  <div className="hm-text-14 font-weight-bold">{twilio_auth_token}</div>
+                  <div className="hm-text-14 font-weight-bold">{twilio_auth_token || "N/A"}</div>
                 </div>
                 <div className="mb-4">
                   <div className="text-secondary-color hm-text-14">Twilio From Num</div>
-                  <div className="hm-text-14 font-weight-bold">{twilio_from_num}</div>
+                  <div className="hm-text-14 font-weight-bold">{twilio_from_num || "N/A"}</div>
                 </div>
               </div>
             </div>

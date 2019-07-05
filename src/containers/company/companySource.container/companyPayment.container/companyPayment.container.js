@@ -67,7 +67,7 @@ class CompanyPayment extends Component {
             <Header title="Company" subTitle={"Company Detail"} />
           </div>
           <div className="mb-4 ">
-            <CompanyPaymentDetail payment_list={payment_list} />
+            <CompanyPaymentDetail payment_resource_info={company_detail.payment_resource_info} />
           </div>
           <div className="mb-4">
             <ListHeader
