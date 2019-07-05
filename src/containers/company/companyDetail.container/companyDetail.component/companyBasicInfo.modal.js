@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { Modal } from "../../../../../components/shared";
+import { Modal, GAutoComplete } from "../../../../components/shared";
 import alertify from "alertifyjs";
 export default class CompanyAdmin extends Component {
   state = {
-    square_application_id: "",
-    square_location_id: "",
-    square_access_token: ""
+    company_name: "",
+    company_title: "",
+    logo_path: "",
+    icon_path: "",
+    addr_str: "",
+    status: ""
   };
 
   handleInputChange = e => {
@@ -23,14 +26,18 @@ export default class CompanyAdmin extends Component {
   handleImageUpload = img_path => {
     this.setState({ img_url: img_path });
   };
-  handleCreatePaymentResource = () => {
-    const { square_application_id, square_location_id, square_access_token } = this.state;
-    const { realm_token, createAPaymentMethod } = this.props;
-    if (square_application_id !== "" && square_location_id !== "" && square_access_token !== "") {
-      createAPaymentMethod(realm_token, {
-        square_application_id,
-        square_location_id,
-        square_access_token
+  saveToAddress = address => {
+    console.log(address);
+  };
+  handleAddingCompanyAdmin = () => {
+    const { username, name, cell, email, area } = this.state;
+    const { realm_token, createALord } = this.props;
+    if (username !== "" && name !== "" && cell !== "" && email !== "" && area !== "") {
+      createALord(realm_token, {
+        username,
+        name,
+        cell: `${area} ${cell}`,
+        email
       });
       this.handleClose();
     } else {
@@ -38,16 +45,25 @@ export default class CompanyAdmin extends Component {
     }
   };
 
+  componentDidMount() {
+    const { basic_info, address_info } = this.props.company_detail;
+    this.setState({
+      company_name: basic_info.company_name,
+      company_title: basic_info.company_title,
+      addr_str: address_info.addr_str
+    });
+  }
+
   render() {
-    const { square_application_id, square_location_id, square_access_token } = this.state;
+    const { company_name, company_title, addr_str, logo_path, icon_path, status } = this.state;
     return (
       <div>
         <Modal
-          title="Add Payment Information"
+          title="Add Company Admin"
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
-          getHeight={"430px"}
+          getHeight={"500px"}
           zIndex="3"
         >
           <div className="container">
@@ -56,38 +72,33 @@ export default class CompanyAdmin extends Component {
                 <input
                   type="text"
                   className="form-control hm-input-height"
-                  placeholder="Square Application Id"
-                  id="square_application_id"
-                  value={square_application_id}
+                  name="company_name"
+                  placeholder="Company Name"
+                  id="company_name"
+                  value={company_name}
                   onChange={this.handleInputChange}
                 />
               </div>
 
-              <div className="form-group pt-3">
-                <input
-                  type="email"
-                  className="form-control hm-input-height"
-                  id="square_location_id"
-                  placeholder="Square Location Id"
-                  value={square_location_id}
-                  onChange={this.handleInputChange}
-                />
+              <div className="form-group">
+                <GAutoComplete defaultValue={addr_str} getGoogleAddress={this.saveToAddress} />
               </div>
 
-              <div className="form-group pt-3">
+              <div className="form-group input-group">
                 <input
                   type="text"
-                  className="form-control hm-input-height"
-                  id="square_access_token"
-                  placeholder="Square Access Token"
-                  value={square_access_token}
+                  className="form-control hm-input-height "
+                  id="company_title"
+                  placeholder="Company Title"
+                  value={company_title}
                   onChange={this.handleInputChange}
                 />
               </div>
+
               <div className="form-group text-right pt-3">
                 <button
                   className="button-main-background btn button-main-size px-4 text-white mr-3"
-                  onClick={this.handleCreatePaymentResource}
+                  onClick={this.handleAddingCompanyAdmin}
                 >
                   Add
                 </button>

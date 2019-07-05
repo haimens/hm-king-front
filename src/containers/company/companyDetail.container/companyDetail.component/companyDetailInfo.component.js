@@ -33,7 +33,7 @@ class CompanyDetailInfo extends Component {
                     <div className="hm-text-16 font-weight-bold">Basic Information</div>
                     <button
                       className="rounded-circle bg-white company-detail-button d-flex justify-content-center align-items-center"
-                      onClick={() => this.handleDetailButtonClicked("detail")}
+                      onClick={() => this.handleDetailButtonClicked("basic")}
                     >
                       <i className="fas fa-pencil-alt" style={{ color: "#fb6240" }} />
                     </button>

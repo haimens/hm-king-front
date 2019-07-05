@@ -36,12 +36,12 @@ export const createACompany = (body = {}) => async dispatch => {
 };
 
 //'company_name', 'company_title', 'status', 'logo_path', 'icon_path', 'status'
-export const updateACompanyInfo = (realm_token, body = {}) => async dispatch => {
+export const updateABasicInfo = (realm_token, body = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    await callApi(`realm/detail/${realm_token}`, "POST", { ...body });
+    await callApi(`realm/detail/${realm_token}`, "PATCH", { ...body });
     await launchSuccess(dispatch);
-    await dispatch(findCompanyList());
+    await dispatch(findCompanyDetail(realm_token));
     await stopLoader(dispatch);
   } catch (err) {
     await stopLoader(dispatch);

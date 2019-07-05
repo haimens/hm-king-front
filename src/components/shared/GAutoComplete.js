@@ -14,7 +14,13 @@ class GAutoComplete extends Component {
   };
 
   render() {
-    return <PlacesWithStandaloneSearchBox _getAddress={this._getAddress} inputClass={this.props.inputClass} />;
+    return (
+      <PlacesWithStandaloneSearchBox
+        _getAddress={this._getAddress}
+        defaultValue={this.props.defaultValue}
+        inputClass={this.props.inputClass}
+      />
+    );
   }
 }
 
@@ -43,7 +49,6 @@ const PlacesWithStandaloneSearchBox = compose(
         },
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
-
           this.setState({
             places
           });
@@ -60,7 +65,7 @@ const PlacesWithStandaloneSearchBox = compose(
         <input
           className={`form-control  ${props.inputClass} hm-input-height my-3`}
           type="text"
-          placeholder={"Company Address"}
+          defaultValue={props.defaultValue}
         />
       </div>
     </StandaloneSearchBox>

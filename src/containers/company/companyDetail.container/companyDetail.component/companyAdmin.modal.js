@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
 import alertify from "alertifyjs";
-export default class CompanyAdmin extends Component {
+export default class CompanyBasicInfo extends Component {
   state = {
     img_url: "",
     showImage: false,

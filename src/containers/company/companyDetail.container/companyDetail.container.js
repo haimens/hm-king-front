@@ -6,28 +6,31 @@ import CompanyDetailInfo from "./companyDetail.component/companyDetailInfo.compo
 import CompanyCard from "./companyDetail.component/companyCard.component";
 import CompanyAdminModal from "./companyDetail.component/companyAdmin.modal";
 import CompanyInvoiceModal from "./companyDetail.component/companyInvoice.modal";
-
+import CompanyBasicInfoModal from "./companyDetail.component/companyBasicInfo.modal";
 import CompanyAdminListItem from "./companyDetail.component/companyAdminList.item";
 import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList.item";
 
-import { findCompanyDetail } from "../../../actions/company.action";
+import { findCompanyDetail, updateABasicInfo } from "../../../actions/company.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
 import { Header, ListView, ListHeader } from "../../../components/shared";
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
-    showInvoiceModal: false
+    showBasicInfoModal: false
   };
   handleAddCompanyAdminModal = () => {
     this.setState(states => ({ showCompanyAdminModal: !states.showCompanyAdminModal }));
   };
-  handleAddInvoiceModal = () => {
-    this.setState(states => ({ showInvoiceModal: !states.showInvoiceModal }));
+  handleShowBasicInfo = () => {
+    this.setState(states => ({ showBasicInfoModal: !states.showBasicInfoModal }));
   };
   handleDetailButtonClicked = type => {
     const { history, match } = this.props;
     const { realm_token } = match.params;
+    if (type === "basic") {
+      this.handleShowBasicInfo();
+    }
     if (type === "payment") {
       history.push(`/company/detail/payment/${realm_token}`);
     }
@@ -47,10 +50,10 @@ class CompanyDetail extends Component {
     this.props.findLordList({ start });
   };
   render() {
-    const { fee_list, company_detail, lord_list, createALord, match } = this.props;
+    const { company_detail, lord_list, createALord, match, updateABasicInfo } = this.props;
     const { realm_token } = match.params;
 
-    const { showCompanyAdminModal, showInvoiceModal } = this.state;
+    const { showCompanyAdminModal, showBasicInfoModal } = this.state;
     return (
       <main>
         {showCompanyAdminModal && (
@@ -58,6 +61,14 @@ class CompanyDetail extends Component {
             realm_token={realm_token}
             createALord={createALord}
             onClose={this.handleAddCompanyAdminModal}
+          />
+        )}
+        {showBasicInfoModal && (
+          <CompanyBasicInfoModal
+            company_detail={company_detail}
+            realm_token={realm_token}
+            updateABasicInfo={updateABasicInfo}
+            onClose={this.handleShowBasicInfo}
           />
         )}
         <section className="container-fluid">
@@ -131,7 +142,13 @@ const mapStateToProps = state => {
     lord_list: state.lordReducer.lord_list
   };
 };
-const mapDispatchToProps = { findCompanyDetail, findLordList, findFeeList, createALord };
+const mapDispatchToProps = {
+  findCompanyDetail,
+  findLordList,
+  findFeeList,
+  createALord,
+  updateABasicInfo
+};
 
 export default connect(
   mapStateToProps,

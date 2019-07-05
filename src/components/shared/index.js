@@ -16,6 +16,7 @@ import ImageLoaderModal from "./ImageLoader.modal";
 import PreviewImageModal from "./ImagePreview.modal";
 import Header from "./Header";
 import ListHeader from "./ListHeader";
+import GAutoComplete from "./GAutoComplete";
 export {
   ImageLoaderModal,
   LoaderAltNoModal,
@@ -34,5 +35,6 @@ export {
   SuccessModal,
   PreviewImageModal,
   Header,
-  ListHeader
+  ListHeader,
+  GAutoComplete
 };
