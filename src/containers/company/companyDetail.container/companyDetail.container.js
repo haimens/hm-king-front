@@ -59,7 +59,8 @@ class CompanyDetail extends Component {
       updateABasicInfo,
       fee_list,
       createNewAddressInstance,
-      setPrimaryForResources
+      setPrimaryForResources,
+      history
     } = this.props;
     const { realm_token } = match.params;
 
@@ -86,7 +87,7 @@ class CompanyDetail extends Component {
         )}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title="Company" subTitle={"Company Detail"} />
+            <Header title="Company" subTitle={"Company Detail"} history={history} toLocation={"/company"} />
           </div>
           <div className="mb-4 ">
             <CompanyDetailInfo
@@ -101,7 +102,7 @@ class CompanyDetail extends Component {
                 clickFunction: this.handleAddCompanyAdminModal,
                 clickTitle: "Company Admin"
               }}
-              buttonWidth={"98px"}
+              buttonWidth={"136px"}
             />
             <ListView
               totalCount={lord_list.count}
@@ -118,13 +119,35 @@ class CompanyDetail extends Component {
           <div className="mb-4">
             <ListHeader
               parentProps={{
+                title: "Fee List",
+                clickFunction: this.handleAddCompanyAdminModal,
+                clickTitle: "Fee"
+              }}
+              buttonWidth={"72px"}
+            />
+            <ListView
+              totalCount={0}
+              title="Fee List"
+              fieldNames={["Created On", "Fee Amount", "Note"]}
+              hideHeader={true}
+              onPageChange={this.handlePageChange}
+            >
+              {/* {punch_list_in_puri.record_list.map((punch, index) => (
+              <CompanyFeeListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
+            ))} */}
+            </ListView>
+          </div>
+          <div className="mb-4">
+            <ListHeader
+              parentProps={{
                 title: "Invoice List",
                 clickFunction: this.handleAddInvoiceModal,
                 clickTitle: "Invoice"
               }}
+              buttonWidth={"88px"}
             />
             <ListView
-              totalCount={30}
+              totalCount={0}
               title="Invoice List"
               fieldNames={[
                 "Created On",

@@ -40,27 +40,27 @@ class CompanyDetailInfo extends Component {
                   </div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Company Name</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Company Name</div>
                   <div className="hm-text-14 font-weight-bold">{basic_info.company_name}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Company Address</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Company Address</div>
                   <div className="hm-text-14 font-weight-bold">{address_info.addr_str}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Company Title</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Company Title</div>
                   <div className="hm-text-14 font-weight-bold">{basic_info.company_title}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Available Balance</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Available Balance</div>
                   <div className="hm-text-14 font-weight-bold">{"N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Fee Rate</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Fee Rate</div>
                   <div className="hm-text-14 font-weight-bold">{parseRate(tribute_rate_info.rate)}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Status</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Status</div>
                   <div className="hm-text-14 font-weight-bold">
                     {basic_info.status === 2 ? (
                       <div className="d-flex align-items-center">
@@ -90,17 +90,17 @@ class CompanyDetailInfo extends Component {
                   </div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Square Application Id</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Square Application Id</div>
                   <div className="hm-text-14 font-weight-bold">
                     {payment_resource_info.square_application_id || "N/A"}
                   </div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Square Location Id</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Square Location Id</div>
                   <div className="hm-text-14 font-weight-bold">{payment_resource_info.square_location_id || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Square Access Token</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Square Access Token</div>
                   <div className="hm-text-14 font-weight-bold">
                     {payment_resource_info.square_access_token || "N/A"}
                   </div>
@@ -119,15 +119,15 @@ class CompanyDetailInfo extends Component {
                   </div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Twilio Account Id</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Twilio Account Id</div>
                   <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_account_id || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Twilio Auth Token</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Twilio Auth Token</div>
                   <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_auth_token || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Twilio From Num</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Twilio From Num</div>
                   <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_from_num || "N/A"}</div>
                 </div>
               </div>
@@ -144,11 +144,11 @@ class CompanyDetailInfo extends Component {
                   </div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Sendgrid Api Key</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Sendgrid Api Key</div>
                   <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_api_key || "N/A"}</div>
                 </div>
                 <div className="mb-4 px-3">
-                  <div className="text-secondary-color hm-text-14">Sendgrid From Email</div>
+                  <div className="text-secondary-color font-weight-500 hm-text-14">Sendgrid From Email</div>
                   <div className="hm-text-14 font-weight-bold">{email_resource_info.sendgrid_from_email || "N/A"}</div>
                 </div>
               </div>
