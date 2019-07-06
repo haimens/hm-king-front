@@ -12,7 +12,7 @@ export function DisplayCardItem(props) {
       <section className="row">
         <div className="col">
           <div className="text-secondary-color font-weight-bold mb-1">{title}</div>
-          <div className="hm-title-sub-size text-main-color font-weight-bold">25</div>
+          <div className="hm-title-sub-size text-main-color font-weight-bold">{amount}</div>
         </div>
         <div className="col-auto col">
           <div

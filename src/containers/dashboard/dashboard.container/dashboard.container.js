@@ -7,6 +7,8 @@ import { Bar } from "react-chartjs-2";
 import { chartOptions, parseOptions, chartExample2 } from "./dashboard.component/chart";
 import "./dashboard.container.css";
 import Header from "../../../components/shared/Header";
+import { findCompanyList } from "../../../actions/company.action";
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +18,10 @@ class Dashboard extends Component {
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
+    this.props.findCompanyList();
   }
   render() {
+    const { company_list } = this.props;
     return (
       <main>
         <section className="mb-4">
@@ -29,7 +33,7 @@ class Dashboard extends Component {
               <div className="col-12 col-md-6 h-100 mb-4">
                 <DisplayCard
                   data={{
-                    amount: 20,
+                    amount: company_list.count,
                     title: "Total Company",
                     icon: `${process.env.PUBLIC_URL}/img/icon_company.svg`
                   }}
@@ -68,10 +72,15 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    company_list: state.companyReducer.company_list,
+    fee_list: state.feeReducer.fee_list
+  };
 };
+
+const mapDispatchToProps = { findCompanyList };
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(withRouter(Dashboard));

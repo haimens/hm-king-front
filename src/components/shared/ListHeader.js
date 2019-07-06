@@ -1,6 +1,10 @@
 import React from "react";
 
 export default function ListHeader(props) {
+  let { buttonWidth } = props;
+  if (!buttonWidth) {
+    buttonWidth = "30px";
+  }
   return (
     <div className="rounded-custom-top shadow-sm border border-bottom-0 bg-white">
       <section className="d-flex justify-content-between align-items-center p-3 shadow-sm" style={{ height: "65px" }}>
@@ -12,11 +16,11 @@ export default function ListHeader(props) {
           onClick={props.parentProps.clickFunction}
           style={{
             height: "28px",
-            minWidth: "98px"
+            width: buttonWidth
           }}
         >
           <i className="fas fa-plus mr-2" />
-          <div> {props.parentProps.clickTitle}</div>
+          <div className="font-weight-bold"> {props.parentProps.clickTitle}</div>
         </button>
       </section>
     </div>

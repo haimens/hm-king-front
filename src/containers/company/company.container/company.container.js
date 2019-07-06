@@ -43,6 +43,7 @@ class Company extends Component {
           <div className="mb-4">
             <ListHeader
               parentProps={{ title: "Company List", clickFunction: this.handleAddCompanyModal, clickTitle: "Company" }}
+              buttonWidth={"98px"}
             />
             <ListView
               totalCount={company_list.count}

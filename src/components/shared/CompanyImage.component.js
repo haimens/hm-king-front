@@ -18,17 +18,17 @@ export default class CompanyImage extends Component {
             <label htmlFor="logo">{this.props.title}</label>
           </div>
 
-          <div className="col-2">
+          <div className="col-3 d-flex justify-content-center align-items-center">
             <button
               type="button"
-              className="btn btn-sm btn-outline-secondary"
+              className="d-flex justify-content-center py-0 align-items-center btn btn-outline-secondary"
               onClick={e => this.handleModal(e)}
               style={{ borderRadius: "20px", width: "88px", height: "24px" }}
             >
               Upload
             </button>
           </div>
-          <div className="col-8 d-flex justify-content-end">
+          <div className="col-7 d-flex justify-content-end">
             {this.props.parentProps.img_url && (
               <img
                 className="hm-pointer-cursor rounded-circle"

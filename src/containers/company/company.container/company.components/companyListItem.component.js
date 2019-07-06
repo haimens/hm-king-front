@@ -20,7 +20,7 @@ export default function PunchItem(props) {
         </section>
       </td>
       <td data-label="Created On" className="align-middle items-height">
-        <section className="text-center  text-main-color hm-text-14">
+        <section className="text-center font-weight-500 text-main-color hm-text-14">
           {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
@@ -29,24 +29,27 @@ export default function PunchItem(props) {
       </td>
       <td data-label="Status" className="align-middle items-height">
         {status_str === "ACTIVE" ? (
-          <section className="text-main-color hm-text-14">
+          <section className="text-main-color text-center hm-text-14">
             <div className=" d-flex align-items-center ">
               <i className="fas fa-circle success-text-color col-6 text-right" style={{ fontSize: "6px" }} />
-              <div>Active</div>
+              <div className="font-weight-500">Active</div>
             </div>
           </section>
         ) : (
           <section className="text-center text-main-color hm-text-14">
             <div className=" d-flex align-items-center ">
               <i className="fas fa-circle text-danger col-6 text-right" style={{ fontSize: "6px" }} />
-              <div>Inactive</div>
+              <div className="font-weight-500">Inactive</div>
             </div>
           </section>
         )}
       </td>
       <td data-label="Detail" className="align-middle items-height">
         <section className="text-center  text-main-color hm-text-14">
-          <button className="btn btn-md text-primary" onClick={() => handleCompanyBeenClicked(realm_token)}>
+          <button
+            className="btn btn-md font-weight-500 hm-text-14 text-primary"
+            onClick={() => handleCompanyBeenClicked(realm_token)}
+          >
             View
           </button>
         </section>

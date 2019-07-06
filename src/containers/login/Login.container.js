@@ -59,7 +59,7 @@ export class Login extends React.Component {
         <p1 className="text-white welcome font-weight-bold text-center" style={{ fontSize: "26px", zIndex: "2" }}>
           Welcome!
         </p1>
-        <section className="rounded p-3 login-content text-center" style={{ zIndex: "2" }}>
+        <section className="p-3 login-content text-center rounded-custom" style={{ zIndex: "2" }}>
           <div className="hm-text-12 text-secondary-color mt-4 mb-5">Sign in with credentials</div>
 
           <form onSubmit={this.handleSubmit} className="container-fluid">
@@ -102,7 +102,7 @@ export class Login extends React.Component {
             </div>
 
             <div className="text-center" style={{ marginTop: "55px" }}>
-              <button type="submit" className="btn button-main-background button-main-size text-white ">
+              <button type="submit" className="btn button-main-background button-main-size shadow text-white ">
                 Sign in
               </button>
             </div>

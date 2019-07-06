@@ -101,6 +101,7 @@ class CompanyDetail extends Component {
                 clickFunction: this.handleAddCompanyAdminModal,
                 clickTitle: "Company Admin"
               }}
+              buttonWidth={"98px"}
             />
             <ListView
               totalCount={lord_list.count}
