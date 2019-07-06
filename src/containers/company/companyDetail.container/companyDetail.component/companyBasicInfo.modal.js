@@ -9,12 +9,18 @@ export default class CompanyAdmin extends Component {
     logo_path: "",
     icon_path: "",
     addr_str: "",
-    status: ""
+    status: "",
+    fee_rate: "",
+    default_address: "",
+    fee_rate_changed: false
   };
 
   handleInputChange = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
+    if (id === "fee_rate") {
+      this.setState({ fee_rate_changed: true });
+    }
   };
   handleStatusChange = () => {
     const { status } = this.state;
@@ -36,6 +42,9 @@ export default class CompanyAdmin extends Component {
   handleShowPreviewFavicon = () => {
     this.setState(states => ({ showPreviewFavicon: !states.showPreviewFavicon }));
   };
+  saveToAddress = address => {
+    this.setState({ addr_str: address[0].formatted_address });
+  };
   handleClose = () => {
     this.props.onClose();
   };
@@ -49,35 +58,60 @@ export default class CompanyAdmin extends Component {
     this.props.onClose();
   };
 
-  saveToAddress = address => {
-    console.log(address);
-  };
-  handleAddingCompanyAdmin = () => {
-    const { username, name, cell, email, area } = this.state;
-    const { realm_token, createALord } = this.props;
-    if (username !== "" && name !== "" && cell !== "" && email !== "" && area !== "") {
-      createALord(realm_token, {
-        username,
-        name,
-        cell: `${area} ${cell}`,
-        email
-      });
-      this.handleClose();
+  handleUpdateBasicInfo = async () => {
+    const {
+      company_name,
+      company_title,
+      logo_path,
+      icon_path,
+      status,
+      addr_str,
+      default_address,
+      fee_rate_changed,
+      fee_rate
+    } = this.state;
+    const { realm_token, updateABasicInfo, createNewAddressInstance, setPrimaryForResources } = this.props;
+    if (
+      company_name !== "" &&
+      company_title !== "" &&
+      logo_path !== "" &&
+      icon_path !== "" &&
+      status !== "" &&
+      addr_str !== ""
+    ) {
+      if (default_address !== addr_str) {
+        console.log(addr_str);
+        const payload = await createNewAddressInstance({ address_str: addr_str });
+        console.log(addr_str);
+      }
+      // if (fee_rate_changed) {
+      //   console.log(fee_rate);
+      //   setPrimaryForResources(realm_token, { tribute_rate_id: fee_rate });
+      // }
+      // await updateABasicInfo(realm_token, {
+      //   company_name,
+      //   company_title,
+      //   logo_path,
+      //   icon_path,
+      //   status
+      // });
+      // this.handleClose();
     } else {
       alertify.alert("Error!", "Please Finished The Form!");
     }
   };
 
   componentDidMount() {
-    const { basic_info, address_info } = this.props.company_detail;
-    console.log(this.props);
+    const { basic_info, address_info, tribute_rate_info } = this.props.company_detail;
     this.setState({
       company_name: basic_info.company_name,
       company_title: basic_info.company_title,
       addr_str: address_info.addr_str,
+      default_address: address_info.addr_str,
       logo_path: basic_info.logo_path,
       icon_path: basic_info.icon_path,
-      status: basic_info.status
+      status: basic_info.status,
+      fee_rate: tribute_rate_info.tribute_rate_token
     });
   }
 
@@ -85,12 +119,12 @@ export default class CompanyAdmin extends Component {
     const {
       company_name,
       company_title,
-      addr_str,
       logo_path,
       icon_path,
       fee_rate,
       showImage,
       showFavicon,
+      default_address,
       showPreview,
       showPreviewFavicon,
       status
@@ -121,11 +155,11 @@ export default class CompanyAdmin extends Component {
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
-          getHeight={"625px"}
+          getHeight={"600px"}
         >
           <div className="container">
             <div className="p-3">
-              <div className="form-group pt-3">
+              <div className="form-group pt-2">
                 <input
                   type="text"
                   className="form-control hm-input-height"
@@ -137,14 +171,10 @@ export default class CompanyAdmin extends Component {
                 />
               </div>
 
-              <div className="form-group">
-                <GAutoComplete defaultValue={addr_str} getGoogleAddress={this.saveToAddress} />
-              </div>
-
-              <div className="form-group input-group">
+              <div className="form-group input-group pt-2">
                 <input
                   type="text"
-                  className="form-control hm-input-height "
+                  className="form-control hm-input-height"
                   id="company_title"
                   placeholder="Company Title"
                   value={company_title}
@@ -152,16 +182,24 @@ export default class CompanyAdmin extends Component {
                 />
               </div>
 
+              <div className="form-group">
+                <GAutoComplete defaultValue={default_address} getGoogleAddress={this.saveToAddress} />
+              </div>
+
               <div className="form-group ">
                 <select
-                  className="custom-select form-control hm-input-height  mt-3"
+                  className="custom-select form-control hm-input-height "
                   id="fee_rate"
                   value={fee_rate}
                   onChange={this.handleInputChange}
                 >
                   {fee_list.record_list.map((fee, index) => {
                     return (
-                      <option key={index} value={fee.tribute_rate_token}>
+                      <option
+                        key={index}
+                        value={fee.tribute_rate_token}
+                        defaultValue={fee_rate === fee.tribute_rate_token}
+                      >
                         {parseRate(fee.rate)}
                       </option>
                     );
@@ -195,7 +233,7 @@ export default class CompanyAdmin extends Component {
                       onClick={this.handleStatusChange}
                       style={{ borderRadius: "20px", width: "88px", height: "24px" }}
                     >
-                      <i className={`fa${status === 2 ? "s hm-text-green" : "r"} fa-circle ml-1 `} />
+                      <i className={`fas ${status === 2 && "hm-text-green"} fa-circle ml-1 `} />
 
                       {status === 2 ? (
                         <div className="d-flex ml-2 align-items-center align-middle h-100 hm-text-green">Active</div>
@@ -210,9 +248,9 @@ export default class CompanyAdmin extends Component {
               <div className="form-group text-right pt-3">
                 <button
                   className="button-main-background btn button-main-size px-4 text-white mr-3"
-                  onClick={this.handleAddingCompanyAdmin}
+                  onClick={this.handleUpdateBasicInfo}
                 >
-                  Add
+                  Update
                 </button>
                 <button onClick={this.handleClose} className="btn button-main-size btn-outline-secondary px-4">
                   Cancel

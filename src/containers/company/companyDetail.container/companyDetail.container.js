@@ -10,10 +10,11 @@ import CompanyBasicInfoModal from "./companyDetail.component/companyBasicInfo.mo
 import CompanyAdminListItem from "./companyDetail.component/companyAdminList.item";
 import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList.item";
 
-import { findCompanyDetail, updateABasicInfo } from "../../../actions/company.action";
+import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../../../actions/company.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
 import { Header, ListView, ListHeader } from "../../../components/shared";
+import { createNewAddressInstance } from "../../../actions/address.action";
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
@@ -50,7 +51,16 @@ class CompanyDetail extends Component {
     this.props.findLordList({ start });
   };
   render() {
-    const { company_detail, lord_list, createALord, match, updateABasicInfo, fee_list } = this.props;
+    const {
+      company_detail,
+      lord_list,
+      createALord,
+      match,
+      updateABasicInfo,
+      fee_list,
+      createNewAddressInstance,
+      setPrimaryForResources
+    } = this.props;
     const { realm_token } = match.params;
 
     const { showCompanyAdminModal, showBasicInfoModal } = this.state;
@@ -70,6 +80,8 @@ class CompanyDetail extends Component {
             updateABasicInfo={updateABasicInfo}
             fee_list={fee_list}
             onClose={this.handleShowBasicInfo}
+            createNewAddressInstance={createNewAddressInstance}
+            setPrimaryForResources={setPrimaryForResources}
           />
         )}
         <section className="container-fluid">
@@ -148,7 +160,9 @@ const mapDispatchToProps = {
   findLordList,
   findFeeList,
   createALord,
-  updateABasicInfo
+  updateABasicInfo,
+  createNewAddressInstance,
+  setPrimaryForResources
 };
 
 export default connect(
