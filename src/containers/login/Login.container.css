@@ -16,6 +16,14 @@
   bottom: 0;
 }
 
+.welcome{
+  position: absolute;
+  top: 112px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .login-content {
   min-width: 330px;
   max-width: 440px;
