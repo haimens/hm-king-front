@@ -82,20 +82,20 @@ export default class CompanyAdmin extends Component {
       if (default_address !== addr_str) {
         console.log(addr_str);
         const payload = await createNewAddressInstance({ address_str: addr_str });
-        console.log(addr_str);
+        setPrimaryForResources(realm_token, { address_token: payload.address_token });
       }
-      // if (fee_rate_changed) {
-      //   console.log(fee_rate);
-      //   setPrimaryForResources(realm_token, { tribute_rate_id: fee_rate });
-      // }
-      // await updateABasicInfo(realm_token, {
-      //   company_name,
-      //   company_title,
-      //   logo_path,
-      //   icon_path,
-      //   status
-      // });
-      // this.handleClose();
+      if (fee_rate_changed) {
+        console.log(fee_rate);
+        setPrimaryForResources(realm_token, { tribute_rate_token: fee_rate });
+      }
+      await updateABasicInfo(realm_token, {
+        company_name,
+        company_title,
+        logo_path,
+        icon_path,
+        status
+      });
+      this.handleClose();
     } else {
       alertify.alert("Error!", "Please Finished The Form!");
     }
