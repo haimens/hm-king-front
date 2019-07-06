@@ -10,7 +10,7 @@ class Invoice extends Component {
       <main>
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title="Invoice" />
+            <Header title="Invoice" tabicon={"tabicon_invoice.svg"} />
           </div>
           <div className="mb-4">
             <ListHeader

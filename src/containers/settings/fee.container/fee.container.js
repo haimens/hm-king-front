@@ -48,7 +48,7 @@ class Fee extends Component {
         {showFeeValue && <FeeModal handleCreatingFee={this.handleCreatingFee} onClose={this.handleAddFeeValueModal} />}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title={"Settings"} subTitle="Fee Rate" />
+            <Header title={"Settings"} subTitle="Fee Rate" tabicon={"tabicon_settings.svg"} />
           </div>
           <div className="mb-4">
             <ListHeader

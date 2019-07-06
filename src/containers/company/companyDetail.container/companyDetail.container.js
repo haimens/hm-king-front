@@ -87,7 +87,13 @@ class CompanyDetail extends Component {
         )}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title="Company" subTitle={"Company Detail"} history={history} toLocation={"/company"} />
+            <Header
+              title="Company"
+              subTitle={"Company Detail"}
+              tabicon={"tabicon_company.svg"}
+              history={history}
+              toLocation={"/company"}
+            />
           </div>
           <div className="mb-4 ">
             <CompanyDetailInfo

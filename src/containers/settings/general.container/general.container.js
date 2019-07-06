@@ -18,7 +18,7 @@ class Key extends Component {
         {showKeyValue && <GeneralModal onClose={this.handleAddKeyValue} />}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title={"Settings"} subTitle="General Setting" />
+            <Header title={"Settings"} subTitle="General Setting" tabicon={"tabicon_settings.svg"} />
           </div>
           <div className="mb-4">
             <ListHeader
