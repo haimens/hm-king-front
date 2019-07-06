@@ -35,8 +35,8 @@ export default class CompanyImage extends Component {
                 onClick={() => this.props.parentProps.handleShowPreview()}
                 src={this.props.parentProps.img_url}
                 alt="icon"
-                width={"20px"}
-                height={"20px"}
+                width={"24px"}
+                height={"24px"}
               />
             )}
           </div>
