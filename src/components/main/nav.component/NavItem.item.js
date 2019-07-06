@@ -61,7 +61,7 @@ export default class NavItem extends Component {
       <main>
         <button
           onClick={() => this.handleToggle()}
-          className={`btn d-flex align-items-center justify-content-between px-4 py-3 w-100 ${parsedLocation[1] ===
+          className={`btn rounded-0 d-flex align-items-center justify-content-between px-4 py-3 w-100 ${parsedLocation[1] ===
             path && "nav-selected"}`}
           type="button"
         >

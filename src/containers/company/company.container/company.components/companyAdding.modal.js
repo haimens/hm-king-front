@@ -121,8 +121,8 @@ export default class PriceModifyModal extends Component {
           onClose={this.handleClose}
           headerTitleClassName={"text-modal-color font-weight-bold text-modal-title"}
           position="center"
-          getWidth={"467px"}
-          getHeight={"604px"}
+          getWidth={"470px"}
+          getHeight={"570px"}
         >
           <div className="container">
             <div className="p-3">
