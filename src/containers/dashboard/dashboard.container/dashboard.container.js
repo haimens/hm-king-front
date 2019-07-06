@@ -27,7 +27,7 @@ class Dashboard extends Component {
         <section className="mb-4">
           <div className="container-fluid">
             <div className="mb-4">
-              <Header title="Dashboard" icon="desktop" />
+              <Header title="Dashboard" tabicon={"tabicon_dashboard.svg"} />
             </div>
             <div className="row">
               <div className="col-12 col-md-6 h-100 mb-4">

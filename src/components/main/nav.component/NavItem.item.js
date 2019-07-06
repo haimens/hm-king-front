@@ -65,8 +65,8 @@ export default class NavItem extends Component {
             path && "nav-selected"}`}
           type="button"
         >
-          <div className="d-flex">
-            <img className="ml-3 mr-4" src={this.props.image} alt={"icon"} />
+          <div className="d-flex align-items-center">
+            <img className="ml-3 mr-4" src={this.props.image} alt={"icon"} style={{ width: "18px", height: "15px" }} />
             <div className={`d-block hm-text-14 ${parsedLocation[1] === path ? "text-black" : "text-grey"}`}>
               {name}
             </div>

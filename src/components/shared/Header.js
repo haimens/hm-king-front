@@ -8,9 +8,8 @@ export default function Header(props) {
           <i className={`fas fa-${props.icon} hm-header-size mr-3`} />
         ) : (
           <img
-            src={`${process.env.PUBLIC_URL}/img/icon_company.svg`}
-            height={18}
-            width={17}
+            src={`${process.env.PUBLIC_URL}/img/${props.tabicon}`}
+            style={{ width: "17px", height: "18px" }}
             alt="company"
             className="hm-header-size mr-3"
           />

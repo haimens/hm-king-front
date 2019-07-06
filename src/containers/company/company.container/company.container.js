@@ -38,7 +38,7 @@ class Company extends Component {
         )}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title="Company" />
+            <Header title="Company" tabicon={"tabicon_company.svg"} />
           </div>
           <div className="mb-4">
             <ListHeader
