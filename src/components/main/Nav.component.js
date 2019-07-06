@@ -38,6 +38,11 @@ class Nav extends Component {
         </div>
         <div className="d-flex flex-row align-items-center">
           <div className="btn-group mr-2">
+            <img
+              src={`${process.env.PUBLIC_URL}/img/haimenslogo.svg`}
+              style={{ height: "36px", width: "36px" }}
+              alt="error404"
+            />
             <button
               type="button"
               className="btn dropdown-toggle text-white"
