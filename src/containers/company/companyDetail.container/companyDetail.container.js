@@ -9,7 +9,7 @@ import CompanyInvoiceModal from "./companyDetail.component/companyInvoice.modal"
 import CompanyBasicInfoModal from "./companyDetail.component/companyBasicInfo.modal";
 import CompanyAdminListItem from "./companyDetail.component/companyAdminList.item";
 import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList.item";
-
+import CompanyFeeModal from "./companyDetail.component/companyFee.modal";
 import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../../../actions/company.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
@@ -18,13 +18,17 @@ import { createNewAddressInstance } from "../../../actions/address.action";
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
-    showBasicInfoModal: false
+    showBasicInfoModal: false,
+    showAddFeeInCompany: false
   };
   handleAddCompanyAdminModal = () => {
     this.setState(states => ({ showCompanyAdminModal: !states.showCompanyAdminModal }));
   };
   handleShowBasicInfo = () => {
     this.setState(states => ({ showBasicInfoModal: !states.showBasicInfoModal }));
+  };
+  handleAddFeeInCompanyModal = () => {
+    this.setState(states => ({ showAddFeeInCompany: !states.showAddFeeInCompany }));
   };
   handleDetailButtonClicked = type => {
     const { history, match } = this.props;
@@ -64,7 +68,7 @@ class CompanyDetail extends Component {
     } = this.props;
     const { realm_token } = match.params;
 
-    const { showCompanyAdminModal, showBasicInfoModal } = this.state;
+    const { showCompanyAdminModal, showBasicInfoModal, showAddFeeInCompany } = this.state;
     return (
       <main>
         {showCompanyAdminModal && (
@@ -85,6 +89,7 @@ class CompanyDetail extends Component {
             setPrimaryForResources={setPrimaryForResources}
           />
         )}
+        {showAddFeeInCompany && <CompanyFeeModal onClose={this.handleAddFeeInCompanyModal} />}
         <section className="container-fluid">
           <div className="mb-4">
             <Header
@@ -126,7 +131,7 @@ class CompanyDetail extends Component {
             <ListHeader
               parentProps={{
                 title: "Fee List",
-                clickFunction: this.handleAddCompanyAdminModal,
+                clickFunction: this.handleAddFeeInCompanyModal,
                 clickTitle: "Fee"
               }}
               buttonWidth={"72px"}

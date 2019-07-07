@@ -63,8 +63,8 @@ class CompanyDetailInfo extends Component {
                   <div className="text-secondary-color font-weight-500 hm-text-14">Status</div>
                   <div className="hm-text-14 font-weight-bold">
                     {basic_info.status === 2 ? (
-                      <div className="d-flex align-items-center">
-                        <i className="fas fa-circle success-text-color mr-3" style={{ fontSize: "6px" }} />
+                      <div className="d-flex align-items-center ">
+                        <i className="fas fa-circle success-text-color mr-3 pl-0" style={{ fontSize: "6px" }} />
                         <div>Active</div>
                       </div>
                     ) : (

@@ -27,7 +27,7 @@ export default function InvoiceListItem(props) {
         {status_str === "ACTIVE" ? (
           <section className="text-main-color hm-text-14">
             <div className=" d-flex align-items-center ">
-              <i className="fas fa-circle success-text-color col-6 text-right" style={{ fontSize: "6px" }} />
+              <i className="fas fa-circle success-text-color col-6 text-right pl-0" style={{ fontSize: "6px" }} />
               <div>Active</div>
             </div>
           </section>

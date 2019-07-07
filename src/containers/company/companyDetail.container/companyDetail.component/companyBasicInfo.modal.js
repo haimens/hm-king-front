@@ -25,8 +25,8 @@ export default class CompanyAdmin extends Component {
   handleStatusChange = () => {
     const { status } = this.state;
     if (status === 2) {
-      this.setState({ status: 1 });
-    } else if (status === 1) {
+      this.setState({ status: 3 });
+    } else if (status === 3) {
       this.setState({ status: 2 });
     }
   };
@@ -80,12 +80,10 @@ export default class CompanyAdmin extends Component {
       addr_str !== ""
     ) {
       if (default_address !== addr_str) {
-        console.log(addr_str);
         const payload = await createNewAddressInstance({ address_str: addr_str });
         setPrimaryForResources(realm_token, { address_token: payload.address_token });
       }
       if (fee_rate_changed) {
-        console.log(fee_rate);
         setPrimaryForResources(realm_token, { tribute_rate_token: fee_rate });
       }
       await updateABasicInfo(realm_token, {
@@ -103,6 +101,7 @@ export default class CompanyAdmin extends Component {
 
   componentDidMount() {
     const { basic_info, address_info, tribute_rate_info } = this.props.company_detail;
+    console.log(basic_info);
     this.setState({
       company_name: basic_info.company_name,
       company_title: basic_info.company_title,
@@ -228,15 +227,16 @@ export default class CompanyAdmin extends Component {
                   <div className="col-2">
                     <button
                       type="button"
-                      className={`btn btn-sm p-0 btn-outline-secondary d-flex align-items-center align-middle ${status ===
-                        2 && "hm-bg-green-border"}`}
+                      className={`btn btn-sm p-0 d-flex align-items-center align-middle ${
+                        status === 2 ? "hm-bg-green-border" : "btn-outline-secondary "
+                      }`}
                       onClick={this.handleStatusChange}
                       style={{ borderRadius: "20px", width: "88px", height: "24px" }}
                     >
-                      <i className={`fas ${status === 2 && "hm-text-green"} fa-circle ml-1 `} />
+                      <i className={`fas ${status === 2 && "hm-text-green"} fa-circle ml-1 pl-0`} />
 
                       {status === 2 ? (
-                        <div className="d-flex ml-2 align-items-center align-middle h-100 hm-text-green">Active</div>
+                        <div className="d-flex ml-2 align-items-center align-middle h-100 hm-text-green ">Active</div>
                       ) : (
                         <div className="d-flex ml-2 align-items-center align-middle h-100">Inactive</div>
                       )}

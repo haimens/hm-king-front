@@ -33,7 +33,7 @@ export default function CompanyAdminList(props) {
       >
         {status_str === "ACTIVE" ? (
           <section className="d-flex justify-content-center align-items-center">
-            <i className="fas fa-circle success-text-color mr-3" style={{ fontSize: "6px" }} />
+            <i className="fas fa-circle success-text-color mr-3 pl-0" style={{ fontSize: "6px" }} />
             <div>Active</div>
           </section>
         ) : (

@@ -31,7 +31,7 @@ export default function PunchItem(props) {
         {status_str === "ACTIVE" ? (
           <section className="text-main-color text-center hm-text-14">
             <div className=" d-flex align-items-center ">
-              <i className="fas fa-circle success-text-color col-6 text-right" style={{ fontSize: "6px" }} />
+              <i className="fas fa-circle success-text-color col-6 text-right pl-0" style={{ fontSize: "6px" }} />
               <div className="font-weight-500">Active</div>
             </div>
           </section>
