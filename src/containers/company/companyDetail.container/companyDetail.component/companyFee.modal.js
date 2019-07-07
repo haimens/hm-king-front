@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
 import alertify from "alertifyjs";
+import { isNumber } from "util";
 export default class FeeModal extends Component {
   state = {
-    fee_rate: ""
+    amount: "",
+    note: ""
   };
 
   handleCreatingFee = () => {
-    const { fee_rate } = this.state;
-    if (fee_rate > 0) {
-      this.props.handleCreatingFee(fee_rate * 100);
+    const { amount, note } = this.state;
+    if (amount > 0 && !isNaN(amount) && note !== "") {
+      this.props.handleCreatingFee({ coin_token: amount * 100, note });
     } else {
       alertify.alert("Error!", "Please Submit Correct Rate!");
     }
@@ -25,14 +27,14 @@ export default class FeeModal extends Component {
   };
 
   render() {
-    const { fee_rate } = this.state;
+    const { amount, note } = this.state;
     return (
       <Modal
-        title="Add Fee Rate"
+        title="Add Fee"
         onClose={this.handleClose}
         position="center"
         getWidth={"467px"}
-        getHeight={"280px"}
+        getHeight={"339px"}
         zIndex="1080"
       >
         <div className="container">
@@ -40,16 +42,26 @@ export default class FeeModal extends Component {
             <div className="input-group mb-3">
               <input
                 type="number"
-                className="form-control border-right-0 hm-input-height mt-3"
-                id="fee_rate"
-                value={fee_rate}
+                className="form-control hm-input-height mt-3"
+                id="amount"
+                value={amount}
+                placeholder="Amount"
                 onChange={this.handleInputChange}
               />
-              <div className="input-group-append ">
-                <span className="input-group-text bg-white border-left-0 mt-3">%</span>
-              </div>
             </div>
-            <div className="form-group text-right p-3">
+
+            <div className="input-group mb-3">
+              <input
+                type="text"
+                className="form-control hm-input-height mt-3"
+                id="note"
+                placeholder="Note"
+                value={note}
+                onChange={this.handleInputChange}
+              />
+            </div>
+
+            <div className="form-group text-right pt-3">
               <button
                 className="button-main-background btn button-main-size px-4 text-white mr-3"
                 onClick={this.handleCreatingFee}

@@ -56,7 +56,7 @@ class Fee extends Component {
               buttonWidth={"90px"}
             />
             <ListView
-              totalCount={7}
+              totalCount={fee_list.record_list.length}
               title="Fee Rate"
               fieldNames={["Created On", "Fee Rate", "Delete"]}
               hideHeader={true}

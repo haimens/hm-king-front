@@ -1,10 +1,19 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { ListView, Header, ListHeader } from "../../../components/shared";
+import { findInvoiceList } from "../../../actions/invoice.action";
 
 class Invoice extends Component {
   handlePageChange = page => {
     console.log(page);
   };
+  handlePageChange = start => {
+    this.props.findInvoiceList({ start });
+  };
+  componentDidMount() {
+    this.props.findInvoiceList();
+  }
   render() {
     return (
       <main>
@@ -33,4 +42,16 @@ class Invoice extends Component {
     );
   }
 }
-export default Invoice;
+
+const mapStateToProps = state => {
+  return {
+    invoice_list: state.invoiceReducer.invoice_list
+  };
+};
+
+const mapDispatchToProps = { findInvoiceList };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Invoice));

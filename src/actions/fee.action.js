@@ -51,3 +51,35 @@ export const deleteAFeeRate = tribute_rate_token => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const findFeeListInCompany = (realm_token, query = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`tribute/all/detail/realm/${realm_token}`, "GET", null, {
+      order_key: "udate",
+      order_direction: "DESC",
+      ...query
+    });
+    await dispatch({
+      type: constant.FEE_LIST_IN_COMPANY,
+      payload
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const createAFeeInCompany = (realm_token, body = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`tribute/detail/${realm_token}`, "POST", body);
+    await launchSuccess(dispatch);
+    await dispatch(findFeeListInCompany(realm_token));
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

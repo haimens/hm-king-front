@@ -11,10 +11,12 @@ import CompanyAdminListItem from "./companyDetail.component/companyAdminList.ite
 import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList.item";
 import CompanyFeeModal from "./companyDetail.component/companyFee.modal";
 import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../../../actions/company.action";
+import { findFeeListInCompany, createAFeeInCompany } from "../../../actions/fee.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
 import { Header, ListView, ListHeader } from "../../../components/shared";
 import { createNewAddressInstance } from "../../../actions/address.action";
+import CompanyFeeListItem from "./companyDetail.component/companyFeeList.item";
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
@@ -47,9 +49,14 @@ class CompanyDetail extends Component {
     }
   };
   async componentDidMount() {
-    const { findCompanyDetail, findLordList, findFeeList, match } = this.props;
+    const { findCompanyDetail, findLordList, findFeeList, findFeeListInCompany, match } = this.props;
     const { realm_token } = match.params;
-    Promise.all([findCompanyDetail(realm_token), findLordList(realm_token), findFeeList()]);
+    Promise.all([
+      findCompanyDetail(realm_token),
+      findLordList(realm_token),
+      findFeeList(),
+      findFeeListInCompany(realm_token)
+    ]);
   }
   handlePageChange = start => {
     this.props.findLordList({ start });
@@ -64,7 +71,9 @@ class CompanyDetail extends Component {
       fee_list,
       createNewAddressInstance,
       setPrimaryForResources,
-      history
+      createAFeeInCompany,
+      history,
+      fee_list_in_company
     } = this.props;
     const { realm_token } = match.params;
 
@@ -89,7 +98,9 @@ class CompanyDetail extends Component {
             setPrimaryForResources={setPrimaryForResources}
           />
         )}
-        {showAddFeeInCompany && <CompanyFeeModal onClose={this.handleAddFeeInCompanyModal} />}
+        {showAddFeeInCompany && (
+          <CompanyFeeModal createAFeeInCompany={createAFeeInCompany} onClose={this.handleAddFeeInCompanyModal} />
+        )}
         <section className="container-fluid">
           <div className="mb-4">
             <Header
@@ -137,15 +148,15 @@ class CompanyDetail extends Component {
               buttonWidth={"72px"}
             />
             <ListView
-              totalCount={0}
+              totalCount={fee_list_in_company.count}
               title="Fee List"
               fieldNames={["Created On", "Fee Amount", "Note"]}
               hideHeader={true}
               onPageChange={this.handlePageChange}
             >
-              {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <CompanyFeeListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
-            ))} */}
+              {fee_list_in_company.record_list.map((punch, index) => (
+                <CompanyFeeListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
+              ))}
             </ListView>
           </div>
           <div className="mb-4">
@@ -187,6 +198,7 @@ const mapStateToProps = state => {
   return {
     company_detail: state.companyReducer.company_detail,
     fee_list: state.feeReducer.fee_list,
+    fee_list_in_company: state.feeReducer.fee_list_in_company,
     lord_list: state.lordReducer.lord_list
   };
 };
@@ -197,7 +209,9 @@ const mapDispatchToProps = {
   createALord,
   updateABasicInfo,
   createNewAddressInstance,
-  setPrimaryForResources
+  setPrimaryForResources,
+  findFeeListInCompany,
+  createAFeeInCompany
 };
 
 export default connect(
