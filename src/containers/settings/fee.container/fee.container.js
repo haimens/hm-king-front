@@ -28,10 +28,10 @@ class Fee extends Component {
         `Fee Rate: ${rate}`,
         () => {
           this.props.deleteAFeeRate(tribute_rate_token);
-          alertify.success("Cancel");
+          alertify.success("Deleted");
         },
         function() {
-          alertify.error("Deleted");
+          alertify.error("Cancel");
         }
       )
       .set({ labels: { ok: "Delete", cancel: "Cancel" } });
@@ -53,9 +53,10 @@ class Fee extends Component {
           <div className="mb-4">
             <ListHeader
               parentProps={{ title: "Fee Rate", clickFunction: this.handleAddFeeValueModal, clickTitle: "Fee Rate" }}
+              buttonWidth={"90px"}
             />
             <ListView
-              totalCount={30}
+              totalCount={7}
               title="Fee Rate"
               fieldNames={["Created On", "Fee Rate", "Delete"]}
               hideHeader={true}

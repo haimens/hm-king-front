@@ -13,22 +13,21 @@ export default function FeeListItem(props) {
   return (
     <tr className="border-bottom">
       <td data-label="Created On" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center  text-main-color hm-text-14">
+        <section className="text-center font-weight-500 text-main-color hm-text-14">
           {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
       <td data-label="Fee Rate" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center  text-main-color hm-text-14">{parseRate(rate)}</section>
+        <section className="text-center font-weight-500 text-main-color hm-text-14">{parseRate(rate)}</section>
       </td>
       <td data-label="Delete" style={{ height: "80px" }} className="align-middle">
-        <section className="d-flex justify-content-center text-main-color hm-text-14">
-          <div
-            className="d-flex justify-content-center align-items-center card-icon-background-red rounded-circle  hm-pointer-cursor shadow-sm border-white"
-            style={{ height: "36px", width: "36px" }}
+        <section className="d-flex justify-content-center font-weight-500 text-main-color hm-text-14">
+          <img
+            src={`${process.env.PUBLIC_URL}/img/icon_delete.svg`}
+            className="hm-pointer-cursor"
+            alt="delete"
             onClick={() => handleDeleteFee(tribute_rate_token)}
-          >
-            <i className="fas fa-trash-alt text-white" />
-          </div>
+          />
         </section>
       </td>
     </tr>
