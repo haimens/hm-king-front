@@ -43,7 +43,7 @@ export default function CompanyEmailListItem(props) {
       </td>
       <td className="items-height align-items-center text-center d-flex justify-content-center" data-label="Edit">
         <button
-          className="rounded-circle bg-white company-detail-button d-flex justify-content-center  align-items-center"
+          className="rounded-circle bg-white company-detail-button d-flex justify-content-center text-center align-items-center"
           onClick={() => handleEditEmailResource(email_resource_token)}
         >
           <i className="fas fa-pencil-alt" style={{ color: "#fb6240" }} />
