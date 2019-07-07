@@ -38,7 +38,7 @@ export default function CompanyAdminList(props) {
         ) : (
           <section className="text-center align-middle hm-text-14 font-weight-bold" style={{ color: "#5e72e4" }}>
             <button
-              className="primary-set-button bg-white"
+              className="primary-set-button"
               onClick={() => handleSetPaymentPrimary(realm_token, payment_resource_token)}
             >
               Set Primary
