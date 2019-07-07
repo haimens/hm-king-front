@@ -5,10 +5,10 @@ class CompanySourceDetail extends Component {
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
-          <div className="col-2 d-flex justify-content-center">
+          <div className="col-lg-2 col-12 mb-4 d-flex justify-content-center">
             <img className="rounded-circle" style={{ height: "90px", width: "90px" }} src={imgLink} alt="avatar" />
           </div>
-          <div className="col-10 pl-3">
+          <div className="col-lg-10 col-12 pl-3">
             <div className="row text-modal-color">
               <div className="col-6">
                 <div className="d-flex justify-content-between align-items-center mb-4 ">

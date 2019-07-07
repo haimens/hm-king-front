@@ -17,7 +17,7 @@ class CompanyDetailInfo extends Component {
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
-          <div className="col-2 d-flex justify-content-center">
+          <div className="col-lg-2 col-12 mb-4 d-flex justify-content-center">
             <img
               className="rounded-circle"
               style={{ height: "90px", width: "90px" }}
@@ -25,9 +25,9 @@ class CompanyDetailInfo extends Component {
               alt="avatar"
             />
           </div>
-          <div className="col-10">
+          <div className="col-lg-10 col-12">
             <div className="row text-modal-color">
-              <div className="col-6 mb-4">
+              <div className="col-lg-6 col-12 mb-4">
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Basic Information</div>
@@ -77,7 +77,7 @@ class CompanyDetailInfo extends Component {
                 </div>
               </div>
 
-              <div className="col-6">
+              <div className="col-lg-6 col-12">
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Primary Payment Information</div>
@@ -106,7 +106,7 @@ class CompanyDetailInfo extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-lg-6 col-12">
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Primary Message Information</div>
@@ -131,7 +131,7 @@ class CompanyDetailInfo extends Component {
                   <div className="hm-text-14 font-weight-bold">{message_resource_info.twilio_from_num || "N/A"}</div>
                 </div>
               </div>
-              <div className="col-6">
+              <div className="col-lg-6 col-12">
                 <div className="company-intro-border p-3">
                   <div className="d-flex justify-content-between align-items-center  ">
                     <div className="hm-text-16 font-weight-bold">Primary Email Information</div>
