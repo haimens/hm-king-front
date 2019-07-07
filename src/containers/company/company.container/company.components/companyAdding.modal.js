@@ -116,14 +116,7 @@ export default class PriceModifyModal extends Component {
         {showPreviewFavicon && (
           <PreviewImageModal image={icon_path} onClose={() => this.setState({ showPreviewFavicon: false })} />
         )}
-        <Modal
-          title="Add Company"
-          onClose={this.handleClose}
-          headerTitleClassName={"text-modal-color font-weight-bold text-modal-title"}
-          position="center"
-          getWidth={"470px"}
-          getHeight={"570px"}
-        >
+        <Modal title="Add Company" onClose={this.handleClose} position="center" getWidth={"470px"} getHeight={"570px"}>
           <div className="container">
             <div className="p-3">
               <div className="form-group">

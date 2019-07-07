@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyEmailDetail from "./companyEmail.component/companyEmailDetail.component";
 import CompanyEmailDetailListItem from "./companyEmail.component/companyEmailList.item";
 import CompanyEmailModal from "./companyEmail.component/companyEmail.modal";
 import CompanyEmailUpdateModal from "./companyEmail.component/companyEmailUpdate.modal";
@@ -13,7 +12,7 @@ import {
   setPrimaryForResources
 } from "../../../../actions/company.action";
 import { Header, ListView, ListHeader } from "../../../../components/shared";
-
+import CompanySourceDetail from "../companySource.share/companySourceDetail.container";
 class CompanyEmail extends Component {
   state = {
     showCreateEmailResource: false,
@@ -49,10 +48,13 @@ class CompanyEmail extends Component {
       match,
       createAEmailMethod,
       updateAEmailMethod,
-      setPrimaryForResources
+      setPrimaryForResources,
+      history
     } = this.props;
     const { realm_token } = match.params;
     const { showCreateEmailResource, showEditEmailResource, currEmailResource } = this.state;
+    const { sendgrid_api_key, sendgrid_from_email } = company_detail.email_resource_info;
+
     return (
       <main>
         {showCreateEmailResource && (
@@ -72,10 +74,23 @@ class CompanyEmail extends Component {
         )}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title="Company" subTitle={"Company Detail"} />
+            <Header
+              title="Company"
+              history={history}
+              tabicon={"tabicon_company.svg"}
+              subTitle={"Company Detail"}
+              thirdTitle={"Primary Email"}
+              toLocation={"/company"}
+              toSubLocation={`/company/detail/${realm_token}`}
+            />
           </div>
           <div className="mb-4 ">
-            <CompanyEmailDetail company_detail={company_detail} />
+            <CompanySourceDetail
+              title={"Primary Email Information"}
+              imgLink={company_detail.basic_info.logo_path}
+              subTitles={["SendGrid API Key", "SendGrid From Email"]}
+              subTitlesInfos={[sendgrid_api_key, sendgrid_from_email]}
+            />
           </div>
           <div className="mb-4">
             <ListHeader

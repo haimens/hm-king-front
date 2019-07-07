@@ -51,7 +51,6 @@ export default class CompanyBasicInfo extends Component {
         <Modal
           title="Add Company Admin"
           onClose={this.handleClose}
-          headerTitleClassName={"text-modal-color font-weight-bold text-modal-title"}
           position="center"
           getWidth={"467px"}
           getHeight={"500px"}

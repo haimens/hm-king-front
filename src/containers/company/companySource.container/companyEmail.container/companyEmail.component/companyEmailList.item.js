@@ -33,7 +33,7 @@ export default function CompanyEmailListItem(props) {
         ) : (
           <section className="text-center align-middle hm-text-14 font-weight-bold" style={{ color: "#5e72e4" }}>
             <button
-              className="primary-set-button"
+              className="primary-set-button bg-white"
               onClick={() => handleSetEmailPrimary(realm_token, email_resource_token)}
             >
               Set Primary

@@ -67,7 +67,7 @@ class Modal extends Component {
             }`}
           >
             <header className={`d-flex justify-content-between   align-items-center px-4 `} style={{ height: "74px" }}>
-              <h5 className={this.props.headerTitleClassName}>{this.props.title}</h5>
+              <h5 className="text-modal-color font-weight-bold text-modal-title">{this.props.title}</h5>
               <ImageButton
                 // image={`${process.env.PUBLIC_URL}/img/forget-password@2x.png`}
                 icon={<i className="fas fa-times" />}

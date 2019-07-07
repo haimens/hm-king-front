@@ -17,7 +17,7 @@ class CompanyDetailInfo extends Component {
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
-          <div className="col-1 d-flex justify-content-center">
+          <div className="col-2 d-flex justify-content-center">
             <img
               className="rounded-circle"
               style={{ height: "90px", width: "90px" }}
@@ -25,7 +25,7 @@ class CompanyDetailInfo extends Component {
               alt="avatar"
             />
           </div>
-          <div className="col-11">
+          <div className="col-10">
             <div className="row text-modal-color">
               <div className="col-6 mb-4">
                 <div className="company-intro-border p-3">

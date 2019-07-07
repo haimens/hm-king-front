@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyPaymentDetail from "./companyPayment.component/companyPaymentDetail.component";
 import CompanyPaymentDetailListItem from "./companyPayment.component/companyPaymentList.item";
 import CompanyPaymentModal from "./companyPayment.component/companyPayment.modal";
 import CompanyPaymentUpdateModal from "./companyPayment.component/companyPaymentUpdate.modal";
@@ -13,7 +12,7 @@ import {
   setPrimaryForResources
 } from "../../../../actions/company.action";
 import { Header, ListView, ListHeader } from "../../../../components/shared";
-
+import CompanySourceDetail from "../companySource.share/companySourceDetail.container";
 class CompanyPayment extends Component {
   state = {
     showCreatePaymentResource: false,
@@ -49,10 +48,12 @@ class CompanyPayment extends Component {
       match,
       createAPaymentMethod,
       updateAPaymentMethod,
-      setPrimaryForResources
+      setPrimaryForResources,
+      history
     } = this.props;
     const { realm_token } = match.params;
     const { showCreatePaymentResource, showEditPaymentResource, currPaymentResource } = this.state;
+    const { square_application_id, square_location_id, square_access_token } = company_detail.payment_resource_info;
     return (
       <main>
         {showCreatePaymentResource && (
@@ -72,10 +73,23 @@ class CompanyPayment extends Component {
         )}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title="Company" subTitle={"Company Detail"} />
+            <Header
+              title="Company"
+              history={history}
+              tabicon={"tabicon_company.svg"}
+              subTitle={"Company Detail"}
+              thirdTitle={"Primary Payment"}
+              toLocation={"/company"}
+              toSubLocation={`/company/detail/${realm_token}`}
+            />
           </div>
           <div className="mb-4 ">
-            <CompanyPaymentDetail payment_resource_info={company_detail.payment_resource_info} />
+            <CompanySourceDetail
+              title={"Primary Payment Information"}
+              imgLink={company_detail.basic_info.logo_path}
+              subTitles={["Square Application Id", "Square Location Id", "Square Access Token"]}
+              subTitlesInfos={[square_application_id, square_location_id, square_access_token]}
+            />
           </div>
           <div className="mb-4">
             <ListHeader
@@ -84,6 +98,7 @@ class CompanyPayment extends Component {
                 clickFunction: this.handleCreatePaymentResource,
                 clickTitle: "Payment Resource"
               }}
+              buttonWidth={"146px"}
             />
             <ListView
               totalCount={payment_list.count}

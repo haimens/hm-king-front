@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyMessageDetail from "./companyMessage.component/companyMessageDetail.component";
 import CompanyMessageDetailListItem from "./companyMessage.component/companyMessageList.item";
 import CompanyMessageModal from "./companyMessage.component/companyMessage.modal";
 import CompanyMessageUpdateModal from "./companyMessage.component/companyMessageUpdate.modal";
@@ -12,6 +11,7 @@ import {
   updateAMessageMethod,
   setPrimaryForResources
 } from "../../../../actions/company.action";
+import CompanySourceDetail from "../companySource.share/companySourceDetail.container";
 import { Header, ListView, ListHeader } from "../../../../components/shared";
 
 class CompanyMessage extends Component {
@@ -49,10 +49,12 @@ class CompanyMessage extends Component {
       match,
       createAMessageMethod,
       updateAMessageMethod,
-      setPrimaryForResources
+      setPrimaryForResources,
+      history
     } = this.props;
     const { realm_token } = match.params;
     const { showCreateMessageResource, showEditMessageResource, currMessageResource } = this.state;
+    const { twilio_account_id, twilio_auth_token, twilio_from_num } = company_detail.message_resource_info;
     return (
       <main>
         {showCreateMessageResource && (
@@ -72,10 +74,23 @@ class CompanyMessage extends Component {
         )}
         <section className="container-fluid">
           <div className="mb-4">
-            <Header title="Company" subTitle={"Message Detail"} />
+            <Header
+              title="Company"
+              history={history}
+              tabicon={"tabicon_company.svg"}
+              subTitle={"Company Detail"}
+              thirdTitle={"Message Payment"}
+              toLocation={"/company"}
+              toSubLocation={`/company/detail/${realm_token}`}
+            />
           </div>
           <div className="mb-4 ">
-            <CompanyMessageDetail message_resource_info={company_detail.message_resource_info} />
+            <CompanySourceDetail
+              title={"Primary Message Information"}
+              imgLink={company_detail.basic_info.logo_path}
+              subTitles={["Twilio Account Id", "Twilio Auth Id", "Twilio From Num"]}
+              subTitlesInfos={[twilio_account_id, twilio_auth_token, twilio_from_num]}
+            />
           </div>
           <div className="mb-4">
             <ListHeader
@@ -84,6 +99,7 @@ class CompanyMessage extends Component {
                 clickFunction: this.handleCreateMessageResource,
                 clickTitle: "Message Resource"
               }}
+              buttonWidth={"146px"}
             />
             <ListView
               totalCount={message_list.count}
