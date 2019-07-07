@@ -10,7 +10,7 @@ class CompanySourceDetail extends Component {
           </div>
           <div className="col-lg-10 col-12 pl-3">
             <div className="row text-modal-color">
-              <div className="col-6">
+              <div className="col-lg-6 col-12">
                 <div className="d-flex justify-content-between align-items-center mb-4 ">
                   <div className="hm-text-16 font-weight-bold">{title}</div>
                 </div>

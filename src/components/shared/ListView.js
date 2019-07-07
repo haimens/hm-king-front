@@ -83,13 +83,13 @@ class ListView extends Component {
             )}
           </section>
         )}
-        <table className="table table-borderless border-top-0 mb-0">
-          <thead className="border-left  border-right">
+        <table className="table table-borderless border-0 mb-0">
+          <thead className="border-0">
             <tr style={{ backgroundColor: "#f7f9fc" }}>{renderFieldNames(this.props.fieldNames)}</tr>
           </thead>
           <tbody className="hm-break-word">{this.renderList(this.props.children)}</tbody>
         </table>
-        <div className="d-flex flex-column shadow-sm border border-top-0 p-2 rounded-custom-bottom">
+        <div className="d-flex flex-column shadow-sm border border-0 p-2 rounded-custom-bottom">
           {<Pagination onPageChange={this.handlePageChange} count={this.props.totalCount} />}
         </div>
       </div>

@@ -16,27 +16,33 @@ export default function CompanyAdminList(props) {
   return (
     <tr className="border-bottom">
       <td className="items-height align-middle" data-label="Square Application Id">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
           {square_application_id}
         </section>
       </td>
       <td className="items-height align-middle" data-label="Square Location Id">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
           {square_location_id}
         </section>
       </td>
       <td className="items-height align-middle" data-label="Square Access Token">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
           {square_access_token}
         </section>
       </td>
       <td className="items-height align-middle" data-label="Square Access Token">
         {isPrimary ? (
-          <section className="text-center align-middle hm-text-14 font-weight-bold" style={{ color: "#5e72e4" }}>
+          <section
+            className="text-lg-center text-right align-middle hm-text-14 font-weight-bold"
+            style={{ color: "#5e72e4" }}
+          >
             Primary
           </section>
         ) : (
-          <section className="text-center align-middle hm-text-14 font-weight-bold" style={{ color: "#5e72e4" }}>
+          <section
+            className="text-lg-center text-right align-middle hm-text-14 font-weight-bold"
+            style={{ color: "#5e72e4" }}
+          >
             <button
               className="primary-set-button"
               onClick={() => handleSetPaymentPrimary(realm_token, payment_resource_token)}
@@ -46,9 +52,9 @@ export default function CompanyAdminList(props) {
           </section>
         )}
       </td>
-      <td className="items-height align-items-center text-center d-flex justify-content-center" data-label="Edit">
+      <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
         <button
-          className="rounded-circle bg-white company-detail-button d-flex justify-content-center  align-items-center"
+          className="rounded-circle bg-white company-detail-button"
           onClick={() => handleEditPaymentResource(payment_resource_token)}
         >
           <i className="fas fa-pencil-alt" style={{ color: "#fb6240" }} />
