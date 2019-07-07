@@ -40,7 +40,7 @@ export default class CompanyBasicInfo extends Component {
       });
       this.handleClose();
     } else {
-      alertify.alert("Error!", "Please Finished The Form!");
+      alertify.alert("Error!", "Please Finish The Form!");
     }
   };
 
@@ -51,6 +51,7 @@ export default class CompanyBasicInfo extends Component {
         <Modal
           title="Add Company Admin"
           onClose={this.handleClose}
+          headerTitleClassName={"text-modal-color font-weight-bold text-modal-title"}
           position="center"
           getWidth={"467px"}
           getHeight={"500px"}

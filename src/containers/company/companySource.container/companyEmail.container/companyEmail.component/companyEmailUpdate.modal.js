@@ -36,7 +36,7 @@ export default class CompanyEmailUpdate extends Component {
       });
       this.handleClose();
     } else {
-      alertify.alert("Error!", "Please Finished The Form!");
+      alertify.alert("Error!", "Please Finish The Form!");
     }
   };
   async componentDidMount() {

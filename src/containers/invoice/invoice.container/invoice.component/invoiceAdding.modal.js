@@ -70,7 +70,7 @@ export default class PriceModifyModal extends Component {
       });
       this.handleClose();
     } else {
-      alertify.alert("Error!", "Please Finished The Form!");
+      alertify.alert("Error!", "Please Finish The Form!");
     }
   };
 
