@@ -9,9 +9,11 @@ export default class FeeModal extends Component {
   };
 
   handleCreatingFee = () => {
+    const { realm_token } = this.props;
     const { amount, note } = this.state;
     if (amount > 0 && !isNaN(amount) && note !== "") {
-      this.props.handleCreatingFee({ coin_token: amount * 100, note });
+      this.props.createAFeeInCompany(realm_token, { amount: amount * 100, note });
+      this.props.onClose();
     } else {
       alertify.alert("Error!", "Please Submit Correct Rate!");
     }
@@ -35,7 +37,7 @@ export default class FeeModal extends Component {
         position="center"
         getWidth={"467px"}
         getHeight={"339px"}
-        zIndex="1080"
+        zIndex="3"
       >
         <div className="container">
           <div className="p-3">

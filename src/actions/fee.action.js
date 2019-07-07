@@ -74,6 +74,8 @@ export const findFeeListInCompany = (realm_token, query = {}) => async dispatch 
 export const createAFeeInCompany = (realm_token, body = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
+    console.log(realm_token);
+    console.log(body);
     const { payload } = await callApi(`tribute/detail/${realm_token}`, "POST", body);
     await launchSuccess(dispatch);
     await dispatch(findFeeListInCompany(realm_token));

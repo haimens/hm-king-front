@@ -99,7 +99,11 @@ class CompanyDetail extends Component {
           />
         )}
         {showAddFeeInCompany && (
-          <CompanyFeeModal createAFeeInCompany={createAFeeInCompany} onClose={this.handleAddFeeInCompanyModal} />
+          <CompanyFeeModal
+            realm_token={realm_token}
+            createAFeeInCompany={createAFeeInCompany}
+            onClose={this.handleAddFeeInCompanyModal}
+          />
         )}
         <section className="container-fluid">
           <div className="mb-4">
@@ -154,8 +158,8 @@ class CompanyDetail extends Component {
               hideHeader={true}
               onPageChange={this.handlePageChange}
             >
-              {fee_list_in_company.record_list.map((punch, index) => (
-                <CompanyFeeListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
+              {fee_list_in_company.record_list.map((fee, index) => (
+                <CompanyFeeListItem parentProps={fee} key={index} onClick={this.handlePunchItemClick} />
               ))}
             </ListView>
           </div>
