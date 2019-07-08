@@ -5,7 +5,6 @@ import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.ac
  * @onCorrect
  */
 export default function CompanyFeeListItem(props) {
-  console.log(props);
   const { cdate, amount, note } = props.parentProps;
   return (
     <tr className="border-bottom">

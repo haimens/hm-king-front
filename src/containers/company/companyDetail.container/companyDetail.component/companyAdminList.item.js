@@ -6,11 +6,10 @@ import { EditButton } from "../../../../components/shared";
  * @onCorrect
  */
 export default function CompanyAdminList(props) {
-  const handleEditLordResource = () => {
-    props.handleEditLordResource(props.parentProps);
+  const handleEditLordInfo = () => {
+    props.handleEditLordInfo(props.parentProps);
   };
   const { cell, email, name, username, img_path, status_str } = props.parentProps;
-  console.log(props);
   return (
     <tr className="border-bottom">
       <td className="items-height align-middle" data-label="Company Logo">
@@ -58,7 +57,7 @@ export default function CompanyAdminList(props) {
         )}
       </td>
       <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
-        <EditButton clickFunction={handleEditLordResource} />
+        <EditButton clickFunction={handleEditLordInfo} />
       </td>
     </tr>
   );

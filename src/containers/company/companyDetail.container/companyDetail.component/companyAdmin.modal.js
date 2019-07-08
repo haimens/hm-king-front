@@ -30,9 +30,9 @@ export default class CompanyBasicInfo extends Component {
   };
   handleAddingCompanyAdmin = () => {
     const { username, name, cell, email, area } = this.state;
-    const { realm_token, createALord } = this.props;
+    const { realm_token, createALordInCompany } = this.props;
     if (username !== "" && name !== "" && cell !== "" && email !== "" && area !== "") {
-      createALord(realm_token, {
+      createALordInCompany(realm_token, {
         username,
         name,
         cell: `${area} ${cell}`,

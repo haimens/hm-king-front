@@ -10,9 +10,10 @@ import CompanyBasicInfoModal from "./companyDetail.component/companyBasicInfo.mo
 import CompanyAdminListItem from "./companyDetail.component/companyAdminList.item";
 import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList.item";
 import CompanyFeeModal from "./companyDetail.component/companyFee.modal";
+import CompanyEditALordModal from "./companyDetail.component/companyEditALord.modal";
 import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../../../actions/company.action";
 import { findFeeListInCompany, createAFeeInCompany } from "../../../actions/fee.action";
-import { findLordList, createALord } from "../../../actions/lord.action";
+import { findLordListInCompany, createALordInCompany, updateALordInCompany } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
 import {
   findInvoiceSumInCompany,
@@ -28,6 +29,7 @@ class CompanyDetail extends Component {
     showBasicInfoModal: false,
     showAddFeeInCompany: false,
     showAddInvoiceInCompany: false,
+    showEditLordInfoModal: false,
     currLordInfo: ""
   };
   handleAddCompanyAdminModal = () => {
@@ -41,6 +43,9 @@ class CompanyDetail extends Component {
   };
   handleAddInvoiceModal = () => {
     this.setState(states => ({ showAddInvoiceInCompany: !states.showAddInvoiceInCompany }));
+  };
+  handleShowEditLordInfoModal = props => {
+    this.setState(states => ({ showEditLordInfoModal: !states.showEditLordInfoModal, currLordInfo: props }));
   };
   handleDetailButtonClicked = type => {
     const { history, match } = this.props;
@@ -61,7 +66,7 @@ class CompanyDetail extends Component {
   async componentDidMount() {
     const {
       findCompanyDetail,
-      findLordList,
+      findLordListInCompany,
       findFeeList,
       findFeeListInCompany,
       findInvoiceSumInCompany,
@@ -71,7 +76,7 @@ class CompanyDetail extends Component {
     const { realm_token } = match.params;
     Promise.all([
       findCompanyDetail(realm_token),
-      findLordList(realm_token),
+      findLordListInCompany(realm_token),
       findFeeList(),
       findFeeListInCompany(realm_token),
       findInvoiceSumInCompany(realm_token),
@@ -79,13 +84,13 @@ class CompanyDetail extends Component {
     ]);
   }
   handlePageChange = start => {
-    this.props.findLordList({ start });
+    this.props.findLordListInCompany({ start });
   };
   render() {
     const {
       company_detail,
       lord_list,
-      createALord,
+      createALordInCompany,
       match,
       updateABasicInfo,
       fee_list,
@@ -96,18 +101,25 @@ class CompanyDetail extends Component {
       fee_list_in_company,
       createAInvoiceInCompany,
       invoice_list_in_company,
-      invoice_sum_in_company
+      invoice_sum_in_company,
+      updateALordInCompany
     } = this.props;
-    console.log(this.props);
     const { realm_token } = match.params;
 
-    const { showCompanyAdminModal, showBasicInfoModal, showAddFeeInCompany, showAddInvoiceInCompany } = this.state;
+    const {
+      showCompanyAdminModal,
+      showBasicInfoModal,
+      showAddFeeInCompany,
+      showAddInvoiceInCompany,
+      showEditLordInfoModal,
+      currLordInfo
+    } = this.state;
     return (
       <main>
         {showCompanyAdminModal && (
           <CompanyAdminModal
             realm_token={realm_token}
-            createALord={createALord}
+            createALordInCompany={createALordInCompany}
             onClose={this.handleAddCompanyAdminModal}
           />
         )}
@@ -136,6 +148,15 @@ class CompanyDetail extends Component {
             realm_token={realm_token}
             createAFeeInCompany={createAFeeInCompany}
             onClose={this.handleAddFeeInCompanyModal}
+          />
+        )}
+        {showEditLordInfoModal && (
+          <CompanyEditALordModal
+            realm_token={realm_token}
+            updateALordInCompany={updateALordInCompany}
+            handleEditLordInfo={this.handleShowEditLordInfoModal}
+            editInfo={currLordInfo}
+            onClose={this.handleShowEditLordInfoModal}
           />
         )}
         <section className="container-fluid">
@@ -171,7 +192,11 @@ class CompanyDetail extends Component {
               onPageChange={this.handlePageChange}
             >
               {lord_list.record_list.map((lord, index) => (
-                <CompanyAdminListItem parentProps={lord} key={index} />
+                <CompanyAdminListItem
+                  parentProps={lord}
+                  key={index}
+                  handleEditLordInfo={this.handleShowEditLordInfoModal}
+                />
               ))}
             </ListView>
           </div>
@@ -235,9 +260,9 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   findCompanyDetail,
-  findLordList,
+  findLordListInCompany,
   findFeeList,
-  createALord,
+  createALordInCompany,
   updateABasicInfo,
   createNewAddressInstance,
   setPrimaryForResources,
@@ -245,7 +270,8 @@ const mapDispatchToProps = {
   createAFeeInCompany,
   findInvoiceSumInCompany,
   findInvoiceListInCompany,
-  createAInvoiceInCompany
+  createAInvoiceInCompany,
+  updateALordInCompany
 };
 
 export default connect(
