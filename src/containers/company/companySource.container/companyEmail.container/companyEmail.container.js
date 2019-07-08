@@ -99,6 +99,7 @@ class CompanyEmail extends Component {
                 clickFunction: this.handleCreateEmailResource,
                 clickTitle: "Email Resource"
               }}
+              buttonWidth={"146px"}
             />
             <ListView
               totalCount={email_list.count}
