@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
-
+import alertify from "alertifyjs";
 class CompanyInvoice extends Component {
   state = {
-    img_url: "",
-    showImage: false,
-    showPreview: false,
-    company_name: "",
-    company_address: "",
-    company_title: "",
-    fee_rate: ""
+    amount: ""
   };
 
   handleInputChange = e => {
@@ -17,60 +11,71 @@ class CompanyInvoice extends Component {
     this.setState({ [id]: value });
   };
 
-  handleShowImage = () => {
-    this.setState(states => ({ showImage: !states.showImage }));
-  };
-
   handleClose = () => {
     this.props.onClose();
   };
-  handleImageUpload = img_path => {
-    this.setState({ img_url: img_path });
+
+  handleAddingInvoiceInACompany = () => {
+    const { realm_token } = this.props;
+    const { amount } = this.state;
+    if (amount !== "" && !isNaN(amount)) {
+      this.props.createAInvoiceInCompany(realm_token, { amount: amount * 100 });
+    } else {
+      alertify.alert("Error!", "Please Finish The Form and Input Correct Value!");
+    }
   };
-  componentDidMount() {}
 
   render() {
-    const { img_url, showImage, showPreview, company_name, company_address, company_title, fee_rate } = this.state;
+    const { sum, name } = this.props;
+    const { amount } = this.state;
     return (
       <Modal
         title="Add Invoice"
         onClose={this.handleClose}
         position="center"
-        getWidth={"580px"}
-        getHeight={"384px"}
-        zIndex="1080"
+        getWidth={"467px"}
+        getHeight={"420px"}
+        zIndex="3"
       >
         <div className="container">
-          <form className="p-3" onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="company_name">Name</label>
-              <div>{300}</div>
+          <div className="p-3">
+            <div className="form-group pt-3">
+              <label className="text-secondary-color font-weight-500 hm-text-14" htmlFor="company_name">
+                Company
+              </label>
+              <div className="hm-text-14 font-weight-bold">{name}</div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="company_address">Cell</label>
-              <div>{300}</div>
+            <div className="form-group pt-3">
+              <label className="text-secondary-color font-weight-500 hm-text-14" htmlFor="company_name">
+                Available Balance
+              </label>
+              <div className="hm-text-14 font-weight-bold">{sum}</div>
             </div>
 
-            <div className="form-group mb-3">
-              <label htmlFor="company_title">Email</label>
+            <div className="form-group pt-3">
               <input
-                type="cell"
-                className="form-control"
-                name="company_title"
-                id="company_title"
-                value={company_title}
+                type="number"
+                className="form-control hm-input-height"
+                id="amount"
+                placeholder="Invoice Amount"
+                value={amount}
                 onChange={this.handleInputChange}
               />
             </div>
 
-            <div className="form-group text-center p-3">
-              <button className="hm-bg-green btn btn-sm px-4 text-white hm-3">Add</button>
-              <button onClick={this.handleClose} className="btn btn-sm btn-outline-secondary px-4">
+            <div className="form-group text-right pt-3">
+              <button
+                className="button-main-background btn button-main-size px-4 text-white mr-3"
+                onClick={this.handleAddingInvoiceInACompany}
+              >
+                Add
+              </button>
+              <button onClick={this.handleClose} className="btn button-main-size btn-outline-secondary px-4">
                 Cancel
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </Modal>
     );

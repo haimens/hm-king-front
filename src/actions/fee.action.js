@@ -60,6 +60,7 @@ export const findFeeListInCompany = (realm_token, query = {}) => async dispatch 
       order_direction: "DESC",
       ...query
     });
+    console.log(payload);
     await dispatch({
       type: constant.FEE_LIST_IN_COMPANY,
       payload

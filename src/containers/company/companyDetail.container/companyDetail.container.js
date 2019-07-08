@@ -14,7 +14,11 @@ import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../
 import { findFeeListInCompany, createAFeeInCompany } from "../../../actions/fee.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
-import { findInvoiceSumInCompany, findInvoiceListInCompany } from "../../../actions/invoice.action";
+import {
+  findInvoiceSumInCompany,
+  findInvoiceListInCompany,
+  createAInvoiceInCompany
+} from "../../../actions/invoice.action";
 import { Header, ListView, ListHeader } from "../../../components/shared";
 import { createNewAddressInstance } from "../../../actions/address.action";
 import CompanyFeeListItem from "./companyDetail.component/companyFeeList.item";
@@ -22,7 +26,8 @@ class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
     showBasicInfoModal: false,
-    showAddFeeInCompany: false
+    showAddFeeInCompany: false,
+    showAddInvoiceInCompany: false
   };
   handleAddCompanyAdminModal = () => {
     this.setState(states => ({ showCompanyAdminModal: !states.showCompanyAdminModal }));
@@ -32,6 +37,9 @@ class CompanyDetail extends Component {
   };
   handleAddFeeInCompanyModal = () => {
     this.setState(states => ({ showAddFeeInCompany: !states.showAddFeeInCompany }));
+  };
+  handleAddInvoiceModal = () => {
+    this.setState(states => ({ showAddInvoiceInCompany: !states.showAddInvoiceInCompany }));
   };
   handleDetailButtonClicked = type => {
     const { history, match } = this.props;
@@ -84,11 +92,15 @@ class CompanyDetail extends Component {
       setPrimaryForResources,
       createAFeeInCompany,
       history,
-      fee_list_in_company
+      fee_list_in_company,
+      createAInvoiceInCompany,
+      invoice_list_in_company,
+      invoice_sum_in_company
     } = this.props;
+    console.log(this.props);
     const { realm_token } = match.params;
 
-    const { showCompanyAdminModal, showBasicInfoModal, showAddFeeInCompany } = this.state;
+    const { showCompanyAdminModal, showBasicInfoModal, showAddFeeInCompany, showAddInvoiceInCompany } = this.state;
     return (
       <main>
         {showCompanyAdminModal && (
@@ -107,6 +119,15 @@ class CompanyDetail extends Component {
             onClose={this.handleShowBasicInfo}
             createNewAddressInstance={createNewAddressInstance}
             setPrimaryForResources={setPrimaryForResources}
+          />
+        )}
+        {showAddInvoiceInCompany && (
+          <CompanyInvoiceModal
+            createAInvoiceInCompany={createAInvoiceInCompany}
+            realm_token={realm_token}
+            sum={invoice_sum_in_company.sum}
+            name={company_detail.basic_info.company_name}
+            onClose={this.handleAddInvoiceModal}
           />
         )}
         {showAddFeeInCompany && (
@@ -184,23 +205,15 @@ class CompanyDetail extends Component {
               buttonWidth={"88px"}
             />
             <ListView
-              totalCount={0}
+              totalCount={invoice_list_in_company.count}
               title="Invoice List"
-              fieldNames={[
-                "Created On",
-                "Last Updated",
-                "Invoice Token",
-                "Company Name",
-                "Amount",
-                "Receipt",
-                "Status"
-              ]}
+              fieldNames={["Created On", "Invoice Amount", "Receipt Number", "Status"]}
               hideHeader={true}
               onPageChange={this.handlePageChange}
             >
-              {/* {punch_list_in_puri.record_list.map((punch, index) => (
-              <CompanyInvoiceListItem parentProps={punch} key={index} onClick={this.handlePunchItemClick} />
-            ))} */}
+              {invoice_list_in_company.record_list.map((invoice, index) => (
+                <CompanyInvoiceListItem parentProps={invoice} key={index} />
+              ))}
             </ListView>
           </div>
         </section>
@@ -214,7 +227,9 @@ const mapStateToProps = state => {
     company_detail: state.companyReducer.company_detail,
     fee_list: state.feeReducer.fee_list,
     fee_list_in_company: state.feeReducer.fee_list_in_company,
-    lord_list: state.lordReducer.lord_list
+    lord_list: state.lordReducer.lord_list,
+    invoice_list_in_company: state.invoiceReducer.invoice_list_in_company,
+    invoice_sum_in_company: state.invoiceReducer.invoice_sum_in_company
   };
 };
 const mapDispatchToProps = {
@@ -228,7 +243,8 @@ const mapDispatchToProps = {
   findFeeListInCompany,
   createAFeeInCompany,
   findInvoiceSumInCompany,
-  findInvoiceListInCompany
+  findInvoiceListInCompany,
+  createAInvoiceInCompany
 };
 
 export default connect(

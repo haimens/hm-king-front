@@ -11,7 +11,9 @@ const initialState = {
     count: 0,
     end: 0
   },
-  invoice_sum_in_company: {}
+  invoice_sum_in_company: {
+    sum: ""
+  }
 };
 
 export default (state = initialState, action) => {

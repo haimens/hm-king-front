@@ -52,3 +52,17 @@ export const findInvoiceListInCompany = realm_token => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const createAInvoiceInCompany = (realm_token, body = {}) => async dispatch => {
+  console.log(realm_token);
+  try {
+    await startLoader(dispatch);
+    const { payload } = await callApi(`invoice/detail/${realm_token}`, "POST", body);
+    await dispatch(findInvoiceListInCompany(realm_token));
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
