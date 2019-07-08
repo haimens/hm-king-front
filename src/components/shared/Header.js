@@ -24,9 +24,9 @@ export default function Header(props) {
         {props.subTitle &&
           (props.thirdTitle ? (
             <div className=" d-flex align-items-center ">
-              <i className="fas fa-circle text-light-grey text-right mr-3" style={{ fontSize: "6px" }} />
+              <i className="fas fa-circle text-right mr-3" style={{ fontSize: "6px" }} />
               <h4
-                className="hm-header-size text-light-grey  hm-pointer-cursor mr-3"
+                className="hm-header-size hm-pointer-cursor mr-3"
                 onClick={() => props.history.push(props.toSubLocation)}
               >
                 {props.subTitle}
