@@ -9,7 +9,6 @@ export default function CompanyInvoiceList(props) {
   const handleDetailLink = trans_token => {
     if (props.onClick) props.onClick(trans_token);
   };
-  console.log(props);
   const { cdate, amount, receipt, status } = props.parentProps;
   return (
     <tr className="border-bottom">
