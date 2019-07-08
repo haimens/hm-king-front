@@ -56,9 +56,9 @@ export class Login extends React.Component {
           className="login-logo"
           style={{ zIndex: "2" }}
         />
-        <p1 className="text-white welcome font-weight-bold text-center" style={{ fontSize: "26px", zIndex: "2" }}>
+        <p className="text-white welcome font-weight-bold text-center" style={{ fontSize: "26px", zIndex: "2" }}>
           Welcome!
-        </p1>
+        </p>
         <section className="p-3 login-content text-center rounded-custom" style={{ zIndex: "2" }}>
           <div className="hm-text-12 text-secondary-color mt-4 mb-5">Sign in with credentials</div>
 
