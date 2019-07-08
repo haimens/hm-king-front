@@ -10,17 +10,19 @@ export default function CompanyFeeListItem(props) {
   return (
     <tr className="border-bottom">
       <td className="items-height align-middle" data-label="Created On">
-        <section className="text-center align-middle hm-text-14 text-modal-color">
+        <section className="text-lg-center text-right align-middle hm-text-14 text-modal-color">
           {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
       <td className="items-height align-middle" data-label="Fee Amount">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
           {parseAmount(amount, 2)}
         </section>
       </td>
       <td className="items-height align-middle" data-label="Note">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{note}</section>
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
+          {note}
+        </section>
       </td>
     </tr>
   );

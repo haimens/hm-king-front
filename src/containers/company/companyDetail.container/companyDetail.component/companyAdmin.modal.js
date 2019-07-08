@@ -10,7 +10,7 @@ export default class CompanyBasicInfo extends Component {
     name: "",
     cell: "",
     email: "",
-    area: ""
+    area: "+1"
   };
 
   handleInputChange = e => {

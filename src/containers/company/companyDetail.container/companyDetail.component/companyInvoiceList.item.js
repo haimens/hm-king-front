@@ -14,17 +14,17 @@ export default function CompanyInvoiceList(props) {
   return (
     <tr className="border-bottom">
       <td className="items-height align-middle" data-label="Created On">
-        <section className="text-center align-middle hm-text-14 text-modal-color">
+        <section className="text-lg-center text-right  align-middle hm-text-14 text-modal-color">
           {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
       <td className="items-height align-middle" data-label="Invoice Amount">
-        <section className="text-center align-middle font-weight-bold hm-text-14 text-modal-color">
+        <section className="text-lg-center text-right  align-middle font-weight-bold hm-text-14 text-modal-color">
           {parseAmount(amount, 2)}
         </section>
       </td>
       <td className="items-height align-middle" data-label="Receipt Number">
-        <section className="text-center align-middle font-weight-bold hm-text-14 text-modal-color">
+        <section className="text-lg-center text-right  align-middle font-weight-bold hm-text-14 text-modal-color">
           {receipt ? receipt : "N/A"}
         </section>
       </td>
@@ -47,7 +47,7 @@ export default function CompanyInvoiceList(props) {
             </section>
           )}
           {status === 4 && (
-              <section className="text-center hm-text-14 ">
+            <section className="text-center hm-text-14 ">
               <div className=" d-flex align-items-center float-right float-lg-none">
                 <i className="fas fa-circle text-danger col-3 offset-md-3" style={{ fontSize: "6px" }} />
                 <div className="font-weight-500">Error</div>
