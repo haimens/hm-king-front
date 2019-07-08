@@ -1,52 +1,62 @@
 import React from "react";
-import { convertUTCtoLocal } from "../../../../actions/utilities.action";
+import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.action";
 
 /**
  * @onClick
  * @onCorrect
  */
 export default function InvoiceListItem(props) {
-  const { cdate, udate, order_num } = props.parentProps;
-
+  const { cdate, company_name, receipt, amount, status } = props.parentProps;
   return (
     <tr className="border-bottom">
-      {/* <td data-label="Last Updated" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center text-main-color hm-text-14">
-          <img src={logo_path} alt="Company Logo" className="rounded-circle" height={"32px"} width={"32px"} />
-        </section>
-      </td> */}
-      <td data-label="Created On" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center  text-main-color hm-text-14">
+      <td data-label="Created On" className="align-middle items-height">
+        <section className="text-lg-center text-right font-weight-500 text-main-color hm-text-14">
           {convertUTCtoLocal(cdate, "YYYY-MM-DD HH:mm")}
         </section>
       </td>
-      {/* <td data-label="Company Name" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center text-main-color font-weight-bold hm-text-14">{company_name}</section>
-      </td>
-      <td data-label="Status" style={{ height: "80px" }} className="align-middle">
-        {status_str === "ACTIVE" ? (
-          <section className="text-main-color hm-text-14">
-            <div className=" d-flex align-items-center ">
-              <i className="fas fa-circle success-text-color col-6 text-right pl-0" style={{ fontSize: "6px" }} />
-              <div>Active</div>
-            </div>
-          </section>
-        ) : (
-          <section className="text-center text-main-color hm-text-14">
-            <div className=" d-flex align-items-center ">
-              <i className="fas fa-circle text-danger col-6 text-right" style={{ fontSize: "6px" }} />
-              <div>Inactive</div>
-            </div>
-          </section>
-        )}
-      </td>
-      <td data-label="Detail" style={{ height: "80px" }} className="align-middle">
-        <section className="text-center  text-main-color hm-text-14">
-          <button className="btn btn-md text-primary" onClick={() => handleCompanyBeenClicked(realm_token)}>
-            View
-          </button>
+      <td data-label="Company Name" className="align-middle items-height">
+        <section className="text-lg-center text-right text-main-color font-weight-bold hm-text-14">
+          {company_name}
         </section>
-      </td> */}
+      </td>
+      <td data-label="Company Name" className="align-middle items-height">
+        <section className="text-lg-center text-right font-weight-500 text-main-color hm-text-14">
+          {receipt ? receipt : "N/A"}
+        </section>
+      </td>
+      <td className="items-height align-middle" data-label="Fee Amount">
+        <section className="text-lg-center text-right font-weight-500 align-middle hm-text-14  text-modal-color">
+          {parseAmount(amount, 2)}
+        </section>
+      </td>
+      <td className="items-height align-middle" data-label="Status">
+        <section className="text-center align-middle hm-text-14 text-modal-color">
+          {status === 1 && (
+            <section className="text-center hm-text-14 ">
+              <div className=" d-flex align-items-center float-right float-lg-none">
+                <i className="fas fa-circle pending-text-color col-3 offset-md-3" style={{ fontSize: "6px" }} />
+                <div className="font-weight-500">Pending</div>
+              </div>
+            </section>
+          )}
+          {status === 3 && (
+            <section className="text-center hm-text-14 ">
+              <div className=" d-flex align-items-center float-right float-lg-none">
+                <i className="fas fa-circle success-text-color col-3 offset-md-3" style={{ fontSize: "6px" }} />
+                <div className="font-weight-500">Finished</div>
+              </div>
+            </section>
+          )}
+          {status === 4 && (
+            <section className="text-center hm-text-14 ">
+              <div className=" d-flex align-items-center float-right float-lg-none">
+                <i className="fas fa-circle text-danger col-3 offset-md-3" style={{ fontSize: "6px" }} />
+                <div className="font-weight-500">Error</div>
+              </div>
+            </section>
+          )}
+        </section>
+      </td>
     </tr>
   );
 }

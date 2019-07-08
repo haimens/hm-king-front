@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { ListView, Header, ListHeader } from "../../../components/shared";
 import { findInvoiceList } from "../../../actions/invoice.action";
-
+import InvoiceListItem from "./invoice.component/invoiceList.item";
 class Invoice extends Component {
   handlePageChange = page => {
     console.log(page);
@@ -15,6 +15,7 @@ class Invoice extends Component {
     this.props.findInvoiceList();
   }
   render() {
+    const { invoice_list } = this.props;
     return (
       <main>
         <section className="container-fluid">
@@ -27,15 +28,15 @@ class Invoice extends Component {
               hideButton={true}
             />
             <ListView
-              totalCount={30}
+              totalCount={invoice_list.count}
               title="Invoice List"
               fieldNames={["Created On", "Company Name", "Invoice Number", "Amount", "Status"]}
               hideHeader={true}
               onPageChange={this.handlePageChange}
             >
-              {/* {company_list.record_list.map((company, index) => (
-            <InvoiceListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
-          ))} */}
+              {invoice_list.record_list.map((company, index) => (
+                <InvoiceListItem parentProps={company} key={index} onClick={this.handleCompanyItemClick} />
+              ))}
             </ListView>
           </div>
         </section>
