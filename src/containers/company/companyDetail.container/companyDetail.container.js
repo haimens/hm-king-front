@@ -92,8 +92,6 @@ class CompanyDetail extends Component {
     ]);
   }
   handlePageChange = type => start => {
-    console.log(type);
-    console.log(start);
     const { findLordListInCompany, findFeeListInCompany, findInvoiceListInCompany } = this.props;
     const { realm_token } = this.props.match.params;
     if (type === "invoice") {
@@ -197,6 +195,7 @@ class CompanyDetail extends Component {
           <div className="mb-4 ">
             <CompanyDetailInfo
               handleDetailButtonClicked={this.handleDetailButtonClicked}
+              sum={invoice_sum_in_company.sum}
               company_detail={company_detail}
             />
           </div>

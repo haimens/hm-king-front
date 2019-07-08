@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { parseRate } from "../../../../actions/utilities.action";
+import { parseRate, parseAmount } from "../../../../actions/utilities.action";
 import "./companyDetailInfo.component.css";
 class CompanyDetailInfo extends Component {
   handleDetailButtonClicked = type => {
     this.props.handleDetailButtonClicked(type);
   };
   render() {
+    const { sum, company_detail } = this.props;
     const {
       basic_info,
       address_info,
@@ -13,7 +14,7 @@ class CompanyDetailInfo extends Component {
       message_resource_info,
       email_resource_info,
       payment_resource_info
-    } = this.props.company_detail;
+    } = company_detail;
     return (
       <div className="bg-white rounded-custom shadow-sm border">
         <div className="row" style={{ padding: "40px" }}>
@@ -53,7 +54,7 @@ class CompanyDetailInfo extends Component {
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color font-weight-500 hm-text-14">Available Balance</div>
-                  <div className="hm-text-14 font-weight-bold">{"N/A"}</div>
+                  <div className="hm-text-14 font-weight-bold">{parseAmount(sum)}</div>
                 </div>
                 <div className="mb-4 px-3">
                   <div className="text-secondary-color font-weight-500 hm-text-14">Fee Rate</div>

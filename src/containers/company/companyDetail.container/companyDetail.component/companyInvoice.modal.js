@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
+import { parseAmount } from "../../../../actions/utilities.action";
 import alertify from "alertifyjs";
 class CompanyInvoice extends Component {
   state = {
@@ -50,7 +51,7 @@ class CompanyInvoice extends Component {
               <label className="text-secondary-color font-weight-500 hm-text-14" htmlFor="company_name">
                 Available Balance
               </label>
-              <div className="hm-text-14 font-weight-bold">{sum}</div>
+              <div className="hm-text-14 font-weight-bold">{parseAmount(sum)}</div>
             </div>
 
             <div className="form-group pt-3">
