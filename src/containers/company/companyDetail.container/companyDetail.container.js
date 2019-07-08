@@ -209,7 +209,7 @@ class CompanyDetail extends Component {
               buttonWidth={"136px"}
             />
             <ListView
-              totalCount={60}
+              totalCount={lord_list.count}
               title="Company Admin List"
               fieldNames={["Company Logo", "Admin Name", "Call", "Email", "Username", "Status", "Edit"]}
               hideHeader={true}
