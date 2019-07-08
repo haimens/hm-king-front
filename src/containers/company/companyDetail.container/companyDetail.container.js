@@ -27,7 +27,8 @@ class CompanyDetail extends Component {
     showCompanyAdminModal: false,
     showBasicInfoModal: false,
     showAddFeeInCompany: false,
-    showAddInvoiceInCompany: false
+    showAddInvoiceInCompany: false,
+    currLordInfo: ""
   };
   handleAddCompanyAdminModal = () => {
     this.setState(states => ({ showCompanyAdminModal: !states.showCompanyAdminModal }));

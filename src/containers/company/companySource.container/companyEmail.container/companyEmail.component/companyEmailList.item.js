@@ -49,7 +49,7 @@ export default function CompanyEmailListItem(props) {
         )}
       </td>
       <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
-        <EditButton clickFunction={handleEditEmailResource} token={email_resource_token} />
+        <EditButton clickFunction={() => handleEditEmailResource(email_resource_token)} />
       </td>
     </tr>
   );

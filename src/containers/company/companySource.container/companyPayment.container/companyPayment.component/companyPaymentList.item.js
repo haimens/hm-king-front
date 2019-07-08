@@ -53,7 +53,7 @@ export default function CompanyAdminList(props) {
         )}
       </td>
       <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
-        <EditButton clickFunction={handleEditPaymentResource} token={payment_resource_token} />
+        <EditButton clickFunction={() => handleEditPaymentResource(payment_resource_token)} />
       </td>
     </tr>
   );

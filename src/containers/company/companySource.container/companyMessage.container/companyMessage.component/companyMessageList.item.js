@@ -54,7 +54,7 @@ export default function CompanyMessageListItem(props) {
         )}
       </td>
       <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
-        <EditButton clickFunction={handleEditPaymentResource} token={message_resource_token} />
+        <EditButton clickFunction={() => handleEditPaymentResource(message_resource_token)} />
       </td>
     </tr>
   );
