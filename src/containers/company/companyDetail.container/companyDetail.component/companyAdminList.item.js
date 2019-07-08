@@ -1,10 +1,12 @@
 import React from "react";
+import { EditButton } from "../../../../components/shared";
 
 /**
  * @onClick
  * @onCorrect
  */
 export default function CompanyAdminList(props) {
+  const handleEditLordResource = token => {};
   const { cell, email, name, username, img_path, status_str } = props.parentProps;
   return (
     <tr className="border-bottom">
@@ -16,32 +18,44 @@ export default function CompanyAdminList(props) {
         />
       </td>
       <td className="items-height align-middle" data-label="Admin Name">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{name}</section>
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
+          {name}
+        </section>
       </td>
       <td className="items-height align-middle" data-label="Cell">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{cell}</section>
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
+          {cell}
+        </section>
       </td>
       <td className="items-height align-middle" data-label="Email">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{email}</section>
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
+          {email}
+        </section>
       </td>
       <td className="items-height align-middle" data-label="Username">
-        <section className="text-center align-middle hm-text-14 font-weight-bold text-modal-color">{username}</section>
+        <section className="text-lg-center text-right align-middle hm-text-14 font-weight-bold text-modal-color">
+          {username}
+        </section>
       </td>
-      <td
-        className="items-height align-middle text-center align-middle font-weight-bold text-modal-color "
-        data-label="Status"
-      >
+      <td data-label="Status" className="align-middle items-height">
         {status_str === "ACTIVE" ? (
-          <section className="d-flex justify-content-center align-items-center">
-            <i className="fas fa-circle success-text-color mr-3 pl-0" style={{ fontSize: "6px" }} />
-            <div>Active</div>
+          <section className="text-center hm-text-14 ">
+            <div className=" d-flex align-items-center float-right float-lg-none">
+              <i className="fas fa-circle success-text-color col-3 offset-md-3" style={{ fontSize: "6px" }} />
+              <div className="font-weight-500">Active</div>
+            </div>
           </section>
         ) : (
-          <section className="d-flex justify-content-center align-items-center">
-            <i className="fas fa-circle text-danger mr-3" style={{ fontSize: "6px" }} />
-            <div>Inactive</div>
+          <section className="text-center hm-text-14">
+            <div className=" d-flex align-items-center float-right float-lg-none">
+              <i className="fas fa-circle text-danger col-3 offset-md-3" style={{ fontSize: "6px" }} />
+              <div className="font-weight-500">Inactive</div>
+            </div>
           </section>
         )}
+      </td>
+      <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
+        <EditButton clickFunction={handleEditLordResource} token={123} />
       </td>
     </tr>
   );

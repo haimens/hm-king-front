@@ -165,7 +165,7 @@ class CompanyDetail extends Component {
             <ListView
               totalCount={lord_list.count}
               title="Company Admin List"
-              fieldNames={["Company Logo", "Admin Name", "Call", "Email", "Username", "Status"]}
+              fieldNames={["Company Logo", "Admin Name", "Call", "Email", "Username", "Status", "Edit"]}
               hideHeader={true}
               onPageChange={this.handlePageChange}
             >
