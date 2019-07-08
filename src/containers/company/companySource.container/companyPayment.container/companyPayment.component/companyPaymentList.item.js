@@ -1,5 +1,5 @@
 import React from "react";
-
+import { EditButton } from "../../../../../components/shared";
 /**
  * @onClick
  * @onCorrect
@@ -53,12 +53,7 @@ export default function CompanyAdminList(props) {
         )}
       </td>
       <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
-        <button
-          className="rounded-circle bg-white company-detail-button p-0 "
-          onClick={() => handleEditPaymentResource(payment_resource_token)}
-        >
-          <i className="fas fa-pencil-alt" style={{ color: "#fb6240" }} />
-        </button>
+        <EditButton clickFunction={handleEditPaymentResource} token={payment_resource_token} />
       </td>
     </tr>
   );

@@ -18,6 +18,7 @@ import Header from "./Header";
 import ListHeader from "./ListHeader";
 import GAutoComplete from "./GAutoComplete";
 import CompanyImage from "./CompanyImage.component";
+import EditButton from "./EditButton";
 export {
   ImageLoaderModal,
   LoaderAltNoModal,
@@ -38,5 +39,6 @@ export {
   Header,
   ListHeader,
   GAutoComplete,
-  CompanyImage
+  CompanyImage,
+  EditButton
 };

@@ -14,6 +14,7 @@ import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../
 import { findFeeListInCompany, createAFeeInCompany } from "../../../actions/fee.action";
 import { findLordList, createALord } from "../../../actions/lord.action";
 import { findFeeList } from "../../../actions/fee.action";
+import { findInvoiceSumInCompany, findInvoiceListInCompany } from "../../../actions/invoice.action";
 import { Header, ListView, ListHeader } from "../../../components/shared";
 import { createNewAddressInstance } from "../../../actions/address.action";
 import CompanyFeeListItem from "./companyDetail.component/companyFeeList.item";
@@ -49,13 +50,23 @@ class CompanyDetail extends Component {
     }
   };
   async componentDidMount() {
-    const { findCompanyDetail, findLordList, findFeeList, findFeeListInCompany, match } = this.props;
+    const {
+      findCompanyDetail,
+      findLordList,
+      findFeeList,
+      findFeeListInCompany,
+      findInvoiceSumInCompany,
+      findInvoiceListInCompany,
+      match
+    } = this.props;
     const { realm_token } = match.params;
     Promise.all([
       findCompanyDetail(realm_token),
       findLordList(realm_token),
       findFeeList(),
-      findFeeListInCompany(realm_token)
+      findFeeListInCompany(realm_token),
+      findInvoiceSumInCompany(realm_token),
+      findInvoiceListInCompany(realm_token)
     ]);
   }
   handlePageChange = start => {
@@ -215,7 +226,9 @@ const mapDispatchToProps = {
   createNewAddressInstance,
   setPrimaryForResources,
   findFeeListInCompany,
-  createAFeeInCompany
+  createAFeeInCompany,
+  findInvoiceSumInCompany,
+  findInvoiceListInCompany
 };
 
 export default connect(
