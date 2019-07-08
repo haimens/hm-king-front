@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import DisplayCard from "./dashboard.component/display.card";
 import Chart from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { chartOptions, parseOptions, chartExample2 } from "./dashboard.component/chart";
-import "./dashboard.container.css";
-import Header from "../../../components/shared/Header";
+import DisplayCard from "./dashboard.component/display.card";
+import { Header } from "../../../components/shared";
 import { findCompanyList } from "../../../actions/company.action";
+import "./dashboard.container.css";
 
 class Dashboard extends Component {
   constructor(props) {

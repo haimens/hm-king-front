@@ -36,10 +36,14 @@ export const findInvoiceSumInCompany = realm_token => async dispatch => {
   }
 };
 
-export const findInvoiceListInCompany = realm_token => async dispatch => {
+export const findInvoiceListInCompany = (realm_token, query = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`invoice/all/detail/realm/${realm_token}`, "GET");
+    const { payload } = await callApi(`invoice/all/detail/realm/${realm_token}`, "GET", null, {
+      order_key: "udate",
+      order_direction: "DESC",
+      ...query
+    });
     await dispatch({
       type: constant.INVOICE_LIST_IN_COMPANY,
       payload

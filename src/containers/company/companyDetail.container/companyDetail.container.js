@@ -1,26 +1,36 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyDetailInfo from "./companyDetail.component/companyDetailInfo.component";
-import CompanyAdminModal from "./companyDetail.component/companyAdmin.modal";
-import CompanyInvoiceModal from "./companyDetail.component/companyInvoice.modal";
-import CompanyBasicInfoModal from "./companyDetail.component/companyBasicInfo.modal";
-import CompanyAdminListItem from "./companyDetail.component/companyAdminList.item";
-import CompanyInvoiceListItem from "./companyDetail.component/companyInvoiceList.item";
-import CompanyFeeModal from "./companyDetail.component/companyFee.modal";
-import CompanyEditALordModal from "./companyDetail.component/companyEditALord.modal";
+
+import {
+  CompanyDetailInfo,
+  CompanyFeeListItem,
+  CompanyAdminModal,
+  CompanyInvoiceModal,
+  CompanyBasicInfoModal,
+  CompanyAdminListItem,
+  CompanyInvoiceListItem,
+  CompanyFeeModal,
+  CompanyEditALordModal
+} from "./companyDetail.component";
+
+import { Header, ListView, ListHeader } from "../../../components/shared";
+
 import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../../../actions/company.action";
+
 import { findFeeListInCompany, createAFeeInCompany } from "../../../actions/fee.action";
+
 import { findLordListInCompany, createALordInCompany, updateALordInCompany } from "../../../actions/lord.action";
+
 import { findFeeList } from "../../../actions/fee.action";
+
 import {
   findInvoiceSumInCompany,
   findInvoiceListInCompany,
   createAInvoiceInCompany
 } from "../../../actions/invoice.action";
-import { Header, ListView, ListHeader } from "../../../components/shared";
 import { createNewAddressInstance } from "../../../actions/address.action";
-import CompanyFeeListItem from "./companyDetail.component/companyFeeList.item";
+
 class CompanyDetail extends Component {
   state = {
     showCompanyAdminModal: false,
@@ -81,26 +91,43 @@ class CompanyDetail extends Component {
       findInvoiceListInCompany(realm_token)
     ]);
   }
-  handlePageChange = start => {
-    this.props.findLordListInCompany({ start });
+  handlePageChange = type => start => {
+    console.log(type);
+    console.log(start);
+    const { findLordListInCompany, findFeeListInCompany, findInvoiceListInCompany } = this.props;
+    const { realm_token } = this.props.match.params;
+    if (type === "invoice") {
+      findInvoiceListInCompany(realm_token, { start });
+    }
+    if (type === "fee") {
+      findFeeListInCompany(realm_token, { start });
+    }
+    if (type === "lord") {
+      findLordListInCompany(realm_token, { start });
+    }
   };
   render() {
     const {
+      match,
+      history,
+
       company_detail,
+      createNewAddressInstance,
+      updateABasicInfo,
+
       lord_list,
       createALordInCompany,
-      match,
-      updateABasicInfo,
+      updateALordInCompany,
+
       fee_list,
-      createNewAddressInstance,
-      setPrimaryForResources,
       createAFeeInCompany,
-      history,
       fee_list_in_company,
+
+      setPrimaryForResources,
+
       createAInvoiceInCompany,
       invoice_list_in_company,
-      invoice_sum_in_company,
-      updateALordInCompany
+      invoice_sum_in_company
     } = this.props;
     const { realm_token } = match.params;
 
@@ -183,11 +210,11 @@ class CompanyDetail extends Component {
               buttonWidth={"136px"}
             />
             <ListView
-              totalCount={lord_list.count}
+              totalCount={60}
               title="Company Admin List"
               fieldNames={["Company Logo", "Admin Name", "Call", "Email", "Username", "Status", "Edit"]}
               hideHeader={true}
-              onPageChange={this.handlePageChange}
+              onPageChange={this.handlePageChange("lord")}
             >
               {lord_list.record_list.map((lord, index) => (
                 <CompanyAdminListItem
@@ -212,7 +239,7 @@ class CompanyDetail extends Component {
               title="Fee List"
               fieldNames={["Created On", "Fee Amount", "Note"]}
               hideHeader={true}
-              onPageChange={this.handlePageChange}
+              onPageChange={this.handlePageChange("fee")}
             >
               {fee_list_in_company.record_list.map((fee, index) => (
                 <CompanyFeeListItem parentProps={fee} key={index} onClick={this.handlePunchItemClick} />
@@ -233,7 +260,7 @@ class CompanyDetail extends Component {
               title="Invoice List"
               fieldNames={["Created On", "Invoice Amount", "Receipt Number", "Status"]}
               hideHeader={true}
-              onPageChange={this.handlePageChange}
+              onPageChange={this.handlePageChange("invoice")}
             >
               {invoice_list_in_company.record_list.map((invoice, index) => (
                 <CompanyInvoiceListItem parentProps={invoice} key={index} />
@@ -258,18 +285,22 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   findCompanyDetail,
-  findLordListInCompany,
-  findFeeList,
-  createALordInCompany,
   updateABasicInfo,
   createNewAddressInstance,
-  setPrimaryForResources,
+
+  findLordListInCompany,
+  createALordInCompany,
+  updateALordInCompany,
+
+  findFeeList,
   findFeeListInCompany,
   createAFeeInCompany,
+
   findInvoiceSumInCompany,
   findInvoiceListInCompany,
   createAInvoiceInCompany,
-  updateALordInCompany
+
+  setPrimaryForResources
 };
 
 export default connect(

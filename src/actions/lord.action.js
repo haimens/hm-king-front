@@ -7,7 +7,8 @@ export const findLordListInCompany = (realm_token, query = {}) => async dispatch
     await startLoader(dispatch);
     const { payload } = await callApi(`lord/all/detail/realm/${realm_token}`, "GET", null, {
       order_key: "udate",
-      order_direction: "DESC"
+      order_direction: "DESC",
+      ...query
     });
     await dispatch({
       type: constant.LORD_LIST,
