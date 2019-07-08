@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { processLogin, processLogout } from "../../actions/auth.action";
-import { clearUserInfo, loadAuthToken } from "../../actions/localStorage.action";
+import { clearUserInfo } from "../../actions/localStorage.action";
 import "./Login.container.css";
 
 export class Login extends React.Component {

@@ -24,6 +24,7 @@ class Invoice extends Component {
           <div className="mb-4">
             <ListHeader
               parentProps={{ title: "Invoice List", clickFunction: this.handleAddCompanyModal, clickTitle: "Invoice" }}
+              hideButton={true}
             />
             <ListView
               totalCount={30}

@@ -1,6 +1,6 @@
 import React from "react";
 import "./LoaderAlt.css";
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 export default class LoaderAltNoModal extends React.Component {
   render() {

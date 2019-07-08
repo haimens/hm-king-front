@@ -1,17 +1,11 @@
 import React from "react";
 import { convertUTCtoLocal } from "../../../../actions/utilities.action";
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import ReactToolTip from "react-tooltip";
-import alertify from "alertifyjs";
-/**
- * @onClick
- * @onCorrect
- */
+
 export default function PunchItem(props) {
   const handleCompanyBeenClicked = realm_token => {
     props.onClick(realm_token);
   };
-  const { cdate, logo_path, company_name, tribute_rate_token, status_str, realm_token } = props.parentProps;
+  const { cdate, logo_path, company_name, status_str, realm_token } = props.parentProps;
   return (
     <tr className="border-bottom">
       <td data-label="Last Updated" className="align-middle items-height">

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import CompanyListItem from "../company.container/company.components/companyListItem.component";
 import CompanyDetailInfo from "./companyDetail.component/companyDetailInfo.component";
-import CompanyCard from "./companyDetail.component/companyCard.component";
 import CompanyAdminModal from "./companyDetail.component/companyAdmin.modal";
 import CompanyInvoiceModal from "./companyDetail.component/companyInvoice.modal";
 import CompanyBasicInfoModal from "./companyDetail.component/companyBasicInfo.modal";

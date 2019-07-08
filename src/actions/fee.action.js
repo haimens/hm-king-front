@@ -37,7 +37,6 @@ export const createAFeeRate = rate => async dispatch => {
 };
 
 export const deleteAFeeRate = tribute_rate_token => async dispatch => {
-  console.log(tribute_rate_token);
   try {
     await startLoader(dispatch);
     await callApi(`tribute/rate/${tribute_rate_token}`, "PATCH", {
@@ -60,7 +59,6 @@ export const findFeeListInCompany = (realm_token, query = {}) => async dispatch 
       order_direction: "DESC",
       ...query
     });
-    console.log(payload);
     await dispatch({
       type: constant.FEE_LIST_IN_COMPANY,
       payload
@@ -75,9 +73,7 @@ export const findFeeListInCompany = (realm_token, query = {}) => async dispatch 
 export const createAFeeInCompany = (realm_token, body = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    console.log(realm_token);
-    console.log(body);
-    const { payload } = await callApi(`tribute/detail/${realm_token}`, "POST", body);
+    await callApi(`tribute/detail/${realm_token}`, "POST", body);
     await launchSuccess(dispatch);
     await dispatch(findFeeListInCompany(realm_token));
     await stopLoader(dispatch);

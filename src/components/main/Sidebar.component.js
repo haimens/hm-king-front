@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import NavItem from "./nav.component/NavItem.item";
 import SubNavItem from "./nav.component/SubNavItem.item";
-import { ImageButton } from "../shared";
 
 export default class Sidebar extends Component {
   handleClick = new_path => {

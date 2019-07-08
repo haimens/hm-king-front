@@ -1,5 +1,4 @@
-import constant from "../constants/constant";
-import { callApi, startLoader, stopLoader, launchSuccess } from "./utilities.action";
+import { callApi, startLoader, stopLoader } from "./utilities.action";
 import { processLogout } from "./auth.action";
 
 export const createNewAddressInstance = (body = {}) => async dispatch => {

@@ -6,9 +6,6 @@ import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.ac
  * @onCorrect
  */
 export default function CompanyInvoiceList(props) {
-  const handleDetailLink = trans_token => {
-    if (props.onClick) props.onClick(trans_token);
-  };
   const { cdate, amount, receipt, status } = props.parentProps;
   return (
     <tr className="border-bottom">

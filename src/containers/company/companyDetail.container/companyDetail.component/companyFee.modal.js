@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
 import alertify from "alertifyjs";
-import { isNumber } from "util";
+
 export default class FeeModal extends Component {
   state = {
     amount: "",
