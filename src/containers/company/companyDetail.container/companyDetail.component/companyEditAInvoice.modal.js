@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Modal } from "../../../../components/shared";
-import { stat } from "fs";
 class CompanyEditAInvoice extends Component {
   state = {
     receipt: "",

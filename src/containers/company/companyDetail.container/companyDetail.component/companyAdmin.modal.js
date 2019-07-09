@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Modal } from "../../../../components/shared";
+import { Modal, ImageLoaderModal, PreviewImageModal, CompanyImage } from "../../../../components/shared";
 import alertify from "alertifyjs";
 export default class CompanyBasicInfo extends Component {
   state = {
-    img_url: "",
+    img_path: "",
     showImage: false,
     showPreview: false,
     username: "",
@@ -21,22 +21,27 @@ export default class CompanyBasicInfo extends Component {
   handleShowImage = () => {
     this.setState(states => ({ showImage: !states.showImage }));
   };
+  handleShowPreview = () => {
+    this.setState(states => ({ showPreview: !states.showPreview }));
+  };
+  handleImageUpload = img_path => {
+    this.setState({ img_path });
+  };
 
   handleClose = () => {
     this.props.onClose();
   };
-  handleImageUpload = img_path => {
-    this.setState({ img_url: img_path });
-  };
+
   handleAddingCompanyAdmin = () => {
-    const { username, name, cell, email, area } = this.state;
+    const { username, name, cell, email, area, img_path } = this.state;
     const { realm_token, createALordInCompany } = this.props;
     if (username !== "" && name !== "" && cell !== "" && email !== "" && area !== "") {
       createALordInCompany(realm_token, {
         username,
         name,
         cell: `${area} ${cell}`,
-        email
+        email,
+        img_path
       });
       this.handleClose();
     } else {
@@ -45,16 +50,23 @@ export default class CompanyBasicInfo extends Component {
   };
 
   render() {
-    const { username, name, cell, email, area } = this.state;
+    const { img_path, name, cell, email, area, showImage, showPreview, username } = this.state;
     return (
       <div>
+        {showImage && (
+          <ImageLoaderModal
+            onClose={() => this.setState({ showImage: false })}
+            onImageUpload={this.handleImageUpload}
+            title="Upload Image"
+          />
+        )}
+        {showPreview && <PreviewImageModal image={img_path} onClose={() => this.setState({ showPreview: false })} />}
         <Modal
           title="Add Company Admin"
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
-          getHeight={"500px"}
-          zIndex="3"
+          getHeight={"530px"}
         >
           <div className="container">
             <div className="p-3">
@@ -111,6 +123,13 @@ export default class CompanyBasicInfo extends Component {
                   onChange={this.handleInputChange}
                 />
               </div>
+
+              <CompanyImage
+                title={"Favicon:"}
+                parentProps={{ img_url: img_path, handleShowPreview: this.handleShowPreview }}
+                handleShowImage={this.handleShowImage}
+              />
+
               <div className="form-group text-right pt-3">
                 <button
                   className="button-main-background btn button-main-size px-4 text-white mr-3"

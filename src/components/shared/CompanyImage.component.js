@@ -21,7 +21,7 @@ export default class CompanyImage extends Component {
           <div className="col-3 d-flex justify-content-center align-items-center">
             <button
               type="button"
-              className="d-flex justify-content-center py-0 align-items-center btn btn-outline-secondary"
+              className="d-flex justify-content-center p-0 align-items-center btn btn-outline-secondary"
               onClick={e => this.handleModal(e)}
               style={{ borderRadius: "20px", width: "88px", height: "24px" }}
             >

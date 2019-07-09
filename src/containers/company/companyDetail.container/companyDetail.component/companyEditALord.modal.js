@@ -155,7 +155,7 @@ export default class CompanyEditALord extends Component {
                         status === 2 ? "hm-bg-green-border" : "btn-outline-secondary "
                       }`}
                       onClick={this.handleStatusChange}
-                      style={{ borderRadius: "20px", width: "88px", height: "24px" }}
+                      style={{ borderRadius: "20px", width: "78px", height: "24px" }}
                     >
                       <i className={`fas ${status === 2 && "hm-text-green"} fa-circle ml-1 pl-0`} />
 
