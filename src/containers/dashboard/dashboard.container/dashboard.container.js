@@ -7,6 +7,8 @@ import { chartOptions, parseOptions, chartExample2 } from "./dashboard.component
 import DisplayCard from "./dashboard.component/display.card";
 import { Header } from "../../../components/shared";
 import { findCompanyList } from "../../../actions/company.action";
+import { findInvoiceSum } from "../../../actions/invoice.action";
+import { parseAmount } from "../../../actions/utilities.action";
 import "./dashboard.container.css";
 
 class Dashboard extends Component {
@@ -18,10 +20,10 @@ class Dashboard extends Component {
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
-    this.props.findCompanyList();
+    Promise.all([this.props.findCompanyList(), this.props.findInvoiceSum()]);
   }
   render() {
-    const { company_list } = this.props;
+    const { company_list, invoice_sum } = this.props;
     return (
       <main>
         <section className="mb-4">
@@ -43,7 +45,7 @@ class Dashboard extends Component {
               <div className="col-12 col-md-6 h-100">
                 <DisplayCard
                   data={{
-                    amount: 20,
+                    amount: parseAmount(invoice_sum.sum),
                     title: "Total Invoice",
                     icon: `${process.env.PUBLIC_URL}/img/icon_invoice.svg`
                   }}
@@ -74,11 +76,12 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   return {
     company_list: state.companyReducer.company_list,
-    fee_list: state.feeReducer.fee_list
+    fee_list: state.feeReducer.fee_list,
+    invoice_sum: state.invoiceReducer.invoice_sum
   };
 };
 
-const mapDispatchToProps = { findCompanyList };
+const mapDispatchToProps = { findCompanyList, findInvoiceSum };
 
 export default connect(
   mapStateToProps,

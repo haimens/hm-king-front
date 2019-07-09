@@ -67,3 +67,19 @@ export const createAInvoiceInCompany = (realm_token, body = {}) => async dispatc
     dispatch(processLogout(err));
   }
 };
+
+export const findInvoiceSum = () => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload: waiting } = await callApi(`invoice/sum/system`, "GET", null, { status: 2 });
+    const { payload: paid } = await callApi(`invoice/sum/system`, "GET", null, { status: 3 });
+    await dispatch({
+      type: constant.INVOICE_SUM,
+      payload: { sum: waiting.sum + paid.sum }
+    });
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

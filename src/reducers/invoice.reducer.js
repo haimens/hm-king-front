@@ -13,6 +13,9 @@ const initialState = {
   },
   invoice_sum_in_company: {
     sum: ""
+  },
+  invoice_sum: {
+    sum: ""
   }
 };
 
@@ -24,6 +27,8 @@ export default (state = initialState, action) => {
       return { ...state, invoice_sum_in_company: action.payload };
     case constant.INVOICE_LIST_IN_COMPANY:
       return { ...state, invoice_list_in_company: action.payload };
+    case constant.INVOICE_SUM:
+      return { ...state, invoice_sum: action.payload };
     default:
       return state;
   }
