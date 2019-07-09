@@ -164,7 +164,7 @@ class CompanyDetail extends Component {
           <CompanyInvoiceModal
             createAInvoiceInCompany={createAInvoiceInCompany}
             realm_token={realm_token}
-            sum={invoice_sum_in_company.sum}
+            sum={fee_sum_in_company.sum - invoice_sum_in_company.sum}
             name={company_detail.basic_info.company_name}
             onClose={this.handleAddInvoiceModal}
           />
