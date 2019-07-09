@@ -10,6 +10,11 @@ const initialState = {
     record_list: [],
     count: 0,
     end: 0
+  },
+  fee_sum_in_company: {
+    record_list: [],
+    count: 0,
+    end: 0
   }
 };
 
@@ -19,6 +24,8 @@ export default (state = initialState, action) => {
       return { ...state, fee_list: action.payload };
     case constant.FEE_LIST_IN_COMPANY:
       return { ...state, fee_list_in_company: action.payload };
+    case constant.FEE_SUM_IN_COMPANY:
+      return { ...state, fee_sum_in_company: action.payload };
     default:
       return state;
   }

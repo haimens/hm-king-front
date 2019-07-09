@@ -24,10 +24,12 @@ export const findInvoiceList = (query = {}) => async dispatch => {
 export const findInvoiceSumInCompany = realm_token => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload } = await callApi(`invoice/sum/realm/${realm_token}`, "GET");
+    const { payload: waiting } = await callApi(`invoice/sum/realm/${realm_token}`, "GET", null, { status: 2 });
+    const { payload: paid } = await callApi(`invoice/sum/realm/${realm_token}`, "GET", null, { status: 3 });
+
     await dispatch({
       type: constant.INVOICE_SUM_IN_COMPANY,
-      payload
+      payload: { sum: waiting.sum + paid.sum }
     });
     await stopLoader(dispatch);
   } catch (err) {

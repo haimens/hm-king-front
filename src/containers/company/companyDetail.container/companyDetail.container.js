@@ -18,7 +18,7 @@ import { Header, ListView, ListHeader } from "../../../components/shared";
 
 import { findCompanyDetail, updateABasicInfo, setPrimaryForResources } from "../../../actions/company.action";
 
-import { findFeeListInCompany, createAFeeInCompany } from "../../../actions/fee.action";
+import { findFeeListInCompany, createAFeeInCompany, findFeeSumInACompany } from "../../../actions/fee.action";
 
 import { findLordListInCompany, createALordInCompany, updateALordInCompany } from "../../../actions/lord.action";
 
@@ -79,6 +79,7 @@ class CompanyDetail extends Component {
       findFeeListInCompany,
       findInvoiceSumInCompany,
       findInvoiceListInCompany,
+      findFeeSumInACompany,
       match
     } = this.props;
     const { realm_token } = match.params;
@@ -88,7 +89,8 @@ class CompanyDetail extends Component {
       findFeeList(),
       findFeeListInCompany(realm_token),
       findInvoiceSumInCompany(realm_token),
-      findInvoiceListInCompany(realm_token)
+      findInvoiceListInCompany(realm_token),
+      findFeeSumInACompany(realm_token)
     ]);
   }
   handlePageChange = type => start => {
@@ -120,6 +122,7 @@ class CompanyDetail extends Component {
       fee_list,
       createAFeeInCompany,
       fee_list_in_company,
+      fee_sum_in_company,
 
       setPrimaryForResources,
 
@@ -195,7 +198,7 @@ class CompanyDetail extends Component {
           <div className="mb-4 ">
             <CompanyDetailInfo
               handleDetailButtonClicked={this.handleDetailButtonClicked}
-              sum={invoice_sum_in_company.sum}
+              sum={fee_sum_in_company.sum - invoice_sum_in_company.sum}
               company_detail={company_detail}
             />
           </div>
@@ -277,6 +280,7 @@ const mapStateToProps = state => {
     company_detail: state.companyReducer.company_detail,
     fee_list: state.feeReducer.fee_list,
     fee_list_in_company: state.feeReducer.fee_list_in_company,
+    fee_sum_in_company: state.feeReducer.fee_sum_in_company,
     lord_list: state.lordReducer.lord_list,
     invoice_list_in_company: state.invoiceReducer.invoice_list_in_company,
     invoice_sum_in_company: state.invoiceReducer.invoice_sum_in_company
@@ -294,6 +298,7 @@ const mapDispatchToProps = {
   findFeeList,
   findFeeListInCompany,
   createAFeeInCompany,
+  findFeeSumInACompany,
 
   findInvoiceSumInCompany,
   findInvoiceListInCompany,
