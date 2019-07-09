@@ -2,8 +2,7 @@ import React, { Component, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Main from "./components/main/Main.component";
 import alertify from "alertifyjs";
-import ProtectedRoute from "./components/shared/ProtectedRouter";
-import { LoaderAlt } from "./components/shared";
+import { LoaderAlt, ProtectedRoute } from "./components/shared";
 
 const Login = React.lazy(() => import("./containers/login/Login.container"));
 const ResetPassword = React.lazy(() => import("./containers/resetPassword/ResetPassword.container"));
@@ -85,7 +84,7 @@ function Page404(props) {
         alt="error404"
         className="mt-4"
       />
-      <a className="btn hm-bg-darkblue text-white mt-4" href="/home">
+      <a className="btn hm-bg-darkblue text-white mt-4" href="/">
         返回
       </a>
     </main>
