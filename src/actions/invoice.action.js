@@ -85,3 +85,16 @@ export const findInvoiceSum = () => async dispatch => {
     dispatch(processLogout(err));
   }
 };
+
+export const updateAInvoiceInCompany = (realm_token, invoice_token, body) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    await callApi(`invoice/detail/${realm_token}/${invoice_token}`, "PATCH", body);
+    await dispatch(findInvoiceListInCompany(realm_token));
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};

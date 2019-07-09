@@ -11,7 +11,8 @@ import {
   CompanyAdminListItem,
   CompanyInvoiceListItem,
   CompanyFeeModal,
-  CompanyEditALordModal
+  CompanyEditALordModal,
+  CompanyEditAInvoiceModal
 } from "./companyDetail.component";
 
 import { Header, ListView, ListHeader } from "../../../components/shared";
@@ -27,7 +28,8 @@ import { findFeeList } from "../../../actions/fee.action";
 import {
   findInvoiceSumInCompany,
   findInvoiceListInCompany,
-  createAInvoiceInCompany
+  createAInvoiceInCompany,
+  updateAInvoiceInCompany
 } from "../../../actions/invoice.action";
 import { createNewAddressInstance } from "../../../actions/address.action";
 
@@ -38,7 +40,9 @@ class CompanyDetail extends Component {
     showAddFeeInCompany: false,
     showAddInvoiceInCompany: false,
     showEditLordInfoModal: false,
-    currLordInfo: ""
+    showEditInvoiceInCompany: false,
+    currLordInfo: "",
+    currInvoiceInfo: ""
   };
   handleAddCompanyAdminModal = () => {
     this.setState(states => ({ showCompanyAdminModal: !states.showCompanyAdminModal }));
@@ -51,6 +55,9 @@ class CompanyDetail extends Component {
   };
   handleAddInvoiceModal = () => {
     this.setState(states => ({ showAddInvoiceInCompany: !states.showAddInvoiceInCompany }));
+  };
+  handleShowEditInvoiceModal = props => {
+    this.setState(states => ({ showEditInvoiceInCompany: !states.showEditInvoiceInCompany, currInvoiceInfo: props }));
   };
   handleShowEditLordInfoModal = props => {
     this.setState(states => ({ showEditLordInfoModal: !states.showEditLordInfoModal, currLordInfo: props }));
@@ -127,6 +134,7 @@ class CompanyDetail extends Component {
       setPrimaryForResources,
 
       createAInvoiceInCompany,
+      updateAInvoiceInCompany,
       invoice_list_in_company,
       invoice_sum_in_company
     } = this.props;
@@ -137,8 +145,10 @@ class CompanyDetail extends Component {
       showBasicInfoModal,
       showAddFeeInCompany,
       showAddInvoiceInCompany,
+      showEditInvoiceInCompany,
       showEditLordInfoModal,
-      currLordInfo
+      currLordInfo,
+      currInvoiceInfo
     } = this.state;
     return (
       <main>
@@ -180,9 +190,16 @@ class CompanyDetail extends Component {
           <CompanyEditALordModal
             realm_token={realm_token}
             updateALordInCompany={updateALordInCompany}
-            handleEditLordInfo={this.handleShowEditLordInfoModal}
             editInfo={currLordInfo}
             onClose={this.handleShowEditLordInfoModal}
+          />
+        )}
+        {showEditInvoiceInCompany && (
+          <CompanyEditAInvoiceModal
+            realm_token={realm_token}
+            updateAInvoiceInCompany={updateAInvoiceInCompany}
+            editInfo={currInvoiceInfo}
+            onClose={this.handleShowEditInvoiceModal}
           />
         )}
         <section className="container-fluid">
@@ -214,7 +231,7 @@ class CompanyDetail extends Component {
             <ListView
               totalCount={lord_list.count}
               title="Company Admin List"
-              fieldNames={["Company Logo", "Admin Name", "Call", "Email", "Username", "Status", "Edit"]}
+              fieldNames={["Img", "Admin Name", "Cell", "Email", "Username", "Status", "Edit"]}
               hideHeader={true}
               onPageChange={this.handlePageChange("lord")}
             >
@@ -244,7 +261,7 @@ class CompanyDetail extends Component {
               onPageChange={this.handlePageChange("fee")}
             >
               {fee_list_in_company.record_list.map((fee, index) => (
-                <CompanyFeeListItem parentProps={fee} key={index} onClick={this.handlePunchItemClick} />
+                <CompanyFeeListItem parentProps={fee} key={index} />
               ))}
             </ListView>
           </div>
@@ -260,12 +277,16 @@ class CompanyDetail extends Component {
             <ListView
               totalCount={invoice_list_in_company.count}
               title="Invoice List"
-              fieldNames={["Created On", "Invoice Amount", "Receipt Number", "Status"]}
+              fieldNames={["Created On", "Invoice Amount", "Receipt Number", "Status", "Edit"]}
               hideHeader={true}
               onPageChange={this.handlePageChange("invoice")}
             >
               {invoice_list_in_company.record_list.map((invoice, index) => (
-                <CompanyInvoiceListItem parentProps={invoice} key={index} />
+                <CompanyInvoiceListItem
+                  parentProps={invoice}
+                  key={index}
+                  handleEditInvoiceModal={this.handleShowEditInvoiceModal}
+                />
               ))}
             </ListView>
           </div>
@@ -303,6 +324,7 @@ const mapDispatchToProps = {
   findInvoiceSumInCompany,
   findInvoiceListInCompany,
   createAInvoiceInCompany,
+  updateAInvoiceInCompany,
 
   setPrimaryForResources
 };

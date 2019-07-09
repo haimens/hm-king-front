@@ -9,6 +9,7 @@ import CompanyFeeListItem from "./companyFeeList.item";
 import CompanyImage from "./companyImage.component";
 import CompanyInvoiceModal from "./companyInvoice.modal";
 import CompanyInvoiceListItem from "./companyInvoiceList.item";
+import CompanyEditAInvoiceModal from "./companyEditAInvoice.modal";
 
 export {
   CompanyAdminModal,
@@ -21,5 +22,6 @@ export {
   CompanyFeeListItem,
   CompanyImage,
   CompanyInvoiceModal,
-  CompanyInvoiceListItem
+  CompanyInvoiceListItem,
+  CompanyEditAInvoiceModal
 };

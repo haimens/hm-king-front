@@ -45,12 +45,13 @@ class Nav extends Component {
             />
             <button
               type="button"
-              className="btn dropdown-toggle text-white"
+              className="btn dropdown-toggle text-white ml-2 d-flex align-items-center"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
               {localStorage.getItem("username").toUpperCase()}
+              <i class="fas fa-sort-down ml-1" />
             </button>
 
             <div className="dropdown-menu shadow-sm p-3">

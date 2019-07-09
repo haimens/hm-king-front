@@ -1,5 +1,6 @@
 import React from "react";
 import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.action";
+import { EditButton } from "../../../../components/shared";
 
 /**
  * @onClick
@@ -7,6 +8,9 @@ import { convertUTCtoLocal, parseAmount } from "../../../../actions/utilities.ac
  */
 export default function CompanyInvoiceList(props) {
   const { cdate, amount, receipt, status } = props.parentProps;
+  const handleEditInvoiceModal = () => {
+    props.handleEditInvoiceModal(props.parentProps);
+  };
   return (
     <tr className="border-bottom">
       <td className="items-height align-middle" data-label="Created On">
@@ -29,8 +33,16 @@ export default function CompanyInvoiceList(props) {
           {status === 1 && (
             <section className="text-center hm-text-14 ">
               <div className=" d-flex align-items-center float-right float-lg-none">
-                <i className="fas fa-circle pending-text-color col-3 offset-md-3" style={{ fontSize: "6px" }} />
+                <i className="fas fa-circle text-grey col-3 offset-md-3" style={{ fontSize: "6px" }} />
                 <div className="font-weight-500">Pending</div>
+              </div>
+            </section>
+          )}
+          {status === 2 && (
+            <section className="text-center hm-text-14 ">
+              <div className=" d-flex align-items-center float-right float-lg-none">
+                <i className="fas fa-circle pending-text-color col-3 offset-md-3" style={{ fontSize: "6px" }} />
+                <div className="font-weight-500">Waiting</div>
               </div>
             </section>
           )}
@@ -42,15 +54,10 @@ export default function CompanyInvoiceList(props) {
               </div>
             </section>
           )}
-          {status === 4 && (
-            <section className="text-center hm-text-14 ">
-              <div className=" d-flex align-items-center float-right float-lg-none">
-                <i className="fas fa-circle text-danger col-3 offset-md-3" style={{ fontSize: "6px" }} />
-                <div className="font-weight-500">Error</div>
-              </div>
-            </section>
-          )}
         </section>
+      </td>
+      <td className="items-height align-middle text-lg-center text-right " data-label="Edit">
+        <EditButton clickFunction={handleEditInvoiceModal} />
       </td>
     </tr>
   );

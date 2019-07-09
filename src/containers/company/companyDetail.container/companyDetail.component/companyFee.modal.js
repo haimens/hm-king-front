@@ -41,15 +41,18 @@ export default class FeeModal extends Component {
       >
         <div className="container">
           <div className="p-3">
-            <div className="input-group mb-3">
+            <div className="input-group my-3 ">
               <input
                 type="number"
-                className="form-control hm-input-height mt-3"
+                className="form-control hm-input-height border-right-0"
                 id="amount"
                 value={amount}
                 placeholder="Amount"
                 onChange={this.handleInputChange}
               />
+              <div className="input-group-append">
+                <span className="input-group-text hm-input-height border-left-0 bg-white">.00</span>
+              </div>
             </div>
 
             <div className="input-group mb-3">

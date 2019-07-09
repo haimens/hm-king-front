@@ -21,6 +21,7 @@ class CompanyInvoice extends Component {
     const { amount } = this.state;
     if (amount !== "" && !isNaN(amount)) {
       this.props.createAInvoiceInCompany(realm_token, { amount: amount * 100 });
+      this.handleClose();
     } else {
       alertify.alert("Error!", "Please Finish The Form and Input Correct Value!");
     }
@@ -54,15 +55,18 @@ class CompanyInvoice extends Component {
               <div className="hm-text-14 font-weight-bold">{parseAmount(sum)}</div>
             </div>
 
-            <div className="form-group pt-3">
+            <div className="input-group my-3 ">
               <input
                 type="number"
-                className="form-control hm-input-height"
+                className="form-control hm-input-height border-right-0"
                 id="amount"
-                placeholder="Invoice Amount"
                 value={amount}
+                placeholder="Invoice Amount"
                 onChange={this.handleInputChange}
               />
+              <div className="input-group-append">
+                <span className="input-group-text hm-input-height border-left-0 bg-white">.00</span>
+              </div>
             </div>
 
             <div className="form-group text-right pt-3">
