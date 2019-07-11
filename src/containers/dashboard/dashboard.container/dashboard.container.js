@@ -3,24 +3,51 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Chart from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { chartOptions, parseOptions, chartExample2 } from "./dashboard.component/chart";
+import { chartOptions, parseOptions } from "./dashboard.component/chart";
 import DisplayCard from "./dashboard.component/display.card";
 import { Header } from "../../../components/shared";
 import { findCompanyList } from "../../../actions/company.action";
-import { findInvoiceSum } from "../../../actions/invoice.action";
-import { parseAmount } from "../../../actions/utilities.action";
+import { findInvoiceSum, findInvoiceSumAndReturn } from "../../../actions/invoice.action";
+import { parseAmount, convertLocalToUTC } from "../../../actions/utilities.action";
 import "./dashboard.container.css";
-
+import moment from "moment";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      arrayDate: "",
+      arraySum: ""
+    };
   }
-  componentWillMount() {
+  async componentWillMount() {
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
     Promise.all([this.props.findCompanyList(), this.props.findInvoiceSum()]);
+    let arrayDate = [];
+    let arraySum = [];
+    for (let i = 6; i >= 0; i--) {
+      let sum = await this.props.findInvoiceSumAndReturn({
+        date_from: convertLocalToUTC(
+          moment()
+            .subtract(i, "month")
+            .startOf("month")
+        ),
+        date_to: convertLocalToUTC(
+          moment()
+            .subtract(i, "month")
+            .endOf("month")
+        )
+      });
+      arrayDate.push(
+        moment()
+          .subtract(i, "month")
+          .startOf("month")
+          .format("MMM")
+      );
+      arraySum.push(sum / 100);
+    }
+    this.setState({ arrayDate, arraySum });
   }
   render() {
     const { company_list, invoice_sum } = this.props;
@@ -59,11 +86,51 @@ class Dashboard extends Component {
             <div className="bg-white shadow-sm rounded-custom border p-3">
               <div className="mb-4">
                 <div className="text-secondary-color font-weight-bold mb-1">PERFORMANCE</div>
-                <div className="hm-title-sub-size text-main-color font-weight-bold">Total orders</div>
+                <div className="hm-title-sub-size text-main-color font-weight-bold">Total Invoice</div>
               </div>
               <hr />
               <div className="mt-4">
-                <Bar data={chartExample2.data} options={chartExample2.options} />
+                <Bar
+                  data={{
+                    labels: [...this.state.arrayDate],
+                    datasets: [
+                      {
+                        label: "Sales",
+                        data: [...this.state.arraySum]
+                      }
+                    ]
+                  }}
+                  options={{
+                    scales: {
+                      yAxes: [
+                        {
+                          ticks: {
+                            callback: function(value) {
+                              if (!(value % 10)) {
+                                //return '$' + value + 'k'
+                                return value;
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    tooltips: {
+                      callbacks: {
+                        label: function(item, data) {
+                          var label = data.datasets[item.datasetIndex].label || "";
+                          var yLabel = item.yLabel;
+                          var content = "";
+                          if (data.datasets.length > 1) {
+                            content += label;
+                          }
+                          content += yLabel;
+                          return content;
+                        }
+                      }
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -81,7 +148,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = { findCompanyList, findInvoiceSum };
+const mapDispatchToProps = { findCompanyList, findInvoiceSum, findInvoiceSumAndReturn };
 
 export default connect(
   mapStateToProps,

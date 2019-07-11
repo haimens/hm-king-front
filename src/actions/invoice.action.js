@@ -70,16 +70,49 @@ export const createAInvoiceInCompany = (realm_token, body = {}) => async dispatc
   }
 };
 
-export const findInvoiceSum = () => async dispatch => {
+export const findInvoiceSum = (query = {}) => async dispatch => {
   try {
     await startLoader(dispatch);
-    const { payload: waiting } = await callApi(`invoice/sum/system`, "GET", null, { status: 2 });
-    const { payload: paid } = await callApi(`invoice/sum/system`, "GET", null, { status: 3 });
+    const { payload: waiting } = await callApi(`invoice/sum/system`, "GET", null, {
+      status: 2,
+      from_key: "cdate",
+      to_key: "cdate",
+      ...query
+    });
+    const { payload: paid } = await callApi(`invoice/sum/system`, "GET", null, {
+      status: 3,
+      from_key: "cdate",
+      to_key: "cdate",
+      ...query
+    });
     await dispatch({
       type: constant.INVOICE_SUM,
       payload: { sum: waiting.sum + paid.sum }
     });
     await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const findInvoiceSumAndReturn = (query = {}) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    const { payload: waiting } = await callApi(`invoice/sum/system`, "GET", null, {
+      status: 2,
+      from_key: "cdate",
+      to_key: "cdate",
+      ...query
+    });
+    const { payload: paid } = await callApi(`invoice/sum/system`, "GET", null, {
+      status: 3,
+      from_key: "cdate",
+      to_key: "cdate",
+      ...query
+    });
+    await stopLoader(dispatch);
+    return waiting.sum + paid.sum;
   } catch (err) {
     await stopLoader(dispatch);
     dispatch(processLogout(err));

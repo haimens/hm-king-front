@@ -51,7 +51,7 @@ class Nav extends Component {
               aria-expanded="false"
             >
               {localStorage.getItem("username").toUpperCase()}
-              <i class="fas fa-sort-down ml-1" />
+              <i className="fas fa-sort-down ml-1" />
             </button>
 
             <div className="dropdown-menu shadow-sm p-3">
