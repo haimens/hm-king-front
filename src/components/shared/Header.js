@@ -19,7 +19,7 @@ export default function Header(props) {
             {props.title}
           </h4>
         ) : (
-          <h4 className="hm-header-size mr-3">{props.title}</h4>
+          <h4 className="hm-header-size mr-3 ">{props.title}</h4>
         )}
         {props.subTitle &&
           (props.thirdTitle ? (
