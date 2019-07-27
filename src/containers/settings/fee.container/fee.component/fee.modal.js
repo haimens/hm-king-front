@@ -9,7 +9,7 @@ export default class FeeModal extends Component {
   handleCreatingFee = () => {
     const { fee_rate } = this.state;
     if (fee_rate > 0) {
-      this.props.handleCreatingFee(fee_rate * 100);
+      this.props.handleCreatingFee(fee_rate * 10);
     } else {
       alertify.alert("Error!", "Please Submit Correct Rate!");
     }
