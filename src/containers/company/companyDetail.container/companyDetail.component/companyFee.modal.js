@@ -36,12 +36,15 @@ export default class FeeModal extends Component {
         onClose={this.handleClose}
         position="center"
         getWidth={"467px"}
-        getHeight={"339px"}
+        getHeight={"400px"}
         zIndex="3"
       >
         <div className="container">
           <div className="p-3">
             <div className="input-group my-3 ">
+              <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Amount">
+                Amount
+              </label>
               <input
                 type="number"
                 className="form-control hm-input-height border-right-0"
@@ -56,9 +59,12 @@ export default class FeeModal extends Component {
             </div>
 
             <div className="input-group mb-3">
+              <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Note">
+                Note
+              </label>
               <input
                 type="text"
-                className="form-control hm-input-height mt-3"
+                className="form-control hm-input-height"
                 id="note"
                 placeholder="Note"
                 value={note}

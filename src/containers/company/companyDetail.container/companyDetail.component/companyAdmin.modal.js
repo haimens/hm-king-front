@@ -66,11 +66,14 @@ export default class CompanyBasicInfo extends Component {
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
-          getHeight={"530px"}
+          getHeight={"640px"}
         >
           <div className="container">
             <div className="p-3">
               <div className="form-group pt-3">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Name">
+                  Name
+                </label>
                 <input
                   type="text"
                   className="form-control hm-input-height"
@@ -82,27 +85,37 @@ export default class CompanyBasicInfo extends Component {
                 />
               </div>
 
-              <div className="form-group input-group pt-3 d-flex">
-                <input
-                  type="text"
-                  className="form-control hm-input-height col-2"
-                  id="area"
-                  placeholder="Area"
-                  value={area}
-                  onChange={this.handleInputChange}
-                />
+              <div className="form-group input-group pt-3">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Cell">
+                  Cell
+                </label>
+                <div className="container-fluid">
+                  <div className="row">
+                    <input
+                      type="text"
+                      className="form-control hm-input-height col-2"
+                      id="area"
+                      placeholder="Area"
+                      value={area}
+                      onChange={this.handleInputChange}
+                    />
 
-                <input
-                  type="text"
-                  className="form-control hm-input-height "
-                  id="cell"
-                  placeholder="Cell"
-                  value={cell}
-                  onChange={this.handleInputChange}
-                />
+                    <input
+                      type="text"
+                      className="form-control hm-input-height col-10"
+                      id="cell"
+                      placeholder="Cell"
+                      value={cell}
+                      onChange={this.handleInputChange}
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="form-group pt-3">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Email">
+                  Email
+                </label>
                 <input
                   type="email"
                   className="form-control hm-input-height"
@@ -114,6 +127,9 @@ export default class CompanyBasicInfo extends Component {
               </div>
 
               <div className="form-group pt-3">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Username">
+                  Username
+                </label>
                 <input
                   type="text"
                   className="form-control hm-input-height"

@@ -101,7 +101,6 @@ export default class CompanyAdmin extends Component {
 
   componentDidMount() {
     const { basic_info, address_info, tribute_rate_info } = this.props.company_detail;
-    console.log(basic_info);
     this.setState({
       company_name: basic_info.company_name,
       company_title: basic_info.company_title,
@@ -154,11 +153,14 @@ export default class CompanyAdmin extends Component {
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
-          getHeight={"600px"}
+          getHeight={"720px"}
         >
           <div className="container">
             <div className="p-3">
               <div className="form-group pt-2">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Company Name">
+                  Company Name
+                </label>
                 <input
                   type="text"
                   className="form-control hm-input-height"
@@ -171,6 +173,9 @@ export default class CompanyAdmin extends Component {
               </div>
 
               <div className="form-group input-group pt-2">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Company Title">
+                  Company Title
+                </label>
                 <input
                   type="text"
                   className="form-control hm-input-height"
@@ -182,10 +187,16 @@ export default class CompanyAdmin extends Component {
               </div>
 
               <div className="form-group">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Address">
+                  Address
+                </label>
                 <GAutoComplete defaultValue={default_address} getGoogleAddress={this.saveToAddress} />
               </div>
 
               <div className="form-group ">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Fee Rate">
+                  Fee Rate
+                </label>
                 <select
                   className="custom-select form-control hm-input-height "
                   id="fee_rate"
