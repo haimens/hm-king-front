@@ -15,7 +15,9 @@ export default class CompanyImage extends Component {
       <div className="bg-white align-items-center pt-3" style={{ height: "48px" }}>
         <div className="row">
           <div className="col-2">
-            <label htmlFor="logo">{this.props.title}</label>
+            <label htmlFor="logo" className="font-weight-bold">
+              {this.props.title}
+            </label>
           </div>
 
           <div className="col-3 d-flex justify-content-center align-items-center">

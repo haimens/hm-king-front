@@ -116,12 +116,15 @@ export default class PriceModifyModal extends Component {
         {showPreviewFavicon && (
           <PreviewImageModal image={icon_path} onClose={() => this.setState({ showPreviewFavicon: false })} />
         )}
-        <Modal title="Add Company" onClose={this.handleClose} position="center" getWidth={"470px"} getHeight={"570px"}>
+        <Modal title="Add Company" onClose={this.handleClose} position="center" getWidth={"470px"} getHeight={"640px"}>
           <div className="container">
             <div className="p-3">
               <div className="form-group">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Company Name">
+                  Company Name
+                </label>
                 <input
-                  className="form-control hm-input-height mt-3"
+                  className="form-control hm-input-height"
                   name="company_name"
                   id="company_name"
                   placeholder={"Company Name"}
@@ -131,12 +134,18 @@ export default class PriceModifyModal extends Component {
               </div>
 
               <div className="form-group">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Fee Rate">
+                  Company Address
+                </label>
                 <GAutoComplete getGoogleAddress={this.saveToAddress} />
               </div>
 
               <div className="form-group">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Company Title">
+                  Company Title
+                </label>
                 <input
-                  type="cell"
+                  type="text"
                   className="form-control hm-input-height "
                   name="company_title"
                   id="company_title"
@@ -146,8 +155,11 @@ export default class PriceModifyModal extends Component {
                 />
               </div>
               <div className="form-group ">
+                <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Fee Rate">
+                  Fee Rate
+                </label>
                 <select
-                  className="custom-select form-control hm-input-height  mt-3"
+                  className="custom-select form-control hm-input-height"
                   id="fee_rate"
                   value={fee_rate}
                   onChange={this.handleInputChange}

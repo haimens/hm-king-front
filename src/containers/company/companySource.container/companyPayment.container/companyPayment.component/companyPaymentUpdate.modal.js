@@ -30,7 +30,6 @@ export default class CompanyAdmin extends Component {
       updateAPaymentMethod,
       currPaymentResource: { payment_resource_token }
     } = this.props;
-    console.log(payment_resource_token);
     if (square_application_id !== "" && square_location_id !== "" && square_access_token !== "") {
       updateAPaymentMethod(realm_token, payment_resource_token, {
         square_application_id,
@@ -43,7 +42,6 @@ export default class CompanyAdmin extends Component {
     }
   };
   async componentDidMount() {
-    console.log(this.props);
     const {
       square_application_id,
       square_location_id,

@@ -9,7 +9,7 @@ export default class FeeModal extends Component {
   handleCreatingFee = () => {
     const { fee_rate } = this.state;
     if (fee_rate > 0) {
-      this.props.handleCreatingFee(fee_rate * 100);
+      this.props.handleCreatingFee(fee_rate * 10);
     } else {
       alertify.alert("Error!", "Please Submit Correct Rate!");
     }
@@ -32,15 +32,18 @@ export default class FeeModal extends Component {
         onClose={this.handleClose}
         position="center"
         getWidth={"467px"}
-        getHeight={"280px"}
+        getHeight={"300px"}
         zIndex="1080"
       >
         <div className="container">
           <div className="p-3">
             <div className="input-group mb-3">
+              <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Fee Rate">
+                Fee Rate
+              </label>
               <input
                 type="number"
-                className="form-control border-right-0 hm-input-height mt-3"
+                className="form-control border-right-0 hm-input-height"
                 id="fee_rate"
                 value={fee_rate}
                 onChange={this.handleInputChange}

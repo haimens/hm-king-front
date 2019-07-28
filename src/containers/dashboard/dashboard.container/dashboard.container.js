@@ -53,7 +53,7 @@ class Dashboard extends Component {
     const { company_list, invoice_sum } = this.props;
     return (
       <main>
-        <section className="mb-4">
+        <section className="mb-3">
           <div className="container-fluid">
             <div className="mb-4">
               <Header title="Dashboard" tabicon={"tabicon_dashboard.svg"} />
