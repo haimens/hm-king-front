@@ -19,7 +19,6 @@ class CompanyEditAInvoice extends Component {
   handleEditInvoiceInACompany = async () => {
     const { realm_token, updateAInvoiceInCompany } = this.props;
     const { receipt, status, invoice_token } = this.state;
-    console.log(status);
     updateAInvoiceInCompany(realm_token, invoice_token, { receipt, status });
     this.handleClose();
   };

@@ -42,12 +42,12 @@ export default function PunchItem(props) {
       </td>
       <td data-label="Detail" className="align-middle items-height">
         <section className="text-lg-center text-right text-main-color hm-text-14">
-          <button
-            className="btn btn-md font-weight-500 hm-text-14 text-primary"
+          <img
+            src={`${process.env.PUBLIC_URL}/img/icon_detail.svg`}
+            className="hm-pointer-cursor"
+            alt="icon"
             onClick={() => handleCompanyBeenClicked(realm_token)}
-          >
-            View
-          </button>
+          />
         </section>
       </td>
     </tr>

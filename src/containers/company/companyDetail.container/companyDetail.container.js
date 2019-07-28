@@ -155,6 +155,7 @@ class CompanyDetail extends Component {
         {showCompanyAdminModal && (
           <CompanyAdminModal
             realm_token={realm_token}
+            company_detail={company_detail}
             createALordInCompany={createALordInCompany}
             onClose={this.handleAddCompanyAdminModal}
           />

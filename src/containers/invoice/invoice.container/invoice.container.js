@@ -5,9 +5,6 @@ import { ListView, Header, ListHeader } from "../../../components/shared";
 import { findInvoiceList } from "../../../actions/invoice.action";
 import InvoiceListItem from "./invoice.component/invoiceList.item";
 class Invoice extends Component {
-  handlePageChange = page => {
-    console.log(page);
-  };
   handlePageChange = start => {
     this.props.findInvoiceList({ start });
   };

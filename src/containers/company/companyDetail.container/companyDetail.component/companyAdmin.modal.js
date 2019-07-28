@@ -34,15 +34,24 @@ export default class CompanyBasicInfo extends Component {
 
   handleAddingCompanyAdmin = () => {
     const { username, name, cell, email, area, img_path } = this.state;
-    const { realm_token, createALordInCompany } = this.props;
+    const {
+      realm_token,
+      createALordInCompany,
+      company_detail: { basic_info }
+    } = this.props;
     if (username !== "" && name !== "" && cell !== "" && email !== "" && area !== "") {
-      createALordInCompany(realm_token, {
-        username,
-        name,
-        cell: `${area} ${cell}`,
-        email,
-        img_path
-      });
+      createALordInCompany(
+        realm_token,
+        {
+          username,
+          name,
+          cell: `${area} ${cell}`,
+          email,
+          img_path
+        },
+        basic_info.logo_path,
+        basic_info.company_name
+      );
       this.handleClose();
     } else {
       alertify.alert("Error!", "Please Finish The Form!");
@@ -66,11 +75,11 @@ export default class CompanyBasicInfo extends Component {
           onClose={this.handleClose}
           position="center"
           getWidth={"467px"}
-          getHeight={"640px"}
+          getHeight={"620px"}
         >
           <div className="container">
             <div className="p-3">
-              <div className="form-group pt-3">
+              <div className="form-group mb-4">
                 <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Name">
                   Name
                 </label>
@@ -85,7 +94,7 @@ export default class CompanyBasicInfo extends Component {
                 />
               </div>
 
-              <div className="form-group input-group pt-3">
+              <div className="form-group input-group mb-4">
                 <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Cell">
                   Cell
                 </label>
@@ -112,7 +121,7 @@ export default class CompanyBasicInfo extends Component {
                 </div>
               </div>
 
-              <div className="form-group pt-3">
+              <div className="form-group mb-4">
                 <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Email">
                   Email
                 </label>
@@ -126,7 +135,7 @@ export default class CompanyBasicInfo extends Component {
                 />
               </div>
 
-              <div className="form-group pt-3">
+              <div className="form-group mb-4">
                 <label className="text-main-color font-weight-bold hm-text-14 w-100" htmlFor="Username">
                   Username
                 </label>
@@ -141,12 +150,12 @@ export default class CompanyBasicInfo extends Component {
               </div>
 
               <CompanyImage
-                title={"Favicon:"}
+                title={"Img:"}
                 parentProps={{ img_url: img_path, handleShowPreview: this.handleShowPreview }}
                 handleShowImage={this.handleShowImage}
               />
 
-              <div className="form-group text-right pt-3">
+              <div className="form-group text-right mb-4">
                 <button
                   className="button-main-background btn button-main-size px-4 text-white mr-3"
                   onClick={this.handleAddingCompanyAdmin}

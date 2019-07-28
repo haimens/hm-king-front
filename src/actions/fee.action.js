@@ -84,7 +84,6 @@ export const createAFeeInCompany = (realm_token, body = {}) => async dispatch =>
 };
 
 export const findFeeSumInACompany = realm_token => async dispatch => {
-  console.log(realm_token);
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`tribute/sum/realm/${realm_token}`, "Get");
