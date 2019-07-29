@@ -33,32 +33,32 @@ export default function InvoiceListItem(props) {
         <section className="text-center align-middle hm-text-14 text-modal-color">
           {status === 1 && (
             <section className="text-center hm-text-14 ">
-              <div className=" d-flex align-items-center">
-                <i className="fas fa-circle text-grey col-3 offset-md-3" style={{ fontSize: "6px" }} />
+              <div className=" d-flex align-items-center justify-content-center">
+                <i className="fas fa-circle text-grey mr-3" style={{ fontSize: "6px" }} />
                 <div className="font-weight-500">{status_str}</div>
               </div>
             </section>
           )}
           {status === 2 && (
             <section className="text-center hm-text-14 ">
-              <div className=" d-flex align-items-center">
-                <i className="fas fa-circle text-grey col-3 offset-md-3" style={{ fontSize: "6px" }} />
+              <div className=" d-flex align-items-center justify-content-center">
+                <i className="fas fa-circle text-grey mr-3" style={{ fontSize: "6px" }} />
                 <div className="font-weight-500">{status_str}</div>
               </div>
             </section>
           )}
           {status === 3 && (
             <section className="text-center hm-text-14 ">
-              <div className=" d-flex align-items-center">
-                <i className="fas fa-circle success-text-color col-3 offset-md-3" style={{ fontSize: "6px" }} />
+              <div className=" d-flex align-items-center justify-content-center">
+                <i className="fas fa-circle success-text-color mr-3" style={{ fontSize: "6px" }} />
                 <div className="font-weight-500">{status_str}</div>
               </div>
             </section>
           )}
           {status === 4 && (
             <section className="text-center hm-text-14 ">
-              <div className=" d-flex align-items-center float-right float-lg-none">
-                <i className="fas fa-circle text-danger col-3 offset-md-3" style={{ fontSize: "6px" }} />
+              <div className=" d-flex align-items-center justify-content-center">
+                <i className="fas fa-circle text-danger mr-3" style={{ fontSize: "6px" }} />
                 <div className="font-weight-500">{status_str}</div>
               </div>
             </section>
