@@ -37,21 +37,45 @@ export default class CompanyBasicInfo extends Component {
     const {
       realm_token,
       createALordInCompany,
-      company_detail: { basic_info }
+      company_detail: { basic_info, email_resource_info }
     } = this.props;
     if (username !== "" && name !== "" && cell !== "" && email !== "" && area !== "") {
-      createALordInCompany(
-        realm_token,
-        {
-          username,
-          name,
-          cell: `${area} ${cell}`,
-          email,
-          img_path
-        },
-        basic_info.logo_path,
-        basic_info.company_name
-      );
+      if (email_resource_info && !email_resource_info.sendgrid_api_key) {
+        alertify.confirm(
+          "We will not send confirmation Email due to lack of email resource. Are you sure to continue?",
+          () =>
+            createALordInCompany(
+              realm_token,
+              {
+                username,
+                name,
+                cell: `${area} ${cell}`,
+                email,
+                img_path
+              },
+              basic_info.logo_path,
+              basic_info.company_name,
+              true
+            ),
+          function() {
+            alertify.error("Cancel");
+          }
+        );
+      } else {
+        createALordInCompany(
+          realm_token,
+          {
+            username,
+            name,
+            cell: `${area} ${cell}`,
+            email,
+            img_path
+          },
+          basic_info.logo_path,
+          basic_info.company_name
+        );
+      }
+
       this.handleClose();
     } else {
       alertify.alert("Error!", "Please Finish The Form!");

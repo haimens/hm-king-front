@@ -21,12 +21,14 @@ export const findLordListInCompany = (realm_token, query = {}) => async dispatch
   }
 };
 
-export const createALordInCompany = (realm_token, body = {}, img, name) => async dispatch => {
+export const createALordInCompany = (realm_token, body = {}, img, name, bool) => async dispatch => {
   try {
     await startLoader(dispatch);
     const { payload } = await callApi(`lord/detail/${realm_token}`, "POST", { ...body });
     await dispatch(findLordListInCompany(realm_token));
-    await dispatch(sendEmailToLord(realm_token, payload.lord_token, body.name, body.username, img, name));
+    if (!bool) {
+      await dispatch(sendEmailToLord(realm_token, payload.lord_token, body.name, body.username, img, name));
+    }
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
