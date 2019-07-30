@@ -57,11 +57,12 @@ export const findInvoiceListInCompany = (realm_token, query = {}) => async dispa
   }
 };
 
-export const createAInvoiceInCompany = (realm_token, body = {}) => async dispatch => {
+export const createAInvoiceInCompany = (realm_token, body = {}, msg) => async dispatch => {
   try {
     await startLoader(dispatch);
     await callApi(`invoice/detail/${realm_token}`, "POST", body);
     await dispatch(findInvoiceListInCompany(realm_token));
+    await dispatch(sendInvoiceToLord(realm_token, msg));
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
@@ -124,6 +125,21 @@ export const updateAInvoiceInCompany = (realm_token, invoice_token, body) => asy
     await startLoader(dispatch);
     await callApi(`invoice/detail/${realm_token}/${invoice_token}`, "PATCH", body);
     await dispatch(findInvoiceListInCompany(realm_token));
+    await launchSuccess(dispatch);
+    await stopLoader(dispatch);
+  } catch (err) {
+    await stopLoader(dispatch);
+    dispatch(processLogout(err));
+  }
+};
+
+export const sendInvoiceToLord = (realm_token, msg) => async dispatch => {
+  try {
+    await startLoader(dispatch);
+    await callApi(`email/send/realm/${realm_token}`, "POST", {
+      title: `Invoice`,
+      msg
+    });
     await launchSuccess(dispatch);
     await stopLoader(dispatch);
   } catch (err) {
